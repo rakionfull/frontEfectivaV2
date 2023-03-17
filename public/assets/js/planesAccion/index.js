@@ -65,7 +65,7 @@ function LoadTable_PlanAccion($create,$update,$delete) {
             "mRender": function(data, type, value) {
                 if($create == 1){
                     return ("<a href='"+BASE_URL+"/verDetalle/"+value.id+"'class='float-right btn btn-primary waves-effect waves-light'>Ver detalle</a>")
-                }
+                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
                
             }
             },   

@@ -23,7 +23,7 @@ class Activo extends BaseController {
             }
         }
         public function getEmpresasByActivo(){
-            if($this->session->logged_in && $this->session->permisos[14]->view_det==1){
+            if($this->session->logged_in){
             $get_endpoint = '/api/getEmpresasByActivo';
 
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
@@ -94,9 +94,9 @@ class Activo extends BaseController {
             
         }
         //funciones para opcion activos
-        public function getArea(){
+        public function getArea($dato){
             if($this->session->logged_in && $this->session->permisos[15]->view_det==1){
-                $get_endpoint = '/api/getArea';
+                $get_endpoint = '/api/getArea/'.$dato;
     
                 $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
                 if($response){
@@ -701,9 +701,9 @@ class Activo extends BaseController {
         }
         //Unidades
 
-        public function getUnidades(){
+        public function getUnidades($dato){
           if($this->session->logged_in){
-            $get_endpoint = '/api/getUnidades';
+            $get_endpoint = '/api/getUnidades/'.$dato;
 
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
             if($response){
@@ -808,9 +808,9 @@ class Activo extends BaseController {
           }
         }
         //Macroproceso
-        public function getMacroproceso(){
+        public function getMacroproceso($dato){
           if($this->session->logged_in){
-            $get_endpoint = '/api/getMacroproceso';
+            $get_endpoint = '/api/getMacroproceso/'.$dato;
 
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
             if($response){
@@ -903,9 +903,9 @@ class Activo extends BaseController {
       }
 
         //Proceso
-        public function getProceso(){
+        public function getProceso($dato){
           if($this->session->logged_in){
-            $get_endpoint = '/api/getProceso';
+            $get_endpoint = '/api/getProceso/'.$dato;
 
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
             if($response){
@@ -1000,9 +1000,9 @@ class Activo extends BaseController {
        
 
         //posicion y puesto
-        public function getPosicion(){
+        public function getPosicion($dato){
             if($this->session->logged_in){
-              $get_endpoint = '/api/getPosicion';
+              $get_endpoint = '/api/getPosicion/'.$dato;
   
               $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
               if($response){

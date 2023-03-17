@@ -1,8 +1,5 @@
 var alerta_area_empresa = document.getElementById("alert_area_empresa");
-function LoadTableAreaEmpresa($update,$delete) {
-    
-    
-    //cargando las empresas
+function cargarEmpresaArea(valor) {
     $.ajax({
         method: "POST",
         url: $('#base_url').val()+"/activo/getEmpresasByActivo",
@@ -10,7 +7,7 @@ function LoadTableAreaEmpresa($update,$delete) {
     })
     .done(function(respuesta) {
        
-
+        console.log(respuesta);
         if (respuesta) 
         {
             let datos = respuesta;
@@ -23,10 +20,16 @@ function LoadTableAreaEmpresa($update,$delete) {
 
             datos.data.forEach(dato => {
                 
-              
-                    $("#select_empresa").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+              if(valor == dato['id']){
+                $("#select_empresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
 
                 
+              }else{
+                $("#select_empresa").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+
+                
+              }
+                    
                 
              
             });
@@ -36,14 +39,17 @@ function LoadTableAreaEmpresa($update,$delete) {
     
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+        console.log("aqui");
     })
     .always(function() {
     });
+}
 
-
-    
-
+function LoadTableAreaEmpresa($update,$delete) {
+    $dato = 0 ;
+    if(idempresa != 0 || idempresa !=""){
+        $dato = idempresa;
+    }
     if ($.fn.DataTable.isDataTable('#table_area_empresa')){
         
         $('#table_area_empresa').DataTable().rows().remove();
@@ -82,7 +88,7 @@ function LoadTableAreaEmpresa($update,$delete) {
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: $('#base_url').val()+"/activo/getArea",
+        ajax: $('#base_url').val()+"/activo/getArea/"+$dato,
         aoColumns: [
             { "data": "id" },
             { "data": "id" },
@@ -110,7 +116,7 @@ function LoadTableAreaEmpresa($update,$delete) {
                     $cadena =     $cadena +  "<deleteAreaEmpresa class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteAreaEmpresa>";
               
                 }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
-               
+                return $cadena;
                 }
             },
 //             { "defaultContent": "<editAreaEmpresa class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editAreaEmpresa>"+
@@ -137,11 +143,18 @@ function LoadTableAreaEmpresa($update,$delete) {
 //area empresa
 document.getElementById("btnAgregar_area_empresa").addEventListener("click",function(){
                                 
-    $("#modal_area_empresa").modal("show");    
-    document.getElementById("title-area-empresa").innerHTML = "Agregar";
+    $("#modal_area_empresa").modal("show");  
+   
+    document.getElementById("title-area").innerHTML = "Agregar";
     document.getElementById("form_area_empresa").reset();
     document.getElementById("Agregar_area_empresa").style.display = "block";
     document.getElementById("Modificar_area_empresa").style.display = "none";
+    if(idempresa != 0){
+        $('#select_empresa').attr('disabled',true);
+    }
+
+   
+
 });
 
 
@@ -222,7 +235,11 @@ document.getElementById("Agregar_area_empresa").addEventListener("click",functio
 // // editar Area
 $('#table_area_empresa tbody').on( 'click', 'editAreaEmpresa', function(){
     $("#modal_area_empresa").modal("show");
-    document.getElementById("title-area-empresa").innerHTML = "Modificar";
+    document.getElementById("title-area").innerHTML = "Modificar";s
+    if(idempresa != 0){
+        $('#select_empresa').attr('disabled',true);
+    }s
+    
     document.getElementById("form_area_empresa").reset();
     document.getElementById("Agregar_area_empresa").style.display = "none";
     document.getElementById("Modificar_area_empresa").style.display = "block";

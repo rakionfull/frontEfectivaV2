@@ -16,6 +16,7 @@
                                 <a href="<?= base_url('exportExcelICA')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export</a>
                             </div>
                             <?php
+                                var_dump($is_user_negocio);
                                 if($is_user_negocio){
                                     echo '
                                         <div class="col-md-3">
@@ -285,8 +286,14 @@
         </div>
     </div>
     <!-- END MODAL CREATE INVENTARIO CLASIFICACION ACTIVO-->
+    
     <script>
-       var is_user_negocio = <?php echo json_encode($is_user_negocio); ?>;
+        var id_user = <?php echo json_encode($id_user); ?>;
+        var escenario = <?php echo json_encode($escenario); ?>;
+        // console.log(escenario);
+        var is_user_negocio = <?php echo json_encode($is_user_negocio); ?>;
+        var idempresa = <?php echo json_encode($idempresa); ?>;
+        var idarea = <?php echo json_encode($idarea); ?>;
     </script>
     <script src="<?=base_url('public/assets/js/inventario_clasificacion_activo/index.js'); ?>"></script>
 <?=$this->endSection()?> 

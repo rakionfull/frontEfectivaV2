@@ -1,4 +1,6 @@
-    function cargarDatosPosArea($empresa,$dato) {
+var BASE_URL = $('#base_url').val();
+
+function cargarDatosPosArea($empresa,$dato) {
         //cargando las areas
         const postData = { 
             idempresa:$empresa,
@@ -21,7 +23,7 @@
     
                    
                     $("#id_area").empty();
-                    $("#id_area").append('<option value="" selected>Seleccione</option>');
+                    $("#id_area").append('<option value="" selected>Area</option>');
             
                 
             
@@ -69,7 +71,7 @@
             
 
                 $("#id_unidad").empty();
-                $("#id_unidad").append('<option value="" selected>Seleccione</option>');
+                $("#id_unidad").append('<option value="" selected>Unidad</option>');
         
             
         
@@ -119,7 +121,7 @@
     
                    
                     $("#id_puesto").empty();
-                    $("#id_puesto").append('<option value="" selected>Seleccione</option>');
+                    $("#id_puesto").append('<option value="" selected>Posicion/Puesto</option>');
             
                 
             

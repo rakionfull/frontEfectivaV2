@@ -1,7 +1,10 @@
 var BASE_URL = document.getElementById("base_url").value;
 var alerta_evaluacion_riesgo = document.getElementById("alerta_evaluacion_riesgo");
+
+console.log(idempresa);
 loadTableEvaluacionRiesgos()
-function loadTableEvaluacionRiesgos($update,$delete){
+function loadTableEvaluacionRiesgos(){
+    console.log(update,eliminar);
     if ($.fn.DataTable.isDataTable('#table_evaluacion_riesgo')){
         $('#table_evaluacion_riesgo').DataTable().rows().remove();
         $('#table_evaluacion_riesgo').DataTable().destroy();
@@ -63,16 +66,16 @@ function loadTableEvaluacionRiesgos($update,$delete){
                 "mRender":function(data){
                     $cadena = "";
                     if(data.id_user_added == id_user){
-                            if ($update == '1'){
+                            if (update == '1'){
                                 $cadena =   $cadena +  `<editEVA data-id="${data.id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEVA>`;
                             
                             } 
-                            if ($delete == '1') {
+                            if (eliminar == '1') {
                                 $cadena =     $cadena +  `<deleteEVA data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEVA>`
                             }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
                             return $cadena;
                     }else{
-                        return null
+                        return  "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
                     }
                         
                 }
@@ -125,7 +128,8 @@ $('#btn_add_evaluacion_riesgo').click(function(){
         }
     })
     let empresas = $.ajax({
-        url:BASE_URL+"/activo/getEmpresas",
+        method: "POST",
+        url:BASE_URL+"/activo/getEmpresasByActivo",
         dataType:'JSON'
     })
     .done(function(response){
@@ -142,11 +146,18 @@ $('#btn_add_evaluacion_riesgo').click(function(){
             });
         }
     })
+
+    var postData = {
+        idempresa:idempresa
+    }
     let areas = $.ajax({
-        url:BASE_URL+"/activo/getArea",
+        method: "POST",
+        url:BASE_URL+"/activo/getAreasByActivo",
+        data:postData,
         dataType:'JSON'
     })
     .done(function(resarea){
+     
         $('#modal_evaluacion_riesgo #area option').remove()
         $('#modal_evaluacion_riesgo #area').append(
             `<option value=''>Seleccionar</option>`
@@ -159,8 +170,11 @@ $('#btn_add_evaluacion_riesgo').click(function(){
             });
         }
     })
+    
     let unidades = $.ajax({
-        url:BASE_URL+"/activo/getUnidades",
+        method: "GET",
+        url:BASE_URL+"/activo/getUnidades/"+idempresa,
+        data:postData,
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -176,8 +190,11 @@ $('#btn_add_evaluacion_riesgo').click(function(){
             });
         }
     })
+   
     let macroproceso = $.ajax({
-        url:BASE_URL+"/activo/getMacroproceso",
+        method: "GET",
+        url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
+       
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -193,8 +210,11 @@ $('#btn_add_evaluacion_riesgo').click(function(){
             });
         }
     })
+  
     let proceso = $.ajax({
-        url:BASE_URL+"/activo/getProceso",
+        method: "GET",
+        url:BASE_URL+"/activo/getProceso/"+idempresa,
+      
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -320,20 +340,26 @@ $('#btn_add_evaluacion_riesgo').click(function(){
     document.getElementById("form_eva").reset();
     document.getElementById("add_eva").style.display = "block";
     document.getElementById("update_eva").style.display = "none";
-
-    if(is_user_negocio){
-        // Mostrar empresa y area por defecto
-        $('#modal_evaluacion_riesgo #empresa').val(idempresa)
-        $('#modal_evaluacion_riesgo #empresa').attr('disabled',true)
-        $('#modal_evaluacion_riesgo #area').val(idarea)
-        $('#modal_evaluacion_riesgo #area').attr('disabled',true)
-        // Para riesgo solo establecer empresa
-    }else{
-        $('#modal_evaluacion_riesgo #empresa').val('')
-        $('#modal_evaluacion_riesgo #empresa').attr('disabled',false) 
-        $('#modal_evaluacion_riesgo #area').val('')
-        $('#modal_evaluacion_riesgo #area').attr('disabled',false)
-    }
+    Promise.all([  empresas,
+        areas]
+      
+    ).then(()=> {
+        if(is_user_negocio == 1){
+            // Mostrar empresa y area por defecto
+            console.log(idempresa);
+            $('#modal_evaluacion_riesgo #empresa').val(idempresa)
+            $('#modal_evaluacion_riesgo #empresa').attr('disabled',true)
+            $('#modal_evaluacion_riesgo #area').val(idarea)
+            $('#modal_evaluacion_riesgo #area').attr('disabled',true)
+            // Para riesgo solo establecer empresa
+        }else{
+            $('#modal_evaluacion_riesgo #empresa').val('')
+            $('#modal_evaluacion_riesgo #empresa').attr('disabled',false) 
+            $('#modal_evaluacion_riesgo #area').val('')
+            $('#modal_evaluacion_riesgo #area').attr('disabled',false)
+        }
+    })
+   
 
 })
 $('#add_eva').click(function(){
@@ -452,7 +478,7 @@ $('#add_eva').click(function(){
 })
 $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
     $('#table_evaluacion_riesgo tbody editEVA').attr('disabled',true)
-
+    $('#title_eva').html('Modificar Evaluacion de riesgo');
     let id_empresa_default = 0
     let tipo_riesgos = $.ajax({
         url:BASE_URL+"/main/getTipoRiesgos",
@@ -472,7 +498,8 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let empresas = $.ajax({
-        url:BASE_URL+"/activo/getEmpresas",
+        method: "POST",
+        url:BASE_URL+"/activo/getEmpresasByActivo",
         dataType:'JSON'
     })
     .done(function(response){
@@ -489,8 +516,13 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
             });
         }
     })
+    var postData = {
+        idempresa:idempresa
+    }
     let areas = $.ajax({
-        url:BASE_URL+"/activo/getArea",
+        method: "POST",
+        url:BASE_URL+"/activo/getAreasByActivo",
+        data:postData,
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -507,7 +539,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let unidades = $.ajax({
-        url:BASE_URL+"/activo/getUnidades",
+        url:BASE_URL+"/activo/getUnidades/"+idempresa,
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -524,7 +556,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let macroproceso = $.ajax({
-        url:BASE_URL+"/activo/getMacroproceso",
+        url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -541,7 +573,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let proceso = $.ajax({
-        url:BASE_URL+"/activo/getProceso",
+        url:BASE_URL+"/activo/getProceso/"+idempresa,
         dataType:'JSON'
     })
     .done(function(resarea){
@@ -745,6 +777,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
 })
 $('#button_close_modal_eva,#button_cancel_modal_eva').click(function(){
     $('#modal_evaluacion_riesgo').modal('hide');
+   
 })
 
 $('#update_eva').click(function(){
@@ -1067,6 +1100,7 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
         .always(function() {
         });
     }else{
+        console.log(escenario);
         $.ajax({
             method: "get",
             url: BASE_URL+"/main/getProbabilidadRiesgo/"+escenario,
@@ -1281,7 +1315,10 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                         if(respuesta.data[0].tipo_valor == "Numero"){
                             // BUSACAR EN NIVEL DE RIESGO
                             let value = Number($('#modal_evaluacion_riesgo #valor_probabilidad').val())*Number($('#modal_evaluacion_riesgo #valor_impacto').val())
-                            getNivelRiesgo(value)
+                            getNivelRiesgo(value);
+
+
+
                         }else{
                             if(respuesta.data[0].tipo_valor == "Formula"){
                                 getValoracionByProbabilidadImpacto()
@@ -1305,6 +1342,7 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
         .done(function(respuesta){
             if(respuesta.data.length > 0){
                 if(respuesta.data[0].tipo_valor == 'Formula'){
+
                     $('#modal_evaluacion_riesgo #id_impacto').val(respuesta.data[0].id)
                     let formula = respuesta.data[0].formula
                     let split_formula = formula.split(" ")
@@ -1342,9 +1380,15 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                             default:
                                 break;
                         }
+
                     }
+                    getValoracionByProbabilidadImpacto();
+                    
+                }else{
+                    let value = Number($('#modal_evaluacion_riesgo #valor_probabilidad').val())*Number($('#modal_evaluacion_riesgo #valor_impacto').val())
+                    getNivelRiesgo(value)
                 }
-                getValoracionByProbabilidadImpacto()
+                
 
             }
         })
@@ -1366,6 +1410,7 @@ function getValoracionByProbabilidadImpacto(){
         dataType: "JSON"
     })
     .done(function(respuesta){
+        console.log(respuesta);
         if(respuesta.data.length > 0){
             $('#modal_evaluacion_riesgo #valor').val(respuesta.data[0].valor)
         }
@@ -1379,6 +1424,7 @@ function getNivelRiesgo(value){
         dataType: "JSON"
     })
     .done(function(respuesta){
+        console.log(respuesta);
         $('#modal_evaluacion_riesgo #valor').val('')
         let found = false
         respuesta.data.forEach(element => {
@@ -2280,9 +2326,9 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
                     }else{
                         $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
                     }
-                    $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(impacto_actual)
+                    $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($impacto_actual)
                     Promise.all([ap1]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #valor_probabilidad').val(),$('#modal_evaluacion_riesgo #valor_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
                     })
                     break;
                 case 2:
@@ -2292,16 +2338,16 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
                     }else{
                         $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
                     }
-                    $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(probabilidad_actual)
+                    $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($probabilidad_actual)
                     Promise.all([ai2]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #valor_probabilidad').val(),$('#modal_evaluacion_riesgo #valor_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #valorriesgo_controlado_impacto_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
                     })
                     break;
                 case 3:
                     let ap3 = getAplicacionProbabilidad(caracteristica)
                     let ai3 = getAplicacionImpacto(caracteristica)
                     Promise.all([ap3,ai3]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #valor_probabilidad').val(),$('#modal_evaluacion_riesgo #valor_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
                     })
                     break;
                 default:
@@ -2361,7 +2407,8 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
             dataType: "JSON"
         })
         .done(function(respuesta){
-            $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val('')
+            console.log(respuesta);
+            $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val('')
             let found = false
             respuesta.data.forEach(element => {
                 if(!found){
@@ -2370,13 +2417,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador2 == "<"){
                             if(value>element.valor1 && value<element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
                             if(value>element.valor1 && value<=element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2384,13 +2431,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador2 == "<"){
                             if(value>=element.valor1 && value<element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
                             if(value>=element.valor1 && value<=element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2398,13 +2445,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador2 == ">"){
                             if(value<element.valor1 && value>element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
                             if(value<element.valor1 && value>=element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2412,13 +2459,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador2 == ">"){
                             if(value<=element.valor1 && value>element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
                             if(value<=element.valor1 && value>=element.valor2){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2427,13 +2474,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador1 == "<"){
                             if(value > element.valor2 && value<element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
                             if(value>element.valor && value<=element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2441,13 +2488,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador1 == "<"){
                             if(value >= element.valor2 && value<element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
                             if(value>=element.valor && value<=element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2455,13 +2502,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador1 == "<"){
                             if(value < element.valor2 && value<element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
                             if(value<element.valor && value<=element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2469,13 +2516,13 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
                         if(element.operador1 == "<"){
                             if(value <= element.valor2 && value<element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
                             if(value <= element.valor && value<=element.valor1){
                                 found = true
-                                $('#modal_evaluacion_riesgo #riesgo_controlador_valor').val(element.descripcion)
+                                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val(element.descripcion)
                             }
                         }
                     }
@@ -2489,11 +2536,13 @@ function getAplicacionProbabilidad(caracteristica){
         method:'POST',
         url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",
         data:{
-            caracteristica:caracteristica
+            caracteristica:caracteristica,
+            escenario:escenario
         },
         dataType:'JSON'
     })
     .done(function(respuesta){
+      
         if(escenario == 2){
             $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
             index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)
@@ -2505,15 +2554,17 @@ function getAplicacionProbabilidad(caracteristica){
             if((index - Number(respuesta.data[0].posicion)) <= 0){
                 posicion = 0
             }else{
-                posicion = index - Number(respuesta.data[0].posicion)
+                posicion = index - Number(respuesta.data[0].posicion);
             }
-            new_posicion = $posiciones_probabilidad[posicion]
-            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(new_posicion)
+            new_posicion = $posiciones_probabilidad[posicion];
+            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(new_posicion);
         }else{
-            $value = Number(respuesta.data[0].posicion.split("%")[0])/100
-            $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
-            $new_probabilidad = $probabilidad_actual - ($probabilidad_actual*$value)
-            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(new_probabilidad)
+            $value = Number(respuesta.data[0].posicion.split("%")[0])/100;
+          
+            $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val();
+            $new_probabilidad = $probabilidad_actual - ($probabilidad_actual*$value);
+       
+            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($new_probabilidad)
         }
     })
 }
@@ -2522,11 +2573,13 @@ function getAplicacionImpacto(caracteristica){
         method:'POST',
         url:BASE_URL+"/getAplicacionImpactoByCaracteristica",
         data:{
-            caracteristica:caracteristica
+            caracteristica:caracteristica,
+            escenario:escenario
         },
         dataType:'JSON'
     })
     .done(function(respuesta){
+      
         if(escenario == 2){
             $impacto_actual = $('#modal_evaluacion_riesgo #impacto').val()
             index = $posiciones_impacto.findIndex(element => element == $impacto_actual)
@@ -2546,7 +2599,7 @@ function getAplicacionImpacto(caracteristica){
             $value = Number(respuesta.data[0].posicion.split("%")[0])/100
             $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
             $new_impacto = $impacto_actual - ($impacto_actual*$value)
-            $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(new_impacto)
+            $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($new_impacto)
         }
     })
 }

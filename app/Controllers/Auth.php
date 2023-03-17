@@ -40,24 +40,7 @@ class Auth extends BaseController {
     }
     public function validaCaptcha() {
       
-        // if($this->request->getPost('captcha') !== $this->session->captchaword)
-        // {
-       
-        //   $error = [
-        //     'error' => 'Captcha Incorrecto',
-          
-        //   ];
-        //   echo json_encode($error);
-        // }else{
-          // $get_endpoint = '/validaCaptcha';
-          //  $request_data = [
-          //   'captcha' => $this->request->getPost('captcha')
-          // ];
-          //  $response = perform_http_request('POST', REST_API_URL . $get_endpoint,$request_data );
-          
-          // if($response->msg == 1 ){
-            
-          //  helper('browser'); 
+    
            
             $post_endpoint = '/login';
             $request_data = (array(
@@ -65,10 +48,10 @@ class Auth extends BaseController {
               "password" => $this->request->getPost('pass'),
               "terminal" =>  navegacion($this->request->getUserAgent()),
               "ip" =>  $this->request->getIPAddress()));
-              // echo json_encode($request_data);
+             
             $response = perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data);
+            //echo json_encode($response);
             
-         
             if(!$response->password){
               if($response->change == 1 ){
                 $newdata = [
@@ -93,9 +76,9 @@ class Auth extends BaseController {
                   'logged_in' => true,
                   'change' => true,
                   'id' => $response->id,
-                  'escenario' => $response->escenario,
+                  
                   'token' => $response->access_token->jwt,
-                  'escenario' => $response->escenario,
+      
                   'is_user_negocio' => $response->is_user_negocio,
                   
                 ];
@@ -121,13 +104,7 @@ class Auth extends BaseController {
 
 
           
-          //}
-          // else{
-          //   echo json_encode($response);
-          //  }
-          
-       //}
-         
+                 
          
     }
     public function logout(){

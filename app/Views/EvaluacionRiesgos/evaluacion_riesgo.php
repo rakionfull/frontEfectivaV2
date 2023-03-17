@@ -308,9 +308,12 @@
     <script>
         var id_user = <?php echo json_encode($id_user); ?>;
         var escenario = <?php echo json_encode($escenario); ?>;
+        // console.log(escenario);
         var is_user_negocio = <?php echo json_encode($is_user_negocio); ?>;
         var idempresa = <?php echo json_encode($idempresa); ?>;
         var idarea = <?php echo json_encode($idarea); ?>;
+        var update = <?php echo json_encode($update); ?>;
+        var eliminar = <?php echo json_encode($eliminar); ?>;
     </script>
     <script src="<?=base_url('public/assets/js/riesgos/evaluacion_riesgo.js'); ?>"></script>
 <?=$this->endSection()?> 

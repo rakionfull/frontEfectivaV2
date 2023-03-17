@@ -420,7 +420,47 @@ function cargarDatos($id) {
     // });
 }
 
-
+function validarFechasActividades(fecha_inicio, fecha_fin) {
+    console.log(fecha_inicio);
+    console.log(fecha_fin);
+     console.log($('#fecha_inicio_plan').val());
+     console.log($('#fecha_fin_plan').val());
+     let resultado =false ;
+     let msg = "";
+    
+     if($('#fecha_inicio_plan').val() > fecha_inicio){
+       
+         resultado = true;
+         msg = "La fecha de inicio debe estar en el intervalo de las fechas del Plan de Acción";
+     }
+     if($('#fecha_fin_plan').val() < fecha_inicio){
+       
+         resultado = true;
+         msg = "La fecha de inicio debe estar en el intervalo de las fechas del Plan de Acción";
+     }
+     if($('#fecha_inicio_plan').val() > fecha_fin){
+        
+         resultado = true;
+         msg = "La fecha de fin debe estar en el intervalo de las fechas del Plan de Acción";
+     }
+     if($('#fecha_fin_plan').val() < fecha_fin){
+       
+         resultado = true;
+         msg = "La fecha de fin debe estar en el intervalo de las fechas del Plan de Acción";
+     }
+    
+     if(fecha_inicio > fecha_fin){
+         resultado = true;
+         msg = "La Fecha Fin debe ser mayor a la Fecha de Inicio";
+       }
+     return $array = {
+       resultado: resultado,
+       msg: msg
+     };
+   
+     
+    
+} 
 document.getElementById("btnRegistro_actividades").addEventListener("click",function(){
                                 
     $("#modal_actividadesPlan").modal("show");    
@@ -445,80 +485,90 @@ document.getElementById("Agregar_actividad").addEventListener("click",function()
     $comboAlert=document.getElementById("id_comboAlert").value;
     $progreso=document.getElementById("progreso").value;
     
-    
-    if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
-        && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
-        && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
-       
-                const postData = { 
-                    idempresa:$id_comboEmpresa,
-                    idarea:$combo_area,
-                    idunidad:$combo_unidades,
-                    idposicion:$combo_posicion,
-                    idusuario:$combo_user,
-                    descripcion:$descripcion_actividad,
-                    fecha_inicio:$fecha_inicio,
-                    fecha_fin:$fecha_fin,
-                    idalerta:$comboAlert,
-                    progreso:$progreso,
-                    idplanaccion:$('#id_plan').val()
-                    
-                    
-                };
-               
-                try {
-
-                    $.ajax({
-                        method: "POST",
-                        url: BASE_URL+"/activo/addActividadPlan",
-                        data: postData,
-                        dataType: "JSON"
-                    })
-                    .done(function(respuesta) {
-                        console.log(respuesta);
-                        if (respuesta.error==1) 
-                        {
-                            document.getElementById("form_actividadesPlan").reset();
-                            $('#modal_actividadesPlan').modal('hide');
-                            
-                            alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
-                            +  respuesta.msg +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                                '</button>'+
-                            '</div>';
-                            
-                            $("#table_actividadesPlan").DataTable().ajax.reload(null, false); 
-                           
-                        } else{
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: respuesta.msg
-                              })
-                        }
+    $valor = validarFechasActividades($('#fecha_inicio').val(),$('#fecha_fin').val());
+    // console.log($valor);
+    if($valor.resultado){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: $valor.msg
+                })
+    } else{
+            if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
+            && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
+            && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
+        
+                    const postData = { 
+                        idempresa:$id_comboEmpresa,
+                        idarea:$combo_area,
+                        idunidad:$combo_unidades,
+                        idposicion:$combo_posicion,
+                        idusuario:$combo_user,
+                        descripcion:$descripcion_actividad,
+                        fecha_inicio:$fecha_inicio,
+                        fecha_fin:$fecha_fin,
+                        idalerta:$comboAlert,
+                        progreso:$progreso,
+                        idplanaccion:$('#id_plan').val()
                         
-                    })
-                    .fail(function(error) {
-                       
-                    })
-                    .always(function() {
-                    });
-                }
-                catch(err) {
-                   
-                }
+                        
+                    };
+                
+                    try {
+
+                        $.ajax({
+                            method: "POST",
+                            url: BASE_URL+"/activo/addActividadPlan",
+                            data: postData,
+                            dataType: "JSON"
+                        })
+                        .done(function(respuesta) {
+                            console.log(respuesta);
+                            if (respuesta.error==1) 
+                            {
+                                document.getElementById("form_actividadesPlan").reset();
+                                $('#modal_actividadesPlan').modal('hide');
+                                
+                                alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                                +  respuesta.msg +
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                                    '<span aria-hidden="true">&times;</span>'+
+                                    '</button>'+
+                                '</div>';
+                                
+                                $("#table_actividadesPlan").DataTable().ajax.reload(null, false); 
+                            
+                            } else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: respuesta.msg
+                                })
+                            }
+                            
+                        })
+                        .fail(function(error) {
+                        
+                        })
+                        .always(function() {
+                        });
+                    }
+                    catch(err) {
+                    
+                    }
+                
             
-           
-       
-    }else{
-        //console.log("aqui5");
-        Swal.fire({
-                 icon: 'error',
-                 title: 'Error',
-                 text: 'Faltan Datos'
-               })
-  }
+        
+        }else{
+            //console.log("aqui5");
+            Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Faltan Datos'
+                })
+        }
+}
+    
    
 
 
@@ -589,80 +639,91 @@ document.getElementById("Modificar_actividadesPlan").addEventListener("click", f
     $comboAlert=document.getElementById("id_comboAlert").value;
     $progreso=document.getElementById("progreso").value;
     
-    
-    if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
-        && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
-        && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
-       
-                const postData = { 
-                    idempresa:$id_comboEmpresa,
-                    idarea:$combo_area,
-                    idunidad:$combo_unidades,
-                    idposicion:$combo_posicion,
-                    idusuario:$combo_user,
-                    descripcion:$descripcion_actividad,
-                    fecha_inicio:$fecha_inicio,
-                    fecha_fin:$fecha_fin,
-                    idalerta:$comboAlert,
-                    progreso:$progreso,
-                    id:$('#id').val()
-                    
-                    
-                };
-               console.log(postData);
-                try {
+    $valor = validarFechasActividades($('#fecha_inicio').val(),$('#fecha_fin').val());
+    // console.log($valor);
+    if($valor.resultado){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: $valor.msg
+                })
+    } else{
 
-                    $.ajax({
-                        method: "POST",
-                        url: BASE_URL+"/activo/updateActividadPlan",
-                        data: postData,
-                        dataType: "JSON"
-                    })
-                    .done(function(respuesta) {
-                       console.log(respuesta);
-                        if (respuesta.error==1) 
-                        {
-                            document.getElementById("form_actividadesPlan").reset();
-                            $('#modal_actividadesPlan').modal('hide');
-                            
-                            alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
-                            +  respuesta.msg +
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                                '</button>'+
-                            '</div>';
-                            $("#table_actividadesPlan").DataTable().ajax.reload(null, true); 
-                            
-                           
-                        } else{
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: respuesta.msg
-                              })
-                        }
-                        
-                    })
-                    .fail(function(error) {
-                       
-                    })
-                    .always(function() {
-                    });
-                }
-                catch(err) {
-                   
-                }
+            if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
+                && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
+                && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
             
-           
-       
-    }else{
-        //console.log("aqui5");
-        Swal.fire({
-                 icon: 'error',
-                 title: 'Error',
-                 text: 'Faltan Datos'
-               })
-  }
+                        const postData = { 
+                            idempresa:$id_comboEmpresa,
+                            idarea:$combo_area,
+                            idunidad:$combo_unidades,
+                            idposicion:$combo_posicion,
+                            idusuario:$combo_user,
+                            descripcion:$descripcion_actividad,
+                            fecha_inicio:$fecha_inicio,
+                            fecha_fin:$fecha_fin,
+                            idalerta:$comboAlert,
+                            progreso:$progreso,
+                            id:$('#id').val()
+                            
+                            
+                        };
+                    console.log(postData);
+                        try {
+
+                            $.ajax({
+                                method: "POST",
+                                url: BASE_URL+"/activo/updateActividadPlan",
+                                data: postData,
+                                dataType: "JSON"
+                            })
+                            .done(function(respuesta) {
+                            console.log(respuesta);
+                                if (respuesta.error==1) 
+                                {
+                                    document.getElementById("form_actividadesPlan").reset();
+                                    $('#modal_actividadesPlan').modal('hide');
+                                    
+                                    alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                                    +  respuesta.msg +
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                                        '<span aria-hidden="true">&times;</span>'+
+                                        '</button>'+
+                                    '</div>';
+                                    $("#table_actividadesPlan").DataTable().ajax.reload(null, true); 
+                                    
+                                
+                                } else{
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: respuesta.msg
+                                    })
+                                }
+                                
+                            })
+                            .fail(function(error) {
+                            
+                            })
+                            .always(function() {
+                            });
+                        }
+                        catch(err) {
+                        
+                        }
+                    
+                
+            
+            }else{
+                //console.log("aqui5");
+                Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Faltan Datos'
+                    })
+        }
+    }
+   
    
 
 

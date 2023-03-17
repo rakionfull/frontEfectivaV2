@@ -1,5 +1,5 @@
 <?=$this->extend('Layout/main')?> 
-<?=$this->section('content')?> 
+<?=$this->section('content');$session = session();?>
         <div class="row">
                 <div class="col-4">
                     <div class="card">
@@ -11,14 +11,14 @@
                         </div>
                         <div class="card-body">
                             <div class="row align-items-center">
-                                <ul class="menu"> 42
-                                    <?php if($session->permisos[43]->view_det==1){ ?>
+                                <ul class="menu">
+                                    <?php if($session->permisos[42]->view_det==1){ ?>
                                         <li id="estado" ><a href="#/Estado" >Estado</a></li>
                                     <?php }?>
-                                    <?php if($session->permisos[44]->view_det==1){ ?>
+                                    <?php if($session->permisos[43]->view_det==1){ ?>
                                     <li id="prioridad"><a href="#/Prioridad">Prioridad</a></li>
                                     <?php }?>
-                                    <?php if($session->permisos[45]->view_det==1){ ?>
+                                    <?php if($session->permisos[44]->view_det==1){ ?>
                                     <li id="alertaSeguimiento"><a href="#/AlertaSeguimiento">Alerta de Seguimiento</a></li>
                                     <?php }?>
                                 </ul>

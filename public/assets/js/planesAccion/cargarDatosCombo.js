@@ -10,7 +10,7 @@ function  cargarDatosPosEmpresa(){
         dataType: "JSON"
     })
     .done(function(respuesta) {
-       
+       console.log(respuesta);
         if (respuesta) 
         {
             let datos = respuesta;
@@ -20,11 +20,12 @@ function  cargarDatosPosEmpresa(){
         
 
             datos.data.forEach(dato => {
-                
-            
-                    $("#id_empresa_pos").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
 
-                
+                    if(idempresa == dato['id']){
+                        $("#id_empresa_pos").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+                    }else{
+                        $("#id_empresa_pos").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+                    }
                 
             
             });
@@ -396,6 +397,17 @@ function cargarDatosPosAlerta($empresa,$dato) {
 
 window.addEventListener("load", () => {
     cargarDatosPosEmpresa();
+    
+    document.getElementById('id_empresa_pos').disabled  = true;
+    document.getElementById('id_area_pos').disabled  = true;
+    cargarDatosPosArea(idempresa,idarea);
+    // cargarDatosPosPosicion(idempresa);
+    cargarDatosPosPosicion(idempresa);
+    cargarDatosPosUnidad(idempresa,idarea);
+    cargarDatosPosNombre(idempresa);
+    cargarDatosPosEstado(idempresa);
+    cargarDatosPosPrioridad(idempresa);
+    cargarDatosPosAlerta(idempresa);
 })
 
 document.getElementById("id_empresa_pos").addEventListener("change",function(){

@@ -7,7 +7,7 @@ function inicializaPosicion() {
     $("#id_unidad_pos").append('<option value="" selected>Seleccione</option>');
    
 }
-function  cargarDatosPosEmpresa(){
+function  cargarDatosPosEmpresa($dato){
        
     //cargando las empresas
     $.ajax({
@@ -21,19 +21,26 @@ function  cargarDatosPosEmpresa(){
         {
             let datos = respuesta;
             $("#id_empresa_pos").empty();
-            $("#id_empresa_pos").append('<option value="" selected>Seleccione</option>');
+            $("#id_empresa_pos").append('<option value="" selected>Empresa</option>');
 
         
 
             datos.data.forEach(dato => {
                 
-            
+                if($dato == dato['id']){
+                    $("#id_empresa_pos").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+
+                
+                }else{
                     $("#id_empresa_pos").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
 
                 
+                }
+                   
                 
             
             });
+            cargarDatosPosArea(idempresa);
         } 
         else
         {  }
@@ -69,7 +76,7 @@ function  cargarDatosPosEmpresa(){
     
                    
                     $("#id_area_pos").empty();
-                    $("#id_area_pos").append('<option value="" selected>Seleccione</option>');
+                    $("#id_area_pos").append('<option value="" selected>Area</option>');
             
                 
             
@@ -117,7 +124,7 @@ function  cargarDatosPosEmpresa(){
             
 
                 $("#id_unidad_pos").empty();
-                $("#id_unidad_pos").append('<option value="" selected>Seleccione</option>');
+                $("#id_unidad_pos").append('<option value="" selected>Unidad</option>');
         
             
         
@@ -145,6 +152,12 @@ function  cargarDatosPosEmpresa(){
 
     }
 function LoadTablePosicion($update,$delete) {
+
+    $dato = 0 ;
+    if(idempresa != 0 || idempresa !=""){
+        $dato = idempresa;
+    }
+
     if ($.fn.DataTable.isDataTable('#table_posicion')){
         
         $('#table_posicion').DataTable().rows().remove();
@@ -184,7 +197,7 @@ function LoadTablePosicion($update,$delete) {
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: $('#base_url').val()+"/activo/getPosicion",
+        ajax: $('#base_url').val()+"/activo/getPosicion/"+$dato,
         aoColumns: [
             { "data": "id_pos" },
             { "data": "posicion_puesto" },
@@ -285,11 +298,15 @@ async function validacionPosicion(){
 document.getElementById("btnAgregar_Posicion").addEventListener("click",function(){
 
     $("#modal_posicion").modal("show");
+   
     document.getElementById("title-posicion").innerHTML = "Agregar Posicion/Puesto";
     document.getElementById("form_posicion").reset();
     document.getElementById("Agregar_Posicion").style.display = "block";
     document.getElementById("Modificar_Posicion").style.display = "none";
-    inicializaPosicion();
+    if(idempresa != 0){
+        $('#id_empresa_pos').attr('disabled',true);
+    }
+    // inicializaPosicion();
 });
 
 
@@ -371,6 +388,10 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
 //editar Valor Activo
 $('#table_posicion tbody').on( 'click', 'editPosicion', function(){
     $("#modal_posicion").modal("show");
+   
+    if(idempresa != 0){
+        $('#id_empresa_pos').attr('disabled',true);
+    }
     document.getElementById("title-posicion").innerHTML = "Modificar Posición/Puesto";
     document.getElementById("form_posicion").reset();
     document.getElementById("Agregar_Posicion").style.display = "none";
@@ -387,6 +408,7 @@ $('#table_posicion tbody').on( 'click', 'editPosicion', function(){
         document.getElementById("nom_posicion").value=regDat[0]["posicion_puesto"];
         document.getElementById("est_posicion").value=regDat[0]["estado"];
         document.getElementById("id_empresa_pos").value=regDat[0]["idempresa"];
+        // document.getElementById("id_area_pos").value=regDat[0]["idarea"];
         cargarDatosPosArea(regDat[0]["idempresa"],regDat[0]["idarea"]);
         cargarDatosPosUnidad(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidad"]);
      

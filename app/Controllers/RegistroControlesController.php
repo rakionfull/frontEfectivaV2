@@ -6,7 +6,28 @@ use App\Controllers\BaseController;
 
 class RegistroControlesController extends BaseController
 {
-     
+      public function list_registro_controles(){
+        if($this->session->logged_in){
+          $get_endpoint = '/api/getRegistroControles/';
+
+          $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+          if($response){
+          
+            echo json_encode($response);
+          }
+        }
+    }
+      public function getById($id){
+        if($this->session->logged_in){
+          $get_endpoint = '/api/getRegistroControl/'.$id;
+
+          $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+          if($response){
+          
+            echo json_encode($response);
+          }
+        }
+    }
      public function getRegistroControl($id){
         if($this->session->logged_in){
           $get_endpoint = '/api/getRegistroControl/'.$id;

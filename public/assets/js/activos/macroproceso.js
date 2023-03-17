@@ -6,8 +6,8 @@ function inicializaMacroproceso() {
     $("#select_unidadesMacro").empty();
     $("#select_unidadesMacro").append('<option value="" selected>Seleccione</option>');
 }
-function  cargarDatosMacroEmpresa(){
-       
+function  cargarDatosMacroEmpresa($dato){
+   
     //cargando las empresas
     $.ajax({
         method: "POST",
@@ -20,19 +20,26 @@ function  cargarDatosMacroEmpresa(){
         {
             let datos = respuesta;
             $("#select_empresaMacro").empty();
-            $("#select_empresaMacro").append('<option value="" selected>Seleccione</option>');
+            $("#select_empresaMacro").append('<option value="" selected>Empresa</option>');
 
         
 
             datos.data.forEach(dato => {
-                
-            
-                    $("#select_empresaMacro").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+                if($dato == dato['id']){
+                    $("#select_empresaMacro").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
 
                 
+                }else{
+                    $("#select_empresaMacro").append('<option value='+dato["id"]+' >'+dato["empresa"]+'</option>');
+
+                
+                }
+            
+                   
                 
             
             });
+            cargarDatosMacroArea(idempresa);
         } 
         else
         {  }
@@ -145,7 +152,10 @@ function  cargarDatosMacroEmpresa(){
     }
 function LoadTableMacroproceso($update,$delete) {
 
-
+    $dato = 0 ;
+    if(idempresa != 0 || idempresa !=""){
+        $dato = idempresa;
+    }
 
 
     if ($.fn.DataTable.isDataTable('#table_macroproceso')){
@@ -186,7 +196,7 @@ function LoadTableMacroproceso($update,$delete) {
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: BASE_URL+"/activo/getMacroproceso",
+        ajax: BASE_URL+"/activo/getMacroproceso/"+$dato,
         aoColumns: [
             { "data": "id" },
             { "data": "macroproceso" },
@@ -243,13 +253,17 @@ function LoadTableMacroproceso($update,$delete) {
    
 }
 document.getElementById("btnAgregar_Macroproceso").addEventListener("click",function(){
-                                
+   
     $("#modal_macroproceso").modal("show");
+    
     document.getElementById("title-macroproceso").innerHTML = "Agregar ";
     document.getElementById("form_macroproceso").reset();
     document.getElementById("Agregar_Macroproceso").style.display = "block";
     document.getElementById("Modificar_Macroproceso").style.display = "none";
-    inicializaMacroproceso();
+    if(idempresa != 0){
+        $('#select_empresaMacro').attr('disabled',true);
+    }
+   
 });
 
 // // boton de agregar Macroproceso
@@ -293,7 +307,7 @@ document.getElementById("Agregar_Macroproceso").addEventListener("click",functio
                                 '</button>'+
                             '</div>';
                             $("#table_macroproceso").DataTable().ajax.reload(null, false); 
-                           
+                            inicializaMacroproceso();
                         } else{
                             Swal.fire({
                                 icon: 'error',
@@ -330,6 +344,7 @@ document.getElementById("Agregar_Macroproceso").addEventListener("click",functio
 //editar Macroproceso
 $('#table_macroproceso tbody').on( 'click', 'editMacroproceso', function(){
     $("#modal_macroproceso").modal("show");
+    
     document.getElementById("title-macroproceso").innerHTML = "Modificar";
     document.getElementById("form_macroproceso").reset();
     document.getElementById("Agregar_Macroproceso").style.display = "none";
