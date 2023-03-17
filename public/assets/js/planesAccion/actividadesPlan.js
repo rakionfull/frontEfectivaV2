@@ -357,125 +357,154 @@ document.getElementById("btnRegistro_actividades").addEventListener("click",func
 
 
 function validarFechasActividades(fecha_inicio, fecha_fin) {
-    // Obtener fechas de inicio y fin de las actividades
-    // const fechaInicioActividad = new Date(document.getElementById('fecha_inicio').value);
-    // const fechaFinActividad = new Date(document.getElementById('fecha_fin').value);
+   console.log(fecha_inicio);
+   console.log(fecha_fin);
+    console.log($('#fecha_inicio_plan').val());
+    console.log($('#fecha_fin_plan').val());
+    let resultado =false ;
+    let msg = "";
+   
+    if($('#fecha_inicio_plan').val() > fecha_inicio){
+      
+        resultado = true;
+        msg = "La fecha de inicio debe estar en el intervalo de las fechas del Plan de Acción";
+    }
+    if($('#fecha_fin_plan').val() < fecha_inicio){
+      
+        resultado = true;
+        msg = "La fecha de inicio debe estar en el intervalo de las fechas del Plan de Acción";
+    }
+    if($('#fecha_inicio_plan').val() > fecha_fin){
+       
+        resultado = true;
+        msg = "La fecha de fin debe estar en el intervalo de las fechas del Plan de Acción";
+    }
+    if($('#fecha_fin_plan').val() < fecha_fin){
+      
+        resultado = true;
+        msg = "La fecha de fin debe estar en el intervalo de las fechas del Plan de Acción";
+    }
+   
+    if(fecha_inicio > fecha_fin){
+        resultado = true;
+        msg = "La Fecha Fin debe ser mayor a la Fecha de Inicio";
+      }
+    return $array = {
+      resultado: resultado,
+      msg: msg
+    };
   
     
-    // if (fechaInicioActividad < fecha_inicio) {
-    //   alert('La fecha de inicio de la actividad no puede ser anterior a la fecha de inicio del plan de acción');
-    //   return false;
-    // }
-  
-    
-    // if (fechaFinActividad > fecha_fin) {
-    //   alert('La fecha de fin de la actividad no puede ser posterior a la fecha de fin del plan de acción');
-    //   return false;
-    // }
-  
-    
-    return true;
+   
 }
 
 
 
 // // boton de agregar Actividad
 document.getElementById("Agregar_actividad").addEventListener("click",function(){
-    console.log($('#fecha_inicio_plan').val());
-    console.log($('#fecha_fin_plan').val());
-    console.log(validarFechasActividades($('#fecha_inicio_plan').val(),$('#fecha_fin_plan').val()));
-
-//     $id_comboEmpresa=document.getElementById("id_comboEmpresa").value;
-//     $combo_area=document.getElementById("id_comboArea").value;
-//     $combo_unidades=document.getElementById("id_comboUnidades").value;
-//     $combo_posicion=document.getElementById("id_comboPosicion").value;
-//     $combo_user=document.getElementById("id_comboUsers").value;
-//     $descripcion_actividad=document.getElementById("descripcion_actividad").value;
-//     $fecha_inicio=document.getElementById("fecha_inicio").value;
-//     $fecha_fin=document.getElementById("fecha_fin").value;
-//     $comboAlert=document.getElementById("id_comboAlert").value;
-//     $progreso=document.getElementById("progreso").value;
+  
+    $valor = validarFechasActividades($('#fecha_inicio').val(),$('#fecha_fin').val());
+    // console.log($valor);
+if($valor.resultado){
+            Swal.fire({
+                 icon: 'error',
+                 title: 'Error',
+                 text: $valor.msg
+               })
+} else{
+        $id_comboEmpresa=document.getElementById("id_comboEmpresa").value;
+    $combo_area=document.getElementById("id_comboArea").value;
+    $combo_unidades=document.getElementById("id_comboUnidades").value;
+    $combo_posicion=document.getElementById("id_comboPosicion").value;
+    $combo_user=document.getElementById("id_comboUsers").value;
+    $descripcion_actividad=document.getElementById("descripcion_actividad").value;
+    $fecha_inicio=document.getElementById("fecha_inicio").value;
+    $fecha_fin=document.getElementById("fecha_fin").value;
+    $comboAlert=document.getElementById("id_comboAlert").value;
+    $progreso=document.getElementById("progreso").value;
     
     
-//     if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
-//         && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
-//         && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
+    if($id_comboEmpresa !=""  && $combo_area != "" && $combo_unidades != ""
+        && $combo_posicion != "" && $combo_user != "" && $descripcion_actividad != ""
+        && $fecha_inicio != "" && $fecha_fin != "" && $comboAlert != "" && $progreso != ""){
        
-//                 const postData = { 
-//                     idempresa:$id_comboEmpresa,
-//                     idarea:$combo_area,
-//                     idunidad:$combo_unidades,
-//                     idposicion:$combo_posicion,
-//                     idusuario:$combo_user,
-//                     descripcion:$descripcion_actividad,
-//                     fecha_inicio:$fecha_inicio,
-//                     fecha_fin:$fecha_fin,
-//                     idalerta:$comboAlert,
-//                     progreso:$progreso,
-//                     idplanaccion:$('#id_plan').val()
+                const postData = { 
+                    idempresa:$id_comboEmpresa,
+                    idarea:$combo_area,
+                    idunidad:$combo_unidades,
+                    idposicion:$combo_posicion,
+                    idusuario:$combo_user,
+                    descripcion:$descripcion_actividad,
+                    fecha_inicio:$fecha_inicio,
+                    fecha_fin:$fecha_fin,
+                    idalerta:$comboAlert,
+                    progreso:$progreso,
+                    idplanaccion:$('#id_plan').val()
                     
                     
-//                 };
+                };
                
-//                 try {
+                try {
 
-//                     $.ajax({
-//                         method: "POST",
-//                         url: BASE_URL+"/activo/addActividadPlan",
-//                         data: postData,
-//                         dataType: "JSON"
-//                     })
-//                     .done(function(respuesta) {
-//                         console.log(respuesta);
-//                         if (respuesta.error==1) 
-//                         {
-//                             document.getElementById("form_actividadesPlan").reset();
-//                             $('#modal_actividadesPlan').modal('hide');
+                    $.ajax({
+                        method: "POST",
+                        url: BASE_URL+"/activo/addActividadPlan",
+                        data: postData,
+                        dataType: "JSON"
+                    })
+                    .done(function(respuesta) {
+                        console.log(respuesta);
+                        if (respuesta.error==1) 
+                        {
+                            document.getElementById("form_actividadesPlan").reset();
+                            $('#modal_actividadesPlan').modal('hide');
                             
-//                             alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
-//                             +  respuesta.msg +
-//                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-//                                 '<span aria-hidden="true">&times;</span>'+
-//                                 '</button>'+
-//                             '</div>';
+                            alerta_actividad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                                '<span aria-hidden="true">&times;</span>'+
+                                '</button>'+
+                            '</div>';
                             
                            
-//                             document.getElementById('btn_crear_plan').style.display = 'none';
-//                             document.getElementById('apart_actividad').style.display = 'block';
-//                             document.getElementById('apart_mensaje').style.display = 'none';
-//                             document.getElementById('apart_tabla').style.display = 'block';
-//                             LoadTable_actividadesPlan();
-//                             cargarTablaActividades($('#id_plan').val());
+                            document.getElementById('btn_crear_plan').style.display = 'none';
+                            document.getElementById('apart_actividad').style.display = 'block';
+                            document.getElementById('apart_mensaje').style.display = 'none';
+                            document.getElementById('apart_tabla').style.display = 'block';
+                            LoadTable_actividadesPlan();
+                            cargarTablaActividades($('#id_plan').val());
                            
-//                         } else{
-//                             Swal.fire({
-//                                 icon: 'error',
-//                                 title: 'Error',
-//                                 text: respuesta.msg
-//                               })
-//                         }
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
-//                     })
-//                     .fail(function(error) {
+                    })
+                    .fail(function(error) {
                        
-//                     })
-//                     .always(function() {
-//                     });
-//                 }
-//                 catch(err) {
+                    })
+                    .always(function() {
+                    });
+                }
+                catch(err) {
                    
-//                 }
+                }
             
            
        
-//     }else{
-//         //console.log("aqui5");
-//         Swal.fire({
-//                  icon: 'error',
-//                  title: 'Error',
-//                  text: 'Faltan Datos'
-//                })
-//   }
+    }else{
+        //console.log("aqui5");
+        Swal.fire({
+                 icon: 'error',
+                 title: 'Error',
+                 text: 'Faltan Datos'
+               })
+  }
+}
+
    
 
 

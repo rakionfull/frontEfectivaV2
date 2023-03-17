@@ -440,7 +440,12 @@
 
                 
 
-
+                <script>
+                                     
+                    var idempresa = <?php echo json_encode($idempresa); ?>;
+                    var idarea = <?php echo json_encode($id_area); ?>;
+                   
+                </script>
 
 
                                       

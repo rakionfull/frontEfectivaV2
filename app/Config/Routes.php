@@ -107,7 +107,7 @@ $routes->set404Override();
         $routes->post('/activo/deleteEmpresa', 'Activo::deleteEmpresa');
 
         //rutas para areas
-        $routes->get('activo/getArea', 'Activo::getArea');
+        $routes->get('activo/getArea/(:num)', 'Activo::getArea/$1');
         $routes->post('activo/getAreasByActivo', 'Activo::getAreasByActivo');
         $routes->post('/activo/addArea', 'Activo::addArea');
         $routes->post('/activo/deleteArea', 'Activo::deleteArea');
@@ -148,7 +148,7 @@ $routes->set404Override();
         $routes->post('/activo/deleteAspectoSeg', 'Activo::deleteAspectoSeg');
 
         //posicion y puesto
-        $routes->get('activo/getPosicion', 'Activo::getPosicion');
+        $routes->get('activo/getPosicion/(:num)', 'Activo::getPosicion/$1');
         $routes->get('activo/getPosicionByArea/(:num)', 'Activo::getPosicionByArea/$1');
         $routes->post('/activo/validarPosicion', 'Activo::validarPosicion');
         $routes->post('activo/getPosicionByActivo', 'Activo::getPosicionByActivo');
@@ -157,7 +157,7 @@ $routes->set404Override();
         $routes->post('/activo/deletePosicion', 'Activo::deletePosicion');
 
         // Unidades
-        $routes->get('activo/getUnidades', 'Activo::getUnidades');
+        $routes->get('activo/getUnidades/(:num)', 'Activo::getUnidades/$1');
         $routes->post('/activo/addUnidades', 'Activo::addUnidades');
         $routes->post('/activo/updateUnidades', 'v::updateUnidades');
         $routes->post('activo/getUnidadByActivo', 'Activo::getUnidadByActivo');
@@ -167,7 +167,7 @@ $routes->set404Override();
 
         //maroproceso
 
-        $routes->get('activo/getMacroproceso', 'Activo::getMacroproceso');
+        $routes->get('activo/getMacroproceso/(:num)', 'Activo::getMacroproceso/$1');
         $routes->post('/activo/addMacroproceso', 'Activo::addMacroproceso');
         $routes->post('/activo/updateMacroproceso', 'Activo::updateMacroproceso');
         $routes->post('/activo/deleteMacroproceso', 'Activo::deleteMacroproceso');
@@ -175,7 +175,7 @@ $routes->set404Override();
 
 
         //proceso
-        $routes->get('activo/getProceso', 'Activo::getProceso');
+        $routes->get('activo/getProceso/(:num)', 'Activo::getProceso/$1');
         $routes->post('/activo/addProceso', 'Activo::addProceso');
         $routes->post('/activo/updateProceso', 'Activo::updateProceso');
         $routes->post('activo/getProcesoByActivo', 'Activo::getProcesoByActivo');
@@ -475,6 +475,8 @@ $routes->set404Override();
        
 
     //DATOS PARA REGISTRO DE CONTROLES
+    $routes->get('list_registro_controles', 'RegistroControlesController::list_registro_controles');
+    $routes->get('getRegistroControlById/(:num)', 'RegistroControlesController::getById/$1');
     $routes->get('/main/getData/(:num)', 'RegistroControlesController::getData/$1');
     $routes->get('/main/getRegistroControl/(:num)', 'RegistroControlesController::getRegistroControl/$1');
     $routes->get('/main/getRegistroDetalleControl/(:num)', 'RegistroControlesController::getRegistroDetalleControl/$1');

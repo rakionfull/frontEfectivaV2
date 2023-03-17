@@ -52,7 +52,7 @@ window.addEventListener("hashchange",async () => {
             document.getElementById('btnAgregar_area_empresa').style.display = 'none';
         }
         LoadTableAreaEmpresa(permisos['update_det'],permisos['delete_det']);
-    
+        cargarEmpresaArea(idempresa);  
         
 
         window.location.hash = '#';   
@@ -75,7 +75,7 @@ window.addEventListener("hashchange",async () => {
             document.getElementById('btnAgregar_Unidades').style.display = 'none';
         }
         LoadTableUnidades(permisos['update_det'],permisos['delete_det']);
-        cargarDatosUnidadesEmpresa();
+        cargarDatosUnidadesEmpresa(idempresa,0);
         
 
         window.location.hash = '#';   
@@ -101,8 +101,8 @@ window.addEventListener("hashchange",async () => {
                 document.getElementById('btnAgregar_Macroproceso').style.display = 'none';
             }
             LoadTableMacroproceso(permisos['update_det'],permisos['delete_det']);
-           
-            cargarDatosMacroEmpresa();
+            cargarDatosMacroEmpresa(idempresa);
+          
             
         window.location.hash = '#';   
         break;
@@ -129,8 +129,8 @@ window.addEventListener("hashchange",async () => {
             }
             LoadTableProceso(permisos['update_det'],permisos['delete_det']);
 
-
-            cargarDatosProEmpresa();
+            cargarDatosProEmpresa(idempresa);
+            // cargarDatosProEmpresa(idempresa);
             
         window.location.hash = '#';   
         break;
@@ -156,10 +156,10 @@ window.addEventListener("hashchange",async () => {
                 document.getElementById('btnAgregar_Posicion').style.display = 'none';
             }
             LoadTablePosicion(permisos['update_det'],permisos['delete_det']);
-
+            cargarDatosPosEmpresa(idempresa);
 
             
-            cargarDatosPosEmpresa();
+            // s
             
             
         window.location.hash = '#';   

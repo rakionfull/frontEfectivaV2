@@ -773,7 +773,7 @@
         </div>
         <!-- modales para registro -->
                 <div class="modal fade" id="modal_empresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-empresa"></h5>
@@ -823,10 +823,10 @@
                 </div>
                
                 <div class="modal fade" id="modal_area_empresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="title-area-empresa"></h5>
+                                <h5 class="modal-title" id="title-area"></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -881,17 +881,7 @@
                             
                             
                                 </div>
-                            <div class="modal-body">
-                                
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
 
@@ -903,7 +893,7 @@
                 
                 <!-- modal para Aspectos de Seguridad -->
                 <div class="modal fade" id="modal_aspectoSeg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                   <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-aspectoSeg"></h5>
@@ -954,7 +944,7 @@
 
                <!-- modal para Unidades -->
                <div class="modal fade" id="modal_unidades" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-unidades"></h5>
@@ -1160,7 +1150,7 @@
 
                 <!-- modal para Procesos -->
                 <div class="modal fade" id="modal_proceso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-proceso"></h5>
@@ -1249,7 +1239,7 @@
                 </div>
                 <!-- modal para Tipo Activo -->
                 <div class="modal fade" id="modal_tipo_activo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-tipo_activo"></h5>
@@ -1302,7 +1292,7 @@
 
             <!-- modal para Clasificacion de Informacion -->
                 <div class="modal fade" id="modal_clas_informacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-clas_informacion"></h5>
@@ -1358,7 +1348,7 @@
                 </div>
                  <!-- modal para Posicion/Puesto -->
                 <div class="modal fade" id="modal_posicion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-posicion"></h5>
@@ -1435,7 +1425,7 @@
                 </div>
                    <!-- modal valoracion de activo-->
                 <div class="modal fade" id="modal_valActivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                   <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-valActivo"></h5>
@@ -1534,7 +1524,7 @@
                 </div>
           <!-- modal para Categoria Activo -->
                 <div class="modal fade" id="modal_cat_activo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                |   <div class="modal-dialog modal-lg" role="document">
+                   <div class="modal-dialog modal-lg" role="document">
                          <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="title-cat_activo"></h5>
@@ -1671,7 +1661,12 @@
                     </div>
 
                 </div>
-            
+                <script>
+                    var id_user = <?php echo json_encode($id_user); ?>;
+                    var escenario = <?php echo json_encode($escenario); ?>;
+                    var idempresa = <?php echo json_encode($idempresa); ?>;
+                    var idarea = <?php echo json_encode($idarea); ?>;
+                </script> 
         <!------------------------------------------------------------------------------->
         <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
         <script src="<?=base_url('public/assets/js/activos/activos.js'); ?>"></script>

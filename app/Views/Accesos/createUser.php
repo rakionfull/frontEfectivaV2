@@ -98,7 +98,7 @@ $session = session();
                                                 
                                             
                                            
-                                                <div class="col-lg-4 mb-2">
+                                                <div class="col-lg-6 mb-2">
                                                     <div class="form-group">
                                                        
                                                        <select name="id_empresa" id="id_empresa" class="form-control ">
@@ -114,7 +114,7 @@ $session = session();
                                                        
                                                     </div>
                                             </div>
-                                            <div class="col-lg-4 mb-2">
+                                            <div class="col-lg-6 mb-2">
                                                     <div class="form-group">
                                                        
                                                        <select name="id_puesto" id="id_puesto" class="form-control">
@@ -154,12 +154,7 @@ $session = session();
                                                     </div>
                                                     <?php if(isset($error->estado_us)) echo'<div class="error">'.$error->estado_us.'</div>' ?>
                                             </div>
-                                            <div class="col-lg-4" id="">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="opcion_us"  name="opcion_us">
-                                                            <label class="form-check-label" for="exampleCheck1">Opciones Completas</label>
-                                                        </div>
-                                            </div>
+                                           
                                             <div class="col-lg-12 form-group mb-0 d-flex justify-content-end">
                                                 <div>
                                                     <a href="  <?php echo base_url('listUsers');?>" class="btn btn-danger waves-effect waves-light mr-1">Cancelar</a>

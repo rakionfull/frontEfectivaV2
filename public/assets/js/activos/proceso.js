@@ -10,7 +10,7 @@ function inicializaProceso() {
     $("#select_MacroprocesosPro").append('<option value="" selected>Seleccione</option>');
 }
 
-function  cargarDatosProEmpresa(){
+function  cargarDatosProEmpresa($dato){
        
     //cargando las empresas
     $.ajax({
@@ -30,13 +30,20 @@ function  cargarDatosProEmpresa(){
 
             datos.data.forEach(dato => {
                 
-            
-                    $("#select_empresaPro").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+            if($dato == dato['id']){
+                $("#select_empresaPro").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
 
                 
+            }else{
+                $("#select_empresaPro").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+
+                
+            }
+                   
                 
             
             });
+            cargarDatosProArea(idempresa);
         } 
         else
         {  }
@@ -198,6 +205,10 @@ function  cargarDatosProEmpresa(){
         });
     }
 function LoadTableProceso($update,$delete) {
+    $dato = 0 ;
+    if(idempresa != 0 || idempresa !=""){
+        $dato = idempresa;
+    }
 
 
     if ($.fn.DataTable.isDataTable('#table_proceso')){
@@ -238,7 +249,7 @@ function LoadTableProceso($update,$delete) {
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: BASE_URL+"/activo/getProceso",
+        ajax: BASE_URL+"/activo/getProceso/"+$dato,
         aoColumns: [
             { "data": "id" },
             { "data": "proceso" },
@@ -300,11 +311,15 @@ function LoadTableProceso($update,$delete) {
 document.getElementById("btnAgregar_Proceso").addEventListener("click",function(){
                                 
     $("#modal_proceso").modal("show");
+  
     document.getElementById("title-proceso").innerHTML = "Agregar Proceso";
     document.getElementById("form_proceso").reset();
     document.getElementById("Agregar_Proceso").style.display = "block";
     document.getElementById("Modificar_Proceso").style.display = "none";
-    inicializaProceso();
+    if(idempresa != 0){
+        $('#select_empresaPro').attr('disabled',true);
+    }
+    // inicializaProceso();
 });
 
 
@@ -389,11 +404,14 @@ document.getElementById("Agregar_Proceso").addEventListener("click",function(){
 //editar Proceso
 $('#table_proceso tbody').on( 'click', 'editProceso', function(){
     $("#modal_proceso").modal("show");
+   
     document.getElementById("title-proceso").innerHTML = "Modificar Proceso";
     document.getElementById("form_proceso").reset();
     document.getElementById("Agregar_Proceso").style.display = "none";
     document.getElementById("Modificar_Proceso").style.display = "block";
-   
+    if(idempresa != 0){
+        $('#select_empresaPro').attr('disabled',true);
+    }
     //recuperando los datos
     var table = $('#table_proceso').DataTable();
     var regNum = table.rows( $(this).parents('tr') ).count().toString();

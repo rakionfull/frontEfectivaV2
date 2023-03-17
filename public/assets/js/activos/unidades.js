@@ -3,7 +3,7 @@ function inicializaUnidades() {
     $("#select_areaUnidades").empty();
     $("#select_areaUnidades").append('<option value="" selected>Seleccione</option>');
 }
-function  cargarDatosUnidadesEmpresa(){
+function  cargarDatosUnidadesEmpresa($dato,$edit){
        
 //cargando las empresas
 $.ajax({
@@ -21,12 +21,21 @@ $.ajax({
         $("#select_empresaUnidades").append('<option value="" selected>Seleccione</option>');
 
         datos.data.forEach(dato => {
-            
-          
+            if($dato == dato['id']){
+                $("#select_empresaUnidades").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+
+            }else{
                 $("#select_empresaUnidades").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
 
+            }
+          
+              
            
         });
+      
+            cargarDatosUnidadesArea(idempresa);
+        
+    
     } 
     else
     {  }
@@ -47,7 +56,7 @@ function cargarDatosUnidadesArea($empresa,$dato) {
        
         
     }
-    console.log(postData);
+   
         $.ajax({
             method: "POST",
             url: BASE_URL+"/activo/getAreasByActivo",
@@ -62,7 +71,7 @@ function cargarDatosUnidadesArea($empresa,$dato) {
             
                
                     $("#select_areaUnidades").empty();
-                    $("#select_areaUnidades").append('<option value="" selected>Seleccione</option>');
+                    $("#select_areaUnidades").append('<option value="" selected>Area</option>');
                 
                
 
@@ -93,6 +102,10 @@ function cargarDatosUnidadesArea($empresa,$dato) {
     });   
 }
 function LoadTableUnidades($update,$delete) {
+    $dato = 0 ;
+    if(idempresa != 0 || idempresa !=""){
+        $dato = idempresa;
+    }
     if ($.fn.DataTable.isDataTable('#table_unidades')){
         
         $('#table_unidades').DataTable().rows().remove();
@@ -131,7 +144,7 @@ function LoadTableUnidades($update,$delete) {
         lengthMenu:[5,10,25,50],
         pageLength:5,
         clickToSelect:false,
-        ajax: BASE_URL+"/activo/getUnidades",
+        ajax: BASE_URL+"/activo/getUnidades/"+$dato,
         aoColumns: [            
             { "data": "id" },            
             { "data": "unidad" },
@@ -189,11 +202,16 @@ function LoadTableUnidades($update,$delete) {
 document.getElementById("btnAgregar_Unidades").addEventListener("click",function(){
                                 
     $("#modal_unidades").modal("show");
+    
+  
     document.getElementById("title-unidades").innerHTML = "Agregar Unidades";
     document.getElementById("form_unidades").reset();
     document.getElementById("Agregar_Unidades").style.display = "block";
     document.getElementById("Modificar_Unidades").style.display = "none";
-    inicializaUnidades();
+    if(idempresa != 0){
+        $('#select_empresaUnidades').attr('disabled',true);
+    }
+    // inicializaUnidades();
 });
 
 // // boton de agregar Unidades
@@ -272,11 +290,15 @@ document.getElementById("Agregar_Unidades").addEventListener("click",function(){
 //editar Empresa
 $('#table_unidades tbody').on( 'click', 'editUnidades', function(){
     $("#modal_unidades").modal("show");
+    
+    // cargarDatosUnidadesArea(idempresa);
     document.getElementById("title-unidades").innerHTML = "Modificar";
     document.getElementById("form_unidades").reset();
     document.getElementById("Agregar_Unidades").style.display = "none";
     document.getElementById("Modificar_Unidades").style.display = "block";
-    
+    if(idempresa != 0){
+        $('#select_empresaUnidades').attr('disabled',true);
+    }
    
     //recuperando los datos
     var table = $('#table_unidades').DataTable();
@@ -288,7 +310,7 @@ $('#table_unidades tbody').on( 'click', 'editUnidades', function(){
         document.getElementById("id_unidades").value=regDat[0]["id"]; 
         document.getElementById("select_empresaUnidades").value=regDat[0]["idempresa"];  
         // cargarDatosUnidadesArea(document.getElementById("select_empresaUnidades").value); 
-        cargarDatosUnidadesArea(document.getElementById("select_empresaUnidades").value, regDat[0]["idarea"])
+        cargarDatosUnidadesArea(regDat[0]["idempresa"], regDat[0]["idarea"])
             
             
         
@@ -422,7 +444,7 @@ $('#table_unidades tbody').on( 'click', 'deleteUnidad', function(){
     }
 });
 document.getElementById("select_empresaUnidades").addEventListener("change",function(){
-    console.log($('#select_empresaUnidades').val());
+    // console.log($('#select_empresaUnidades').val());
     if($('#select_empresaUnidades').val() != "" ){
         cargarDatosUnidadesArea($('#select_empresaUnidades').val(),"");
     }

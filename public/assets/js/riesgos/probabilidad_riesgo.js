@@ -1,6 +1,6 @@
 var alerta_probabilidad_riesgo = document.getElementById("alerta_probabilidad_riesgo");
 console.log('Escenario ',escenario)
-if(escenario == null){
+if(escenario == 0){
     noEscene()
 }else{
     if(escenario == 2){

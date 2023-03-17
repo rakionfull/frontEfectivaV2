@@ -52,7 +52,7 @@
                                                 <thead class="thead-light">
                                                     <tr>
                                                         <th>Id</th>
-                                                        
+                                                        <th>Evaluador</th>
                                                         <th>Mombre del perfil</th>
                                                         <th>Descripcion</th>
                                                         <th>Estado</th>
@@ -98,7 +98,7 @@
                                                         <input type="text" class="form-control form-control-sm" id="desc_perfil"  onkeyup="this.value = this.value.toUpperCase();" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <span>Estado: </span>
                                                         <select name="" id="est_perfil" class="form-control form-control-sm">
@@ -108,7 +108,12 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                
+                                                <div class="col-lg-6" id="">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="opcion_us"  name="opcion_us">
+                                                            <label class="form-check-label" for="exampleCheck1">Evaluador</label>
+                                                        </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </form>  

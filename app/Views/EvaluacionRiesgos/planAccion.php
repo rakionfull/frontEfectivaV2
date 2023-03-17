@@ -75,7 +75,7 @@
                 <input type="hidden" id="create" value=<?php echo($session->permisos[13]->create_det)?>>
                 <input type="hidden" id="update" value=<?php echo($session->permisos[13]->update_det)?>>
                 <input type="hidden" id="delete" value=<?php echo($session->permisos[13]->delete_det)?>>
-
+               
                 
         
 

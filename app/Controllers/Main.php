@@ -955,8 +955,15 @@ class Main extends BaseController {
       public function activos(){
         
         if($this->session->logged_in && $this->session->permisos[6]->view_det==1){
-    
-              return view('parametrizacion/activos');
+              $idempresa = $this->session->idempresa;
+              $idarea = $this->session->idarea;
+              $id_user = $this->session->id;
+              return view('parametrizacion/activos',[
+                'escenario' => $this->session->escenario,
+                'idempresa' => $idempresa,
+                'idarea' => $idarea,
+                'id_user' => $id_user
+            ]);
          
         }else{
           return redirect()->to(base_url('/login'));
@@ -1047,11 +1054,19 @@ class Main extends BaseController {
               $riesgos =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
               $get_endpoint = '/api/getPlanControl';
               $controles =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+            
+              $idempresa = $this->session->idempresa;
+              $idarea = $this->session->idarea;
+              $id_user = $this->session->id;
+            
               $data = [
                 'contador'  => 0,
                 'riesgo' => $riesgos -> data,
-
                 'control' => $controles -> data,
+               
+                'id_area' =>  $idarea,
+                'id_user' => $id_user,
+                'idempresa' => $idempresa,
               ];
               // var_dump($riesgos);
               return view('EvaluacionRiesgos/registrar',$data);
@@ -1070,11 +1085,17 @@ class Main extends BaseController {
               $riesgos =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
               $get_endpoint = '/api/getPlanControl';
               $controles =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+              $idempresa = $this->session->idempresa;
+              $idarea = $this->session->idarea;
+              $id_user = $this->session->id;
               $data = [
                 'id' => $id,
                 'riesgo' => $riesgos -> data,
 
                 'control' => $controles -> data,
+                'id_area' =>  $idarea,
+                'id_user' => $id_user,
+                'idempresa' => $idempresa,
               ];
               // var_dump($riesgos);
               return view('EvaluacionRiesgos/updatePlanAccion',$data);
@@ -1093,12 +1114,19 @@ class Main extends BaseController {
             $riesgos =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
             $get_endpoint = '/api/getPlanControl';
             $controles =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+            $idempresa = $this->session->idempresa;
+            $idarea = $this->session->idarea;
+            $id_user = $this->session->id;
             $data = [
               'contador'  => $datos->data->actividades,
               'plan' => $id ,
               'riesgo' => $riesgos -> data, 
               'control' => $controles -> data,
+              'id_area' =>  $idarea,
+              'id_user' => $id_user,
+              'idempresa' => $idempresa,
             ];
+            
               return view('EvaluacionRiesgos/verDetalle',$data);
          
         }else{

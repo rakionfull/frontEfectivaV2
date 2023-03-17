@@ -86,7 +86,7 @@ function cargarImpactoRiesgo() {
     .always(function() {
     });
 }
-function loadTableValoracionRiesgo() {
+function loadTableValoracionRiesgo($update,$delete) {
     
     
     

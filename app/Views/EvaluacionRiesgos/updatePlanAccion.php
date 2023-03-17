@@ -204,8 +204,15 @@
         </div>
               
 </div>
-        
-
+                <script>
+                    var id_user = <?php echo json_encode($id_user); ?>;
+                  
+                    var idempresa = <?php echo json_encode($idempresa); ?>;
+                    var idarea = <?php echo json_encode($id_area); ?>;
+                   
+                </script>
+                
+                        <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
                         <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
 
                        <script src="<?=base_url('public/assets/js/planesAccion/cargarDatosCombo.js'); ?>"></script>   

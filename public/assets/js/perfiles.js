@@ -66,19 +66,25 @@ function LoadPerfiles($est){
                 "previous": "Anterior"
             }
         },
-        // scrollY: "200px",
+        // scrollY: true,
         // fixedColumns:   {
         //     heightMatch: 'none'
         // },
-        responsive: true,
+         scrollY: true,
+        fixedColumns:   {
+            heightMatch: 'none'
+        },
+        responsive: false,
         autoWidth: false,
         // processing: true,
         lengthMenu:[5,10,25,50],
-        pageLength:10,
+        pageLength:5,
         clickToSelect:false,
         ajax: $('#base_url').val()+"/main/getPerfiles/"+$est,
         aoColumns: [
             { "data": "id_perfil" },
+            { "data": "is_user_negocio" },
+    
             { "data": "perfil" },
             { "data": "desc_perfil" },
     
@@ -124,7 +130,7 @@ function LoadPerfiles($est){
         ],
         columnDefs: [
             {
-                "targets": [ 0 ],
+                "targets": [ 0,1 ],
                 "visible": false,
                 "searchable": false
             },
@@ -151,7 +157,10 @@ document.getElementById("Agregar_Perfil").addEventListener("click",async functio
     $nom_perfil=document.getElementById("nom_perfil").value;
     $desc_perfil=document.getElementById("desc_perfil").value;
     $est_perfil=document.getElementById("est_perfil").value;
-    
+    $evaluador = 1;
+    if($('#opcion_us').val().checked){
+        $evaluador = 0;
+    }
     if($nom_perfil !="" && $desc_perfil !="" && $est_perfil != ""){
         if (!(await validacionPerfil($nom_perfil))){
             
@@ -159,6 +168,7 @@ document.getElementById("Agregar_Perfil").addEventListener("click",async functio
                     perfil:$nom_perfil,
                     desc_perfil:$desc_perfil,
                     est_perfil:$est_perfil,
+                    evaluador : $evaluador 
                 };
                
                 try {
@@ -234,7 +244,10 @@ $('#table_perfiles tbody').on( 'click', 'editPerfil', function(){
         document.getElementById("desc_perfil").value=regDat[0]["desc_perfil"];
         document.getElementById("nom_perfil").value=regDat[0]["perfil"];
         document.getElementById("est_perfil").value=regDat[0]["est_perfil"];
-   
+        if(regDat[0]["is_user_negocio"] == 0){
+            document.getElementById("opcion_us").checked = true;
+        }
+       // document.getElementById("evaluador").value=regDat[0]["is_user_negocio"];
     }
 });
 //guardando la nueva info
@@ -243,7 +256,12 @@ document.getElementById("Modificar_Perfil").addEventListener("click", function()
     $nom_perfil=document.getElementById("nom_perfil").value;
     $desc_perfil=document.getElementById("desc_perfil").value;
     $est_perfil=document.getElementById("est_perfil").value;
+    $evaluador = 1;
     
+    if(document.getElementById('opcion_us').checked){
+        
+        $evaluador = 0;
+    }
     if($nom_perfil !="" && $desc_perfil !="" && $est_perfil != ""){
        
                 const postData = { 
@@ -251,6 +269,7 @@ document.getElementById("Modificar_Perfil").addEventListener("click", function()
                     perfil:$nom_perfil,
                     desc_perfil:$desc_perfil,
                     est_perfil:$est_perfil,
+                    evaluador:$evaluador,
                 };
               
                 try {
