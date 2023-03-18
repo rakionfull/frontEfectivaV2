@@ -203,7 +203,7 @@ $('#table_tipo_amenaza tbody').on( 'click', 'deleteAmenaza', function(event){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_tipo_amenaza.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -213,7 +213,13 @@ $('#table_tipo_amenaza tbody').on( 'click', 'deleteAmenaza', function(event){
                     '</div>';
                     $("#table_tipo_amenaza").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

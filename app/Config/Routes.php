@@ -213,7 +213,7 @@ $routes->set404Override();
         $routes->get('/main/getTipoRiesgos', 'TipoRiesgoController::getTipoRiesgos');
         $routes->post('/main/addTipoRiesgo', 'TipoRiesgoController::addTipoRiesgo');
         $routes->post('/main/updateTipoRiesgo', 'TipoRiesgoController::updateTipoRiesgo');
-        $routes->delete('/main/deleteTipoRiesgo/(:num)', 'TipoRiesgoController::deleteTipoRiesgo/$1');
+        $routes->post('/main/deleteTipoRiesgo/(:num)', 'TipoRiesgoController::deleteTipoRiesgo/$1');
 
        // Rutas para probabilidad de riesgos
         $routes->get('/main/getActives/(:num)','ProbabilidadRiesgoController::getActives/$1');
@@ -238,35 +238,35 @@ $routes->set404Override();
         $routes->get('/main/showNivelRiesgo/(:num)','NivelRiesgoController::showNivelRiesgo/$1');
         $routes->post('/main/addNivelRiesgo','NivelRiesgoController::addNivelRiesgo');
         $routes->post('/main/updateNivelRiesgo/(:num)','NivelRiesgoController::updateNivelRiesgo/$1');
-        $routes->delete('/main/deleteNivelRiesgo/(:num)', 'NivelRiesgoController::deleteNivelRiesgo/$1');
+        $routes->post('/main/deleteNivelRiesgo/(:num)', 'NivelRiesgoController::deleteNivelRiesgo/$1');
 
         // Rutas para tipo de amenaza
         $routes->get('/main/getTiposAmenaza','TipoAmenazaController::getTiposAmenaza');
         $routes->get('/main/showTipoAmenaza/(:num)','TipoAmenazaController::showTipoAmenaza/$1');
         $routes->post('/main/addTipoAmenaza','TipoAmenazaController::addTipoAmenaza');
         $routes->post('/main/updateTipoAmenaza/(:num)','TipoAmenazaController::updateTipoAmenaza/$1');
-        $routes->delete('/main/deleteTipoAmenaza/(:num)', 'TipoAmenazaController::deleteTipoAmenaza/$1');
+        $routes->post('/main/deleteTipoAmenaza/(:num)', 'TipoAmenazaController::deleteTipoAmenaza/$1');
 
         // Rutas para desc de amenaza
         $routes->get('/main/getDescAmenaza','DescripcionAmenazaController::getDescAmenaza');
         $routes->get('/main/showDescAmenaza/(:num)','DescripcionAmenazaController::showDescAmenaza/$1');
         $routes->post('/main/addDescAmenaza','DescripcionAmenazaController::addDescAmenaza');
         $routes->post('/main/updateDescAmenaza/(:num)','DescripcionAmenazaController::updateDescAmenaza/$1');
-        $routes->delete('/main/deleteDescAmenaza/(:num)', 'DescripcionAmenazaController::deleteDescAmenaza/$1');
+        $routes->post('/main/deleteDescAmenaza/(:num)', 'DescripcionAmenazaController::deleteDescAmenaza/$1');
 
         // Rutas para categoria vulnerabilidad
         $routes->get('/main/getCategoriasVulnerabilidad','CategoriasVulnerabilidadController::getCategoriasVulnerabilidad');
         $routes->get('/main/showCategoriasVulnerabilidad/(:num)','CategoriasVulnerabilidadController::showCategoriasVulnerabilidad/$1');
         $routes->post('/main/addCategoriasVulnerabilidad','CategoriasVulnerabilidadController::addCategoriasVulnerabilidad');
         $routes->post('/main/updateCategoriasVulnerabilidad/(:num)','CategoriasVulnerabilidadController::updateCategoriasVulnerabilidad/$1');
-        $routes->delete('/main/deleteCategoriasVulnerabilidad/(:num)', 'CategoriasVulnerabilidadController::deleteCategoriasVulnerabilidad/$1');
+        $routes->post('/main/deleteCategoriasVulnerabilidad/(:num)', 'CategoriasVulnerabilidadController::deleteCategoriasVulnerabilidad/$1');
 
         // Rutas para desc vulnerabilidad
         $routes->get('/main/getDescVulnerabilidad','DescriptionVulnerabilidadController::getDescVulnerabilidad');
         $routes->get('/main/showDescVulnerabilidad/(:num)','DescriptionVulnerabilidadController::showDescVulnerabilidad/$1');
         $routes->post('/main/addDescVulnerabilidad','DescriptionVulnerabilidadController::addDescVulnerabilidad');
         $routes->post('/main/updateDescVulnerabilidad/(:num)','DescriptionVulnerabilidadController::updateDescVulnerabilidad/$1');
-        $routes->delete('/main/deleteDescVulnerabilidad/(:num)', 'DescriptionVulnerabilidadController::deleteDescVulnerabilidad/$1');
+        $routes->post('/main/deleteDescVulnerabilidad/(:num)', 'DescriptionVulnerabilidadController::deleteDescVulnerabilidad/$1');
 
 
         //Controles

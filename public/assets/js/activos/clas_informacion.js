@@ -324,9 +324,8 @@ $('#table_clas_informacion tbody').on( 'click', 'deleteClas_informacion', functi
      
         .done(function(respuesta) {
         //  console.log(respuesta);
-            if (respuesta.msg) 
+            if (!respuesta.error) 
             {
-                
                 alerta_clas_informacion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                 respuesta.msg+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
@@ -337,12 +336,11 @@ $('#table_clas_informacion tbody').on( 'click', 'deleteClas_informacion', functi
                 $("#table_clas_informacion").DataTable().ajax.reload(null, true); 
                
             }else{
-                alerta_clas_informacion.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
-                respuesta.error+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                    '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: respuesta.msg
+                })
             } 
             
         })

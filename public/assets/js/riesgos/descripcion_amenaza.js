@@ -241,7 +241,7 @@ $('#table_desc_amenaza tbody').on( 'click', 'deleteDesc', function(event){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_desc_amenaza.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -251,7 +251,13 @@ $('#table_desc_amenaza tbody').on( 'click', 'deleteDesc', function(event){
                     '</div>';
                     $("#table_desc_amenaza").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

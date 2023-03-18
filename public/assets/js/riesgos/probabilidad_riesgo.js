@@ -455,7 +455,13 @@ $('#table_probabilidad_1 tbody').on( 'click', 'deleteProbabilidad1', function(ev
                             }
                         }
                     })
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {
@@ -919,7 +925,13 @@ $('#table_probabilidad_2 tbody').on( 'click', 'deleteProbabilidad2', function(ev
                             }
                         }
                     })
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

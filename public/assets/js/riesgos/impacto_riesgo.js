@@ -453,7 +453,13 @@ $('#table_impacto_1 tbody').on( 'click', 'deleteImpacto1', function(event){
                             }
                         }
                     })
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {
@@ -918,7 +924,13 @@ $('#table_impacto_2 tbody').on( 'click', 'deleteImpacto2', function(event){
                             }
                         }
                     })
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

@@ -273,7 +273,7 @@ $('#table_prioridad tbody').on( 'click', 'deletePrioridad', function(){
      
         .done(function(respuesta) {
         //  console.log(respuesta);
-            if (respuesta.msg) 
+            if (!respuesta.error) 
             {
                 
                 alerta_prioridad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
@@ -286,12 +286,11 @@ $('#table_prioridad tbody').on( 'click', 'deletePrioridad', function(){
                 $("#table_prioridad").DataTable().ajax.reload(null, true); 
                
             }else{
-                alerta_prioridad.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
-                respuesta.error+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                    '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: respuesta.msg
+                })
             } 
             
         })

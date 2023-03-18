@@ -510,7 +510,7 @@ $('#table_posicion tbody').on( 'click', 'deletePosicion', function(){
      
         .done(function(respuesta) {
        
-            if (respuesta.msg) 
+            if (!respuesta.error) 
             {
                 
                 alerta_posicion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
@@ -523,12 +523,11 @@ $('#table_posicion tbody').on( 'click', 'deletePosicion', function(){
                 $("#table_posicion").DataTable().ajax.reload(null, true); 
                
             }else{
-                alerta_posicion.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
-                respuesta.error+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                    '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: respuesta.msg
+                })
             } 
             
         })

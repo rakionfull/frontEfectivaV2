@@ -197,7 +197,7 @@ $('#table_categoria_vulnerabilidad tbody').on( 'click', 'deleteCategoria', funct
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_categoria_vulnerabilidad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -207,6 +207,12 @@ $('#table_categoria_vulnerabilidad tbody').on( 'click', 'deleteCategoria', funct
                     '</div>';
                     $("#table_categoria_vulnerabilidad").DataTable().ajax.reload(null, false); 
                    
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
                 }
                 
             })

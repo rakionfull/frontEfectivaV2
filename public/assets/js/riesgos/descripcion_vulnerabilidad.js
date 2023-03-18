@@ -239,7 +239,7 @@ $('#table_desc_vulnerabilidad tbody').on( 'click', 'deleteVulnerabilidad', funct
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_desc_vulnerabilidad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -249,7 +249,13 @@ $('#table_desc_vulnerabilidad tbody').on( 'click', 'deleteVulnerabilidad', funct
                     '</div>';
                     $("#table_desc_vulnerabilidad").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

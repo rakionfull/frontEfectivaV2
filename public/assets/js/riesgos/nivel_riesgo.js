@@ -242,7 +242,7 @@ $('#table_nivel_riesgo tbody').on( 'click', 'deleteNivel', function(event){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_nivel_riesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -252,7 +252,13 @@ $('#table_nivel_riesgo tbody').on( 'click', 'deleteNivel', function(event){
                     '</div>';
                     $("#table_nivel_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

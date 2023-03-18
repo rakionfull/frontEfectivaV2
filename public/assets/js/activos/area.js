@@ -346,13 +346,9 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
             data: postData,
             dataType: "JSON"
         })
-
-     
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (respuesta.msg) 
+            if (!respuesta.error) 
             {
-                
                 alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                 respuesta.msg+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
@@ -363,12 +359,11 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
                 $("#table_area_empresa").DataTable().ajax.reload(null, true); 
                
             }else{
-                alerta_area_empresa.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
-                respuesta.error+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                    '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: respuesta.msg
+                })
             } 
             
         })

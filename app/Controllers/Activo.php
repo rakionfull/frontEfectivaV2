@@ -1516,7 +1516,7 @@ public function deleteEstado() {
               $post_data,
               'id' => $this->session->id 
           ];
-          $response = perform_http_request('DELETE', REST_API_URL . $post_endpoint, $request_data);
+          $response = perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data);
           if ($response) {
               echo json_encode($response);
           } else {

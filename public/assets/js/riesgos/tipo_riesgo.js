@@ -209,7 +209,7 @@ $('#table_tipo_riesgo tbody').on( 'click', 'deleteEmpresa', function(event){
             })
             .done(function(respuesta) {
                 console.log(respuesta)
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     alerta_tipo_riesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                     'Se ha eliminado satisfactoriamente'+
@@ -219,7 +219,13 @@ $('#table_tipo_riesgo tbody').on( 'click', 'deleteEmpresa', function(event){
                     '</div>';
                     $("#table_tipo_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

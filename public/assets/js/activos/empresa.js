@@ -276,8 +276,8 @@ $('#table_empresa tbody').on( 'click', 'deleteEmpresa', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (respuesta.msg) 
+         console.log(respuesta);
+            if (!respuesta.error) 
             {
                 
                 alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
@@ -290,12 +290,11 @@ $('#table_empresa tbody').on( 'click', 'deleteEmpresa', function(){
                 $("#table_empresa").DataTable().ajax.reload(null, true); 
                
             }else{
-                alerta_empresa.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
-                respuesta.error+
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                    '<span aria-hidden="true">&times;</span>'+
-                    '</button>'+
-                '</div>';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: respuesta.msg
+                })
             } 
             
         })
