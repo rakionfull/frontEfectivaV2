@@ -823,7 +823,7 @@ class Activo extends BaseController {
             }else{
           
                 $post_endpoint = '/api/updateUnidades';
-                $request_data = [];
+              
                 $request_data = [
                   $this->request->getPost(),
                   'user' =>$this->session->id
@@ -831,7 +831,7 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
+                   if($response->msg ){
                       echo json_encode($response->msg);
                   
                   }else{
@@ -1145,7 +1145,7 @@ class Activo extends BaseController {
                   // var_dump($response);
                   
                     if($response->msg ){
-                        echo json_encode($response->msg);
+                        echo json_encode($response);
                     
                     }else{
                       echo json_encode(false);
@@ -1250,12 +1250,9 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
-                      echo json_encode($response->msg);
+               
+                      echo json_encode($response);
                   
-                  }else{
-                    echo json_encode(false);
-                  }
 
               
             }

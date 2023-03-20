@@ -159,7 +159,7 @@ $routes->set404Override();
         // Unidades
         $routes->get('activo/getUnidades/(:num)', 'Activo::getUnidades/$1');
         $routes->post('/activo/addUnidades', 'Activo::addUnidades');
-        $routes->post('/activo/updateUnidades', 'v::updateUnidades');
+        $routes->post('/activo/updateUnidades', 'Activo::updateUnidades');
         $routes->post('activo/getUnidadByActivo', 'Activo::getUnidadByActivo');
         $routes->post('/activo/deleteUnidad', 'Activo::deleteUnidad');
 

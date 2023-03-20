@@ -349,7 +349,7 @@
                                     
                                         <div class="col-md-4 offset-md-4">
                                     
-                                            <button type="button" id="btnAgregar_AspectoSeg" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar Aspecto</button>
+                                            <button type="button" id="btnAgregar_AspectoSeg" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                         
                                         <div class="col-md-12" style="margin-top:0.5rem" id="alert_aspectoSeg">
@@ -398,7 +398,7 @@
                                     
                                         <div class="col-md-4 offset-md-4">
                                     
-                                            <button type="button" id="btnAgregar_Posicion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar Aspecto</button>
+                                            <button type="button" id="btnAgregar_Posicion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                         
                                         <div class="col-md-12" style="margin-top:0.5rem" id="alert_posicion">

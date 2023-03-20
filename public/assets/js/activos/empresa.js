@@ -124,7 +124,7 @@ document.getElementById("Agregar_Empresa").addEventListener("click",function(){
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       console.log(respuesta);
+                     
                         if (respuesta.error==1) 
                         {
                             document.getElementById("form_empresa").reset();
@@ -292,7 +292,7 @@ $('#table_empresa tbody').on( 'click', 'deleteEmpresa', function(){
 
      
         .done(function(respuesta) {
-         console.log(respuesta);
+         
             if (!respuesta.error) 
             {
                 

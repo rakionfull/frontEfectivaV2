@@ -354,7 +354,7 @@ document.getElementById("Agregar_Proceso").addEventListener("click",function(){
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
+                      
                         if (respuesta.error==1) 
                         {
                             document.getElementById("form_proceso").reset();

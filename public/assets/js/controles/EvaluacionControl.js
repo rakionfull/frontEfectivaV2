@@ -357,7 +357,7 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
-                            location.href = $('#base_url').val()+"/controles/#/EvaluacionControl";
+                            location.href = $('#base_url').val()+"/controles";
                         //    CargarDisenioOperatividad();
                         }else{
                             Swal.fire({

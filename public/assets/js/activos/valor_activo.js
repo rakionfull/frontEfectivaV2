@@ -146,7 +146,7 @@ document.getElementById("Agregar_valorActivo").addEventListener("click",async fu
     $est_val=document.getElementById("est_valor").value;
     
     if($nom_val !=""  && $est_val != ""){
-        if (!(await validacionValorActivo($nom_val))){
+        // if (!(await validacionValorActivo($nom_val))){
                 
                 const postData = { 
                     valor:$nom_val.trim(),
@@ -163,20 +163,26 @@ document.getElementById("Agregar_valorActivo").addEventListener("click",async fu
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta) 
+                     console.log(respuesta);
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_valorActivo").reset();
                             $('#modal_valorActivo').modal('hide');
-                            alerta_valorActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Valor Activo Registrado'+
+                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
-                            $("#table_valorActivo").DataTable().ajax.reload(null, true); 
+                            $("#table_valorActivo").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -196,13 +202,13 @@ document.getElementById("Agregar_valorActivo").addEventListener("click",async fu
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-        }else{
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'El valor ya se encuentra registrado'
-                       })
-          }
+        // }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'El valor ya se encuentra registrado'
+        //                })
+        //   }
            
        
     }else{

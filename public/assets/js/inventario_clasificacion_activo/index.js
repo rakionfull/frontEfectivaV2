@@ -249,23 +249,23 @@ $('#btn_add_ica').click(function(){
             });
         }
     })
-    // let propietario = $.ajax({
-    //     url:BASE_URL+"/activo/getPosicion",
-    //     dataType:'JSON'
-    // })
-    // .done(function(resarea){
-    //     $('#modal_inventario_clasificacion_activo #propietario option').remove()
-    //     $('#modal_inventario_clasificacion_activo #propietario').append(
-    //         `<option value=''>Seleccionar</option>`
-    //     )
-    //     if(resarea.data.length > 0){
-    //         resarea.data.forEach(element => {
-    //             $('#modal_inventario_clasificacion_activo #propietario').append(
-    //                 `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
-    //             )
-    //         });
-    //     }
-    // })
+    let propietario = $.ajax({
+        url:BASE_URL+"/activo/getPosicion/"+idempresa,
+        dataType:'JSON'
+    })
+    .done(function(resarea){
+        $('#modal_inventario_clasificacion_activo #propietario option').remove()
+        $('#modal_inventario_clasificacion_activo #propietario').append(
+            `<option value=''>Seleccionar</option>`
+        )
+        if(resarea.data.length > 0){
+            resarea.data.forEach(element => {
+                $('#modal_inventario_clasificacion_activo #propietario').append(
+                    `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                )
+            });
+        }
+    })
     let custodio = $.ajax({
         url:BASE_URL+"/activo/getPosicion/"+idempresa,
         dataType:'JSON'

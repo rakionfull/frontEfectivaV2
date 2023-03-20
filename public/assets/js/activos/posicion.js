@@ -320,7 +320,7 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
     $id_unidad_pos=document.getElementById("id_unidad_pos").value;
     
     if($nom_posicion !=""  && $est_posicion != "" && $id_empresa_pos != "" && $id_area_pos != "" && $id_unidad_pos != ""){
-        if (!(await validacionPosicion())){
+        // if (!(await validacionPosicion())){
                 
                 const postData = { 
                     posicion : document.getElementById("nom_posicion").value,
@@ -329,7 +329,7 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
                     idunidad:document.getElementById("id_unidad_pos").value,
                     estado:$est_posicion,
                 };
-               console.log(postData);
+              
                 try {
 
                     $.ajax({
@@ -339,20 +339,26 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta) 
+                        console.log(respuesta);
+                        if (respuesta.error==1) 
                         {
-                            document.getElementById("form_posicion").reset();
-                            $('#modal_posicion').modal('hide');
-                            alerta_posicion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Posicion Registrada Correctamente'+
+                            document.getElementById("form_empresa").reset();
+                            $('#modal_empresa').modal('hide');
+                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
-                            $("#table_posicion").DataTable().ajax.reload(null, true); 
+                            $("#table_empresa").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -372,14 +378,14 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-        }else{
+        // }else{
           
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'El puesto ya fue registrado para esa empresa, area y unidad'
-                       })
-          }
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'El puesto ya fue registrado para esa empresa, area y unidad'
+        //                })
+        //   }
            
        
     }else{

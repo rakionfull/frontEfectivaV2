@@ -147,7 +147,7 @@ document.getElementById("Agregar_clas_informacion").addEventListener("click",asy
 
     if($nom_clasificacion !=""  && $descripcion_clasificacion != "" && $est_clas_informacion != ""){
    
-        if (!(await validacionClasificacion_Info())){
+        // if (!(await validacionClasificacion_Info())){
                 const postData = { 
                     clasificacion:$nom_clasificacion,
                     descripcion:$descripcion_clasificacion,
@@ -165,19 +165,26 @@ document.getElementById("Agregar_clas_informacion").addEventListener("click",asy
                     })
                     .done(function(respuesta) {
                      
-                        if (respuesta) 
+                      
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_clas_informacion").reset();
                             $('#modal_clas_informacion').modal('hide');
-                            alerta_clas_informacion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Clasificacion de la informacion Registrada'+
+                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_clas_informacion").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -197,14 +204,14 @@ document.getElementById("Agregar_clas_informacion").addEventListener("click",asy
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-        }else{
+        // }else{
             
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'La clasificación de la Información ya se encuentra registrado'
-                       })
-        }
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'La clasificación de la Información ya se encuentra registrado'
+        //                })
+        // }
            
        
     }else{

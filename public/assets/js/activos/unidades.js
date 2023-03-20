@@ -352,12 +352,12 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
 
                     $.ajax({
                         method: "POST",
-                        url: BASE_URL+"/activo/updateUnidades",
+                        url: $('#base_url').val()+"/activo/updateUnidades",
                         data: postData,
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
+                     
                         if (respuesta) 
                         {
                             document.getElementById("form_unidades").reset();
@@ -374,6 +374,7 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
                         
                     })
                     .fail(function(error) {
+                        console.log(error);
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
