@@ -377,19 +377,27 @@ document.getElementById("Agregar_Proceso").addEventListener("click",function(){
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui8");
+       
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -482,19 +490,27 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui8");
+       
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -548,13 +564,21 @@ $('#table_proceso tbody').on( 'click', 'deleteProceso', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });
 

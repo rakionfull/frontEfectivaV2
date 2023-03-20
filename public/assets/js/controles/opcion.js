@@ -530,13 +530,21 @@ function AgregarOpcion(postData) {
             } 
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 }
 function ModificarOpcion(postData) {
@@ -575,13 +583,21 @@ function ModificarOpcion(postData) {
             } 
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 }
 
@@ -1045,13 +1061,21 @@ $('#table_Opcion tbody').on( 'click', 'deleteCaractControl', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });
 

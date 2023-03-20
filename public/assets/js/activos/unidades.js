@@ -42,7 +42,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+   
 })
 .always(function() {
 });        
@@ -96,7 +96,7 @@ function cargarDatosUnidadesArea($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+       
     })
     .always(function() {
     });   
@@ -264,19 +264,27 @@ document.getElementById("Agregar_Unidades").addEventListener("click",function(){
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui9");
+        
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -366,19 +374,27 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui9");
+      
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -433,13 +449,21 @@ $('#table_unidades tbody').on( 'click', 'deleteUnidad', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });
 document.getElementById("select_empresaUnidades").addEventListener("change",function(){

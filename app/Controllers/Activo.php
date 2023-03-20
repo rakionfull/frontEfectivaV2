@@ -76,7 +76,10 @@ class Activo extends BaseController {
             
                 $post_endpoint = '/api/updateEmpresa';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -129,7 +132,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addArea';
                 $request_data = [];
-                 $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -160,7 +166,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateArea';
                 $request_data = [];
-                 $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -198,7 +207,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addAreaEmpresa';
                 $request_data = [];
-                 $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -224,7 +236,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteArea';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -242,7 +257,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateAreaEmpresa';
                 $request_data = [];
-                 $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -264,7 +282,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteEmpresa';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -309,7 +330,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addValorActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -351,7 +375,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateValorActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -373,7 +400,10 @@ class Activo extends BaseController {
         
                 $post_endpoint = '/api/deleteValorActivo';
              
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
   
                 $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                 echo json_encode($response);
@@ -429,7 +459,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addTipoActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -460,7 +493,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateTipoActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+                ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -482,7 +518,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteTipoActivo';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -529,7 +568,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addClasInformacion';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -560,7 +602,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateClasInformacion';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -582,7 +627,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteClasInfo';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -638,7 +686,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addAspectoSeg';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -669,7 +720,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateAspectoSeg';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -691,7 +745,10 @@ class Activo extends BaseController {
         
                 $post_endpoint = '/api/deleteAspectoSeg';
              
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
   
                 $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                 echo json_encode($response);
@@ -733,7 +790,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addUnidades';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -764,8 +824,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateUnidades';
                 $request_data = [];
-                $request_data = $this->request->getPost();
-              
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
@@ -786,8 +848,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteUnidad';
            
-              $request_data = $this->request->getPost();
-
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
               
@@ -829,8 +893,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addMacroproceso';
                 $request_data = [];
-                $request_data = $this->request->getPost();
-              
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
@@ -871,7 +937,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateMacroproceso';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -893,7 +962,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteMacroproceso';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -924,8 +996,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addProceso';
                 $request_data = [];
-                $request_data = $this->request->getPost();
-              
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
@@ -966,8 +1040,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateProceso';
                 $request_data = [];
-                $request_data = $this->request->getPost();
-              
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
@@ -989,7 +1065,10 @@ class Activo extends BaseController {
       
               $post_endpoint = '/api/deleteProceso';
            
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
               echo json_encode($response);
@@ -1057,7 +1136,10 @@ class Activo extends BaseController {
             
                   $post_endpoint = '/api/addPosicion';
                   $request_data = [];
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
                 
                   $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                   // var_dump($response);
@@ -1088,7 +1170,10 @@ class Activo extends BaseController {
             
                   $post_endpoint = '/api/updatePosicion';
                  
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
                 
                   $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                   // var_dump($response);
@@ -1110,7 +1195,10 @@ class Activo extends BaseController {
           
                   $post_endpoint = '/api/deletePosicion';
                
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
     
                   $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                   echo json_encode($response);
@@ -1154,7 +1242,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addValActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -1182,7 +1273,10 @@ class Activo extends BaseController {
             
                   $post_endpoint = '/api/updateValActivo';
                  
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
                 
                   $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                   // var_dump($response);die();
@@ -1204,7 +1298,10 @@ class Activo extends BaseController {
           
                   $post_endpoint = '/api/deleteValActivo';
                
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
     
                   $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                   echo json_encode($response);
@@ -1248,7 +1345,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/addCatActivo';
                 $request_data = [];
-                $request_data = $this->request->getPost();
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
               
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
@@ -1276,7 +1376,10 @@ class Activo extends BaseController {
             
                   $post_endpoint = '/api/updateCatActivo';
                  
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
                 
                   $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                   // var_dump($response);
@@ -1298,7 +1401,10 @@ class Activo extends BaseController {
           
                   $post_endpoint = '/api/deleteCatActivo';
                
-                  $request_data = $this->request->getPost();
+                  $request_data = [
+                    $this->request->getPost(),
+                    'user' =>$this->session->id
+                ];
     
                   $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                   echo json_encode($response);
@@ -1343,7 +1449,10 @@ class Activo extends BaseController {
         
               $post_endpoint = '/api/addUbiActivo';
               $request_data = [];
-              $request_data = $this->request->getPost();
+              $request_data = [
+                $this->request->getPost(),
+                'user' =>$this->session->id
+            ];
             
               $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
               // var_dump($response);
@@ -1371,8 +1480,10 @@ class Activo extends BaseController {
           
                 $post_endpoint = '/api/updateUbiActivo';
                
-                $request_data = $this->request->getPost();
-              
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
@@ -1393,8 +1504,10 @@ class Activo extends BaseController {
         
                 $post_endpoint = '/api/deleteUbiActivo';
              
-                $request_data = $this->request->getPost();
-  
+                $request_data = [
+                  $this->request->getPost(),
+                  'user' =>$this->session->id
+              ];
                 $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
                 echo json_encode($response);
                 

@@ -178,13 +178,21 @@ document.getElementById("Agregar_tipo_activo").addEventListener("click",async fu
                         
                     })
                     .fail(function(error) {
-                      
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                  
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
         }else{
                 Swal.fire({
@@ -269,19 +277,27 @@ document.getElementById("Modificar_tipo_activo").addEventListener("click", funct
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui9");
+      
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -338,12 +354,20 @@ $('#table_tipo_activo tbody').on( 'click', 'deleteTipo_activo', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });

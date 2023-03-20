@@ -35,13 +35,21 @@ document.getElementById("btn_Logout").addEventListener("click",function(){
                                               
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo Cerrar Sesion, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo Cerrar Sesion, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
 

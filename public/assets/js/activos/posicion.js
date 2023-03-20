@@ -356,16 +356,24 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
         }else{
-            console.log("aqui7");
+          
                 Swal.fire({
                          icon: 'error',
                          title: 'Error',
@@ -375,7 +383,7 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
            
        
     }else{
-        console.log("aqu11");
+       
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -463,17 +471,25 @@ document.getElementById("Modificar_Posicion").addEventListener("click",async fun
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
         }else{
-            console.log("aqu11");
+          
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -532,13 +548,21 @@ $('#table_posicion tbody').on( 'click', 'deletePosicion', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });
 document.getElementById("id_empresa_pos").addEventListener("change",function(){

@@ -41,7 +41,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_estado" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_estado" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alert_estado">
                                         
@@ -92,7 +92,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_prioridad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_prioridad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alert_prioridad">
                                         
@@ -143,7 +143,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_alerSeguimiento" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_alerSeguimiento" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alert_alerSeguimiento">
                                         

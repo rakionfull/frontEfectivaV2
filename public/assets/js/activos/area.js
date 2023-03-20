@@ -208,13 +208,21 @@ document.getElementById("Agregar_area_empresa").addEventListener("click",functio
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo Agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo Agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
@@ -235,10 +243,10 @@ document.getElementById("Agregar_area_empresa").addEventListener("click",functio
 // // editar Area
 $('#table_area_empresa tbody').on( 'click', 'editAreaEmpresa', function(){
     $("#modal_area_empresa").modal("show");
-    document.getElementById("title-area").innerHTML = "Modificar";s
+    document.getElementById("title-area").innerHTML = "Modificar";
     if(idempresa != 0){
         $('#select_empresa').attr('disabled',true);
-    }s
+    }
     
     document.getElementById("form_area_empresa").reset();
     document.getElementById("Agregar_area_empresa").style.display = "none";
@@ -290,6 +298,7 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                        
                         if (respuesta) 
                         {
+                            $("#modal_area_empresa").modal("hide");
                             document.getElementById("form_area_empresa").reset();
                             
                             alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
@@ -304,13 +313,21 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo Editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo Editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
@@ -347,6 +364,7 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
+            console.log(respuesta);
             if (!respuesta.error) 
             {
                 alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
@@ -368,12 +386,20 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });

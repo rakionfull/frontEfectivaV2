@@ -17,21 +17,29 @@ function EjecutarChangeView(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-            console.log(data);
+           
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
+       
     
     }
 }
@@ -55,13 +63,21 @@ function EjecutarChangeCreate(id1,estado){
             //   console.log(data);
             })
             .fail(function(error) {
-                // alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            // alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     
@@ -87,18 +103,26 @@ function EjecutarChangeUpdate(id1,estado){
               
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
+     
     
     }
 }
@@ -122,18 +146,26 @@ function EjecutarChangeDelete(id1,estado){
               
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
+        
     
     }
 }

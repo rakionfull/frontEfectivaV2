@@ -10,19 +10,3 @@ document.getElementById("show_password").addEventListener("click", function(){
     }
   });
   
-  // $(document).ready(function () {
-  // //CheckBox mostrar contraseña
-  // $('#ShowPassword').click(function () {
-   
-  //   $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
-  // });
-  // });
-
-  
-  // $(document).ready(function () {
-  // //CheckBox mostrar contraseña
-  // $('#Show_password2').click(function () {
-  //   console.log("pas22");
-  //   $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
-  // });
-  // });

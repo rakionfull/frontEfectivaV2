@@ -31,7 +31,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+  
 })
 .always(function() {
 });        
@@ -70,7 +70,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+   
 })
 .always(function() {
 });        
@@ -107,7 +107,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+   
 })
 .always(function() {
 });        
@@ -144,7 +144,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+    
 })
 .always(function() {
 });        
@@ -183,7 +183,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+   
 })
 .always(function() {
 });        
@@ -220,7 +220,7 @@ $.ajax({
 
 })
 .fail(function(error) {
-    alert("Se produjo el siguiente error: ".err);
+    
 })
 .always(function() {
 });   

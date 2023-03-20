@@ -357,7 +357,7 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
-                            location.href = $('#base_url').val()+"/controles";
+                            location.href = $('#base_url').val()+"/controles/#/EvaluacionControl";
                         //    CargarDisenioOperatividad();
                         }else{
                             Swal.fire({
@@ -368,13 +368,21 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                         } 
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
         
            
@@ -467,13 +475,21 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                         
                     })
                     .fail(function(error) {
-                        // alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    // alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
         // }else{
@@ -537,12 +553,20 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });

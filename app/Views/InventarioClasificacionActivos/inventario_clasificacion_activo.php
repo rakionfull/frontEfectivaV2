@@ -20,7 +20,7 @@
                                 if($is_user_negocio){
                                     echo '
                                         <div class="col-md-3">
-                                            <button type="button" id="btn_add_ica" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                            <button type="button" id="btn_add_ica" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                         </div>
                                     ';
                                 }

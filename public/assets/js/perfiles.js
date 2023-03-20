@@ -197,13 +197,21 @@ document.getElementById("Agregar_Perfil").addEventListener("click",async functio
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
         }else{
@@ -298,13 +306,21 @@ document.getElementById("Modificar_Perfil").addEventListener("click", function()
                         
                     })
                     .fail(function(error) {
-                        alert("Error en el ajax");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                    alert("Error en el try");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
@@ -363,18 +379,26 @@ function EjecutarChangeView(id1,estado){
             console.log(data);
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
+      
     
     }
 }
@@ -398,19 +422,26 @@ function EjecutarChangeCreate(id1,estado){
               
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
-    
+      
     }
 }
 function EjecutarChangeUpdate(id1,estado){
@@ -433,18 +464,26 @@ function EjecutarChangeUpdate(id1,estado){
               
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
     catch(err) {
-        alert("Se produjo el siguiente error: ".err);
+       
     
     }
 }
@@ -468,13 +507,21 @@ function EjecutarChangeDelete(id1,estado){
               
             })
             .fail(function(error) {
-                alert("Se produjo el siguiente error: ".err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            alert("Se produjo el siguiente error: ".err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo activar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }

@@ -548,7 +548,11 @@ document.getElementById("Agregar_actividad").addEventListener("click",function()
                             
                         })
                         .fail(function(error) {
-                        
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                            })
                         })
                         .always(function() {
                         });
@@ -703,7 +707,11 @@ document.getElementById("Modificar_actividadesPlan").addEventListener("click", f
                                 
                             })
                             .fail(function(error) {
-                            
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                                })
                             })
                             .always(function() {
                             });
@@ -776,7 +784,11 @@ $('#table_actividadesPlan tbody').on( 'click', 'deleteActividad', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });

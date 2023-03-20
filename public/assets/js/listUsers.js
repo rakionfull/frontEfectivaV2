@@ -147,13 +147,21 @@ function EjecutarChangeUser(id,estado){
                 
             })
             .fail(function(error) {
-               
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo cambiar estado, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-           
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo cambiar estado, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
 
     }
@@ -225,7 +233,11 @@ document.getElementById("descarga_users").addEventListener("click",function(){
             location.href=$url;
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo ejecutar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });

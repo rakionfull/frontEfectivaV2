@@ -303,19 +303,27 @@ document.getElementById("Agregar_ubi_activo").addEventListener("click",async fun
                         
                     })
                     .fail(function(error) {
-                       
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                   
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
         
            
        
     }else{
-        console.log("aqui1");
+     
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -403,19 +411,27 @@ document.getElementById("Modificar_ubi_activo").addEventListener("click", functi
                         
                     })
                     .fail(function(error) {
-                       
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        })
                     })
                     .always(function() {
                     });
                 }
                 catch(err) {
-                  
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
                 }
             
            
        
     }else{
-        console.log("aqui9");
+       
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
@@ -472,13 +488,21 @@ $('#table_ubi_activo tbody').on( 'click', 'deleteUbiActivo', function(){
             
         })
         .fail(function(error) {
-            // alert("Error en el ajax");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         })
         .always(function() {
         });
     }
     catch(err) {
-        // alert("Error en el try");
+       Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo eliminar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 });
 

@@ -54,7 +54,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_ValoracionRiesgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_ValoracionRiesgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_ValoracionRiesgo">
                                         
@@ -98,7 +98,7 @@
                                 <h4 class="card-title">Lista de Tipo de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_tipo_reisgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_tipo_reisgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_tipo_riesgo">
                             </div>
@@ -138,8 +138,8 @@
                                 <h4 class="card-title">Lista de Probabilidad de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_probabilidad_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
-                                <button style="display:none;" type="button" id="btn_add_probabilidad_2" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_probabilidad_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
+                                <button style="display:none;" type="button" id="btn_add_probabilidad_2" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_probabilidad_riesgo">
                             </div>
@@ -221,8 +221,8 @@
                                 <h4 class="card-title">Lista de Impacto de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_impacto_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
-                                <button style="display:none;" type="button" id="btn_add_impacto_2" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_impacto_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
+                                <button style="display:none;" type="button" id="btn_add_impacto_2" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_impacto_riesgo">
                             </div>
@@ -304,7 +304,7 @@
                                 <h4 class="card-title">Lista de Nivel de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_nivel_riesgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_nivel_riesgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_nivel_riesgo">
                             </div>
@@ -349,7 +349,7 @@
                                 <h4 class="card-title">Lista de Tipos de Amenaza</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_tipo_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_tipo_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_tipo_amenaza">
                             </div>
@@ -388,7 +388,7 @@
                                 <h4 class="card-title">Lista de Descripcion de Amenazas</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_desc_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_desc_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_desc_amenaza">
                             </div>
@@ -426,7 +426,7 @@
                                 <h4 class="card-title">Lista de Categorías de Vulnerabilidad</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_categoria_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_categoria_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_categoria_vulnerabilidad">
                             </div>
@@ -465,7 +465,7 @@
                                 <h4 class="card-title">Lista de Descripciones de Vulnerabilidad</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
-                                <button type="button" id="btn_add_desc_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_desc_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                             <div class="col-12" style="margin-top:0.5rem" id="alerta_desc_vulnerabilidad">
                             </div>

@@ -35,7 +35,7 @@ function  cargarDatosPosEmpresa(){
     
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+       
     })
     .always(function() {
     });        
@@ -86,7 +86,7 @@ function cargarDatosPosArea($empresa,$dato) {
     
         })
         .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
+          
         })
         .always(function() {
         });   
@@ -135,7 +135,7 @@ function cargarDatosPosUnidad($empresa,$idarea,$dato) {
 
         })
         .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
+           
         })
         .always(function() {
         });
@@ -187,7 +187,7 @@ function cargarDatosPosPosicion($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+        
     })
     .always(function() {
     });   
@@ -238,7 +238,7 @@ function cargarDatosPosNombre($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+        
     })
     .always(function() {
     });   
@@ -288,7 +288,7 @@ function cargarDatosPosEstado($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+       
     })
     .always(function() {
     });   
@@ -338,7 +338,7 @@ function cargarDatosPosPrioridad($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+      
     })
     .always(function() {
     });   
@@ -388,7 +388,7 @@ function cargarDatosPosAlerta($empresa,$dato) {
 
     })
     .fail(function(error) {
-        alert("Se produjo el siguiente error: ".err);
+       
     })
     .always(function() {
     });   

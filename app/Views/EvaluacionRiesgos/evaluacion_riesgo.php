@@ -34,7 +34,7 @@
                                 <a href="<?= base_url('exportExcelEVA')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export</a>
                             </div>
                             <div class="col-12 col-md-2 ">
-                                <button type="button" id="btn_add_evaluacion_riesgo" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                <button type="button" id="btn_add_evaluacion_riesgo" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                             </div>
                         </div>
                     </div>

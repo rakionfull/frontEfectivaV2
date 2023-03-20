@@ -87,7 +87,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Cobertura" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Cobertura" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_cobertura">
                                         
@@ -128,7 +128,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_CaractControl" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_CaractControl" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_caractControl">
                                         
@@ -171,7 +171,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Disenio" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Disenio" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Disenio">
                                         
@@ -214,7 +214,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Definicion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Definicion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Definicion">
                                         
@@ -259,7 +259,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Objetivo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Objetivo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Objetivo">
                                         
@@ -303,7 +303,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_CalificacionDise" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_CalificacionDise" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CalificacionDise">
                                         
@@ -347,7 +347,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Operatividad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Operatividad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Operatividad">
                                         
@@ -391,7 +391,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Prueba" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Prueba" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Prueba">
                                         
@@ -436,7 +436,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Automatizacion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Automatizacion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Automatizacion">
                                         
@@ -481,7 +481,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_CalificacionOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_CalificacionOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CalificacionOpera">
                                         
@@ -525,7 +525,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_CaracteristicaOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_CaracteristicaOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CaracteristicaOpera">
                                         
@@ -567,7 +567,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_Opcion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_Opcion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Opcion">
                                         
@@ -614,7 +614,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_EvaluacionControl" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_EvaluacionControl" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_EvaluacionControl">
                                         
@@ -699,7 +699,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_AplicacionProbabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_AplicacionProbabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_AplicacionProbabilidad">
                                         
@@ -743,7 +743,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                 
-                                        <button type="button" id="btnAgregar_AplicacionImpacto" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</button>
+                                        <button type="button" id="btnAgregar_AplicacionImpacto" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_AplicacionImpacto">
                                         

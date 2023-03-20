@@ -108,47 +108,7 @@ document.onmousemove = function(){
         
 
     }
-//    async function getpermisos($opcion) {
-//      let resultado ;
-//                 const postData = { 
-//                     perfil: perfil,
-//                     opcion: $opcion
-//                 };
-//                 try {
-                        
-//                     $.ajax({
-//                         method: "POST",
-//                         url: BASE_URL+"/getPermisos",
-//                         data:postData,
-//                         dataType: "JSON"
-//                     })
-//                     .done(function(respuesta) {
-                    
-//                         console.log(respuesta.data);
-//                         resultado = respuesta.data;
-                                            
-//                     })
-//                     .fail(function(error) {
-                       
-//                     })
-//                     .always(function(erro) {
-                        
-//                     });
-//                 }
-//                 catch(err) {
-                    
-//                 }
-                       
-                           
-                                    
-           
-//             return resultado;
-               
-                           
-                                    
-           
-//     }
-   
+
     async function getPermisos($opcion) {
        
         let promise = new Promise((resolve, reject) => {

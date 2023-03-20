@@ -362,13 +362,21 @@ document.getElementById("btn_GuardarControl").addEventListener("click",function(
                 
             })
             .fail(function(error) {
-            
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
             })
             .always(function() {
             });
         }
         catch(err) {
-            
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
         }
     }else{
                 Swal.fire({

@@ -282,13 +282,21 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
                    
                })
                .fail(function(error) {
-               
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                })
                })
                .always(function() {
                });
            }
            catch(err) {
-               
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
            }
         }else{
             Swal.fire({
