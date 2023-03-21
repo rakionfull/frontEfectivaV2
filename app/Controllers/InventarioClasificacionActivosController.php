@@ -23,16 +23,16 @@ class InventarioClasificacionActivosController extends BaseController
         ]);
     }
 
-    public function getAll(){
+    public function getAll($id){
         if ($this->session->logged_in) {
             if($this->session->is_user_negocio){
-                $get_endpoint = '/api/getInventarioClasificacionActivoUser/'.$this->session->id;
+                $get_endpoint = '/api/getInventarioClasificacionActivoUser/'.$this->session->id.'/'.$id;
                 $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
                 if ($response) {
                     echo json_encode($response);
                 }
             }else{
-                $get_endpoint = '/api/listInventarioClasificacionActivo';
+                $get_endpoint = '/api/listInventarioClasificacionActivo/'.$id;
                 $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
                 if ($response) {
                     echo json_encode($response);
@@ -143,17 +143,17 @@ class InventarioClasificacionActivosController extends BaseController
             }
         }
     }
-    public function exportExcelICA(){
+    public function exportExcelICA($id){
         try {
             $data = [];
             if($this->session->is_user_negocio){
-                $get_endpoint = '/api/getInventarioClasificacionActivoUser/'.$this->session->id;
+                $get_endpoint = '/api/getInventarioClasificacionActivoUser/'.$this->session->id.'/'.$id;
                 $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
                 if ($response) {
                     $data = $response;
                 }
             }else{
-                $get_endpoint = '/api/listInventarioClasificacionActivo';
+                $get_endpoint = '/api/listInventarioClasificacionActivo/'.$id;
                 $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
                 if ($response) {
                     $data = $response;

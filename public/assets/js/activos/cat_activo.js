@@ -171,7 +171,7 @@ async function validacionCatActivo(){
 document.getElementById("btnAgregar_catActivo").addEventListener("click",function(){
                                 
     $("#modal_cat_activo").modal("show");
-    document.getElementById("title-cat_activo").innerHTML = "Agregar Tipo de activo";
+    document.getElementById("title-cat_activo").innerHTML = "Agregar Tipo de Activo";
     document.getElementById("form_cat_activo").reset();
     document.getElementById("Agregar_cat_activo").style.display = "block";
     document.getElementById("Modificar_cat_activo").style.display = "none";
@@ -185,7 +185,7 @@ document.getElementById("Agregar_cat_activo").addEventListener("click",async fun
     
     if($nom_cat !=""  && $est_cat != "" && $idvalor != ""){
        
-        if (!(await validacionCatActivo())){
+        // if (!(await validacionCatActivo())){
            
                 const postData = { 
                     categoria:document.getElementById("nom_categoria").value,
@@ -203,21 +203,39 @@ document.getElementById("Agregar_cat_activo").addEventListener("click",async fun
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta) 
+                        console.log(respuesta);
+                        // if (respuesta) 
+                        // {
+                        //     document.getElementById("form_tipo_activo").reset();
+                        //     $('#modal_cat_activo').modal('hide');
+                        //     alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
+                        //     'Categoría de activo Registrado Correctamente'+
+                        //     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                        //         '<span aria-hidden="true">&times;</span>'+
+                        //         '</button>'+
+                        //     '</div>';
+                        //     $("#table_cat_activo").DataTable().ajax.reload(null, false); 
+                           
+                        // } 
+                        if (respuesta.error==1) 
                         {
-                            document.getElementById("form_tipo_activo").reset();
+                            document.getElementById("form_cat_activo").reset();
                             $('#modal_cat_activo').modal('hide');
-                            alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Categoría de activo Registrado Correctamente'+
+                            alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_cat_activo").DataTable().ajax.reload(null, false); 
                            
-                        } 
-                        
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                     })
                     .fail(function(error) {
                         Swal.fire({
@@ -236,13 +254,13 @@ document.getElementById("Agregar_cat_activo").addEventListener("click",async fun
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-        }else{
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'La categoría de activo ya se encuentra registrado'
-                       })
-        }
+        // }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'La categoría de activo ya se encuentra registrado'
+        //                })
+        // }
            
        
     }else{
@@ -312,7 +330,7 @@ document.getElementById("Modificar_cat_activo").addEventListener("click", functi
                         {
                             document.getElementById("form_tipo_activo").reset();
                             $('#modal_cat_activo').modal('hide');
-                            alerta_tipo_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
+                            alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
                             'Modificado Correctamente'+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+

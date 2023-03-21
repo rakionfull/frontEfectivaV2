@@ -338,8 +338,8 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
-                      echo json_encode($response->msg);
+                  if($response){
+                      echo json_encode($response);
                   
                   }else{
                     echo json_encode(false);
@@ -467,8 +467,8 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
-                      echo json_encode($response->msg);
+                  if($response){
+                      echo json_encode($response);
                   
                   }else{
                     echo json_encode(false);
@@ -576,8 +576,8 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
-                      echo json_encode($response->msg);
+                  if($response){
+                      echo json_encode($response);
                   
                   }else{
                     echo json_encode(false);
@@ -1350,8 +1350,8 @@ class Activo extends BaseController {
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
                 // var_dump($response);
                 
-                  if($response->msg ){
-                      echo json_encode($response->msg);
+                  if($response){
+                      echo json_encode($response);
                   
                   }else{
                     echo json_encode(false);

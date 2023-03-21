@@ -93,13 +93,21 @@ document.onmousemove = function(){
                                                     
                             })
                             .fail(function(error) {
-                                alert("Error en el ajax");
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Error, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                                })
                             })
                             .always(function() {
                             });
                         }
                         catch(err) {
-                            // alert("Error en el try");
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Error, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                            })
                         }
                     
         

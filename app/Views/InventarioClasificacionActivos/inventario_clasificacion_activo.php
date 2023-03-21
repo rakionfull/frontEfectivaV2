@@ -1,5 +1,5 @@
 <?=$this->extend('Layout/main')?> 
-<?=$this->section('content')?>
+<?=$this->section('content');$session = session();?>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -10,13 +10,13 @@
                         </div>
                         <div class="d-flex">
                             <div class="col-md-6">
-                                <a href="<?= base_url('exportExcelICAHistoricos')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export Historicos</a>
+                                <a href="<?= base_url('exportExcelICAHistoricos')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
                             </div>
                             <div class="col-md-3">
-                                <a href="<?= base_url('exportExcelICA')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export</a>
+                                <a href="<?= base_url('exportExcelICA/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar</a>
                             </div>
                             <?php
-                                var_dump($is_user_negocio);
+                               
                                 if($is_user_negocio){
                                     echo '
                                         <div class="col-md-3">
@@ -295,5 +295,6 @@
         var idempresa = <?php echo json_encode($idempresa); ?>;
         var idarea = <?php echo json_encode($idarea); ?>;
     </script>
+     <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
     <script src="<?=base_url('public/assets/js/inventario_clasificacion_activo/index.js'); ?>"></script>
 <?=$this->endSection()?> 

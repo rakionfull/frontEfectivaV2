@@ -1,5 +1,5 @@
 <?=$this->extend('Layout/main')?> 
-<?=$this->section('content')?>
+<?=$this->section('content'); $session = session();?>
 
 <div class="row">
         <div class="col-12">
@@ -7,7 +7,7 @@
                 <div class="card-body mb-2">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md-12">                            
-                                <h4 class="card-title">Agregar</h4>
+                                <h4 class="card-title mb-2 ">AGREGAR</h4>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_plan">
                                         
                                     </div>
@@ -41,25 +41,29 @@
                                             
                                                       
                                                     <div class="col-lg-3">
-                                                        <button type="button" id="btnNuevo_control"  class="float-right btn btn-primary waves-effect waves-light"> Nuevo Control</button>
+                                                        <!-- <button type="button" id="btnNuevo_control"  class="float-right btn btn-primary waves-effect waves-light"> Nuevo Control</button>
+                                                         -->
+                                                        <?php if($session->permisos[12]->create_det==1){ ?>
+                                                            <a href="<?=base_url('create-controles'); ?>" class="float-left btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle ml-2"></i>  Agregar</a>
+                                                        <?php } ?>
                                                     </div> 
                                                 </div>
                                                 <div class="row">
                                                             <div class="col-lg-12">
-                                                                <h4 class="card-title">   Detalles del Plan</h4>
+                                                                <h4 class="card-title">   DETALLES DEL PLAN</h4>
                                                             </div> 
                                                 </div>
-                                                <div class="row">
+                                                <div class="row mb-2 mt-2">
                                                         
                                                         
-                                                        <div class="col-lg-6">
+                                                        <!-- <div class="col-lg-6">
                                                             <div class="form-group">  
                                                                                                          
                                                               <input type="text" placeholder="" class="form-control form-control-sm" id="id"  onKeyPress="return soloLetra(event);" disabled>
                                                             </div>
                                                         </div>
-                                                          
-                                                        <div class="col-lg-6">
+                                                           -->
+                                                        <div class="col-lg-12">
                                                             
                                                           
                                                             <input type="text" placeholder="Nombre del plan de accion" class="form-control form-control-sm" id="nombre_plan"  onKeyPress="return soloLetra(event);">
@@ -278,49 +282,7 @@
      
 
 
-                <div class="modal fade" id="modal_nuevoControl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg" role="document">
-                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="title-nuevoControl"></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" id="form_nuevoControl" class="in-line">
-                                    <input type="hidden" id="id_nuevoControl">
-                                    
-                                    <div class="col-12-lg">
-                                        <div class="row">
-                                              
-                                      
-                                                
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">                                                    
-                                                        <select name="" id="est_empresa" class="form-control form-control-sm">
-                                                        <option value="">Seleccione</option>
-                                                        <option value="1">IDC</option>
-                                                        <option value="2">IDC2</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                
-                                        </div>
-                                    </div>
-                                </form>  
-                                
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="Agregar_nuevoControl">Agregar</button>
-                                <button type="button" class="btn btn-primary" id="Modificar_nuevoControl">Guardar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                
 
 
 
@@ -460,7 +422,7 @@
 
                              <!------------------------------------------------------------------------------->
                 
-                        <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
+                             <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
                        <script src="<?=base_url('public/assets/js/planesAccion/cargarDatosCombo.js'); ?>"></script>   
                        <script src="<?=base_url('public/assets/js/planesAccion/actividadesPlan.js'); ?>"></script>
                        <script src="<?=base_url('public/assets/js/planesAccion/registrarPlan.js'); ?>"></script>

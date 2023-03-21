@@ -357,7 +357,8 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
-                            location.href = $('#base_url').val()+"/controles";
+                            // location.href = $('#base_url').val()+"/controles";
+                            location.href = "#/EvaluacionControl";
                         //    CargarDisenioOperatividad();
                         }else{
                             Swal.fire({
@@ -469,7 +470,7 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
-                            location.href = $('#base_url').val()+"/controles";
+                            location.href = "#/EvaluacionControl";
                             // CargarDisenioOperatividad();
                         } 
                         
@@ -529,19 +530,20 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
 
      
         .done(function(respuesta) {
-       
+            console.log(respuesta);
             if (respuesta.msg) 
             {
                 
                 alerta_EvaluacionControl.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado Correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+
                 '</div>';
 
                 // $("#table_EvaluacionControl").DataTable().ajax.reload(null, true); 
-                cargarOpciones();
+                //cargarOpciones();
+                location.href = "#/EvaluacionControl";
             }else{
                 alerta_EvaluacionControl.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
                 respuesta.error+

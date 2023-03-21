@@ -39,7 +39,7 @@ function loadTableInventarioClasificacionActivo(){
         lengthMenu:[5,10,25,50],
         pageLength:5,
         clickToSelect:false,
-        ajax: BASE_URL+"/getListInventarioClasificacionActivo",
+        ajax: BASE_URL+"/getListInventarioClasificacionActivo/"+idempresa,
         aoColumns: [
             {
                 data:null,
@@ -68,16 +68,23 @@ function loadTableInventarioClasificacionActivo(){
             {
                 data:null,
                 "mRender":function(data){
-                    if(is_user_negocio == 1){
+                    if(is_user_negocio == 0){
                         if(data.ica_estado == 1 || data.ica_estado == 3 || data.ica_estado == 4){
-                            return `<editICA data-id="${data.ica_id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editICA>
-                            <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
+                             return `<editICA data-id="${data.ica_id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editICA>
+                             <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
+                            // // return data.ica_estado;
+                            // return is_user_negocio;
+                            // return is_user_negocio;
                         }else{
-                            return ` <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
+                            // return data.ica_estado;
+                            // return is_user_negocio;
+                            return `<deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
                         }
                     }else{
+                       
                         return `<editICA data-id="${data.ica_id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editICA>
                         <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
+                    
                     }
                     
                 }
@@ -946,7 +953,7 @@ $('#button_close_modal_ica').click(function(){
 $('#export_ica').click(function(){
     $.ajax({
         method: "get",
-        url: BASE_URL+"/exportExcelICA",
+        url: BASE_URL+"/exportExcelICA/"+idempresa,
         dataType: "JSON"
     })
     .done(function(respuesta) {

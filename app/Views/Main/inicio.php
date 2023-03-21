@@ -22,5 +22,5 @@
                     </div>
                 </div>
         </div>
-       
+        <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
 <?=$this->endSection()?> 

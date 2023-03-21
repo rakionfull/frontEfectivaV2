@@ -152,7 +152,11 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
                   });
               }
               catch(err) {
-                 
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+              })
               }
           
          

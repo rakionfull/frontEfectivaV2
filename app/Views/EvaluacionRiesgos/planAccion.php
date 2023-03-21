@@ -69,7 +69,7 @@
 
 
 
-                <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
+                <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
                 <script src="<?=base_url('public/assets/js/planesAccion/index.js'); ?>"></script>   
        
                 <input type="hidden" id="create" value=<?php echo($session->permisos[13]->create_det)?>>

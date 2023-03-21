@@ -70,7 +70,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
        tipo = $tipo;
        clasi = $clasi
         document.getElementById("card-title-opcion").innerHTML = "";
-        document.getElementById("card-title-opcion").innerHTML = "Caracteristica de Control";
+        document.getElementById("card-title-opcion").innerHTML = "Característica de Control";
         if ($.fn.DataTable.isDataTable('#table_Opcion')){
         
             $('#table_Opcion').DataTable().rows().remove();

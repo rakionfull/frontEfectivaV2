@@ -131,7 +131,7 @@ async function validacionValorActivo(dato){
 document.getElementById("btnAgregar_ValorActivo").addEventListener("click",function(){
 
     $("#modal_valorActivo").modal("show");
-    document.getElementById("title-valorActivo").innerHTML = "Agregar valor Activo";
+    document.getElementById("title-valorActivo").innerHTML = "Agregar Valor Activo";
     document.getElementById("form_valorActivo").reset();
     document.getElementById("Agregar_valorActivo").style.display = "block";
     document.getElementById("Modificar_valorActivo").style.display = "none";
@@ -168,7 +168,7 @@ document.getElementById("Agregar_valorActivo").addEventListener("click",async fu
                         {
                             document.getElementById("form_valorActivo").reset();
                             $('#modal_valorActivo').modal('hide');
-                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            alerta_valorActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
                             +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+

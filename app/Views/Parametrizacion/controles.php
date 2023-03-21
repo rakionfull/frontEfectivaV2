@@ -15,7 +15,7 @@
                                        
                                             <li id="Cobertura" ><a href="#/Cobertura" >Cobertura</a></li>
                                     
-                                            <li id="Opcion" ><a href="#/Opcion_general" >Caracteristicas de Control</a></li>
+                                            <li id="Opcion" ><a href="#/Opcion_general" >Características de Control</a></li>
                                             <div id="caja_caracteristica" class="">
                                                 <!-- <li id="Disenio">
                                                     <div class="opciones">
@@ -694,7 +694,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Aplicacion de la Probabilidad</h4>
+                                        <h4 class="card-title">Aplicación de la Probabilidad</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -738,7 +738,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Aplicacion del Impacto</h4>
+                                        <h4 class="card-title">Aplicación del Impacto</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -843,14 +843,14 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Caracteristica' class="form-control form-control-sm" id="nom_caract"  onKeyPress="return soloLetra(event);">
+                                                        <input type="text" placeholder='Caracteristica' class="form-control form-control-sm" id="nom_caract"  >
                                                     </div>
                                                 </div>
                                       
                                                 
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Descripción' class="form-control form-control-sm" id="desc_caract"  onKeyPress="return soloLetra(event);">
+                                                        <input type="text" placeholder='Descripción' class="form-control form-control-sm" id="desc_caract" >
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
@@ -1415,7 +1415,7 @@
                                         <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <input type="text"  class="form-control form-control-sm" id="nom_opcion"  onKeyPress="return soloLetra(event);">
+                                                        <input type="text"  class="form-control form-control-sm" id="nom_opcion"  ">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" id="apartcali_opcion">

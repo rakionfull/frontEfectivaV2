@@ -7,7 +7,7 @@
                         <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Registro de Inventario de Controles</h4>
+                                        <h4 class="card-title">REGISTRO DE INVENTARIO DE CONTROLES</h4>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Controles">
                                         
@@ -37,7 +37,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h5 class="card-title" style="margin: 1rem 1rem 2rem 0rem;">Riesgo Asociado</h5>
+                                    <h5 class="card-title" style="margin: 1rem 1rem 2rem 0rem;">RIESGO ASOCIADO</h5>
                                 </div>
     
                             </div>
@@ -144,7 +144,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h5 class="card-title">Evaluación</h5> 
+                                    <h5 class="card-title">EVALUACIÓN</h5> 
                                 </div>
     
                             </div>
@@ -168,7 +168,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h5 class="card-title">Cobertura</h5>
+                                    <h5 class="card-title">COBERTURA</h5>
                                 </div>
     
                             </div>
@@ -209,5 +209,6 @@
               
                
 </div>
+<script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
 <script src="<?=base_url('public/assets/js/registro_controles/registro_controles.js'); ?>"></script>
 <?=$this->endSection()?> 

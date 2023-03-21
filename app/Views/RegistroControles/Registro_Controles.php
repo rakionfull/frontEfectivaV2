@@ -90,5 +90,6 @@
               
                
 </div>
+<script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
 <script src="<?=base_url('public/assets/js/registro_controles/list_controles.js'); ?>"></script>
 <?=$this->endSection()?> 

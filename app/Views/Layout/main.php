@@ -36,8 +36,8 @@ $session = session();?>
                                 <img class="rounded-circle header-profile-user" src="<?=base_url('public/images/avatar_login.png') ?>"
                                     alt="Header Avatar">
                                
-                                    <span class="d-none d-xl-inline-block ml-3 mr-3 text-left font-size-14" ><?=$session->user?> <br>
-                                    <?=strtolower($session->perfil)?></span>
+                                    <span class="d-none d-xl-inline-block ml-3 mr-3 text-left font-size-14" ><?php echo utf8_decode($session->user)?> <br>
+                                    <?php echo strtolower(utf8_decode($session->perfil))?></span>
                                     
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
@@ -123,7 +123,7 @@ $session = session();?>
                                 <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                                         <i class="fas fa-list-alt"></i>
-                                        <span>Evaluacion de Riesgos de Seguridad en Porrcesos de Negocio</span>
+                                        <span>Evaluación de Riesgos de Seguridad en Procesos de Negocio</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
                                     <?php if($session->permisos[10]->view_det==1){ ?>

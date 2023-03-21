@@ -126,11 +126,11 @@ function cargarDatosPosArea($empresa,$dato) {
                 
             
                     datos.data.forEach(dato => {
-                        if(dato["id"] == $dato){
+                        if(dato["id_pos"] == $dato){
                     
-                            $("#id_puesto").append('<option value='+dato["id"]+' selected>'+dato["posicion_puesto"]+'</option>');
+                            $("#id_puesto").append('<option value='+dato["id_pos"]+' selected>'+dato["posicion_puesto"]+'</option>');
                         }else{
-                            $("#id_puesto").append('<option value='+dato["id"]+'>'+dato["posicion_puesto"]+'</option>');
+                            $("#id_puesto").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
                         }
                         
                         

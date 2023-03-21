@@ -133,7 +133,7 @@ function LoadTableAplicacionImpacto($update,$delete) {
 document.getElementById("btnAgregar_AplicacionImpacto").addEventListener("click",function(){
 
     $("#modal_AplicacionImpacto").modal("show");
-    document.getElementById("title-AplicacionImpacto").innerHTML = "Agregar Evaluacion de Control";
+    document.getElementById("title-AplicacionImpacto").innerHTML = "Agregar Aplicación de Impacto";
     document.getElementById("form_AplicacionImpacto").reset();
     document.getElementById("Agregar_AplicacionImpacto").style.display = "block";
     document.getElementById("Modificar_AplicacionImpacto").style.display = "none";
@@ -235,7 +235,7 @@ document.getElementById("Agregar_AplicacionImpacto").addEventListener("click", f
 //editar  evlauacion de control
 $('#table_AplicacionImpacto tbody').on( 'click', 'editAplicacionImpacto', function(){
     $("#modal_AplicacionImpacto").modal("show");
-    document.getElementById("title-AplicacionImpacto").innerHTML = "Modificar Aplicacion de la Probabilidad";
+    document.getElementById("title-AplicacionImpacto").innerHTML = "Modificar Aplicacion de Impacto";
     document.getElementById("form_AplicacionImpacto").reset();
     document.getElementById("Agregar_AplicacionImpacto").style.display = "none";
     document.getElementById("Modificar_AplicacionImpacto").style.display = "block";

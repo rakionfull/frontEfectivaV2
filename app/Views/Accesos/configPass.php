@@ -142,4 +142,5 @@ $session = session();
                                 </div>
                             </div> <!-- end col -->
             </div> <!-- end row -->
+            <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
 <?=$this->endSection()?> 

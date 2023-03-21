@@ -1,5 +1,5 @@
 <?=$this->extend('Layout/main')?> 
-<?=$this->section('content')?>
+<?=$this->section('content');$session = session();?>
 <div id="spinner_evaluacion" class="justify-content-center" style="display: none;">
     <div class="spinner-border" role="status">
       <span class="visually-hidden"></span>
@@ -28,10 +28,10 @@
                                 <button type="button" id="btn_view_riesgos" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-info align-middle mr-2 ml-2"></i> Resumen</button>
                             </div>
                             <div class="col-12 col-md-4 ">
-                                <a href="<?= base_url('exportExcelEVAHistorial')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export Historicos</a>
+                                <a href="<?= base_url('exportExcelEVAHistorial')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
                             </div>
                             <div class="col-12 col-md-2 ">
-                                <a href="<?= base_url('exportExcelEVA')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Export</a>
+                                <a href="<?= base_url('exportExcelEVA/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar</a>
                             </div>
                             <div class="col-12 col-md-2 ">
                                 <button type="button" id="btn_add_evaluacion_riesgo" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -233,7 +233,7 @@
                                     <div class="form-group">
                                         <span>Probabilidad: </span>
                                         <input type="hidden" id="id_probabilidad">
-                                        <input required type="text" class="form-control form-control-sm" id="probabilidad">
+                                        <input required type="text" class="form-control form-control-sm" id="probabilidad" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -246,13 +246,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Impacto: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="impacto">
+                                        <input required type="text" class="form-control form-control-sm" id="impacto" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Valor: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="valor">
+                                        <input required type="text" class="form-control form-control-sm" id="valor" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -266,19 +266,19 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Probabilidad: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_probabilidad">
+                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_probabilidad" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Impacto: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_impacto">
+                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_impacto" disabled> 
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Valor: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_valor">
+                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_valor" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -315,5 +315,6 @@
         var update = <?php echo json_encode($update); ?>;
         var eliminar = <?php echo json_encode($eliminar); ?>;
     </script>
+     <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
     <script src="<?=base_url('public/assets/js/riesgos/evaluacion_riesgo.js'); ?>"></script>
 <?=$this->endSection()?> 

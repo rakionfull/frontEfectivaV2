@@ -134,7 +134,7 @@ function LoadTableAplicacionProbabilidad($update,$delete) {
 document.getElementById("btnAgregar_AplicacionProbabilidad").addEventListener("click",function(){
 
     $("#modal_AplicacionProbabilidad").modal("show");
-    document.getElementById("title-AplicacionProbabilidad").innerHTML = "Agregar Evaluacion de Control";
+    document.getElementById("title-AplicacionProbabilidad").innerHTML = "Agregar Aplicación de la Probabilidad";
     document.getElementById("form_AplicacionProbabilidad").reset();
     document.getElementById("Agregar_AplicacionProbabilidad").style.display = "block";
     document.getElementById("Modificar_AplicacionProbabilidad").style.display = "none";
@@ -238,7 +238,7 @@ document.getElementById("Agregar_AplicacionProbabilidad").addEventListener("clic
 //editar  evlauacion de control
 $('#table_AplicacionProbabilidad tbody').on( 'click', 'editAplicacionProbabilidad', function(){
     $("#modal_AplicacionProbabilidad").modal("show");
-    document.getElementById("title-AplicacionProbabilidad").innerHTML = "Modificar Aplicacion de la Probabilidad";
+    document.getElementById("title-AplicacionProbabilidad").innerHTML = "Modificar Aplicación de la Probabilidad";
     document.getElementById("form_AplicacionProbabilidad").reset();
     document.getElementById("Agregar_AplicacionProbabilidad").style.display = "none";
     document.getElementById("Modificar_AplicacionProbabilidad").style.display = "block";

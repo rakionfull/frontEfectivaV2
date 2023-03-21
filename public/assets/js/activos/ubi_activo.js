@@ -230,7 +230,7 @@ function LoadTableUbiActivo($update,$delete) {
 document.getElementById("btnAgregar_UbiActivo").addEventListener("click",function(){
                                 
     $("#modal_ubi_activo").modal("show");
-    document.getElementById("title-ubi_activo").innerHTML = "Agregar Ubicacion de Activo";
+    document.getElementById("title-ubi_activo").innerHTML = "Agregar Ubicación de Activo";
     document.getElementById("form_ubi_activo").reset();
     document.getElementById("Agregar_ubi_activo").style.display = "block";
     document.getElementById("Modificar_ubi_activo").style.display = "none";

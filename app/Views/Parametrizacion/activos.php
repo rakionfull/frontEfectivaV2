@@ -79,7 +79,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Empresas</h4>
+                                        <h4 class="card-title">Empresas</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -127,7 +127,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Áreas</h4>
+                                        <h4 class="card-title">Áreas</h4>
                                     </div>
                                 
                                     
@@ -453,7 +453,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Valor de Activos</h4>
+                                        <h4 class="card-title">Valor de Activos</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -502,7 +502,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Tipo de Activos</h4>
+                                        <h4 class="card-title">Tipo de Activos</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -551,11 +551,11 @@
                         <div class="card">
                             <div class="card-body ">
                                 <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Clasificacion de informacion</h4>
+                                    <div class="col-md-5">
+                                        <h4 class="card-title">Clasificación de información</h4>
                                     </div>
                                 
-                                    <div class="col-md-4 offset-md-4">
+                                    <div class="col-md-3 offset-md-4">
                                 
                                         <button type="button" id="btnAgregar_Clas_informacion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
                                     </div>

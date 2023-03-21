@@ -130,7 +130,7 @@ async function validacionTipoActivo(dato){
 document.getElementById("btnAgregar_Tipo_activo").addEventListener("click",function(){
                                 
     $("#modal_tipo_activo").modal("show");
-    document.getElementById("title-tipo_activo").innerHTML = "Agregar Tipo de activo";
+    document.getElementById("title-tipo_activo").innerHTML = "Agregar Tipo de Activo";
     document.getElementById("form_tipo_activo").reset();
     document.getElementById("Agregar_tipo_activo").style.display = "block";
     document.getElementById("Modificar_tipo_activo").style.display = "none";
@@ -144,7 +144,7 @@ document.getElementById("Agregar_tipo_activo").addEventListener("click",async fu
     
     if($nom_tip !=""  && $est_tip != ""){
        
-        if (!(await validacionTipoActivo($nom_tip))){
+        // if (!(await validacionTipoActivo($nom_tip))){
            
                 const postData = { 
                     tipo:$nom_tip,
@@ -161,20 +161,39 @@ document.getElementById("Agregar_tipo_activo").addEventListener("click",async fu
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta) 
+                        console.log(respuesta);
+                        // if (respuesta) 
+                        // {
+                        //     document.getElementById("form_tipo_activo").reset();
+                        //     $('#modal_tipo_activo').modal('hide');
+                        //     alerta_tipo_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
+                        //     'Tipo Activo Registrado Correctamente'+
+                        //     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                        //         '<span aria-hidden="true">&times;</span>'+
+                        //         '</button>'+
+                        //     '</div>';
+                        //     $("#table_tipo_activo").DataTable().ajax.reload(null, false); 
+                           
+                        // } 
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_tipo_activo").reset();
                             $('#modal_tipo_activo').modal('hide');
-                            alerta_tipo_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Tipo Activo Registrado Correctamente'+
+                            alerta_tipo_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_tipo_activo").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -194,13 +213,13 @@ document.getElementById("Agregar_tipo_activo").addEventListener("click",async fu
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-        }else{
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'El tipo de activo ya se encuentra registrado'
-                       })
-        }
+        // }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'El tipo de activo ya se encuentra registrado'
+        //                })
+        // }
            
        
     }else{

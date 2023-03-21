@@ -131,6 +131,7 @@
                 </div>
                
         </div>
+        
         <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
         <script src="<?=base_url('public/assets/js/perfiles.js'); ?>"></script>
 <?=$this->endSection()?> 

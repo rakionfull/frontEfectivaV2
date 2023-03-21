@@ -219,7 +219,7 @@ async function validacionValActivo(){
 document.getElementById("btnAgregar_valActivo").addEventListener("click",function(){
                                 
     $("#modal_valActivo").modal("show");
-    document.getElementById("title-valActivo").innerHTML = "Agregar Valoracion de Activo";
+    document.getElementById("title-valActivo").innerHTML = "Agregar Valoración de Activo";
     document.getElementById("form_valActivo").reset();
     document.getElementById("Agregar_valActivo").style.display = "block";
     document.getElementById("Modificar_valActivo").style.display = "none";
@@ -238,7 +238,7 @@ document.getElementById("Agregar_valActivo").addEventListener("click",async func
     $id_valor_val=document.getElementById("id_valor_val").value;
     
     if($id_aspecto1 !=""  && $id_aspecto2 != "" && $id_aspecto3 !=""  && $nom_val1 != "" && $nom_val2 !=""  && $nom_val3 != "" && $id_valor_val !="" ){
-        if (!(await validacionValActivo())){
+        // if (!(await validacionValActivo())){
                 const postData = { 
                     id_aspecto1:document.getElementById("id_aspecto1").value,
                     id_aspecto2:document.getElementById("id_aspecto2").value,
@@ -260,20 +260,39 @@ document.getElementById("Agregar_valActivo").addEventListener("click",async func
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta) 
+                        console.log(respuesta);
+                        // if (respuesta) 
+                        // {
+                        //     document.getElementById("form_valActivo").reset();
+                        //     $('#modal_valActivo').modal('hide');
+                        //     alert_valActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
+                        //     'Valoracion de Activo Registrado'+
+                        //     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                        //         '<span aria-hidden="true">&times;</span>'+
+                        //         '</button>'+
+                        //     '</div>';
+                        //     $("#table_valActivo").DataTable().ajax.reload(null, false); 
+                           
+                        // } 
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_valActivo").reset();
                             $('#modal_valActivo').modal('hide');
-                            alert_valActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Valoracion de Activo Registrado'+
+                            alert_valActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_valActivo").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -293,13 +312,13 @@ document.getElementById("Agregar_valActivo").addEventListener("click",async func
                         text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            }else{
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'La Valoracion de activo ya se encuentra registrado'
-                       })
-          }
+        //     }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'La Valoracion de activo ya se encuentra registrado'
+        //                })
+        //   }
            
        
     }else{
@@ -316,7 +335,7 @@ document.getElementById("Agregar_valActivo").addEventListener("click",async func
 //editar valoracion activo
 $('#table_valActivo tbody').on( 'click', 'editvalActivo', function(){
     $("#modal_valActivo").modal("show");
-    document.getElementById("title-valActivo").innerHTML = "Modificar Valoracion de Activo";
+    document.getElementById("title-valActivo").innerHTML = "Modificar Valoración de Activo";
     document.getElementById("form_valActivo").reset();
     document.getElementById("Agregar_valActivo").style.display = "none";
     document.getElementById("Modificar_valActivo").style.display = "block";
@@ -446,7 +465,7 @@ $('#table_valActivo tbody').on( 'click', 'deletevalActivo', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
+             console.log(respuesta);
             if (!respuesta.error) 
             {
                 

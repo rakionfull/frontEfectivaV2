@@ -30,9 +30,9 @@ class EvaluacionRiesgoController extends BaseController
         }
     }
 
-    public function getAll(){
+    public function getAll($id){
         if ($this->session->logged_in) {
-            $get_endpoint = '/api/listEvaluacionRiesgos/';
+            $get_endpoint = '/api/listEvaluacionRiesgos/'.$id;
             $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
             if ($response) {
                 echo json_encode($response);
@@ -142,10 +142,10 @@ class EvaluacionRiesgoController extends BaseController
         }
     }
 
-    public function exportExcelEVA(){
+    public function exportExcelEVA($id){
         try {
             $data = [];
-            $get_endpoint = '/api/listEvaluacionRiesgos/';
+            $get_endpoint = '/api/listEvaluacionRiesgos/'.$id;
             $file_name = 'evaluacion_riesgo.xlsx';
             $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
             if ($response) {

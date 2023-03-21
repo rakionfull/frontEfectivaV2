@@ -1,5 +1,5 @@
 <?=$this->extend('Layout/main')?> 
-<?=$this->section('content')?>
+<?=$this->section('content'); $session = session();?>
 
 <div class="row">
         <div class="col-12">
@@ -7,7 +7,7 @@
                 <div class="card-body mb-2">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md-12">                            
-                                <h4 class="card-title">Agregar</h4>
+                                <h4 class="card-title">Modificar</h4>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_plan">
                                         
                                     </div>
@@ -41,25 +41,29 @@
                                             
                                                       
                                                     <div class="col-lg-3">
-                                                        <button type="button" id="btnNuevo_control"  class="float-right btn btn-primary waves-effect waves-light"> Nuevo Control</button>
-                                                    </div> 
+                                                          <!-- <button type="button" id="btnNuevo_control"  class="float-right btn btn-primary waves-effect waves-light"> Nuevo Control</button>
+                                                     -->
+                                                        <?php if($session->permisos[12]->create_det==1){ ?>
+                                                            <a href="<?=base_url('create-controles'); ?>" class="float-left btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle ml-2"></i>  Agregar</a>
+                                                        <?php } ?>
+                                                     </div> 
                                                 </div>
                                                 <div class="row">
                                                             <div class="col-lg-12">
                                                                 <h4 class="card-title">   Detalles del Plan</h4>
                                                             </div> 
                                                 </div>
-                                                <div class="row">
+                                                <div class="row mt-2 mb-2">
                                                         
                                                         
-                                                        <div class="col-lg-6">
+                                                        <!-- <div class="col-lg-6">
                                                             <div class="form-group">  
                                                                                                          
                                                               <input type="text" placeholder="" class="form-control form-control-sm" id="id"  onKeyPress="return soloLetra(event);" disabled>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                           
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-12">
                                                             
                                                           
                                                             <input type="text" placeholder="Nombre del plan de accion" class="form-control form-control-sm" id="nombre_plan"  onKeyPress="return soloLetra(event);">
@@ -212,8 +216,7 @@
                    
                 </script>
                 
-                        <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
-                        <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
+                        <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
 
                        <script src="<?=base_url('public/assets/js/planesAccion/cargarDatosCombo.js'); ?>"></script>   
                        <script src="<?=base_url('public/assets/js/planesAccion/updatePlan.js'); ?>"></script>

@@ -113,8 +113,8 @@ $session = session();?>
                                                             <?php 
                                                                 echo "<option value=''>Posición/Puesto</option>";
                                                                 foreach ($posicion as $key => $value) {
-                                                                    if($value->id == $user->idposicion ) echo "<option value='".$value->id."' selected>".$value->posicion_puesto."</option>";
-                                                                    else echo "<option value='".$value->id."'>".$value->posicion_puesto."</option>";
+                                                                    if($value->id_pos == $user->idposicion ) echo "<option value='".$value->id_pos."' selected>".$value->posicion_puesto."</option>";
+                                                                    else echo "<option value='".$value->id_pos."'>".$value->posicion_puesto."</option>";
                                                                 }
                                                                  
                                                                 ?>
@@ -195,6 +195,7 @@ $session = session();?>
                                
                             </div> <!-- end col -->
             </div> <!-- end row -->
+            <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
             <script src="<?=base_url('public/assets/js/updateUser.js'); ?>"></script>
             <script src="<?=base_url('public/assets/js/acceso/createUser.js'); ?>"></script>
 <?=$this->endSection()?> 

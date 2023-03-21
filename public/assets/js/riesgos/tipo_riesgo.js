@@ -116,6 +116,7 @@ document.getElementById("add_tipo_riego").addEventListener('click',function(){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
+                console.log(respuesta);
                 if (respuesta) 
                 {
                     document.getElementById("form_tipo_riesgo").reset();

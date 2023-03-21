@@ -90,5 +90,6 @@
         </div>
        <input type="hidden" id="edit" value="<?php echo($session->permisos[3]->update_det) ?>">
        <input type="hidden" id="delete" value="<?php echo($session->permisos[3]->delete_det) ?>">
+       <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
         <script src="<?=base_url('public/assets/js/listUsers.js'); ?>"></script>
 <?=$this->endSection()?> 

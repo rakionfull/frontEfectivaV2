@@ -369,7 +369,7 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'deleteValoracionRiesgo', functi
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
+             console.log(respuesta);
             if (!respuesta.error) 
             {
                 
@@ -386,7 +386,7 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'deleteValoracionRiesgo', functi
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: respuesta.msg
+                    text: respuesta.error
                 })
             } 
             

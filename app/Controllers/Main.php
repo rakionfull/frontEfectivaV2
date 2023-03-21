@@ -425,8 +425,9 @@ class Main extends BaseController {
                 'posicion' =>  $posicion->data,
                 
              ];
-      
-              return view('accesos/updateUser',$data);
+              // var_dump($response->datos);
+              //  var_dump($response->datos);
+            return view('accesos/updateUser',$data);
             }else{
               return redirect()->to(base_url('/listUsers'));
             }
@@ -455,8 +456,8 @@ class Main extends BaseController {
                                 "username" =>  $this->session->user,
                                 "id" =>  $this->session->id,
                               ];
-              $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
-             
+             $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
+            //var_dump($request_data);
               if(isset($response->error)){
                 $get_endpoint = '/api/getPerfiles';
                 $request_data = ['estado' => 1];
@@ -562,8 +563,8 @@ class Main extends BaseController {
             "id" =>  $this->session->id,
           ];
           $response = perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data);
-         
-          if($response->user ){
+         var_dump($response);
+          if(!$response->error ){
                  $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
             Usuario eliminado correctamente
              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -573,7 +574,7 @@ class Main extends BaseController {
             return redirect()->to(base_url('/listUsers'));
           }else{
               $this->session->setFlashdata('error','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-              Error al eliminar
+             '.$response->msg.'
                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                    <span aria-hidden="true">&times;</span>
                </button>

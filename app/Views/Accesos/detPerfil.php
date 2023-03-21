@@ -151,5 +151,6 @@
                     </div>
                 </div>
         </div>
+        <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
         <script src="<?=base_url('public/assets/js/detPerfil.js'); ?>"></script>
 <?=$this->endSection()?> 

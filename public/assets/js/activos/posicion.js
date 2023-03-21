@@ -76,7 +76,7 @@ function  cargarDatosPosEmpresa($dato){
     
                    
                     $("#id_area_pos").empty();
-                    $("#id_area_pos").append('<option value="" selected>Area</option>');
+                    $("#id_area_pos").append('<option value="" selected>Área</option>');
             
                 
             
@@ -299,7 +299,7 @@ document.getElementById("btnAgregar_Posicion").addEventListener("click",function
 
     $("#modal_posicion").modal("show");
    
-    document.getElementById("title-posicion").innerHTML = "Agregar Posicion/Puesto";
+    document.getElementById("title-posicion").innerHTML = "Agregar Posición/Puesto";
     document.getElementById("form_posicion").reset();
     document.getElementById("Agregar_Posicion").style.display = "block";
     document.getElementById("Modificar_Posicion").style.display = "none";
@@ -342,15 +342,15 @@ document.getElementById("Agregar_Posicion").addEventListener("click",async funct
                         console.log(respuesta);
                         if (respuesta.error==1) 
                         {
-                            document.getElementById("form_empresa").reset();
-                            $('#modal_empresa').modal('hide');
-                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            document.getElementById("form_posicion").reset();
+                            $('#modal_posicion').modal('hide');
+                            alerta_posicion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
                             +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
-                            $("#table_empresa").DataTable().ajax.reload(null, false); 
+                            $("#table_posicion").DataTable().ajax.reload(null, false); 
                            
                         } else{
                             Swal.fire({

@@ -95,7 +95,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Tipo de riesgo</h4>
+                                <h4 class="card-title">Tipo de Riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_tipo_reisgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>

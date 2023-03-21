@@ -165,12 +165,12 @@ document.getElementById("Agregar_clas_informacion").addEventListener("click",asy
                     })
                     .done(function(respuesta) {
                      
-                      
+                        console.log(respuesta);
                         if (respuesta.error==1) 
                         {
                             document.getElementById("form_clas_informacion").reset();
                             $('#modal_clas_informacion').modal('hide');
-                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            alerta_clas_informacion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
                             +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+

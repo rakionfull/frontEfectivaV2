@@ -110,13 +110,13 @@ var plan = $('#id_plan').val();
         datos2 += element.id + "-";
        
     });
-    if($valida.resultado){
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: $valida.msg
-      })
-    }else{
+    // if($valida.resultado){
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Error',
+    //     text: $valida.msg
+    //   })
+    // }else{
       // $id_riesgo=document.getElementById("id_riesgo").value;
           // $id_control=document.getElementById("id_control").value;
           $nombre_plan=document.getElementById("nombre_plan").value;
@@ -191,7 +191,7 @@ var plan = $('#id_plan').val();
                                   '</div>';
                                 
                               
-                                
+                                location.href = $('#base_url').val() + '/planAccion'
                               
                                 //   $("#table_actividadesPlan").DataTable().ajax.reload(null, false); 
                                 
@@ -231,7 +231,7 @@ var plan = $('#id_plan').val();
         //              })
         // }
         
-    }
+    
     
   
   

@@ -42,7 +42,7 @@ function loadTableEvaluacionRiesgos(){
         lengthMenu:[5,10,25,50],
         pageLength:5,
         clickToSelect:false,
-        ajax: BASE_URL+"/listEvaluacionRiesgos",
+        ajax: BASE_URL+"/listEvaluacionRiesgos/"+idempresa,
         aoColumns: [
             { "data": "id" },
             { "data": "riesgo" },
@@ -385,7 +385,8 @@ $('#add_eva').click(function(){
     $riesgo_controlado_impacto = $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val()
     $riesgo_controlado_valor = $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val()
     $estado = $('#modal_evaluacion_riesgo #estado').val()
-
+// $impacto != "" &&    $probabilidad != "" &&    $riesgo_controlado_probabilidad != "" &&
+    //    $riesgo_controlado_impacto != "" &&
     if(
         $tipo_riesgo != "" &&
         $empresa != "" &&
@@ -400,13 +401,12 @@ $('#add_eva').click(function(){
         $desc_vulnerabilidad != "" &&
         $riesgo != "" &&
         $valor_probabilidad != "" &&
-        $probabilidad != "" &&
+      
         $valor_impacto != "" &&
-        $impacto != "" &&
+       
         $valor != "" &&
         $control != "" &&
-        $riesgo_controlado_probabilidad != "" &&
-        $riesgo_controlado_impacto != "" &&
+     
         $riesgo_controlado_valor != "" &&
         $estado != ""
     ){
@@ -442,6 +442,7 @@ $('#add_eva').click(function(){
                 dataType:"JSON"
             })
             .done(function(response){
+                console.log(response);
                 if(!response.error){
                     document.getElementById('form_eva').reset()
                     $('#modal_evaluacion_riesgo').modal('hide')
@@ -804,7 +805,8 @@ $('#update_eva').click(function(){
     $riesgo_controlado_impacto = $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val()
     $riesgo_controlado_valor = $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val()
     $estado = $('#modal_evaluacion_riesgo #estado').val()
-
+    //$probabilidad != "" &&  $impacto != "" &&   $riesgo_controlado_probabilidad != "" &&
+      //  $riesgo_controlado_impacto != "" &&
     if(
         $tipo_riesgo != "" &&
         $empresa != "" &&
@@ -819,13 +821,12 @@ $('#update_eva').click(function(){
         $desc_vulnerabilidad != "" &&
         $riesgo != "" &&
         $valor_probabilidad != "" &&
-        $probabilidad != "" &&
+        
         $valor_impacto != "" &&
-        $impacto != "" &&
+       
         $valor != "" &&
         $control != "" &&
-        $riesgo_controlado_probabilidad != "" &&
-        $riesgo_controlado_impacto != "" &&
+      
         $riesgo_controlado_valor != "" &&
         $estado != ""
     ){
@@ -2542,7 +2543,7 @@ function getAplicacionProbabilidad(caracteristica){
         dataType:'JSON'
     })
     .done(function(respuesta){
-      
+      console.log(respuesta);
         if(escenario == 2){
             $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
             index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)

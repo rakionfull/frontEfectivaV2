@@ -203,6 +203,7 @@ $('#table_tipo_amenaza tbody').on( 'click', 'deleteAmenaza', function(event){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
+                console.log(respuesta);
                 if (!respuesta.error) 
                 {
                     alerta_tipo_amenaza.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+

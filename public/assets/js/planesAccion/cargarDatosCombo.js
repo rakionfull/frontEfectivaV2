@@ -147,18 +147,21 @@ function cargarDatosPosPosicion($empresa,$dato) {
     //cargando las areas
     const postData = { 
         idempresa:$empresa,
-       
-        
-    }
+        // empresa:$empresa,
+        // area:$area,
+        // unidad:$unidad,
+    } 
+    // console.log("hola");
     console.log(postData);
         $.ajax({
             method: "POST",
             url: BASE_URL+"/activo/getPosicionByActivo",
+            // url: BASE_URL+"/activo/getPosicionByArea",
             dataType: "JSON",
             data: postData
         })
         .done(function(respuesta) {
-            // console.log(respuesta);
+             console.log(respuesta);
             if (respuesta) 
             {
                 let datos = respuesta;
@@ -171,11 +174,11 @@ function cargarDatosPosPosicion($empresa,$dato) {
             
         
                 datos.data.forEach(dato => {
-                    if(dato["id"] == $dato){
+                    if(dato["id_pos"] == $dato){
                 
-                        $("#id_puesto").append('<option value='+dato["id"]+' selected>'+dato["posicion_puesto"]+'</option>');
+                        $("#id_puesto").append('<option value='+dato["id_pos"]+' selected>'+dato["posicion_puesto"]+'</option>');
                     }else{
-                        $("#id_puesto").append('<option value='+dato["id"]+'>'+dato["posicion_puesto"]+'</option>');
+                        $("#id_puesto").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
                     }
                     
                     
@@ -192,6 +195,58 @@ function cargarDatosPosPosicion($empresa,$dato) {
     .always(function() {
     });   
 }
+// function cargarDatosPosPosicion($empresa,$dato) {
+//     //cargando las areas
+//     const postData = { 
+//         //idempresa:$empresa,
+//         empresa:$empresa,
+//         area:$area,
+//         unidad:$unidad,
+//     } 
+//     // console.log("hola");
+//     console.log(postData);
+//         $.ajax({
+//             method: "POST",
+//             url: BASE_URL+"/activo/getPosicionByActivo",
+//             url: BASE_URL+"/activo/getPosicionByArea",
+//             dataType: "JSON",
+//             data: postData
+//         })
+//         .done(function(respuesta) {
+//              console.log(respuesta);
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+            
+
+               
+//                 $("#id_puesto").empty();
+//                 $("#id_puesto").append('<option value="" selected>Posicion/Puesto</option>');
+        
+            
+        
+//                 datos.data.forEach(dato => {
+//                     if(dato["id_pos"] == $dato){
+                
+//                         $("#id_puesto").append('<option value='+dato["id_pos"]+' selected>'+dato["posicion_puesto"]+'</option>');
+//                     }else{
+//                         $("#id_puesto").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
+//                     }
+                    
+                    
+                
+//                 });
+//             } 
+//             else
+//             {  }
+
+//     })
+//     .fail(function(error) {
+        
+//     })
+//     .always(function() {
+//     });   
+// }
 
 
 function cargarDatosPosNombre($empresa,$dato) {
@@ -251,7 +306,7 @@ function cargarDatosPosEstado($empresa,$dato) {
        
         
     }
-    console.log(postData);
+    // console.log(postData);
         $.ajax({
             method: "POST",
             url: BASE_URL+"/activo/getEstadoByActivo",
@@ -301,7 +356,7 @@ function cargarDatosPosPrioridad($empresa,$dato) {
        
         
     }
-    console.log(postData);
+    // console.log(postData);
         $.ajax({
             method: "POST",
             url: BASE_URL+"/activo/getPrioridadByActivo",
@@ -351,7 +406,7 @@ function cargarDatosPosAlerta($empresa,$dato) {
        
         
     }
-    console.log(postData);
+    // console.log(postData);
         $.ajax({
             method: "POST",
             url: BASE_URL+"/activo/getAlertaByActivo",
@@ -431,6 +486,14 @@ document.getElementById("id_area_pos").addEventListener("change",function(){
     }
     
 });
+// document.getElementById("id_unidad_pos").addEventListener("change",function(){
+    
+//     if($('#id_unidad_pos').val() != "" ){
+//         cargarDatosPosUnidad($('#id_empresa_pos').val(),$('#id_area_pos').val(),$('#id_unidad_pos').val());
+
+//     }
+    
+// });
 function fecha($dato){
     var fecha=$dato;
 

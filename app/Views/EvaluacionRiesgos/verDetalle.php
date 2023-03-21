@@ -47,17 +47,17 @@
                                                                 <h4 class="card-title">   Detalles del Plan</h4>
                                                             </div> 
                                                 </div>
-                                                <div class="row">
+                                                <div class="row mt-2 mb-2">
                                                         
                                                         
-                                                        <div class="col-lg-6">
+                                                        <!-- <div class="col-lg-6">
                                                             <div class="form-group">  
                                                                                                          
                                                               <input type="text" placeholder="" class="form-control form-control-sm" id="id"  onKeyPress="return soloLetra(event);" disabled>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                           
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-12">
                                                             
                                                           
                                                             <input type="text" placeholder="Nombre del plan de accion" class="form-control form-control-sm" id="nombre_plan"  onKeyPress="return soloLetra(event);" disabled>
@@ -449,7 +449,7 @@
 
 
                                       
-                <script src="<?=base_url('public/assets/js/planesAccion/main_das.js'); ?>"></script>   
+                <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
                           
                 <script src="<?=base_url('public/assets/js/planesAccion/cargarDatosCombo.js'); ?>"></script>           
                 
