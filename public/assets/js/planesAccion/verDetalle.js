@@ -241,6 +241,7 @@ var alerta_actividadesPlan = document.getElementById("alert_actividadesPlan");
     
    
 // }
+
 function cargarTablaAtividades($id) {
     if ($.fn.DataTable.isDataTable('#table_actividadesPlan')){
         
@@ -298,11 +299,28 @@ function cargarTablaAtividades($id) {
             { "data": "posicion" },            
             { "data": "nombre" },
             { "data": "descripcion" },            
-            { "data": "fecha_inicio" },            
-            { "data": "fecha_fin",
+         
+            {  "data": "fecha_inicio",
+                "bSortable": false,
+                "mRender": function(data, type, value) {
 
-            
+                    return  data.split(" ")[0].split("-").reverse().join("-");
+                    
+                    
+
+                }
             },
+            {  "data": "fecha_fin",
+                "bSortable": false,
+                "mRender": function(data, type, value) {
+
+                    return  data.split(" ")[0].split("-").reverse().join("-");
+                    
+                    
+
+                }
+            },          
+          
 
             { "defaultContent": "<editActividad class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editActividad>"+
             "<deleteActividad class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteActividad>"
@@ -605,6 +623,18 @@ window.addEventListener("load", () => {
         // cargarDatosPosEmpresa();
         cargarDatos(plan);
         cargarTablaAtividades(plan);
+        cargarDatosEmpresaAct(idempresa);
+    
+        document.getElementById('id_comboEmpresa').disabled  = true;
+        document.getElementById('id_comboArea').disabled  = true;
+        cargarDatosAreaAct(idempresa,idarea);
+        // cargarDatosPosPosicion(idempresa);
+        
+        cargarDatosUnidadAct(idempresa,idarea);
+        cargarDatosPosicionAct(idempresa,idarea,idunidad);
+        cargarDatosNombreAct(idempresa);
+      
+        cargarDatosAlertaAct(idempresa);
        
     //}
     
@@ -636,6 +666,7 @@ $('#table_actividadesPlan tbody').on( 'click', 'editActividad', function(){
         document.getElementById("descripcion_actividad").value=regDat[0]["descripcion"];
         document.getElementById("fecha_inicio").value=fecha(regDat[0]["fecha_inicio"]);
         document.getElementById("fecha_fin").value=fecha(regDat[0]["fecha_fin"]);
+        
         document.getElementById("id_comboAlert").value=regDat[0]["idalerta"];
         document.getElementById("progreso").value=regDat[0]["progreso"];      
      
@@ -810,4 +841,13 @@ $('#table_actividadesPlan tbody').on( 'click', 'deleteActividad', function(){
     catch(err) {
         // alert("Error en el try");
     }
+});
+
+document.getElementById("id_comboUnidades").addEventListener("change",function(){
+    
+    if($('#id_comboUnidades').val() != "" ){
+        cargarDatosPosicionAct(idempresa,idarea,$('#id_comboUnidades').val());
+
+    }
+    
 });

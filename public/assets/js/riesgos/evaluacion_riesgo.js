@@ -479,13 +479,14 @@ $('#add_eva').click(function(){
 })
 $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
     $('#table_evaluacion_riesgo tbody editEVA').attr('disabled',true)
-    $('#title_eva').html('Modificar Evaluacion de riesgo');
+    $('#title_eva').html('Modificar Evaluación de Riesgo');
     let id_empresa_default = 0
     let tipo_riesgos = $.ajax({
         url:BASE_URL+"/main/getTipoRiesgos",
         dataType:'JSON'
     })
     .done(function(response){
+       
         $('#modal_evaluacion_riesgo #tipo_riesgo option').remove()
         $('#modal_evaluacion_riesgo #tipo_riesgo').append(
             `<option value=''>Seleccionar</option>`
@@ -504,6 +505,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         dataType:'JSON'
     })
     .done(function(response){
+       
         $('#modal_evaluacion_riesgo #empresa option').remove()
         $('#modal_evaluacion_riesgo #empresa').append(
             `<option value=''>Seleccionar</option>`
@@ -527,6 +529,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         dataType:'JSON'
     })
     .done(function(resarea){
+      
         $('#modal_evaluacion_riesgo #area option').remove()
         $('#modal_evaluacion_riesgo #area').append(
             `<option value=''>Seleccionar</option>`
@@ -540,10 +543,13 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let unidades = $.ajax({
+        method: "GET",
         url:BASE_URL+"/activo/getUnidades/"+idempresa,
+        data:postData,
         dataType:'JSON'
     })
     .done(function(resarea){
+       
         $('#modal_evaluacion_riesgo #unidad option').remove()
         $('#modal_evaluacion_riesgo #unidad').append(
             `<option value=''>Seleccionar</option>`
@@ -557,10 +563,12 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let macroproceso = $.ajax({
+        method: "GET",
         url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
         dataType:'JSON'
     })
     .done(function(resarea){
+       
         $('#modal_evaluacion_riesgo #macroproceso option').remove()
         $('#modal_evaluacion_riesgo #macroproceso').append(
             `<option value=''>Seleccionar</option>`
@@ -574,10 +582,12 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         }
     })
     let proceso = $.ajax({
+        method: "GET",
         url:BASE_URL+"/activo/getProceso/"+idempresa,
         dataType:'JSON'
     })
     .done(function(resarea){
+       
         $('#modal_evaluacion_riesgo #proceso option').remove()
         $('#modal_evaluacion_riesgo #proceso').append(
             `<option value=''>Seleccionar</option>`
@@ -595,6 +605,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         dataType:'JSON'
     })
     .done(function(resarea){
+       
         $('#modal_evaluacion_riesgo #tipo_amenaza option').remove()
         $('#modal_evaluacion_riesgo #tipo_amenaza').append(
             `<option value=''>Seleccionar</option>`
@@ -611,7 +622,8 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         url:BASE_URL+"/main/getDescAmenaza",
         dataType:'JSON'
     })
-    .done(function(resarea){
+    .done(function(resarea){ 
+       
         $('#modal_evaluacion_riesgo #desc_amenaza option').remove()
         $('#modal_evaluacion_riesgo #desc_amenaza').append(
             `<option value=''>Seleccionar</option>`
@@ -629,6 +641,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         dataType:'JSON'
     })
     .done(function(resarea){
+      
         $('#modal_evaluacion_riesgo #tipo_vulnerabilidad option').remove()
         $('#modal_evaluacion_riesgo #tipo_vulnerabilidad').append(
             `<option value=''>Seleccionar</option>`
@@ -646,6 +659,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
         dataType:'JSON'
     })
     .done(function(resarea){
+        
         $('#modal_evaluacion_riesgo #desc_vulnerabilidad option').remove()
         $('#modal_evaluacion_riesgo #desc_vulnerabilidad').append(
             `<option value=''>Seleccionar</option>`
@@ -660,10 +674,11 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
     })
 
     let activos = $.ajax({
-        url:BASE_URL+"/getListInventarioClasificacionActivo",
+        url:BASE_URL+"/getListInventarioClasificacionActivo/"+idempresa,
         dataType:'json'
     })
     .done(function(respuesta){
+        
         $('#modal_evaluacion_riesgo #activo option').remove()
         $('#modal_evaluacion_riesgo #activo').append(
             `<option value=''>Seleccionar</option>`

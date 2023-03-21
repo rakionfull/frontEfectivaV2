@@ -177,6 +177,15 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
 
 });
 
+document.getElementById("id_comboUnidades").addEventListener("change",function(){
+    
+  if($('#id_comboUnidades').val() != "" ){
+      cargarDatosPosicionAct(idempresa,idarea,$('#id_comboUnidades').val());
+
+  }
+  
+});
+
 
 
 

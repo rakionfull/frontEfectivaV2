@@ -56,10 +56,27 @@ function LoadTable_PlanAccion($create,$update,$delete) {
             { "data": "responsable" },            
             { "data": "estado" },
             { "data": "prioridad" },
-            { "data": "fecha_inicio" },
-            { "data": "fecha_fin",
+      
+            {  "data": "fecha_inicio",
+                "bSortable": false,
+                "mRender": function(data, type, value) {
 
-            },  
+                    return  data.split(" ")[0].split("-").reverse().join("-");
+                    
+                    
+
+                }
+            },
+            {  "data": "fecha_fin",
+            "bSortable": false,
+            "mRender": function(data, type, value) {
+
+                return  data.split(" ")[0].split("-").reverse().join("-");
+                
+                
+
+            }
+        },
             {  "data": "id",
                         
             "mRender": function(data, type, value) {

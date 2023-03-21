@@ -18,20 +18,20 @@ try {
             $("#id_empresa_pos").empty();
             $("#id_empresa_pos").append('<option value="" selected>Empresa</option>');
 
-            document.getElementById('id_comboEmpresa').disabled  = true;
-            $("#id_comboEmpresa").empty();
-            $("#id_comboEmpresa").append('<option value="" selected>Empresa</option>');
+            // document.getElementById('id_comboEmpresa').disabled  = true;
+            // $("#id_comboEmpresa").empty();
+            // $("#id_comboEmpresa").append('<option value="" selected>Empresa</option>');
 
 
             datos.data.forEach(dato => {
 
                     if(idempresa == dato['id']){
                         $("#id_empresa_pos").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
-                        $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+                       // $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
                     
                     }else{
                         $("#id_empresa_pos").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
-                        $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+                       // $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
                     
                     }
                 
@@ -84,20 +84,20 @@ function cargarDatosPosArea($empresa,$dato) {
                         $("#id_area_pos").append('<option value="" selected>Area</option>');
                         
                         
-                        document.getElementById('id_comboArea').disabled  = true;
-                        $("#id_comboArea").empty();
-                        $("#id_comboArea").append('<option value="" selected>Area</option>');
+                        // document.getElementById('id_comboArea').disabled  = true;
+                        // $("#id_comboArea").empty();
+                        // $("#id_comboArea").append('<option value="" selected>Area</option>');
                 
                 
                         datos.data.forEach(dato => {
                             if(dato["id"] == $dato){
                         
                                 $("#id_area_pos").append('<option value='+dato["id"]+' selected>'+dato["area"]+'</option>');
-                                $("#id_comboArea").append('<option value='+dato["id"]+' selected>'+dato["area"]+'</option>');
+                                //$("#id_comboArea").append('<option value='+dato["id"]+' selected>'+dato["area"]+'</option>');
                             
                             }else{
                                 $("#id_area_pos").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
-                                $("#id_comboArea").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
+                                //$("#id_comboArea").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
                            
                             }
                             
@@ -148,8 +148,8 @@ function cargarDatosPosUnidad($empresa,$idarea,$dato) {
                 $("#id_unidad_pos").append('<option value="" selected>Unidad</option>');
                 
                 
-                $("#id_comboUnidades").empty();
-                $("#id_comboUnidades").append('<option value="" selected>Unidad</option>');
+                // $("#id_comboUnidades").empty();
+                // $("#id_comboUnidades").append('<option value="" selected>Unidad</option>');
         
             
         
@@ -157,12 +157,12 @@ function cargarDatosPosUnidad($empresa,$idarea,$dato) {
                     if(dato["id"] == $dato){
                 
                         $("#id_unidad_pos").append('<option value='+dato["id"]+' selected>'+dato["unidad"]+'</option>');
-                        $("#id_comboUnidades").append('<option value='+dato["id"]+' selected>'+dato["unidad"]+'</option>');
+                       // $("#id_comboUnidades").append('<option value='+dato["id"]+' selected>'+dato["unidad"]+'</option>');
         
 
                     }else{
                         $("#id_unidad_pos").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>'); 
-                        $("#id_comboUnidades").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>'); 
+                       // $("#id_comboUnidades").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>'); 
                     
                     }
                     
@@ -220,8 +220,8 @@ function cargarDatosPosPosicion($empresa,$idarea,$idunidad,$dato) {
                     $("#id_puesto").append('<option value="" selected>Posicion/Puesto</option>');
                     
                     
-                    $("#id_comboPosicion").empty();
-                    $("#id_comboPosicion").append('<option value="" selected>Posicion/Puesto</option>');
+                    // $("#id_comboPosicion").empty();
+                    // $("#id_comboPosicion").append('<option value="" selected>Posicion/Puesto</option>');
             
                 
             
@@ -233,7 +233,7 @@ function cargarDatosPosPosicion($empresa,$idarea,$idunidad,$dato) {
                         
                         }else{
                             $("#id_puesto").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
-                            $("#id_comboPosicion").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
+                           // $("#id_comboPosicion").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
                         
                         }
                         
@@ -336,18 +336,18 @@ function cargarDatosPosNombre($empresa,$dato) {
                 $("#id_nombre_pos").empty();
                 $("#id_nombre_pos").append('<option value="" selected>Responsable</option>');
         
-                $("#id_comboUsers").empty();
-                $("#id_comboUsers").append('<option value="" selected>Responsable</option>');
+                // $("#id_comboUsers").empty();
+                // $("#id_comboUsers").append('<option value="" selected>Responsable</option>');
         
                 datos.data.forEach(dato => {
                     if(dato["id_us"] == $dato){
                 
                         $("#id_nombre_pos").append('<option value='+dato["id_us"]+' selected>'+dato["nombres_us"]+'</option>');
-                        $("#id_comboUsers").append('<option value='+dato["id_us"]+' selected>'+dato["nombres_us"]+'</option>');
+                     //   $("#id_comboUsers").append('<option value='+dato["id_us"]+' selected>'+dato["nombres_us"]+'</option>');
                     
                     }else{
                         $("#id_nombre_pos").append('<option value='+dato["id_us"]+'>'+dato["nombres_us"]+'</option>');
-                        $("#id_comboUsers").append('<option value='+dato["id_us"]+' >'+dato["nombres_us"]+'</option>');
+                       // $("#id_comboUsers").append('<option value='+dato["id_us"]+' >'+dato["nombres_us"]+'</option>');
                     
                     }
                     
@@ -513,8 +513,8 @@ function cargarDatosPosAlerta($empresa,$dato) {
                     $("#id_alerta_pos").empty();
                     $("#id_alerta_pos").append('<option value="" selected>Alerta de Seguimiento</option>');
 
-                    $("#id_comboAlert").empty();
-                    $("#id_comboAlert").append('<option value="" selected>Alerta de Seguimiento</option>');
+                    // $("#id_comboAlert").empty();
+                    // $("#id_comboAlert").append('<option value="" selected>Alerta de Seguimiento</option>');
 
                 
 
@@ -522,11 +522,11 @@ function cargarDatosPosAlerta($empresa,$dato) {
                         if(dato["id"] == $dato){
                     
                             $("#id_alerta_pos").append('<option value='+dato["id"]+' selected>'+dato["alerta"]+'</option>');
-                            $("#id_comboAlert").append('<option value='+dato["id"]+' selected>'+dato["alerta"]+'</option>');
+                            //$("#id_comboAlert").append('<option value='+dato["id"]+' selected>'+dato["alerta"]+'</option>');
                         
                         }else{
                             $("#id_alerta_pos").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
-                            $("#id_comboAlert").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
+                            //$("#id_comboAlert").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
                             
                         }
                         
@@ -549,6 +549,393 @@ function cargarDatosPosAlerta($empresa,$dato) {
    
     
 }
+
+//funciones para los combobox de actividades
+function  cargarDatosEmpresaAct(){
+       
+    try {
+        $('#spinner-div').show();
+        $.ajax({
+            method: "POST",
+            url: BASE_URL+"/activo/getEmpresasByActivo",
+            dataType: "JSON"
+        })
+        .done(function(respuesta) {
+            $('#spinner-div').hide();
+           console.log(respuesta);
+            if (respuesta) 
+            {
+                let datos = respuesta;
+                // $("#id_empresa_pos").empty();
+                // $("#id_empresa_pos").append('<option value="" selected>Empresa</option>');
+    
+                document.getElementById('id_comboEmpresa').disabled  = true;
+                $("#id_comboEmpresa").empty();
+                $("#id_comboEmpresa").append('<option value="" selected>Empresa</option>');
+    
+    
+                datos.data.forEach(dato => {
+    
+                        if(idempresa == dato['id']){
+                          //  $("#id_empresa_pos").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+                            $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+                        
+                        }else{
+                           // $("#id_empresa_pos").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+                            $("#id_comboEmpresa").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+                        
+                        }
+                    
+                
+                });
+            } 
+            else
+            {  }
+        
+        })
+        .fail(function(error) {
+           
+        })
+        .always(function() {
+        }); 
+    } catch (error) {
+        
+    }
+        //cargando las empresas
+             
+        
+    }
+    
+    function cargarDatosAreaAct($empresa,$dato) {
+            //cargando las areas
+            try {
+                $('#spinner-div').show();
+                const postData = { 
+                    idempresa:$empresa,
+                   
+                    
+                }
+                console.log(postData);
+                    $.ajax({
+                        method: "POST",
+                        url: BASE_URL+"/activo/getAreasByActivo",
+                        dataType: "JSON",
+                        data: postData
+                    })
+                    .done(function(respuesta) {
+                        console.log(respuesta);
+                        $('#spinner-div').hide();
+                        if (respuesta) 
+                        {
+                            let datos = respuesta;
+                        
+            
+                           
+                            // $("#id_area_pos").empty();
+                            // $("#id_area_pos").append('<option value="" selected>Area</option>');
+                            
+                            
+                            document.getElementById('id_comboArea').disabled  = true;
+                            $("#id_comboArea").empty();
+                            $("#id_comboArea").append('<option value="" selected>Area</option>');
+                    
+                    
+                            datos.data.forEach(dato => {
+                                if(dato["id"] == $dato){
+                            
+                                    //$("#id_area_pos").append('<option value='+dato["id"]+' selected>'+dato["area"]+'</option>');
+                                    $("#id_comboArea").append('<option value='+dato["id"]+' selected>'+dato["area"]+'</option>');
+                                
+                                }else{
+                                //$("#id_area_pos").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
+                                    $("#id_comboArea").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
+                               
+                                }
+                                
+                                
+                            
+                            });
+                        } 
+                        else
+                        {  }
+            
+                })
+                .fail(function(error) {
+                  
+                })
+                .always(function() {
+                });  
+            } catch (error) {
+                
+            }
+            
+    }
+    
+    function cargarDatosUnidadAct($empresa,$idarea,$dato) {
+    
+        try {
+            $('#spinner-div').show();
+            const postData = { 
+                idempresa:$empresa,
+                idarea:$idarea,
+               
+            }
+          
+            //cargando las Unidades
+            $.ajax({
+                method: "POST",
+                url: BASE_URL+"/activo/getUnidadByActivo",
+                dataType: "JSON",
+                data:postData
+            })
+            .done(function(respuesta) {
+                $('#spinner-div').hide();
+                if (respuesta) 
+                {
+                    let datos = respuesta;
+                
+    
+                    // $("#id_unidad_pos").empty();
+                    // $("#id_unidad_pos").append('<option value="" selected>Unidad</option>');
+                    
+                    
+                    $("#id_comboUnidades").empty();
+                    $("#id_comboUnidades").append('<option value="" selected>Unidad</option>');
+            
+                
+            
+                    datos.data.forEach(dato => {
+                        if(dato["id"] == $dato){
+                    
+                           // $("#id_unidad_pos").append('<option value='+dato["id"]+' selected>'+dato["unidad"]+'</option>');
+                            $("#id_comboUnidades").append('<option value='+dato["id"]+' selected>'+dato["unidad"]+'</option>');
+            
+    
+                        }else{
+                            //$("#id_unidad_pos").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>'); 
+                            $("#id_comboUnidades").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>'); 
+                        
+                        }
+                        
+                    
+                    });
+                } 
+                else
+                {  }
+    
+            })
+            .fail(function(error) {
+               
+            })
+            .always(function() {
+            });
+        } catch (error) {
+            
+        }
+           
+    
+    }
+    
+    
+    function cargarDatosPosicionAct($empresa,$idarea,$idunidad,$dato) {
+        //cargando las areas
+        try {
+            $('#spinner-div').show();
+            const postData = { 
+                idempresa:$empresa,
+                idarea:$idarea,
+                idunidad:$idunidad,
+                // empresa:$empresa,
+                // area:$area,
+                // unidad:$unidad,
+            } 
+            // console.log("hola");
+            console.log(postData);
+                $.ajax({
+                    method: "POST",
+                    url: BASE_URL+"/activo/getPosicionByUnidad",
+                    // url: BASE_URL+"/activo/getPosicionByArea",
+                    dataType: "JSON",
+                    data: postData
+                })
+                .done(function(respuesta) {
+                    $('#spinner-div').hide();
+                     console.log(respuesta);
+                    if (respuesta) 
+                    {
+                        let datos = respuesta;
+                    
+        
+                       
+                        // $("#id_puesto").empty();
+                        // $("#id_puesto").append('<option value="" selected>Posicion/Puesto</option>');
+                        
+                        
+                        $("#id_comboPosicion").empty();
+                        $("#id_comboPosicion").append('<option value="" selected>Posicion/Puesto</option>');
+                
+                    
+                
+                        datos.data.forEach(dato => {
+                            if(dato["id_pos"] == $dato){
+                        
+                               // $("#id_puesto").append('<option value='+dato["id_pos"]+' selected>'+dato["posicion_puesto"]+'</option>');
+                               $("#id_comboPosicion").append('<option value='+dato["id_pos"]+' selected>'+dato["posicion_puesto"]+'</option>');
+                            
+                            }else{
+                               // $("#id_puesto").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
+                                $("#id_comboPosicion").append('<option value='+dato["id_pos"]+'>'+dato["posicion_puesto"]+'</option>');
+                            
+                            }
+                            
+                            
+                        
+                        });
+                    } 
+                    else
+                    {  }
+        
+            })
+            .fail(function(error) {
+                
+            })
+            .always(function() {
+            });
+        } catch (error) {
+            
+        }
+          
+    }
+        // }
+    
+    
+    function cargarDatosNombreAct($empresa,$dato) {
+        //cargando Nombre
+        try {
+            $('#spinner-div').show();
+            const postData = { 
+                idempresa:$empresa,
+               
+                
+            }
+            $.ajax({
+                method: "POST",
+                url: BASE_URL+"/activo/getUserByActivo",
+                dataType: "JSON",
+                data: postData
+            })
+            .done(function(respuesta) {
+                console.log(respuesta);
+                $('#spinner-div').hide();
+                if (respuesta) 
+                {
+                    let datos = respuesta;
+                
+    
+                   
+                    // $("#id_nombre_pos").empty();
+                    // $("#id_nombre_pos").append('<option value="" selected>Responsable</option>');
+            
+                    $("#id_comboUsers").empty();
+                    $("#id_comboUsers").append('<option value="" selected>Responsable</option>');
+            
+                    datos.data.forEach(dato => {
+                        if(dato["id_us"] == $dato){
+                    
+                           // $("#id_nombre_pos").append('<option value='+dato["id_us"]+' selected>'+dato["nombres_us"]+'</option>');
+                            $("#id_comboUsers").append('<option value='+dato["id_us"]+' selected>'+dato["nombres_us"]+'</option>');
+                        
+                        }else{
+                            //$("#id_nombre_pos").append('<option value='+dato["id_us"]+'>'+dato["nombres_us"]+'</option>');
+                            $("#id_comboUsers").append('<option value='+dato["id_us"]+' >'+dato["nombres_us"]+'</option>');
+                        
+                        }
+                        
+                        
+                    
+                    });
+                } 
+                else
+                {  }
+    
+        })
+        .fail(function(error) {
+            
+        })
+        .always(function() {
+        });   
+        } catch (error) {
+            
+        }
+        
+        // console.log(postData);
+           
+    }
+    
+    
+    
+    function cargarDatosAlertaAct($empresa,$dato) {
+        //cargando las areas
+        try {
+            $('#spinner-div').show();
+    // console.log(postData);
+                const postData = { 
+                    idempresa:$empresa,
+                
+                    
+                }
+                $.ajax({
+                    method: "POST",
+                    url: BASE_URL+"/activo/getAlertaByActivo",
+                    dataType: "JSON",
+                    data: postData
+                })
+                .done(function(respuesta) {
+                    $('#spinner-div').hide();
+                    if (respuesta) 
+                    {
+                        let datos = respuesta;
+                    
+    
+                    
+                      
+    
+                        $("#id_comboAlert").empty();
+                        $("#id_comboAlert").append('<option value="" selected>Alerta de Seguimiento</option>');
+    
+                    
+    
+                        datos.data.forEach(dato => {
+                            if(dato["id"] == $dato){
+                        
+                            //    $("#id_alerta_pos").append('<option value='+dato["id"]+' selected>'+dato["alerta"]+'</option>');
+                                $("#id_comboAlert").append('<option value='+dato["id"]+' selected>'+dato["alerta"]+'</option>');
+                            
+                            }else{
+                              //  $("#id_alerta_pos").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
+                                $("#id_comboAlert").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
+                                
+                            }
+                            
+                            
+                        
+                        });
+                    } 
+                    else
+                    {  }
+    
+                })
+                .fail(function(error) {
+    
+                })
+                .always(function() {
+                });   
+        } catch (error) {
+            
+        }
+       
+        
+    }
 
 
 window.addEventListener("load", () => {
@@ -595,14 +982,7 @@ document.getElementById("id_unidad_pos").addEventListener("change",function(){
     }
     
 });
-document.getElementById("id_comboUnidades").addEventListener("change",function(){
-    
-    if($('#id_comboUnidades').val() != "" ){
-        cargarDatosPosPosicion(idempresa,idarea,$('#id_comboUnidades').val());
 
-    }
-    
-});
 
 function fecha($dato){
     var fecha=$dato;

@@ -56,8 +56,8 @@ var plan = $('#id_plan').val();
           // cargarDatosPosArea(response.idempresa,response.idarea);
 
           // cargarDatosPosArea(response.idempresa,response.idarea);
-          // cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
-          // cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
+          cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
+          cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
           // cargarDatosPosNombre(response.idempresa,response.idusuario);
           cargarDatosPosEstado(response.idempresa,response.idestado);
           cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
@@ -133,14 +133,14 @@ var plan = $('#id_plan').val();
         
           $id_empresa_pos=document.getElementById("id_empresa_pos").value;
           $id_area_pos=document.getElementById("id_area_pos").value;
-          $id_unidad_pos=document.getElementById("id_unidad_pos").value;
-          $id_puesto=document.getElementById("id_puesto").value;
+        
           $id_nombre_pos=document.getElementById("id_nombre_pos").value;
         
           $id_prioridad_pos=document.getElementById("id_prioridad_pos").value;
           $id_estado_pos=document.getElementById("id_estado_pos").value;
           $id_alerta_pos=document.getElementById("id_alerta_pos").value;
-          
+          $id_unidad_pos=document.getElementById("id_unidad_pos").value;
+          $id_puesto=document.getElementById("id_puesto").value;
           
           
           
@@ -174,7 +174,7 @@ var plan = $('#id_plan').val();
                           
                           
                       };
-                  
+                      console.log(postData);
                       try {
         
                           $.ajax({
@@ -185,7 +185,7 @@ var plan = $('#id_plan').val();
                           })
                           .done(function(respuesta) {
                           
-        
+                            console.log(respuesta);
                               if (respuesta.error==1) 
                               {
                                 
@@ -245,6 +245,7 @@ var plan = $('#id_plan').val();
 });
   window.addEventListener("load", () => {  
     // console.log(plan);
-    // cargarDatos(plan);
+     cargarDatos(plan);
+    
   })
     
