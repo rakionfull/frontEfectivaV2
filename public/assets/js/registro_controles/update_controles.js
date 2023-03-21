@@ -31,14 +31,17 @@ function DatosControl() {
 
 function cargarValues() {
   
-  
-    //cargar la data para todos los tipo tabla
-    $.ajax({
+  try {
+    
+    $('#spinner-div').show();
+    let detalle =  $.ajax({
         method: "GET",
         url: $('#base_url').val()+"/main/getRegistroDetalleControl/"+$('#modificar_control').val(),
         dataType: "JSON"
     })
     .done(function(respuesta) {
+        $('#spinner-div').hide();
+        
         $data =  respuesta.data;
         // $opcion = element.id.split('_');
         
@@ -58,6 +61,11 @@ function cargarValues() {
             
            
         });
+       
+    })
+    Promise.all([
+      detalle
+    ]).then(()=>{ 
         $data = document.querySelectorAll(".calificar");
         $data.forEach((btn,i) => {   
 
@@ -69,7 +77,13 @@ function cargarValues() {
             console.log(btn);
             btn.addEventListener('click',()=>Calificar(btn));
          });
+
     })
+  } catch (error) {
+    
+  }
+    //cargar la data para todos los tipo tabla
+   
 }
 
 function cargarDatos(element) {
@@ -178,7 +192,7 @@ function Calificar(element) {
     console.log("estoy calificando");
     $array = [];
     $arrayData= [];
-    event.preventDefault();
+    // event.preventDefault();
     $dato= element.id.split('_');
    
     $valores = document.querySelectorAll(".valor");

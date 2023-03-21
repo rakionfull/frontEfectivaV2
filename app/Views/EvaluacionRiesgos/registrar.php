@@ -17,7 +17,7 @@
                                         <div class="col-12-lg">
                                                 <div class="row">
                                                       
-                                                    <div class="col-lg-3">
+                                                    <div class="col-lg-4">
                                                           <div class="form-group">
                                                               <span>Riesgo Asociado: </span>
                                                                 <select class="js-riesgos-basic-multiple" name="IDR[]" id="IDR" multiple="multiple">
@@ -28,7 +28,7 @@
                                                           </div>
                                                     </div>
 
-                                                    <div class="col-lg-3">
+                                                    <div class="col-lg-4">
                                                           <div class="form-group">
                                                               <span>Control Asociado: </span>
                                                               <select class="js-controles-basic-multiple" name="IDC[]" id="IDC" multiple="multiple">
@@ -40,11 +40,11 @@
                                                     </div>
                                             
                                                       
-                                                    <div class="col-lg-3">
+                                                    <div class="col-lg-4">
                                                         <!-- <button type="button" id="btnNuevo_control"  class="float-right btn btn-primary waves-effect waves-light"> Nuevo Control</button>
                                                          -->
                                                         <?php if($session->permisos[12]->create_det==1){ ?>
-                                                            <a href="<?=base_url('create-controles'); ?>" class="float-left btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle ml-2"></i>  Agregar</a>
+                                                            <a href="<?=base_url('create-controles'); ?>" class="float-left btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle ml-2"></i>  Agregar Control</a>
                                                         <?php } ?>
                                                     </div> 
                                                 </div>
@@ -413,6 +413,7 @@
                   
                     var idempresa = <?php echo json_encode($idempresa); ?>;
                     var idarea = <?php echo json_encode($id_area); ?>;
+                    var idunidad = <?php echo json_encode($id_unidad); ?>;
                    
                 </script>
 

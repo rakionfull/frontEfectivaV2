@@ -441,9 +441,11 @@
                 
 
                 <script>
-                                     
+                    var id_user = <?php echo json_encode($id_user); ?>;
+                  
                     var idempresa = <?php echo json_encode($idempresa); ?>;
                     var idarea = <?php echo json_encode($id_area); ?>;
+                    var idunidad = <?php echo json_encode($id_unidad); ?>;
                    
                 </script>
 

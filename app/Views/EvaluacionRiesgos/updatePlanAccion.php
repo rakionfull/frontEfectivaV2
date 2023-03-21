@@ -213,7 +213,7 @@
                   
                     var idempresa = <?php echo json_encode($idempresa); ?>;
                     var idarea = <?php echo json_encode($id_area); ?>;
-                   
+                    var idunidad = <?php echo json_encode($id_unidad); ?>;
                 </script>
                 
                         <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>

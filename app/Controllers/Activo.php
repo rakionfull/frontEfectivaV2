@@ -1101,6 +1101,17 @@ class Activo extends BaseController {
             }
           }
         }
+        public function getPosicionByUnidad(){
+          if($this->session->logged_in){
+            $get_endpoint = '/api/getPosicionByUnidad';
+            $request_data = $this->request->getPost();
+            $response =perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
+            if($response){
+            
+              echo json_encode($response);
+            }
+          }
+        }
         public function getPosicionByActivo(){
           if($this->session->logged_in){
             $get_endpoint = '/api/getPosicionByActivo';
@@ -1816,9 +1827,9 @@ public function deleteAlerta_seguimiento(){
 
 public function getUserByActivo(){
   if($this->session->logged_in){
-  $get_endpoint = '/api/getUserByActivo';
-
-  $response =perform_http_request('POST', REST_API_URL . $get_endpoint,[]);
+  $get_endpoint = '/api/getUserByEmpresa';
+  $post_data = $this->request->getPost();     
+  $response =perform_http_request('POST', REST_API_URL . $get_endpoint,$post_data);
   if($response){
   
       echo json_encode($response);

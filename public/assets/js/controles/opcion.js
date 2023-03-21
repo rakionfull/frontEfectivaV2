@@ -154,8 +154,9 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         clasi = $clasi;
         id=$id;
         document.getElementById("card-title-opcion").innerHTML = "";
-        document.getElementById("card-title-opcion").innerHTML = valor;
-        
+      
+        document.getElementById("card-title-opcion").innerHTML = unescape(valor.replace("%C3%B1", "ñ"));
+        console.log(valor.replace("%C3%B1", "ñ"));
         if(tipo == "menu" && id == 0){
          
             if ($.fn.DataTable.isDataTable('#table_Opcion')){

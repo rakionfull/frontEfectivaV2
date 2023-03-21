@@ -127,7 +127,7 @@ $session = session();?>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
                                     <?php if($session->permisos[10]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y clasificación de activos</a></li>
+                                        <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y Clasificación de Activos</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[11]->view_det==1){ ?>
                                         <li><a href="<?=base_url('evaluacion-riesgos') ?>">Evaluación de Riesgos SI-C</a></li>

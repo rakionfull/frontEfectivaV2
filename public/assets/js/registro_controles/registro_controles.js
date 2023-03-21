@@ -4,28 +4,35 @@ function cargarDatos(element) {
   
     $opcion = element.id.split('_');
     //cargar la data para todos los tipo tabla
-    $.ajax({
-        method: "GET",
-        url: $('#base_url').val()+"/main/getData/"+$opcion[4],
-        dataType: "JSON"
-    })
-    .done(function(respuesta) {
-        $("#"+element.id).empty();
-        $("#"+element.id).append('<option value="" selected>'+element.name+'</option>');
-
-       
-
-        respuesta.data.forEach(dato => {
-            
-          
-            $("#"+element.id).append('<option value='+dato["id"]+'>'+dato[respuesta.dato]+'</option>');
-
-            
-            
-         
-        });
-
-    })
+    try {
+        $('#spinner-div').show();
+        $.ajax({
+            method: "GET",
+            url: $('#base_url').val()+"/main/getData/"+$opcion[4],
+            dataType: "JSON"
+        })
+        .done(function(respuesta) {
+            $('#spinner-div').hide();
+            $("#"+element.id).empty();
+            $("#"+element.id).append('<option value="" selected>'+element.name+'</option>');
+    
+           
+    
+            respuesta.data.forEach(dato => {
+                
+              
+                $("#"+element.id).append('<option value='+dato["id"]+'>'+dato[respuesta.dato]+'</option>');
+    
+                
+                
+             
+            });
+    
+        })
+    } catch (error) {
+        
+    }
+    
 }
 
 function cargarEvaluacion($array) {
@@ -248,7 +255,7 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
            }
            console.log(postData);
            try {
-   
+            $('#spinner-div').show();
                $.ajax({
                    method: "POST",
                    url: $('#base_url').val()+"/main/addControles",
@@ -256,7 +263,8 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
                    dataType: "JSON"
                })
                .done(function(respuesta) {
-                   console.log(respuesta);
+                    $('#spinner-div').hide();
+                //    console.log(respuesta);
                    if (respuesta.error==1) 
                    {
                    

@@ -294,6 +294,7 @@
         var is_user_negocio = <?php echo json_encode($is_user_negocio); ?>;
         var idempresa = <?php echo json_encode($idempresa); ?>;
         var idarea = <?php echo json_encode($idarea); ?>;
+        var idunidad = <?php echo json_encode($idunidad); ?>;
     </script>
      <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
     <script src="<?=base_url('public/assets/js/inventario_clasificacion_activo/index.js'); ?>"></script>

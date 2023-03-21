@@ -61,6 +61,15 @@ function LoadTableUsers($est) {
 
                 }
             },
+            {  "data": "bloqueo_us",
+                        
+            "mRender": function(data, type, value) {
+                if (data == '1' ) return  'Bloqueado';
+                else return 'Desbloqueado'
+                  
+
+            }
+            },
             {  "data": "estado_us",
                         
                         "mRender": function(data, type, value) {
@@ -138,10 +147,10 @@ function EjecutarChangeUser(id,estado){
             .done(function(data) {
             //    console.log(data);
                 if(estado==0){
-                    Swal.fire('Listo','Inactivo','success');
+                    Swal.fire('Listo','Desbloqueado','success');
                     $("#table_users").DataTable().ajax.reload(null, false); 
                 }else{
-                    Swal.fire('Listo','Activo','success');
+                    Swal.fire('Listo','Bloqueado','success');
                     $("#table_users").DataTable().ajax.reload(null, false); 
                 }
                 
@@ -173,13 +182,13 @@ function changeEstadoUser(elemento){
     event.preventDefault();
     //console.log(elemento.id);
     Swal.fire({
-        title: 'Estado',
-        text: "Cambiar de Estado",
+        title: 'Bloqueo',
+        text: "Desbloquear Usuario",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: 'rgb(55 157 52)',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si,cambiar'
+        confirmButtonText: 'Si'
       }).then((result) => {
         
                 if (result.isConfirmed) {

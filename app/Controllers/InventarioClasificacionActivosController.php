@@ -13,12 +13,14 @@ class InventarioClasificacionActivosController extends BaseController
         $is_user_negocio = $this->session->is_user_negocio;
         $idempresa = $this->session->idempresa;
         $idarea = $this->session->idarea;
+        $idunidad = $this->session->idunidad;
         $id_user = $this->session->id;
         return view('inventarioclasificacionactivos/inventario_clasificacion_activo',[
             'escenario' => $this->session->escenario,
             'is_user_negocio' => $is_user_negocio,
             'idempresa' => $idempresa,
             'idarea' => $idarea,
+            'idunidad' => $idunidad,
             'id_user' => $id_user
         ]);
     }

@@ -2,77 +2,84 @@ var plan = $('#id_plan').val();
 
 
   function cargarDatos($id) {
-   
+    console.log(idunidad);
+   try {
+    $('#spinner-div').show();
     $.ajax({
-        method: "GET",
-        url: BASE_URL+"/activo/getPlan/"+$id,
-        dataType: "JSON"
-    })
-    .done(function(respuesta) {
-        var response = respuesta.data;
-       
-        console.log(respuesta);
-             //    Cargar la información en los campos correspondientes
-            // $('#id_riesgo').val(response.id_riesgo);
-            // $('#id_control').val(response.id_control);
-            $('#nombre_plan').val(response.plan_accion);
-            $('#descripcion_plan').val(response.descripcion);
-  
-            
-  
-            $('#fecha_inicio_plan').val(fecha(response.fecha_inicio));
-            $('#fecha_fin_plan').val(fecha(response.fecha_fin));
+      method: "GET",
+      url: BASE_URL+"/activo/getPlan/"+$id,
+      dataType: "JSON"
+  })
+  .done(function(respuesta) {
+    $('#spinner-div').hide();
+      var response = respuesta.data;
     
+      console.log(respuesta);
+           //    Cargar la información en los campos correspondientes
+          // $('#id_riesgo').val(response.id_riesgo);
+          // $('#id_control').val(response.id_control);
+          $('#nombre_plan').val(response.plan_accion);
+          $('#descripcion_plan').val(response.descripcion);
+
+          
+
+          $('#fecha_inicio_plan').val(fecha(response.fecha_inicio));
+          $('#fecha_fin_plan').val(fecha(response.fecha_fin));
   
-            //agregando los controles y riesgos
-  
-            $array_aux=response.id_riesgo.split("-");
-            $array_nuevo=[]  ;
-            $array_aux.forEach(element => {
-               
-                if(element !=""){
-                    $array_nuevo.push(element);
-        
-                }
-               
-            });
-            $('.js-riesgos-basic-multiple').val($array_nuevo).change();
-            $array_aux2=response.id_control.split("-");
-            $array_nuevo2=[]  ;
-            $array_aux2.forEach(element => {
-               
-                if(element !=""){
-                    $array_nuevo2.push(element);
-        
-                }
-               
-            });
-            $('.js-controles-basic-multiple').val($array_nuevo2).change();
-            // cargarDatosPosEmpresa(response.idempresa);
-             $('#id_empresa_pos').val(response.idempresa);
-            cargarDatosPosArea(response.idempresa,response.idarea);
-  
-            cargarDatosPosArea(response.idempresa,response.idarea);
-            cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
-            cargarDatosPosPosicion(response.idempresa,response.idposicion);
-            cargarDatosPosNombre(response.idempresa,response.idusuario);
-            cargarDatosPosEstado(response.idempresa,response.idestado);
-            cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
-            cargarDatosPosNombre(response.idempresa,response.idusuario);
-            cargarDatosPosAlerta(response.idempresa,response.idalerta);
-            cargarDatosPosNombre(response.idempresa,response.idusuario);
+
+          //agregando los controles y riesgos
+
+          $array_aux=response.id_riesgo.split("-");
+          $array_nuevo=[]  ;
+          $array_aux.forEach(element => {
+             
+              if(element !=""){
+                  $array_nuevo.push(element);
+      
+              }
+             
+          });
+          $('.js-riesgos-basic-multiple').val($array_nuevo).change();
+          $array_aux2=response.id_control.split("-");
+          $array_nuevo2=[]  ;
+          $array_aux2.forEach(element => {
+             
+              if(element !=""){
+                  $array_nuevo2.push(element);
+      
+              }
+             
+          });
+          $('.js-controles-basic-multiple').val($array_nuevo2).change();
+          // cargarDatosPosEmpresa(response.idempresa);
+           $('#id_empresa_pos').val(response.idempresa);
+          // cargarDatosPosArea(response.idempresa,response.idarea);
+
+          // cargarDatosPosArea(response.idempresa,response.idarea);
+          // cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
+          // cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
+          // cargarDatosPosNombre(response.idempresa,response.idusuario);
+          cargarDatosPosEstado(response.idempresa,response.idestado);
+          cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
+          cargarDatosPosNombre(response.idempresa,response.idusuario);
+          cargarDatosPosAlerta(response.idempresa,response.idalerta);
+          cargarDatosPosNombre(response.idempresa,response.idusuario);
+     
+
+  })
+  .fail(function(error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'No se pudo cargar los datos, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+  })
+  })
+  .always(function() {
+  });    
+   } catch (error) {
+    
+   }
        
-  
-    })
-    .fail(function(error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'No se pudo cargar los datos, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-    })
-    })
-    .always(function() {
-    });        
   
   }
   function validarFechas(fecha_ini,fecha_fin) {
@@ -237,7 +244,7 @@ var plan = $('#id_plan').val();
   
 });
   window.addEventListener("load", () => {  
-
-    cargarDatos(plan);
+    // console.log(plan);
+    // cargarDatos(plan);
   })
     

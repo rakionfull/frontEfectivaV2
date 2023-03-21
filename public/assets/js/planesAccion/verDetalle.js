@@ -5,235 +5,243 @@ var alerta_actividad = document.getElementById('alerta_actividad');
 
 var alerta_actividadesPlan = document.getElementById("alert_actividadesPlan");
 
-function LoadTable_actividadesPlan($id) { 
+// function LoadTable_actividadesPlan() { 
 
-        $.ajax({
-            method: "POST",
-            url: BASE_URL+"/activo/getEmpresasByActivo",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
+//         $.ajax({
+//             method: "POST",
+//             url: BASE_URL+"/activo/getEmpresasByActivo",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
+//             console.log(idempresa);
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboEmpresa").empty();
+//                 $("#id_comboEmpresa").append('<option value="" selected>Seleccione</option>');
+
+            
+
+//                 datos.data.forEach(dato => {
+                    
+//                         if(dato["id"] == idempresa){
+//                             $("#id_comboEmpresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
+//                         }else{
+//                             $("#id_comboEmpresa").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+
+//                         }
+                       
+                    
+                    
+                
+//                 });
+//             } 
+//             else
+//             {  }
+
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });        
+
+
+
+
+
+//         $.ajax({
+//             method: "GET",
+//             url: BASE_URL+"/activo/getComboAreas",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
         
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboEmpresa").empty();
-                $("#id_comboEmpresa").append('<option value="" selected>Seleccione</option>');
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboArea").empty();
+//                 $("#id_comboArea").append('<option value="" selected>Seleccione</option>');
 
             
 
-                datos.data.forEach(dato => {
+//                 datos.data.forEach(dato => {
                     
                 
-                        $("#id_comboEmpresa").append('<option value='+dato["id"]+'>'+dato["empresa"]+'</option>');
+//                         $("#id_comboArea").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
 
                     
                     
                 
-                });
-            } 
-            else
-            {  }
+//                 });
+//             } 
+//             else
+//             {  }
 
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });        
-
-
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });        
 
 
 
-        $.ajax({
-            method: "GET",
-            url: BASE_URL+"/activo/getComboAreas",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
+//         $.ajax({
+//             method: "GET",
+//             url: BASE_URL+"/activo/getComboUnidad",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
         
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboArea").empty();
-                $("#id_comboArea").append('<option value="" selected>Seleccione</option>');
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboUnidades").empty();
+//                 $("#id_comboUnidades").append('<option value="" selected>Seleccione</option>');
 
             
 
-                datos.data.forEach(dato => {
+//                 datos.data.forEach(dato => {
                     
                 
-                        $("#id_comboArea").append('<option value='+dato["id"]+'>'+dato["area"]+'</option>');
+//                         $("#id_comboUnidades").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>');
 
                     
                     
                 
-                });
-            } 
-            else
-            {  }
+//                 });
+//             } 
+//             else
+//             {  }
 
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });        
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });        
 
 
 
-        $.ajax({
-            method: "GET",
-            url: BASE_URL+"/activo/getComboUnidad",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
+//         $.ajax({
+//             method: "GET",
+//             url: BASE_URL+"/activo/getComboPosicion",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
+
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboPosicion").empty();
+//                 $("#id_comboPosicion").append('<option value="" selected>Seleccione</option>');
+
+            
+
+//                 datos.data.forEach(dato => {
+                    
+                
+//                         $("#id_comboPosicion").append('<option value='+dato["id"]+'>'+dato["posicion_puesto"]+'</option>');
+
+                    
+                    
+                
+//                 });
+//             } 
+//             else
+//             {  }
+
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });        
+
+
+
+
+
+//         $.ajax({
+//             method: "GET",
+//             url: BASE_URL+"/activo/getUserNombreByActivo",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
         
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboUnidades").empty();
-                $("#id_comboUnidades").append('<option value="" selected>Seleccione</option>');
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboUsers").empty();
+//                 $("#id_comboUsers").append('<option value="" selected>Seleccione</option>');
 
             
 
-                datos.data.forEach(dato => {
+//                 datos.data.forEach(dato => {
                     
                 
-                        $("#id_comboUnidades").append('<option value='+dato["id"]+'>'+dato["unidad"]+'</option>');
-
-                    
-                    
-                
-                });
-            } 
-            else
-            {  }
-
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });        
-
-
-
-        $.ajax({
-            method: "GET",
-            url: BASE_URL+"/activo/getComboPosicion",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
-
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboPosicion").empty();
-                $("#id_comboPosicion").append('<option value="" selected>Seleccione</option>');
-
-            
-
-                datos.data.forEach(dato => {
-                    
-                
-                        $("#id_comboPosicion").append('<option value='+dato["id"]+'>'+dato["posicion_puesto"]+'</option>');
+//                         $("#id_comboUsers").append('<option value='+dato["id_us"]+'>'+dato["nombres_us"]+'</option>');
 
                     
                     
                 
-                });
-            } 
-            else
-            {  }
+//                 });
+//             } 
+//             else
+//             {  }
 
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });        
-
-
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });        
 
 
 
-        $.ajax({
-            method: "GET",
-            url: BASE_URL+"/activo/getUserNombreByActivo",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
+//         $.ajax({
+//             method: "GET",
+//             url: BASE_URL+"/activo/getAlerta",
+//             dataType: "JSON"
+//         })
+//         .done(function(respuesta) {
         
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboUsers").empty();
-                $("#id_comboUsers").append('<option value="" selected>Seleccione</option>');
+//             if (respuesta) 
+//             {
+//                 let datos = respuesta;
+//                 $("#id_comboAlert").empty();
+//                 $("#id_comboAlert").append('<option value="" selected>Seleccione</option>');
 
             
 
-                datos.data.forEach(dato => {
+//                 datos.data.forEach(dato => {
                     
                 
-                        $("#id_comboUsers").append('<option value='+dato["id_us"]+'>'+dato["nombres_us"]+'</option>');
-
-                    
-                    
-                
-                });
-            } 
-            else
-            {  }
-
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });        
-
-
-
-        $.ajax({
-            method: "GET",
-            url: BASE_URL+"/activo/getAlerta",
-            dataType: "JSON"
-        })
-        .done(function(respuesta) {
-        
-            if (respuesta) 
-            {
-                let datos = respuesta;
-                $("#id_comboAlert").empty();
-                $("#id_comboAlert").append('<option value="" selected>Seleccione</option>');
-
-            
-
-                datos.data.forEach(dato => {
-                    
-                
-                        $("#id_comboAlert").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
+//                         $("#id_comboAlert").append('<option value='+dato["id"]+'>'+dato["alerta"]+'</option>');
 
                     
                     
                 
-                });
-            } 
-            else
-            {  }
+//                 });
+//             } 
+//             else
+//             {  }
 
-        })
-        .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
-        })
-        .always(function() {
-        });   
+//         })
+//         .fail(function(error) {
+//             alert("Se produjo el siguiente error: ".err);
+//         })
+//         .always(function() {
+//         });   
 
 
     
 
+    
+   
+// }
+function cargarTablaAtividades($id) {
     if ($.fn.DataTable.isDataTable('#table_actividadesPlan')){
         
         $('#table_actividadesPlan').DataTable().rows().remove();
@@ -314,7 +322,6 @@ function LoadTable_actividadesPlan($id) {
         }
         
     })
-   
 }
 $(document).ready(function() { 
     $('.js-riesgos-basic-multiple').select2({ width: '100%' })
@@ -324,7 +331,7 @@ $(document).ready(function() {
 // const urlParams = new URLSearchParams(window.location.search);
 // const idPlanAccion = urlParams.get('id');
 function cargarDatos($id) {
-   
+   try {
     $.ajax({
         method: "GET",
         url: BASE_URL+"/activo/getPlan/"+$id,
@@ -372,17 +379,17 @@ function cargarDatos($id) {
             $('.js-controles-basic-multiple').val($array_nuevo2).change();
             // cargarDatosPosEmpresa(response.idempresa);
              $('#id_empresa_pos').val(response.idempresa);
-            cargarDatosPosArea(response.idempresa,response.idarea);
+            // cargarDatosPosArea(response.idempresa,response.idarea);
 
-            cargarDatosPosArea(response.idempresa,response.idarea);
-            cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
-            cargarDatosPosPosicion(response.idempresa,response.idposicion);
-            cargarDatosPosNombre(response.idempresa,response.idusuario);
+            // cargarDatosPosArea(response.idempresa,response.idarea);
+            // cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
+            cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
+            // cargarDatosPosNombre(response.idempresa,response.idusuario);
             cargarDatosPosEstado(response.idempresa,response.idestado);
             cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
             cargarDatosPosNombre(response.idempresa,response.idusuario);
             cargarDatosPosAlerta(response.idempresa,response.idalerta);
-            cargarDatosPosNombre(response.idempresa,response.idusuario);
+            // cargarDatosPosNombre(response.idempresa,response.idusuario);
             
             
             
@@ -401,6 +408,10 @@ function cargarDatos($id) {
     })
     .always(function() {
     });        
+   } catch (error) {
+    
+   }
+   
 
     // $.ajax({
     //     //url: 'ruta/al/controlador/getPlanAccionById/' + idPlanAccion,
@@ -468,7 +479,7 @@ document.getElementById("btnRegistro_actividades").addEventListener("click",func
     document.getElementById("form_actividadesPlan").reset();
     document.getElementById("Agregar_actividad").style.display = "block";
     document.getElementById("Modificar_actividadesPlan").style.display = "none"; 
-    cargarDatosPosEmpresa();
+   
     
 });
 
@@ -580,19 +591,22 @@ document.getElementById("Agregar_actividad").addEventListener("click",function()
 window.addEventListener("load", () => { 
     var contador = $('#contador').val();
    
-    if(contador == 0){
-        document.getElementById('apart_mensaje').style.display = 'block'
-        document.getElementById('apart_actividad').style.display = 'none';
-        
-        cargarDatosPosEmpresa();
-    }else{
+    // if(contador  0){
+    //     document.getElementById('apart_mensaje').style.display = 'none'
+    //     document.getElementById('apart_actividad').style.display = 'block';
+      
+    //     // LoadTable_actividadesPlan(plan);
+    //     cargarDatos(plan)
+    //     // cargarDatosPosEmpresa();
+    // }else{
         document.getElementById('apart_mensaje').style.display = 'none'
         document.getElementById('apart_actividad').style.display = 'block';
-      
-        LoadTable_actividadesPlan(plan);
-        cargarDatos(plan)
-        cargarDatosPosEmpresa();
-    }
+        
+        // cargarDatosPosEmpresa();
+        cargarDatos(plan);
+        cargarTablaAtividades(plan);
+       
+    //}
     
    
 });

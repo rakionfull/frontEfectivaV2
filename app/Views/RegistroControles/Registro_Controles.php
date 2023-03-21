@@ -11,7 +11,7 @@
                                 
                                     <div class="col-md-4 offset-md-4">
                                     <?php if($session->permisos[12]->create_det==1){ ?> 
-                                        <a href="<?=base_url('create-controles')?> "  class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Añadir</a>
+                                        <a href="<?=base_url('create-controles')?> "  class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</a>
 
                                     <?php }?>
                                        

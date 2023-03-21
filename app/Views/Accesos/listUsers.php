@@ -71,6 +71,7 @@
                                                         <th>Apellidos</th>
                                                         <th>Usuario</th>
                                                         <th>Fecha Registro</th>
+                                                        <th>Bloqueado</th>
                                                         <th>Estado</th>
                                                         <th>Sesion</th>
                                                         <th style="width: 120px;">Acciones</th>

@@ -401,8 +401,10 @@ class Main extends BaseController {
                                'idarea' => $response->datos->idarea];
               $unidad = perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
 
-              $get_endpoint = '/api/getPosicionByActivo';
-              $request_data = ['idempresa' => $response->datos->idempresa];
+              $get_endpoint = '/api/getPosicionByUnidad';
+              $request_data = ['idempresa' => $response->datos->idempresa,
+              'idarea' => $response->datos->idarea,
+              'idunidad' => $response->datos->idunidad];
               $posicion = perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
 
               $error = new  \stdClass;
@@ -1058,6 +1060,7 @@ class Main extends BaseController {
             
               $idempresa = $this->session->idempresa;
               $idarea = $this->session->idarea;
+              $idunidad = $this->session->idunidad;
               $id_user = $this->session->id;
             
               $data = [
@@ -1068,6 +1071,7 @@ class Main extends BaseController {
                 'id_area' =>  $idarea,
                 'id_user' => $id_user,
                 'idempresa' => $idempresa,
+                'id_unidad' =>  $idunidad,
               ];
               // var_dump($riesgos);
               return view('EvaluacionRiesgos/registrar',$data);
@@ -1089,6 +1093,7 @@ class Main extends BaseController {
               $idempresa = $this->session->idempresa;
               $idarea = $this->session->idarea;
               $id_user = $this->session->id;
+              $idunidad = $this->session->idunidad;
               $data = [
                 'id' => $id,
                 'riesgo' => $riesgos -> data,
@@ -1097,6 +1102,7 @@ class Main extends BaseController {
                 'id_area' =>  $idarea,
                 'id_user' => $id_user,
                 'idempresa' => $idempresa,
+                'id_unidad' =>  $idunidad,
               ];
               // var_dump($riesgos);
               return view('EvaluacionRiesgos/updatePlanAccion',$data);
@@ -1118,6 +1124,8 @@ class Main extends BaseController {
             $idempresa = $this->session->idempresa;
             $idarea = $this->session->idarea;
             $id_user = $this->session->id;
+            $idunidad = $this->session->idunidad;
+            var_dump($datos->data->actividades);
             $data = [
               'contador'  => $datos->data->actividades,
               'plan' => $id ,
@@ -1126,6 +1134,7 @@ class Main extends BaseController {
               'id_area' =>  $idarea,
               'id_user' => $id_user,
               'idempresa' => $idempresa,
+              'id_unidad' =>  $idunidad,
             ];
             
               return view('EvaluacionRiesgos/verDetalle',$data);

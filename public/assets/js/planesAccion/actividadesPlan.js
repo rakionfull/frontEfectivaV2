@@ -353,6 +353,14 @@ document.getElementById("btnRegistro_actividades").addEventListener("click",func
     document.getElementById("Modificar_actividadesPlan").style.display = "none"; 
     cargarDatosPosEmpresa();
     
+    document.getElementById('id_empresa_pos').disabled  = true;
+    document.getElementById('id_area_pos').disabled  = true;
+    cargarDatosPosArea(idempresa,idarea);
+    // cargarDatosPosPosicion(idempresa);
+    cargarDatosPosPosicion(idempresa,idarea,idunidad);
+    cargarDatosPosUnidad(idempresa,idarea);
+    cargarDatosPosNombre(idempresa);
+    cargarDatosPosAlerta(idempresa);
 });
 
 

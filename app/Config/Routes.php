@@ -150,6 +150,7 @@ $routes->set404Override();
         //posicion y puesto
         $routes->get('activo/getPosicion/(:num)', 'Activo::getPosicion/$1');
         $routes->get('activo/getPosicionByArea/(:num)', 'Activo::getPosicionByArea/$1');
+        $routes->post('activo/getPosicionByUnidad', 'Activo::getPosicionByUnidad');
         $routes->post('/activo/validarPosicion', 'Activo::validarPosicion');
         $routes->post('activo/getPosicionByActivo', 'Activo::getPosicionByActivo');
         $routes->post('/activo/addPosicion', 'Activo::addPosicion');

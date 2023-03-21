@@ -68,7 +68,7 @@ function loadTableInventarioClasificacionActivo(){
             {
                 data:null,
                 "mRender":function(data){
-                    if(is_user_negocio == 0){
+                    if(is_user_negocio == 1){
                         if(data.ica_estado == 1 || data.ica_estado == 3 || data.ica_estado == 4){
                              return `<editICA data-id="${data.ica_id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editICA>
                              <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
@@ -109,258 +109,278 @@ $('#btn_add_ica').click(function(){
     $('#btn_add_ica').attr('disabled',true);
     let id_empresa_default = 0;
     console.log(idempresa);
-    let empresas = $.ajax({
-        method: "POST",
-        url:BASE_URL+"/activo/getEmpresasByActivo",
-        dataType:'JSON'
-    })
-    .done(function(response){
+
+    try {
+        $('#spinner-div').show();
+        let empresas = $.ajax({
+            method: "POST",
+            url:BASE_URL+"/activo/getEmpresasByActivo",
+            dataType:'JSON'
+        })
+        .done(function(response){
+            
+            $('#modal_inventario_clasificacion_activo #empresa option').remove()
+            $('#modal_inventario_clasificacion_activo #empresa').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(response.data.length > 0){
+                id_empresa_default = response.data[0].id
+                response.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #empresa').append(
+                        `<option value='${element.id}'>${element.empresa}</option>`
+                    )
+                });
+            }
+        })
+        console.log(idempresa+"hola");
+        let areas = $.ajax({
+            url:BASE_URL+"/activo/getArea/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #area option').remove()
+            $('#modal_inventario_clasificacion_activo #area').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #area').append(
+                        `<option value='${element.id}'>${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let unidades = $.ajax({
+            url:BASE_URL+"/activo/getUnidades/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #unidad option').remove()
+            $('#modal_inventario_clasificacion_activo #unidad').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #unidad').append(
+                        `<option value='${element.id}'>${element.unidad}</option>`
+                    )
+                });
+            }
+        })
+        let macroproceso = $.ajax({
+            url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #macroproceso option').remove()
+            $('#modal_inventario_clasificacion_activo #macroproceso').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #macroproceso').append(
+                        `<option value='${element.id}'>${element.macroproceso}</option>`
+                    )
+                });
+            }
+        })
+        let proceso = $.ajax({
+            url:BASE_URL+"/activo/getProceso/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #proceso option').remove()
+            $('#modal_inventario_clasificacion_activo #proceso').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #proceso').append(
+                        `<option value='${element.id}'>${element.proceso}</option>`
+                    )
+                });
+            }
+        })
+        let tipo_activo = $.ajax({
+            url:BASE_URL+"/activo/getTipoActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #tipo_activo option').remove()
+            $('#modal_inventario_clasificacion_activo #tipo_activo').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #tipo_activo').append(
+                        `<option value='${element.id}'>${element.tipo}</option>`
+                    )
+                });
+            }
+        })
+        let categoria_activo = $.ajax({
+            url:BASE_URL+"/activo/getCatActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #categoria_activo option').remove()
+            $('#modal_inventario_clasificacion_activo #categoria_activo').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #categoria_activo').append(
+                        `<option value='${element.id}'>${element.categoria}</option>`
+                    )
+                });
+            }
+        })
+        let ubicacion_activo = $.ajax({
+            url:BASE_URL+"/activo/getUbiActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #ubicacion_activo option').remove()
+            $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
+                        `<option value='${element.id}'>${element.direccion} - ${element.estadonombre} - ${element.paisnombre}</option>`
+                    )
+                });
+            }
+        })
+        let propietario = $.ajax({
+            url:BASE_URL+"/activo/getPosicion/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            $('#modal_inventario_clasificacion_activo #propietario option').remove()
+            $('#modal_inventario_clasificacion_activo #propietario').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #propietario').append(
+                        `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let custodio = $.ajax({
+            url:BASE_URL+"/activo/getPosicion/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea)
+            $('#modal_inventario_clasificacion_activo #custodio option').remove()
+            $('#modal_inventario_clasificacion_activo #custodio').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #custodio').append(
+                        `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let valoracion_activo = $.ajax({
+            url:BASE_URL+"/activo/getValActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            $('#modal_inventario_clasificacion_activo #val_c option').remove()
+            $('#modal_inventario_clasificacion_activo #val_i option').remove()
+            $('#modal_inventario_clasificacion_activo #val_d option').remove()
+            $('#modal_inventario_clasificacion_activo #val_c').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            $('#modal_inventario_clasificacion_activo #val_i').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            $('#modal_inventario_clasificacion_activo #val_d').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #val_c').append(
+                        `<option value='${element.valoracion1}'>${element.valoracion1}</option>`
+                    )
+                    $('#modal_inventario_clasificacion_activo #val_i').append(
+                        `<option value='${element.valoracion2}'>${element.valoracion2}</option>`
+                    )
+                    $('#modal_inventario_clasificacion_activo #val_d').append(
+                        `<option value='${element.valoracion3}'>${element.valoracion3}</option>`
+                    )
+                });
+            }
+        })
+        let valor = $.ajax({
+            url:BASE_URL+"/activo/getValorActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            $('#modal_inventario_clasificacion_activo #valor option').remove()
+            $('#modal_inventario_clasificacion_activo #valor').append(
+                `<option value=''>Seleccionar</option>`
+            )
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #valor').append(
+                        `<option value='${element.id}'>${element.valor}</option>`
+                    )
+                });
+            }
+        })
         
-        $('#modal_inventario_clasificacion_activo #empresa option').remove()
-        $('#modal_inventario_clasificacion_activo #empresa').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(response.data.length > 0){
-            id_empresa_default = response.data[0].id
-            response.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #empresa').append(
-                    `<option value='${element.id}'>${element.empresa}</option>`
-                )
-            });
-        }
-    })
-    console.log(idempresa+"hola");
-    let areas = $.ajax({
-        url:BASE_URL+"/activo/getArea/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #area option').remove()
-        $('#modal_inventario_clasificacion_activo #area').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #area').append(
-                    `<option value='${element.id}'>${element.area}</option>`
-                )
-            });
-        }
-    })
-    let unidades = $.ajax({
-        url:BASE_URL+"/activo/getUnidades/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #unidad option').remove()
-        $('#modal_inventario_clasificacion_activo #unidad').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #unidad').append(
-                    `<option value='${element.id}'>${element.unidad}</option>`
-                )
-            });
-        }
-    })
-    let macroproceso = $.ajax({
-        url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #macroproceso option').remove()
-        $('#modal_inventario_clasificacion_activo #macroproceso').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #macroproceso').append(
-                    `<option value='${element.id}'>${element.macroproceso}</option>`
-                )
-            });
-        }
-    })
-    let proceso = $.ajax({
-        url:BASE_URL+"/activo/getProceso/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #proceso option').remove()
-        $('#modal_inventario_clasificacion_activo #proceso').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #proceso').append(
-                    `<option value='${element.id}'>${element.proceso}</option>`
-                )
-            });
-        }
-    })
-    let tipo_activo = $.ajax({
-        url:BASE_URL+"/activo/getTipoActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #tipo_activo option').remove()
-        $('#modal_inventario_clasificacion_activo #tipo_activo').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #tipo_activo').append(
-                    `<option value='${element.id}'>${element.tipo}</option>`
-                )
-            });
-        }
-    })
-    let categoria_activo = $.ajax({
-        url:BASE_URL+"/activo/getCatActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #categoria_activo option').remove()
-        $('#modal_inventario_clasificacion_activo #categoria_activo').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #categoria_activo').append(
-                    `<option value='${element.id}'>${element.categoria}</option>`
-                )
-            });
-        }
-    })
-    let ubicacion_activo = $.ajax({
-        url:BASE_URL+"/activo/getUbiActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #ubicacion_activo option').remove()
-        $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
-                    `<option value='${element.id}'>${element.direccion} - ${element.estadonombre} - ${element.paisnombre}</option>`
-                )
-            });
-        }
-    })
-    let propietario = $.ajax({
-        url:BASE_URL+"/activo/getPosicion/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        $('#modal_inventario_clasificacion_activo #propietario option').remove()
-        $('#modal_inventario_clasificacion_activo #propietario').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #propietario').append(
-                    `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
-                )
-            });
-        }
-    })
-    let custodio = $.ajax({
-        url:BASE_URL+"/activo/getPosicion/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea)
-        $('#modal_inventario_clasificacion_activo #custodio option').remove()
-        $('#modal_inventario_clasificacion_activo #custodio').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #custodio').append(
-                    `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
-                )
-            });
-        }
-    })
-    let valoracion_activo = $.ajax({
-        url:BASE_URL+"/activo/getValActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        $('#modal_inventario_clasificacion_activo #val_c option').remove()
-        $('#modal_inventario_clasificacion_activo #val_i option').remove()
-        $('#modal_inventario_clasificacion_activo #val_d option').remove()
-        $('#modal_inventario_clasificacion_activo #val_c').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        $('#modal_inventario_clasificacion_activo #val_i').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        $('#modal_inventario_clasificacion_activo #val_d').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #val_c').append(
-                    `<option value='${element.valoracion1}'>${element.valoracion1}</option>`
-                )
-                $('#modal_inventario_clasificacion_activo #val_i').append(
-                    `<option value='${element.valoracion2}'>${element.valoracion2}</option>`
-                )
-                $('#modal_inventario_clasificacion_activo #val_d').append(
-                    `<option value='${element.valoracion3}'>${element.valoracion3}</option>`
-                )
-            });
-        }
-    })
-    let valor = $.ajax({
-        url:BASE_URL+"/activo/getValorActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        $('#modal_inventario_clasificacion_activo #valor option').remove()
-        $('#modal_inventario_clasificacion_activo #valor').append(
-            `<option value=''>Seleccionar</option>`
-        )
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #valor').append(
-                    `<option value='${element.id}'>${element.valor}</option>`
-                )
-            });
-        }
-    })
-    
-    Promise.all([
-        empresas,
-        areas,
-        unidades,
-        macroproceso,
-        proceso,
-        tipo_activo,
-        categoria_activo,
-        ubicacion_activo,
-        // propietario,
-        custodio,
-        valoracion_activo,
-        valor
-    ]).then(()=>{
-        $('#btn_add_ica').attr('disabled',false)
-        $("#modal_inventario_clasificacion_activo").modal("show");
-        $('#title_ica').html('Agregar Nuevo Inventario y Clasificacion de activos')
-        document.getElementById("form_ica").reset();
-        document.getElementById("add_ica").style.display = "block";
-        document.getElementById("update_ica").style.display = "none";
-    })
+        Promise.all([
+            empresas,
+            areas,
+            unidades,
+            macroproceso,
+            proceso,
+            tipo_activo,
+            categoria_activo,
+            ubicacion_activo,
+            // propietario,
+            custodio,
+            valoracion_activo,
+            valor
+        ]).then(()=>{
+            $('#spinner-div').hide();
+            $('#btn_add_ica').attr('disabled',false)
+            $("#modal_inventario_clasificacion_activo").modal("show");
+            $('#title_ica').html('Agregar Nuevo Inventario y Clasificación de Activos')
+            document.getElementById("form_ica").reset();
+            document.getElementById("add_ica").style.display = "block";
+            document.getElementById("update_ica").style.display = "none";
+            $("#modal_inventario_clasificacion_activo #empresa").prop('disabled', true);
+
+            $("#modal_inventario_clasificacion_activo #empresa").val(idempresa);
+
+            $("#modal_inventario_clasificacion_activo #area").prop('disabled', true);
+
+            $("#modal_inventario_clasificacion_activo #area").val(idarea);
+
+            $("#modal_inventario_clasificacion_activo #unidad").prop('disabled', true);
+
+            $("#modal_inventario_clasificacion_activo #unidad").val(idunidad);
+
+        })
+        
+    } catch (error) {
+        
+    }
     
 })
 
@@ -500,267 +520,281 @@ document.getElementById('add_ica').addEventListener('click',function(){
 
 $('#table_inventario_clasificacion_activo').on('click','editICA',function(event){
     $('#table_inventario_clasificacion_activo tbody editICA').attr('disabled',true)
-    console.log(event.currentTarget)
-    let empresas = $.ajax({
-        method: "POST",
-        url:BASE_URL+"/activo/getEmpresasByActivo",
-        dataType:'JSON'
-    })
-    .done(function(response){
-        console.log(response);
-        $('#modal_inventario_clasificacion_activo #empresa option').remove()
-        if(response.data.length > 0){
-            id_empresa_default = response.data[0].id
-            response.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #empresa').append(
-                    `<option value='${element.id}'>${element.empresa}</option>`
-                )
-            });
-        }
-    })
+    // console.log(event.currentTarget)
    
-    var postData = {
-        idempresa:idempresa
-    }
-    let areas = $.ajax({
-        method: "POST",
-        url:BASE_URL+"/activo/getAreasByActivo",
-        data:postData,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #area option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #area').append(
-                    `<option value='${element.id}'>${element.area}</option>`
-                )
-            });
-        }
-    })
-    let unidades = $.ajax({
-        url:BASE_URL+"/activo/getUnidades/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #unidad option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #unidad').append(
-                    `<option value='${element.id}'>${element.unidad}</option>`
-                )
-            });
-        }
-    })
-    let macroproceso = $.ajax({
-        url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #macroproceso option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #macroproceso').append(
-                    `<option value='${element.id}'>${element.macroproceso}</option>`
-                )
-            });
-        }
-    })
-    let proceso = $.ajax({
-        url:BASE_URL+"/activo/getProceso/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #proceso option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #proceso').append(
-                    `<option value='${element.id}'>${element.proceso}</option>`
-                )
-            });
-        }
-    })
-    let tipo_activo = $.ajax({
-        url:BASE_URL+"/activo/getTipoActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #tipo_activo option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #tipo_activo').append(
-                    `<option value='${element.id}'>${element.tipo}</option>`
-                )
-            });
-        }
-    })
-    let categoria_activo = $.ajax({
-        url:BASE_URL+"/activo/getCatActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #categoria_activo option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #categoria_activo').append(
-                    `<option value='${element.id}'>${element.categoria}</option>`
-                )
-            });
-        }
-    })
-    let ubicacion_activo = $.ajax({
-        url:BASE_URL+"/activo/getUbiActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #ubicacion_activo option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
-                    `<option value='${element.id}'>${element.direccion} - ${element.estadonombre} - ${element.paisnombre}</option>`
-                )
-            });
-        }
-    })
-    let propietario = $.ajax({
-        url:BASE_URL+"/activo/getPosicion/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #propietario option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #propietario').append(
-                    `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
-                )
-            });
-        }
-    })
-    let custodio = $.ajax({
-        url:BASE_URL+"/activo/getPosicion/"+idempresa,
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #custodio option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #custodio').append(
-                    `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
-                )
-            });
-        }
-    })
-    let valoracion_activo = $.ajax({
-        url:BASE_URL+"/activo/getValActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        console.log(resarea);
-        $('#modal_inventario_clasificacion_activo #val_c option').remove()
-        $('#modal_inventario_clasificacion_activo #val_i option').remove()
-        $('#modal_inventario_clasificacion_activo #val_d option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #val_c').append(
-                    `<option value='${element.valoracion1}'>${element.valoracion1}</option>`
-                )
-                $('#modal_inventario_clasificacion_activo #val_i').append(
-                    `<option value='${element.valoracion2}'>${element.valoracion2}</option>`
-                )
-                $('#modal_inventario_clasificacion_activo #val_d').append(
-                    `<option value='${element.valoracion3}'>${element.valoracion3}</option>`
-                )
-            });
-        }
-    })
-    let valor = $.ajax({
-        url:BASE_URL+"/activo/getValorActivo",
-        dataType:'JSON'
-    })
-    .done(function(resarea){
-        $('#modal_inventario_clasificacion_activo #valor option').remove()
-        if(resarea.data.length > 0){
-            resarea.data.forEach(element => {
-                $('#modal_inventario_clasificacion_activo #valor').append(
-                    `<option value='${element.id}'>${element.valor}</option>`
-                )
-            });
-        }
-    })
-    
-    Promise.all([
-        empresas,
-        areas,
-        unidades,
-        macroproceso,
-        proceso,
-        tipo_activo,
-        categoria_activo,
-        ubicacion_activo,
-        propietario,
-        custodio,
-        valoracion_activo,
-        valor
-    ]).then(()=>{
-        $.ajax({
-            url:BASE_URL+"/getInventarioClasificacionActivo/"+event.currentTarget.getAttribute('data-id'),
+    try {
+        $('#spinner-div').show();
+        let empresas = $.ajax({
+            method: "POST",
+            url:BASE_URL+"/activo/getEmpresasByActivo",
             dataType:'JSON'
         })
-        .done(function(res){
-            
-            console.log(res.data)
-            if(res.data.length > 0){
-                console.log(res.data[0].activo)
-                $('#table_inventario_clasificacion_activo tbody editICA').attr('disabled',false)
-                document.getElementById("form_ica").reset();
-                document.getElementById("add_ica").style.display = "none";
-                document.getElementById("update_ica").style.display = "block";
-                $('#title_ica').html('Editar Inventario y Clasificacion de activos')
-                if(res.data[0].estado == 3){
-                    $('#modal_inventario_clasificacion_activo #estado option').remove()
-                    $('#modal_inventario_clasificacion_activo #estado').append(
-                        `
-                            <option value="3">Observado</option>
-                            <option value="2">Registrado</option>
-                        `
+        .done(function(response){
+            console.log(response);
+            $('#modal_inventario_clasificacion_activo #empresa option').remove()
+            if(response.data.length > 0){
+                id_empresa_default = response.data[0].id
+                response.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #empresa').append(
+                        `<option value='${element.id}'>${element.empresa}</option>`
                     )
-                    $("#modal_inventario_clasificacion_activo .input_observacion").show()
-                }
-                $("#modal_inventario_clasificacion_activo #id_ica").val(event.currentTarget.getAttribute('data-id'));
-                $("#modal_inventario_clasificacion_activo #empresa").val(res.data[0].idempresa);
-                $("#modal_inventario_clasificacion_activo #area").val(res.data[0].idarea);
-                $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidad);
-                $("#modal_inventario_clasificacion_activo #macroproceso").val(res.data[0].idmacroproceso);
-                $("#modal_inventario_clasificacion_activo #proceso").val(res.data[0].idproceso);
-                $("#modal_inventario_clasificacion_activo #activo").val(res.data[0].activo);
-                $("#modal_inventario_clasificacion_activo #desc_activo").val(res.data[0].desc_activo);
-                $("#modal_inventario_clasificacion_activo #tipo_activo").val(res.data[0].idtipo_activo);
-                $("#modal_inventario_clasificacion_activo #categoria_activo").val(res.data[0].idcategoria_activo);
-                $("#modal_inventario_clasificacion_activo #ubicacion_activo").val(res.data[0].idubicacion);
-                $("#modal_inventario_clasificacion_activo #propietario").val(res.data[0].idpropietario);
-                $("#modal_inventario_clasificacion_activo #custodio").val(res.data[0].idcustodio);
-                $("#modal_inventario_clasificacion_activo #val_c").val(res.data[0].val_c);
-                $("#modal_inventario_clasificacion_activo #val_i").val(res.data[0].val_i);
-                $("#modal_inventario_clasificacion_activo #val_d").val(res.data[0].val_d);
-                $("#modal_inventario_clasificacion_activo #valor").val(res.data[0].idvalor);
-                $("#modal_inventario_clasificacion_activo #comentario").val(res.data[0].comentario);
-                $("#modal_inventario_clasificacion_activo #estado").val(res.data[0].estado);
-                $("#modal_inventario_clasificacion_activo #observacion").val(res.data[0].observacion);
-                
-                $("#modal_inventario_clasificacion_activo").modal("show");
-                
+                });
             }
         })
-    })
+       
+        var postData = {
+            idempresa:idempresa
+        }
+        let areas = $.ajax({
+            method: "POST",
+            url:BASE_URL+"/activo/getAreasByActivo",
+            data:postData,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #area option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #area').append(
+                        `<option value='${element.id}'>${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let unidades = $.ajax({
+            url:BASE_URL+"/activo/getUnidades/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #unidad option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #unidad').append(
+                        `<option value='${element.id}'>${element.unidad}</option>`
+                    )
+                });
+            }
+        })
+        let macroproceso = $.ajax({
+            url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #macroproceso option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #macroproceso').append(
+                        `<option value='${element.id}'>${element.macroproceso}</option>`
+                    )
+                });
+            }
+        })
+        let proceso = $.ajax({
+            url:BASE_URL+"/activo/getProceso/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #proceso option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #proceso').append(
+                        `<option value='${element.id}'>${element.proceso}</option>`
+                    )
+                });
+            }
+        })
+        let tipo_activo = $.ajax({
+            url:BASE_URL+"/activo/getTipoActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #tipo_activo option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #tipo_activo').append(
+                        `<option value='${element.id}'>${element.tipo}</option>`
+                    )
+                });
+            }
+        })
+        let categoria_activo = $.ajax({
+            url:BASE_URL+"/activo/getCatActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #categoria_activo option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #categoria_activo').append(
+                        `<option value='${element.id}'>${element.categoria}</option>`
+                    )
+                });
+            }
+        })
+        let ubicacion_activo = $.ajax({
+            url:BASE_URL+"/activo/getUbiActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #ubicacion_activo option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #ubicacion_activo').append(
+                        `<option value='${element.id}'>${element.direccion} - ${element.estadonombre} - ${element.paisnombre}</option>`
+                    )
+                });
+            }
+        })
+        let propietario = $.ajax({
+            url:BASE_URL+"/activo/getPosicion/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #propietario option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #propietario').append(
+                        `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let custodio = $.ajax({
+            url:BASE_URL+"/activo/getPosicion/"+idempresa,
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #custodio option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #custodio').append(
+                        `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                    )
+                });
+            }
+        })
+        let valoracion_activo = $.ajax({
+            url:BASE_URL+"/activo/getValActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            console.log(resarea);
+            $('#modal_inventario_clasificacion_activo #val_c option').remove()
+            $('#modal_inventario_clasificacion_activo #val_i option').remove()
+            $('#modal_inventario_clasificacion_activo #val_d option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #val_c').append(
+                        `<option value='${element.valoracion1}'>${element.valoracion1}</option>`
+                    )
+                    $('#modal_inventario_clasificacion_activo #val_i').append(
+                        `<option value='${element.valoracion2}'>${element.valoracion2}</option>`
+                    )
+                    $('#modal_inventario_clasificacion_activo #val_d').append(
+                        `<option value='${element.valoracion3}'>${element.valoracion3}</option>`
+                    )
+                });
+            }
+        })
+        let valor = $.ajax({
+            url:BASE_URL+"/activo/getValorActivo",
+            dataType:'JSON'
+        })
+        .done(function(resarea){
+            $('#modal_inventario_clasificacion_activo #valor option').remove()
+            if(resarea.data.length > 0){
+                resarea.data.forEach(element => {
+                    $('#modal_inventario_clasificacion_activo #valor').append(
+                        `<option value='${element.id}'>${element.valor}</option>`
+                    )
+                });
+            }
+        })
+        
+        Promise.all([
+            empresas,
+            areas,
+            unidades,
+            macroproceso,
+            proceso,
+            tipo_activo,
+            categoria_activo,
+            ubicacion_activo,
+            propietario,
+            custodio,
+            valoracion_activo,
+            valor
+        ]).then(()=>{
+    
+            $.ajax({
+                url:BASE_URL+"/getInventarioClasificacionActivo/"+event.currentTarget.getAttribute('data-id'),
+                dataType:'JSON'
+            })
+            .done(function(res){
+                 $('#spinner-div').hide();
+                console.log(res.data)
+                if(res.data.length > 0){
+                    console.log(res.data[0].activo)
+                    $('#table_inventario_clasificacion_activo tbody editICA').attr('disabled',false)
+                    document.getElementById("form_ica").reset();
+                    document.getElementById("add_ica").style.display = "none";
+                    document.getElementById("update_ica").style.display = "block";
+                    $('#title_ica').html('Editar Inventario y Clasificación de Activos')
+                    if(res.data[0].estado == 3){
+                        $('#modal_inventario_clasificacion_activo #estado option').remove()
+                        $('#modal_inventario_clasificacion_activo #estado').append(
+                            `
+                                <option value="3">Observado</option>
+                                <option value="2">Registrado</option>
+                            `
+                        )
+                        $("#modal_inventario_clasificacion_activo .input_observacion").show()
+                    }
+                    $("#modal_inventario_clasificacion_activo #id_ica").val(event.currentTarget.getAttribute('data-id'));
+
+                    $("#modal_inventario_clasificacion_activo #empresa").val(res.data[0].idempresa);
+
+                    $("#modal_inventario_clasificacion_activo #empresa").prop('disabled', true);
+
+                    $("#modal_inventario_clasificacion_activo #area").val(res.data[0].idarea);
+                    $("#modal_inventario_clasificacion_activo #area").prop('disabled', true);
+                    $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidad);
+                    $("#modal_inventario_clasificacion_activo #unidad").prop('disabled', true);
+                    $("#modal_inventario_clasificacion_activo #macroproceso").val(res.data[0].idmacroproceso);
+                    $("#modal_inventario_clasificacion_activo #proceso").val(res.data[0].idproceso);
+                    $("#modal_inventario_clasificacion_activo #activo").val(res.data[0].activo);
+                    $("#modal_inventario_clasificacion_activo #desc_activo").val(res.data[0].desc_activo);
+                    $("#modal_inventario_clasificacion_activo #tipo_activo").val(res.data[0].idtipo_activo);
+                    $("#modal_inventario_clasificacion_activo #categoria_activo").val(res.data[0].idcategoria_activo);
+                    $("#modal_inventario_clasificacion_activo #ubicacion_activo").val(res.data[0].idubicacion);
+                    $("#modal_inventario_clasificacion_activo #propietario").val(res.data[0].idpropietario);
+                    $("#modal_inventario_clasificacion_activo #custodio").val(res.data[0].idcustodio);
+                    $("#modal_inventario_clasificacion_activo #val_c").val(res.data[0].val_c);
+                    $("#modal_inventario_clasificacion_activo #val_i").val(res.data[0].val_i);
+                    $("#modal_inventario_clasificacion_activo #val_d").val(res.data[0].val_d);
+                    $("#modal_inventario_clasificacion_activo #valor").val(res.data[0].idvalor);
+                    $("#modal_inventario_clasificacion_activo #comentario").val(res.data[0].comentario);
+                    $("#modal_inventario_clasificacion_activo #estado").val(res.data[0].estado);
+                    $("#modal_inventario_clasificacion_activo #observacion").val(res.data[0].observacion);
+                    
+                    $("#modal_inventario_clasificacion_activo").modal("show");
+                    
+                }
+            })
+        }) 
+    } catch (error) {
+      
+    }
+    
 })
 
 document.getElementById('update_ica').addEventListener('click',function(){
