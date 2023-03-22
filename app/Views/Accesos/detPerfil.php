@@ -113,6 +113,7 @@
                                                                         echo " </tr>";
 
                                                                         foreach ($items as $key => $value3) {
+                                                                            
                                                                             if($value2 -> id_op == $value3 -> id_op){
                                                                                
                                                                                 echo "<tr>";

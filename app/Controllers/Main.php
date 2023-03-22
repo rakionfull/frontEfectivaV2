@@ -634,7 +634,7 @@ class Main extends BaseController {
               $data["perfil"]=$perfil->data;
              
 
-
+              //var_dump($data);
               return view('accesos/detPerfil',$data);
           }
         }else{
