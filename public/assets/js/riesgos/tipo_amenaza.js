@@ -198,7 +198,7 @@ $('#table_tipo_amenaza tbody').on( 'click', 'deleteAmenaza', function(event){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                method: "DELETE",
+                method: "post",
                 url: BASE_URL+"/main/deleteTipoAmenaza/"+Number(id),
                 dataType: "JSON"
             })

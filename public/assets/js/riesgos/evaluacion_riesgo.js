@@ -300,7 +300,7 @@ $('#btn_add_evaluacion_riesgo').click(function(){
     })
 
     let activos = $.ajax({
-        url:BASE_URL+"/getListInventarioClasificacionActivo",
+        url:BASE_URL+"/getListInventarioClasificacionActivo/"+idempresa,
         dataType:'json'
     })
     .done(function(respuesta){

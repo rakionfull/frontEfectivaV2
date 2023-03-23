@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/frontefectiva/';
+    public $baseURL = 'http://localhost/efectivav5/frontefectivav2/';
 
     /**
      * --------------------------------------------------------------------------
@@ -56,7 +56,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    //public $uriProtocol = 'REQUEST_URI';
+    // public $uriProtocol = 'REQUEST_URI';
     public $uriProtocol = 'PATH_INFO';
     /**
      * --------------------------------------------------------------------------
