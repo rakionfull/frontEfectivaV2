@@ -138,7 +138,7 @@ document.onmousemove = function(){
                         })
                         .done(function(respuesta) {
                         
-                            // console.log(respuesta.data);
+                            console.log(respuesta.data);
                             resolve(respuesta.data);
                                             
                         })

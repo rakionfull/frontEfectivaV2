@@ -104,8 +104,9 @@ document.getElementById("Agregar_CaractControl").addEventListener("click", funct
                     caracteristica : document.getElementById("nom_caract").value,
                     descripcion : document.getElementById("desc_caract").value,
                     estado : document.getElementById("est_caract").value,
+                   
                 };
-               
+               console.log(postData);
                 try {
 
                     $.ajax({
