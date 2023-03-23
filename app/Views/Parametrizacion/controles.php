@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <ul class="menu">
-                                       
+                                        <!-- del 40 39 28 37 36 -->
                                             <li id="Cobertura" ><a href="#/Cobertura" >Cobertura</a></li>
                                     
                                             <li id="Opcion" ><a href="#/Opcion_general" >Características de Control</a></li>
@@ -654,7 +654,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <?php foreach ($datos as $key => $value) { ?>
+                                                    <?php 
+                                                        if($datos){
+
+                                                       
+                                                        foreach ($datos as $key => $value) { ?>
                                                     <tr>
                                                         <?php 
                                                         //     foreach ($header as $key => $value2) {
@@ -680,7 +684,7 @@
                                                             <deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>
                                                         </td>
                                                     </tr>
-                                                    <?php } ?>                                                    
+                                                    <?php  }} ?>                                                    
                                                     
                                                     </tbody>
                                                 </table>

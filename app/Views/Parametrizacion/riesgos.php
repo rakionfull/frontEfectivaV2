@@ -11,31 +11,31 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <ul class="menu">
-                            <?php if($session->permisos[26]->view_det==1){ ?>
+                            <?php if($session->permisos[27]->view_det==1){ ?>
                                 <li id="tipo_riesgo" ><a href="#/TipoRiesgo" >Tipo de riesgo</a></li>
                             <?php }?>
-                            <?php if($session->permisos[27]->view_det==1){ ?>
+                            <?php if($session->permisos[28]->view_det==1){ ?>
                             <li id="probabilidad_riesgo"><a href="#/ProbabilidadRiesgo">Probabilidad del riesgo</a></li>
                             <?php }?>
-                            <?php if($session->permisos[28]->view_det==1){ ?>
+                            <?php if($session->permisos[29]->view_det==1){ ?>
                             <li id="impacto_riesgo"><a href="#/ImpactoRiesgo" >Impacto de riesgo</a></li>
                             <?php }?>
-                            <?php if($session->permisos[29]->view_det==1){ ?>
+                            <?php if($session->permisos[30]->view_det==1){ ?>
                             <li id="nivel_riesgo"><a href="#/NivelRiesgo" >Nivel de riesgo</a></li>
                             <?php }?>
-                            <?php if($session->permisos[30]->view_det==1){ ?>
+                            <?php if($session->permisos[31]->view_det==1){ ?>
                             <li id="ValoracionRiesgo"><a href="#/ValoracionRiesgo" >Valoración del riesgo</a></li>
                             <?php }?>
-                            <?php if($session->permisos[31]->view_det==1){ ?>
+                            <?php if($session->permisos[32]->view_det==1){ ?>
                             <li id="tipo_amenaza"><a href="#/TipoAmenaza" >Tipo de amenaza</a></li>
                             <?php }?>
-                            <?php if($session->permisos[32]->view_det==1){ ?>
+                            <?php if($session->permisos[33]->view_det==1){ ?>
                             <li id="descripcion_amenaza" ><a href="#/DescAmenaza" >Descripción de amenaza</a></li>
                             <?php }?>
-                            <?php if($session->permisos[33]->view_det==1){ ?>
+                            <?php if($session->permisos[34]->view_det==1){ ?>
                             <li id="categoria_vulnerabilidad" ><a href="#/CategoriaVulnerabilidad" >Categoría de vulnerabilidad</a></li>
                             <?php }?>
-                            <?php if($session->permisos[34]->view_det==1){ ?>
+                            <?php if($session->permisos[35]->view_det==1){ ?>
                             <li id="descripcion_vulnerabilidad"><a href="#/DescVulnerabilidad">Descripción de vulnerabilidad</a></li>
                             <?php }?>
                         </ul>

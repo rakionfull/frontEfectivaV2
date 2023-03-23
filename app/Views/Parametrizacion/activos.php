@@ -36,20 +36,20 @@
                                        <?php if($session->permisos[21]->view_det==1){ ?>
                                             <li id="valor_activo" ><a href="#/Valor_activo" >Valor de Activo</a></li>
                                        <?php }?>
-                                       <?php //if($session->permisos[22]->view_det==1){ ?>
-                                            <li id="valoracion_activo" ><a href="#/Valoracion_activo" >Valoración de Activo</a></li>
-                                       <?php //}?>
                                        <?php if($session->permisos[22]->view_det==1){ ?>
-                                            <li  id="tipo_activo"><a href="#/Tipo_activo">Tipo de Activo</a></li>
+                                            <li id="valoracion_activo" ><a href="#/Valoracion_activo" >Valoración de Activo</a></li>
                                        <?php }?>
                                        <?php if($session->permisos[23]->view_det==1){ ?>
-                                            <li  id="Categoria_activo"><a href="#/Categoria_activo" >Categoría de Activo</a></li>
+                                            <li  id="tipo_activo"><a href="#/Tipo_activo">Tipo de Activo</a></li>
                                        <?php }?>
                                        <?php if($session->permisos[24]->view_det==1){ ?>
+                                            <li  id="Categoria_activo"><a href="#/Categoria_activo" >Categoría de Activo</a></li>
+                                       <?php }?>
+                                       <?php if($session->permisos[25]->view_det==1){ ?>
                                             <li id="ubicacion_activo" ><a href="#/Ubicacion_activo" >Ubicación de Activo</a></li>
                                        <?php }?>
                                     
-                                       <?php if($session->permisos[25]->view_det==1){ ?>
+                                       <?php if($session->permisos[26]->view_det==1){ ?>
                                             <li id="clasificacion_informacion" ><a href="#/Clasificacion_informacion">Clasificación de Información</a></li>
                                   
                                        <?php }?>

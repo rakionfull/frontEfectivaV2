@@ -1005,7 +1005,7 @@ class Main extends BaseController {
         if($this->session->logged_in){
             $get_endpoint = '/api/getEvaluacionControl';
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
-          //  var_dump($response);
+        
             if($response){
               $data = [
                 'header' =>$response->header,
@@ -1017,8 +1017,9 @@ class Main extends BaseController {
                 'datos' =>'',
               ];
             }
+
            
-            //var_dump($data);
+          
             return view('parametrizacion/controles',$data);
          
         }else{
@@ -1191,7 +1192,8 @@ class Main extends BaseController {
             'cobertura' => $cobertura,
             'riesgo' => $riesgos->data,
           ];
-              return view('RegistroControles/Create_Controles',$data);
+          // var_dump($last_id->data);
+            return view('RegistroControles/Create_Controles',$data);
          
         }else{
           return redirect()->to(base_url('/login'));

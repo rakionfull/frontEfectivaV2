@@ -69,7 +69,7 @@ window.addEventListener("hashchange", async () => {
         });
         document.getElementById("apartEvaluacionControl").style.display = "block";
         document.getElementById("EvaluacionControl").className = "activado";
-        permisos = await getPermisos('Evaluación de control');
+        permisos = await getPermisos('Evaluación de Control');
         if(permisos['create_det'] == 0){
             document.getElementById('btnAgregar_EvaluacionControl').style.display = 'none';
         }
@@ -93,7 +93,7 @@ window.addEventListener("hashchange", async () => {
             });
             document.getElementById("apartAplicacionProbabilidad").style.display = "block";
             document.getElementById("aplicProba").className = "activado";
-            permisos = await getPermisos('Aplicación de probabilidad');
+            permisos = await getPermisos('Aplicación de Probabilidad');
             if(permisos['create_det'] == 0){
                 document.getElementById('btnAgregar_AplicacionProbabilidad').style.display = 'none';
             }
@@ -116,7 +116,7 @@ window.addEventListener("hashchange", async () => {
             });
             document.getElementById("apartAplicacionImpacto").style.display = "block";
             document.getElementById("aplicProba").className = "activado";
-            permisos = await getPermisos('Aplicación impacto');
+            permisos = await getPermisos('Aplicacón de Impacto');
             if(permisos['create_det'] == 0){
                 document.getElementById('btnAgregar_AplicacionImpacto').style.display = 'none';
             }

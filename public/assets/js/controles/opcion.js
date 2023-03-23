@@ -488,6 +488,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
 document.getElementById("btnAgregar_Opcion").addEventListener("click",function(){
 
     $("#modal_Opcion").modal("show");
+    console.log(valor);
     document.getElementById("title-Opcion").innerHTML = "Agregar " + valor;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "block";
@@ -496,9 +497,9 @@ document.getElementById("btnAgregar_Opcion").addEventListener("click",function()
 });
 
 function AgregarOpcion(postData) {
-    // console.log(postData);
+    
     try {
-
+        console.log(postData);
         $.ajax({
             method: "POST",
             url: $('#base_url').val()+"/main/addCaractControl",
