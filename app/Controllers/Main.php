@@ -426,8 +426,8 @@ class Main extends BaseController {
                 'unidad' =>  $unidad->data,
                 'posicion' =>  $posicion->data,
                 
-             ];
-              // var_dump($response->datos);
+              ];
+              //var_dump( $unidad);
               //  var_dump($response->datos);
             return view('accesos/updateUser',$data);
             }else{

@@ -177,7 +177,7 @@ window.addEventListener("hashchange",async () => {
         document.getElementById("apartAspectoSeg").style.display = "block";
         document.getElementById("aspectoSeg").className = "activado";
 
-        permisos = await getPermisos('Apectos de seguridad');
+        permisos = await getPermisos('Aspecto de Seguridad');
         if(permisos['create_det'] == 0){
             document.getElementById('btnAgregar_AspectoSeg').style.display = 'none';
         }

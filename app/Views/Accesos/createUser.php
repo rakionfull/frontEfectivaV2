@@ -104,11 +104,14 @@ $session = session();
                                                        <select name="id_empresa" id="id_empresa" class="form-control ">
                                                              <?php 
                                                                 echo "<option value=''>Empresa</option>";
-                                                                foreach ($empresa as $key => $value) {
+                                                                if($empresa){
+                                                                    foreach ($empresa as $key => $value) {
                                                                  
-                                                                     echo "<option value='".$value->id."'>".$value->empresa."</option>";
+                                                                        echo "<option value='".$value->id."'>".$value->empresa."</option>";
+                                                                   }
+                                                                    
                                                                 }
-                                                                 
+                                                                
                                                                 ?>
                                                        </select>
                                                        

@@ -12,8 +12,8 @@ function CargarDisenioProbabilidad() {
     })
     .done(function(respuesta) {
        
-
-        if (respuesta) 
+      
+        if (respuesta.data != 0) 
         {
             let datos = respuesta;
           
@@ -251,7 +251,7 @@ $('#table_AplicacionProbabilidad tbody').on( 'click', 'editAplicacionProbabilida
     if (regNum == '0') {
         //console.log("error");
     }else{
-        
+       
         document.getElementById("id_AplicacionProbabilidad").value=regDat[0]["id"];
         document.getElementById("disenio_proba").value=regDat[0]["idclasificacion"];
         document.getElementById("desc_proba").value=regDat[0]["descripcion"];   

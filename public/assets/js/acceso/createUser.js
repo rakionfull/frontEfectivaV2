@@ -44,7 +44,7 @@ function cargarDatosPosArea($empresa,$dato) {
     
         })
         .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
+            
         })
         .always(function() {
         });   
@@ -55,7 +55,7 @@ function cargarDatosPosArea($empresa,$dato) {
             idarea:$idarea,
             
         }
-      
+        console.log(postData);
         //cargando las Unidades
         $.ajax({
             method: "POST",
@@ -64,16 +64,14 @@ function cargarDatosPosArea($empresa,$dato) {
             data:postData
         })
         .done(function(respuesta) {
-        
+            console.log(respuesta);
+             
             if (respuesta) 
             {
                 let datos = respuesta;
             
-
                 $("#id_unidad").empty();
-                $("#id_unidad").append('<option value="" selected>Unidad</option>');
-        
-            
+                $("#id_unidad").append('<option value="" selected>Unidad</option>'); 
         
                 datos.data.forEach(dato => {
                     if(dato["id"] == $dato){
@@ -88,11 +86,14 @@ function cargarDatosPosArea($empresa,$dato) {
                 });
             } 
             else
-            {  }
+            {
+                $("#id_unidad").empty();
+                $("#id_unidad").append('<option value="" selected>Unidad</option>'); 
+            }
 
         })
         .fail(function(error) {
-            alert("Se produjo el siguiente error: ".err);
+           
         })
         .always(function() {
         });
@@ -114,7 +115,7 @@ function cargarDatosPosArea($empresa,$dato) {
                 data: postData
             })
             .done(function(respuesta) {
-                console.log(respuesta);
+              
                 if (respuesta) 
                 {
                     let datos = respuesta;
@@ -139,7 +140,11 @@ function cargarDatosPosArea($empresa,$dato) {
                     });
                 } 
                 else
-                {  }
+                {  
+                    $("#id_puesto").empty();
+                    $("#id_puesto").append('<option value="" selected>Posicion/Puesto</option>');
+            
+                }
     
         })
         .fail(function(error) {
@@ -154,23 +159,23 @@ function cargarDatosPosArea($empresa,$dato) {
 
     document.getElementById("id_empresa").addEventListener("change",function(){
         // console.log($('#select_areaMacro').val());
-        if($('#id_empresa').val() != "" ){
+     
             cargarDatosPosArea($('#id_empresa').val());
             // cargarDatosPosPosicion($('#id_empresa').val());
-        }
+        
         
     });
     document.getElementById("id_area").addEventListener("change",function(){
         // console.log($('#select_areaMacro').val());
-        if($('#id_area').val() != "" ){
+       
             cargarDatosPosUnidad($('#id_empresa').val(),$('#id_area').val());
-        }
+        
         
     });
     document.getElementById("id_unidad").addEventListener("change",function(){
         // console.log($('#select_areaMacro').val());
-        if($('#id_unidad').val() != "" ){
+       
             cargarDatosPosPosicion($('#id_empresa').val(),$('#id_area').val(),$('#id_unidad').val());
-        }
+        
         
     });

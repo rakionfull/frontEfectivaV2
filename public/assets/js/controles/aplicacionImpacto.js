@@ -12,7 +12,7 @@ function CargarDisenioImpacto() {
     .done(function(respuesta) {
        
 
-        if (respuesta) 
+        if (respuesta.data  != 0) 
         {
             let datos = respuesta;
           
@@ -233,7 +233,7 @@ document.getElementById("Agregar_AplicacionImpacto").addEventListener("click", f
 });
 
 //editar  evlauacion de control
-$('#table_AplicacionImpacto tbody').on( 'click', 'editAplicacionImpacto', function(){
+$('#table_AplicacionImpacto tbody').on( 'click', 'editaplicacionimpacto', function(){
     $("#modal_AplicacionImpacto").modal("show");
     document.getElementById("title-AplicacionImpacto").innerHTML = "Modificar Aplicacion de Impacto";
     document.getElementById("form_AplicacionImpacto").reset();
@@ -248,21 +248,22 @@ $('#table_AplicacionImpacto tbody').on( 'click', 'editAplicacionImpacto', functi
     if (regNum == '0') {
         //console.log("error");
     }else{
+       
         document.getElementById("id_AplicacionImpacto").value=regDat[0]["id"];
         document.getElementById("disenio_impac").value=regDat[0]["idclasificacion"];
         document.getElementById("desc_impac").value=regDat[0]["descripcion"];   
         document.getElementById("posicion_impac").value=regDat[0]["posicion"];   
         document.getElementById("escenario_impac").value=regDat[0]["escenario"];  
         if(escenario == 1){
-            document.getElementById("apart_porcentaje_proba").style.display = "block";
+            document.getElementById("apart_porcentaje_impac").style.display = "block";
         }else{
-            document.getElementById("apart_posicion_proba").style.display = "block";
+            document.getElementById("apart_posicion_impac").style.display = "block";
         }
         if(escenario == 1){
-            document.getElementById("porcentaje_proba").value = regDat[0]["posicion"];
+            document.getElementById("porcentaje_impac").value = regDat[0]["posicion"];
         }else{
-            document.getElementById("posicion_proba").value= regDat[0]["posicion"];
-        } 
+            document.getElementById("posicion_impac").value= regDat[0]["posicion"];
+        }
     }
 });
 //guardando  evlauacion de control
