@@ -219,8 +219,9 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
     // console.log(datos);
     // console.log(datos_text);
    $array_data = [];
+//    &&  datos_text != ""
     if(document.getElementById("evaluacion").value != ""){
-        if($('#control').val() != "" &&  datos_text != "" && $('#estado').val()!="" && $('#cobertura').val()!=""){
+        if($('#control').val() != ""  && $('#estado').val()!="" && $('#cobertura').val()!=""){
             $valores = document.querySelectorAll(".valor");
             $valores.forEach((btn,i) => {   
              
@@ -253,7 +254,7 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
                cobertura: $('#cobertura').val() ,
                valores: $array_data,
            }
-           console.log(postData);
+          
            try {
             $('#spinner-div').show();
                $.ajax({
@@ -263,6 +264,7 @@ document.getElementById("btn_AgregarControl").addEventListener("click",function(
                    dataType: "JSON"
                })
                .done(function(respuesta) {
+                console.log(respuesta);
                     $('#spinner-div').hide();
                 //    console.log(respuesta);
                    if (respuesta.error==1) 
