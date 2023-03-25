@@ -132,6 +132,8 @@ $routes->set404Override();
         $routes->post('/activo/updateTipoActivo', 'Activo::updateTipoActivo');
         $routes->post('/activo/deleteTipoActivo', 'Activo::deleteTipoActivo');
 
+        $routes->post('activo/listaCategoriaByActivo', 'Activo::listaCategoriaByActivo');
+
         //clasificaicon de activo
         $routes->get('activo/getClasInformacion', 'Activo::getClasInformacion');
         $routes->post('/activo/validarClasInfo', 'Activo::validarClasInfo');
@@ -173,7 +175,7 @@ $routes->set404Override();
         $routes->post('/activo/updateMacroproceso', 'Activo::updateMacroproceso');
         $routes->post('/activo/deleteMacroproceso', 'Activo::deleteMacroproceso');
         $routes->post('activo/getMacroprocesoByActivo', 'Activo::getMacroprocesoByActivo');
-
+        $routes->post('activo/listaProcesoByMacro', 'Activo::listaProcesoByMacro');
 
         //proceso
         $routes->get('activo/getProceso/(:num)', 'Activo::getProceso/$1');

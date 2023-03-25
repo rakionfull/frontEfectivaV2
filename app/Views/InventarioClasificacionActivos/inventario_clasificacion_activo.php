@@ -50,6 +50,7 @@
                                     <th colspan="12" class="text-center">Descripcion</th>
                                     <th colspan="3" class="text-center">Valoración</th>
                                     <th rowspan="2">Valor</th>
+                                    <th rowspan="2">Estado</th>
                                     <th rowspan="2">Comentario</th>
                                     <th rowspan="2" style="width: 120px;">Mantenimiento</th>
                                 </tr>

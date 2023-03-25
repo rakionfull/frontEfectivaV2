@@ -262,10 +262,10 @@ function LoadTableEvaluacionControl() {
                 "previous": "Anterior"
             }
         },
-        scrollX: true,
-        // fixedColumns:   {
-        //     heightMatch: 'none'
-        // },
+        scrollX: false,
+        fixedColumns:   {
+            heightMatch: 'none'
+        },
         responsive: false,
         autoWidth: true,
         // processing: true,

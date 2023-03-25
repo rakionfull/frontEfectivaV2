@@ -1019,7 +1019,7 @@ class Main extends BaseController {
             }
 
            
-          
+          //var_dump($response);
             return view('parametrizacion/controles',$data);
          
         }else{
@@ -1150,9 +1150,9 @@ class Main extends BaseController {
         if($this->session->logged_in){
               $get_endpoint = '/api/getRegistroControles2';
               $datos =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
-              // var_dump($datos->data);
-              $data['registros'] = $datos->data;
-             return view('RegistroControles/Registro_Controles',$data);
+              // var_dump($datos);
+             $data['registros'] = $datos->data;
+              return view('RegistroControles/Registro_Controles',$data);
          
         }else{
           return redirect()->to(base_url('/login'));
