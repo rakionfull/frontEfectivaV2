@@ -1,5 +1,8 @@
 <?=$this->extend('Layout/main')?> 
 <?=$this->section('content');$session = session();?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -201,9 +204,29 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Custodio: </span>
-                                        <select required name="" id="custodio" class="form-control form-control-sm">
-                                            <option value="">Seleccione</option>
-                                        </select>
+                                        <div class="input_group d-flex align-items-center justify-content-between">
+                                            <select required name="" id="custodio" class="form-control form-control-sm">
+                                                <option value="">Seleccione</option>
+                                            </select>
+                                            <i id="icon_search_custodio" class="fa-solid fa-magnifying-glass-plus mr-2 ml-2 fa-lg" style="cursor: pointer;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="row col-12" style="display: none;"  id="section_search_custodio">
+                                        <div class="form-group col-6">
+                                            <span>Area: </span>
+                                            <select required name="" id="area_custodio" class="form-control form-control-sm">
+                                                <option value="">Seleccione</option>
+                                                <?php for ($i=0; $i < count($areas); $i++) { 
+                                                    echo '<option value='.$areas[$i]->id.'>'.$areas[$i]->area.'</option>';
+                                                }?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <span>Unidad: </span>
+                                            <select required name="" id="unidad_custodio" class="form-control form-control-sm">
+                                                <option value="">Seleccione</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -287,7 +310,7 @@
         </div>
     </div>
     <!-- END MODAL CREATE INVENTARIO CLASIFICACION ACTIVO-->
-    
+   
     <script>
         var id_user = <?php echo json_encode($id_user); ?>;
         var escenario = <?php echo json_encode($escenario); ?>;

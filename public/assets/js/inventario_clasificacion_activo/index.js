@@ -1,5 +1,78 @@
 var BASE_URL = document.getElementById("base_url").value;
 var alerta_inventario_clasificacion_activo = document.getElementById("alerta_inventario_clasificacion_activo");
+$('#custodio').select2({
+    theme:'bootstrap'
+})
+$('#icon_search_custodio').click(function(){
+    if($('#section_search_custodio').css('display') == 'none'){
+        $('#section_search_custodio').css('display','flex')
+    }else{
+        $('#section_search_custodio').css('display','none')
+    }
+})
+$('#close_modal_buscar_custodio').click(function(){
+    $('#modal_buscar_custodio').modal('hide')
+})
+$('#area_custodio').on('change',function(){
+    $.ajax({
+        url:BASE_URL+"/activo/getUnidadByActivo",
+        data:{
+            idempresa:idempresa,
+            idarea:$('#modal_inventario_clasificacion_activo #area_custodio').val()
+        },
+        dataType:'JSON',
+        method:'post',
+        beforeSend:function(){
+            $('#modal_inventario_clasificacion_activo #unidad_custodio').append(
+                `<option value="">Cargando...</option>`
+            )
+        }
+    })
+    .done(function(response){
+        $('#modal_inventario_clasificacion_activo #unidad_custodio option').remove()
+        $('#modal_inventario_clasificacion_activo #unidad_custodio').append(
+            `<option value="">Seleccione</option>`
+        )
+        if(response.data.length > 0){
+            response.data.map(item => {
+                $('#modal_inventario_clasificacion_activo #unidad_custodio').append(
+                    `<option value="${item.id}">${item.unidad}</option>`
+                )
+            })
+        }
+    })
+})
+$('#unidad_custodio').on('change',function(){
+    $.ajax({
+        url:BASE_URL+"/activo/getPosicionByUnidad",
+        data:{
+            idempresa:idempresa,
+            idarea:$('#modal_inventario_clasificacion_activo #area_custodio').val(),
+            idunidad:$('#modal_inventario_clasificacion_activo #unidad_custodio').val()
+        },
+        dataType:'JSON',
+        method:'post',
+        beforeSend:function(){
+            $('#modal_inventario_clasificacion_activo #custodio').append(
+                `<option value="">Cargando..</option>`
+            )
+        }
+    })
+    .done(function(response){
+        console.log(response)
+        $('#modal_inventario_clasificacion_activo #custodio option').remove()
+        $('#modal_inventario_clasificacion_activo #custodio').append(
+            `<option value="">Seleccionar</option>`
+        )
+        if(response.data.length > 0){
+            response.data.map(item => {
+                $('#modal_inventario_clasificacion_activo #custodio').append(
+                    `<option value="${item.id}">${item.posicion_puesto}</option>`
+                ).trigger('change')
+            })
+        }
+    })
+})
 function cargarProceso($macro,$dato) {
     console.log($macro);
     console.log($dato);
@@ -375,7 +448,7 @@ $('#btn_add_ica').click(function(){
             if(resarea.data.length > 0){
                 resarea.data.forEach(element => {
                     $('#modal_inventario_clasificacion_activo #custodio').append(
-                        `<option value='${element.id_pos}'>${element.posicion_puesto} - ${element.area}</option>`
+                        `<option value='${element.id_pos}'>${element.posicion_puesto}</option>`
                     )
                 });
             }
@@ -607,7 +680,9 @@ document.getElementById('add_ica').addEventListener('click',function(){
 $('#table_inventario_clasificacion_activo').on('click','editICA',function(event){
     $('#table_inventario_clasificacion_activo tbody editICA').attr('disabled',true)
     // console.log(event.currentTarget)
-   
+    $('#modal_inventario_clasificacion_activo #section_search_custodio').css('display','none')
+    $('#modal_inventario_clasificacion_activo #area_custodio').val('')
+    $('#modal_inventario_clasificacion_activo #unidad_custodio').val('')
     try {
         $('#spinner-div').show();
         let empresas = $.ajax({

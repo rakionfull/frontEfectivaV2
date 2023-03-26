@@ -30,6 +30,15 @@ class EvaluacionRiesgoController extends BaseController
         }
     }
 
+    public function getEvaluacionRiesgoControlesByEvaluacion($id){
+        if ($this->session->logged_in) {
+            $get_endpoint = '/api/getEvaluacionRiesgoControlesByEvaluacion/'.$id;
+            $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
+            if ($response) {
+                echo json_encode($response);
+            }
+        }
+    }
     public function getAll($id){
         if ($this->session->logged_in) {
             $get_endpoint = '/api/listEvaluacionRiesgos/'.$id;

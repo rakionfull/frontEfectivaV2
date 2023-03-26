@@ -258,6 +258,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Control: </span>
+                                        <input type="hidden" name="control_selected" id="control_selected">
                                         <select required name="control[]" multiple="multiple" id="control" class="js-riesgos-basic-multiple form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
