@@ -98,7 +98,7 @@ class Activo extends BaseController {
         }
         //funciones para opcion activos
         public function getArea($dato){
-            if($this->session->logged_in && $this->session->permisos[15]->view_det==1){
+            if($this->session->logged_in){
                 $get_endpoint = '/api/getArea/'.$dato;
     
                 $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
@@ -919,6 +919,28 @@ class Activo extends BaseController {
         public function getMacroprocesoByActivo(){
           if($this->session->logged_in){
             $get_endpoint = '/api/getMacroprocesoByActivo';
+            $request_data = $this->request->getPost();
+            $response =perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
+            if($response){
+             
+              echo json_encode($response);
+            }
+          }
+        }
+        public function listaProcesoByMacro(){
+          if($this->session->logged_in){
+            $get_endpoint = '/api/listaProcesoByMacro';
+            $request_data = $this->request->getPost();
+            $response =perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
+            if($response){
+             
+              echo json_encode($response);
+            }
+          }
+        }
+        public function listaCategoriaByActivo(){
+          if($this->session->logged_in){
+            $get_endpoint = '/api/listaCategoriaByActivo';
             $request_data = $this->request->getPost();
             $response =perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
             if($response){
