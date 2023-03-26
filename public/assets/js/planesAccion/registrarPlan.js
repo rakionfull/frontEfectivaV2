@@ -127,7 +127,7 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
                         document.getElementById('apart_actividad').style.display = 'block';
                         document.getElementById('apart_mensaje').style.display = 'block';
                         document.getElementById('apart_tabla').style.display = 'none';
-                        LoadTable_actividadesPlan();
+                        // LoadTable_actividadesPlan();
                         cargarTablaActividades(respuesta.id);
                         //   $("#table_actividadesPlan").DataTable().ajax.reload(null, false); 
                          

@@ -913,7 +913,7 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
                         $("#modal_inventario_clasificacion_activo #comentario").val(res.data[0].comentario);
                         $("#modal_inventario_clasificacion_activo #comentario").prop('disabled', true);
                         $("#modal_inventario_clasificacion_activo #estado").val(res.data[0].estado);
-
+                        cargarProceso(res.data[0].idmacroproceso,res.data[0].idproceso);
                         $("#modal_inventario_clasificacion_activo #observacion").val(res.data[0].observacion);
                       
                         
