@@ -380,7 +380,8 @@ $('#add_eva').click(function(){
     $valor_impacto = $('#modal_evaluacion_riesgo #valor_impacto').val()
     $impacto = $('#modal_evaluacion_riesgo #impacto').val()
     $valor = $('#modal_evaluacion_riesgo #valor').val()
-    $control = $('#modal_evaluacion_riesgo #control').val()
+    $controles = $('#modal_evaluacion_riesgo #control').val()
+    $control = $('#modal_evaluacion_riesgo #control_selected').val()
     $riesgo_controlado_probabilidad = $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val()
     $riesgo_controlado_impacto = $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val()
     $riesgo_controlado_valor = $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val()
@@ -401,13 +402,9 @@ $('#add_eva').click(function(){
         $desc_vulnerabilidad != "" &&
         $riesgo != "" &&
         $valor_probabilidad != "" &&
-      
         $valor_impacto != "" &&
-       
         $valor != "" &&
-        $control != "" &&
-     
-        $riesgo_controlado_valor != "" &&
+        $controles != "" &&
         $estado != ""
     ){
         const postData = {
@@ -432,7 +429,8 @@ $('#add_eva').click(function(){
             riesgo_controlado_probabilidad:$riesgo_controlado_probabilidad,
             riesgo_controlado_impacto:$riesgo_controlado_impacto,
             riesgo_controlado_valor:$riesgo_controlado_valor,
-            estado:$estado
+            estado:$estado,
+            controles:$controles
         }
         try {
             $.ajax({
@@ -712,7 +710,22 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
     })
 
     $("#modal_evaluacion_riesgo").modal("show");
+    $.ajax({
+        url:BASE_URL+"/getEvaluacionRiesgoControlesByEvaluacion/"+event.currentTarget.getAttribute('data-id'),
+        dataType:'JSON'
+    })
+    .done(function(response){
+        console.log('Controleee')
+        console.log(response);
+        $array_controles_aplicados = []
+        if(response.data.length > 0){
+            response.data.map(item => {
+                $array_controles_aplicados.push(item.id_control)
+            });
+            $('#modal_evaluacion_riesgo #control').val($array_controles_aplicados).change()
 
+        }
+    })
     Promise.all([
         tipo_riesgos,
         empresas,
@@ -1600,9 +1613,12 @@ var id_probabilidad = 0
 var id_impacto = 0
 var probabilidad = ''
 var impacto = ''
+var riesgo_controlado_probabilidad = ''
+var riesgo_controlado_impacto = ''
+var riesgo_controlado_valor = ''
 $('#btn_reload_valores').click(function(){
     $.ajax({
-        url:BASE_URL+"/listEvaluacionRiesgos",
+        url:BASE_URL+"/listEvaluacionRiesgos/"+idempresa,
         beforeSend:function(){
             $('#spinner_evaluacion').css('display','flex')
             $('#apart_evaluacion').css('display','none')
@@ -1615,6 +1631,7 @@ $('#btn_reload_valores').click(function(){
                 // Probabilidad
                 let value_probabilidad = item.valor_probabilidad;
                 let value_impacto = item.valor_impacto
+                let control_id = item.id_control
                 if(escenario == 2){
                     // PROBABILIDAD
                     let probabilidad2 = $.ajax({
@@ -1929,9 +1946,299 @@ $('#btn_reload_valores').click(function(){
                             }
                         })
                         Promise.all([valoracion]).then(() => {
-                            updateData(item,probabilidad,impacto,valor)
-                            $('#spinner_evaluacion').css('display','none')
-                            $('#apart_evaluacion').css('display','block')
+
+                            $posiciones_probabilidad = []
+                            $posiciones_impacto = []
+                            let pp = $.ajax({
+                                url:BASE_URL+"/main/getProbabilidadRiesgo/"+escenario,
+                                dataType:'JSON'
+                            })
+                            .done(function(respuesta){
+                                console.log(respuesta)
+                                if(respuesta.data.length > 0){
+                                    respuesta.data.map(item => {
+                                        $posiciones_probabilidad.push(item.descripcion)
+                                    })
+                                }
+                            })
+                            let pi = $.ajax({
+                                url:BASE_URL+"/main/getImpactoRiesgo/"+escenario,
+                                dataType:'JSON'
+                            })
+                            .done(function(respuesta){
+                                console.log(respuesta)
+                                if(respuesta.data.length > 0){
+                                    respuesta.data.map(item => {
+                                        $posiciones_impacto.push(item.descripcion)
+                                    })
+                                }
+                            })
+                            Promise.all([pp,pi]).then(() => {
+                                $.ajax({
+                                    url:BASE_URL+"/getRegistroControlById/"+control_id,
+                                    dataType:'JSON'
+                                })
+                                .done(function(respuesta){
+                                    let cobertura = respuesta.data.idCobertura
+                                    let evaluacion = respuesta.data.evaluacion.toLowerCase()
+                                    let firsLetter = evaluacion.charAt(0).toUpperCase()
+                                    let caracteristica = firsLetter+evaluacion.slice(1)
+                                    let idProbabilidad = ''
+                                    let idImpacto = ''
+                                    console.log('Cobertura: ',cobertura)
+                                    switch (cobertura) {
+                                        case '1':
+                                            $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $probabilidad_actual = probabilidad
+                                                index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)
+                                                // 1: 1 posicion hacia abajo
+                                                // 2: 2 posicion hacia abajo
+                                                // 3: 3 posicion hacia abajo
+                                                // 4: 4 posicion hacia abajo
+                                                // 5: 5 posicion hacia abajo
+                                                if((index - Number(respuesta.data[0].posicion)) <= 0){
+                                                    posicion = 0
+                                                }else{
+                                                    posicion = index - Number(respuesta.data[0].posicion);
+                                                }
+                                                new_posicion = $posiciones_probabilidad[posicion];
+                                                riesgo_controlado_probabilidad = new_posicion
+                                                riesgo_controlado_impacto = item.riesgo_controlado_impacto
+                                                let p1 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getProbabilidadByDescription",
+                                                    data:{
+                                                        descripcion:value_probabilidad
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    idProbabilidad = respuesta.data[0].id
+                                                })
+                                                let p2 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getImpactoByDescription",
+                                                    data:{
+                                                        descripcion:value_impacto
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    idImpacto = respuesta.data[0].id
+                                                })
+                                                Promise.all([p1,p2]).then(()=>{
+                                                    $.ajax({
+                                                        method: "POST",
+                                                        url: BASE_URL+"/getValoracionByProbabilidadImpacto",
+                                                        data:{
+                                                            id_probabilidad:idProbabilidad,
+                                                            id_impacto:idImpacto
+                                                        },
+                                                        dataType: "JSON"
+                                                    })
+                                                    .done(function(respuesta){
+                                                        console.log(respuesta)
+                                                        if(respuesta.data.length > 0){
+                                                            riesgo_controlado_valor = respuesta.data[0].valor
+                                                        }
+                                                        updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                        $('#spinner_evaluacion').css('display','none')
+                                                        $('#apart_evaluacion').css('display','block')
+                                                    })
+                                                })
+                                            })
+                                            break;
+                                        case '2':
+                                            $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionImpactoByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $impacto_actual = impacto
+                                                index = $posiciones_impacto.findIndex(element => element == $impacto_actual)
+                                                // 1: 1 posicion hacia izquierda
+                                                // 2: 2 posicion hacia izquierda
+                                                // 3: 3 posicion hacia izquierda
+                                                // 4: 4 posicion hacia izquierda
+                                                // 5: 5 posicion hacia izquierda
+                                                if((index - Number(respuesta.data[0].posicion)) <= 0){
+                                                    posicion = 0
+                                                }else{
+                                                    posicion = index - Number(respuesta.data[0].posicion)
+                                                }
+                                                new_posicion = $posiciones_impacto[posicion]
+                                                riesgo_controlado_impacto = new_posicion
+                                                riesgo_controlado_probabilidad = item.riesgo_controlado_probabilidad
+                                                let p1 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getProbabilidadByDescription",
+                                                    data:{
+                                                        descripcion:value_probabilidad
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    idProbabilidad = respuesta.data[0].id
+                                                })
+                                                let p2 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getImpactoByDescription",
+                                                    data:{
+                                                        descripcion:value_impacto
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    idImpacto = respuesta.data[0].id
+                                                })
+                                                Promise.all([p1,p2]).then(()=>{
+                                                    $.ajax({
+                                                        method: "POST",
+                                                        url: BASE_URL+"/getValoracionByProbabilidadImpacto",
+                                                        data:{
+                                                            id_probabilidad:idProbabilidad,
+                                                            id_impacto:idImpacto
+                                                        },
+                                                        dataType: "JSON"
+                                                    })
+                                                    .done(function(respuesta){
+                                                        console.log(respuesta)
+                                                        if(respuesta.data.length > 0){
+                                                            riesgo_controlado_valor = respuesta.data[0].valor
+                                                        }
+                                                        updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                        $('#spinner_evaluacion').css('display','none')
+                                                        $('#apart_evaluacion').css('display','block')
+                                                    })
+                                                })
+                                            })
+                                            break;
+                                        case '3':
+                                            let pa1 = $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                console.log(respuesta)
+                                                $probabilidad_actual = probabilidad
+                                                index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)
+                                                // 1: 1 posicion hacia abajo
+                                                // 2: 2 posicion hacia abajo
+                                                // 3: 3 posicion hacia abajo
+                                                // 4: 4 posicion hacia abajo
+                                                // 5: 5 posicion hacia abajo
+                                                if((index - Number(respuesta.data[0].posicion)) <= 0){
+                                                    posicion = 0
+                                                }else{
+                                                    posicion = index - Number(respuesta.data[0].posicion);
+                                                }
+                                                new_posicion = $posiciones_probabilidad[posicion];
+                                                riesgo_controlado_probabilidad = new_posicion
+                                            })
+                                            let pi2 = $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionImpactoByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                console.log(respuesta)
+                                                $impacto_actual = impacto
+                                                index = $posiciones_impacto.findIndex(element => element == $impacto_actual)
+                                                // 1: 1 posicion hacia izquierda
+                                                // 2: 2 posicion hacia izquierda
+                                                // 3: 3 posicion hacia izquierda
+                                                // 4: 4 posicion hacia izquierda
+                                                // 5: 5 posicion hacia izquierda
+                                                if((index - Number(respuesta.data[0].posicion)) <= 0){
+                                                    posicion = 0
+                                                }else{
+                                                    posicion = index - Number(respuesta.data[0].posicion)
+                                                }
+                                                new_posicion = $posiciones_impacto[posicion]
+                                                riesgo_controlado_impacto = new_posicion
+                                            })
+                                            Promise.all([pa1,pi2]).then(() => {
+                                                let p1 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getProbabilidadByDescription",
+                                                    data:{
+                                                        descripcion:probabilidad
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    console.log(respuesta)
+                                                    console.log('probabilidad: ',probabilidad)
+                                                    if(respuesta.data.length > 0){
+                                                        idProbabilidad = respuesta.data[0].id
+                                                    }
+                                                })
+                                                let p2 = $.ajax({
+                                                    method:'POST',
+                                                    url:BASE_URL+"/getImpactoByDescription",
+                                                    data:{
+                                                        descripcion:impacto
+                                                    },
+                                                    dataType:'JSON'
+                                                })
+                                                .done(function(respuesta){
+                                                    console.log(respuesta)
+                                                    console.log('impacto: ',impacto)
+                                                    if(respuesta.data.length > 0){
+                                                        idImpacto = respuesta.data[0].id
+                                                    }
+                                                })
+                                                Promise.all([p1,p2]).then(()=>{
+                                                    $.ajax({
+                                                        method: "POST",
+                                                        url: BASE_URL+"/getValoracionByProbabilidadImpacto",
+                                                        data:{
+                                                            id_probabilidad:idProbabilidad,
+                                                            id_impacto:idImpacto
+                                                        },
+                                                        dataType: "JSON"
+                                                    })
+                                                    .done(function(respuesta){
+                                                        console.log(respuesta)
+                                                        if(respuesta.data.length > 0){
+                                                            riesgo_controlado_valor = respuesta.data[0].valor
+                                                        }
+                                                        updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                    
+                                                        $('#spinner_evaluacion').css('display','none')
+                                                        $('#apart_evaluacion').css('display','block')
+                                                    })
+                                                })
+                                            })
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                })
+                            })
                         })
                     })
                     
@@ -2064,20 +2371,539 @@ $('#btn_reload_valores').click(function(){
                             }
                         })
                         Promise.all([valoracion_ajax]).then(()=>{
-                            // UPDATE DATOS
-                            updateData(item,probabilidad,impacto,valor)
-                            $('#spinner_evaluacion').css('display','none')
-                            $('#apart_evaluacion').css('display','block')
+                            $posiciones_probabilidad = []
+                            $posiciones_impacto = []
+                            let pp = $.ajax({
+                                url:BASE_URL+"/main/getProbabilidadRiesgo/"+escenario,
+                                dataType:'JSON'
+                            })
+                            .done(function(respuesta){
+                                console.log(respuesta)
+                                if(respuesta.data.length > 0){
+                                    respuesta.data.map(item => {
+                                        $posiciones_probabilidad.push(item.descripcion)
+                                    })
+                                }
+                            })
+                            let pi = $.ajax({
+                                url:BASE_URL+"/main/getImpactoRiesgo/"+escenario,
+                                dataType:'JSON'
+                            })
+                            .done(function(respuesta){
+                                console.log(respuesta)
+                                if(respuesta.data.length > 0){
+                                    respuesta.data.map(item => {
+                                        $posiciones_impacto.push(item.descripcion)
+                                    })
+                                }
+                            })
+                            Promise.all([pp,pi]).then(() => {
+                                $.ajax({
+                                    url:BASE_URL+"/getRegistroControlById/"+control_id,
+                                    dataType:'JSON'
+                                })
+                                .done(function(respuesta){
+                                    let cobertura = respuesta.data.idCobertura
+                                    let evaluacion = respuesta.data.evaluacion.toLowerCase()
+                                    let firsLetter = evaluacion.charAt(0).toUpperCase()
+                                    let caracteristica = firsLetter+evaluacion.slice(1)
+                                    switch (cobertura) {
+                                        case '1':
+                                            $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $value = Number(respuesta.data[0].posicion.split("%")[0])/100;
+                                                $probabilidad_actual = value_probabilidad
+                                                $new_probabilidad = $probabilidad_actual - ($probabilidad_actual*$value);
+                                                riesgo_controlado_probabilidad = $new_probabilidad
+                                                riesgo_controlado_impacto = item.riesgo_controlado_impacto
+                                                let value = Number(value_probabilidad) * Number(value_impacto)
+                                                $.ajax({
+                                                    method:"get",
+                                                    url:BASE_URL+"/main/getNivelRiesgo",
+                                                    dataType: "JSON"
+                                                })
+                                                .done(function(respuesta){
+                                                    console.log(respuesta);
+                                                    riesgo_controlado_valor = ''
+                                                    let found = false
+                                                    respuesta.data.forEach(element => {
+                                                        if(!found){
+                                                            // OPERADOR 1
+                                                            if(element.operador1 == ">"){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == ">="){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>=element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>=element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                       
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<"){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<="){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<=element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<=element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            // OPERADOR 2
+                                                            if(element.operador2 == ">"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value > element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == ">="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value >= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>=element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value < element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value<element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value <= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value <= element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+                                                    // UPDATE DATOS
+                                                    updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                    $('#spinner_evaluacion').css('display','none')
+                                                    $('#apart_evaluacion').css('display','block')
+                                                })
+                                            })
+                                            break;
+                                        case '2':
+                                            $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionImpactoByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $value = Number(respuesta.data[0].posicion.split("%")[0])/100
+                                                $impacto_actual = value_impacto
+                                                $new_impacto = $impacto_actual - ($impacto_actual*$value)
+                                                riesgo_controlado_impacto = $new_impacto
+                                                riesgo_controlado_probabilidad = item.riesgo_controlado_probabilidad
+                                                let value = Number(value_probabilidad) * Number(value_impacto)
+                                                $.ajax({
+                                                    method:"get",
+                                                    url:BASE_URL+"/main/getNivelRiesgo",
+                                                    dataType: "JSON"
+                                                })
+                                                .done(function(respuesta){
+                                                    console.log(respuesta);
+                                                    riesgo_controlado_valor = ''
+                                                    let found = false
+                                                    respuesta.data.forEach(element => {
+                                                        if(!found){
+                                                            // OPERADOR 1
+                                                            if(element.operador1 == ">"){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == ">="){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>=element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>=element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                       
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<"){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<="){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<=element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<=element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            // OPERADOR 2
+                                                            if(element.operador2 == ">"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value > element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == ">="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value >= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>=element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value < element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value<element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value <= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value <= element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+                                                    // UPDATE DATOS
+                                                    updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                    $('#spinner_evaluacion').css('display','none')
+                                                    $('#apart_evaluacion').css('display','block')
+                                                })
+                                            })
+                                            break;
+                                        case '3':
+                                            let app = $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $value = Number(respuesta.data[0].posicion.split("%")[0])/100;
+                                                $probabilidad_actual = value_probabilidad
+                                                $new_probabilidad = $probabilidad_actual - ($probabilidad_actual*$value);
+                                                riesgo_controlado_probabilidad = $new_probabilidad
+                                            })
+                                            let api = $.ajax({
+                                                method:'POST',
+                                                url:BASE_URL+"/getAplicacionImpactoByCaracteristica",
+                                                data:{
+                                                    caracteristica:caracteristica,
+                                                    escenario:escenario
+                                                },
+                                                dataType:'JSON'
+                                            })
+                                            .done(function(respuesta){
+                                                $value = Number(respuesta.data[0].posicion.split("%")[0])/100
+                                                $impacto_actual = value_impacto
+                                                $new_impacto = $impacto_actual - ($impacto_actual*$value)
+                                                riesgo_controlado_impacto = $new_impacto
+                                            })
+                                            Promise.all([app,api]).then(function(){
+                                                let value = Number(value_probabilidad) * Number(value_impacto)
+                                                $.ajax({
+                                                    method:"get",
+                                                    url:BASE_URL+"/main/getNivelRiesgo",
+                                                    dataType: "JSON"
+                                                })
+                                                .done(function(respuesta){
+                                                    riesgo_controlado_valor = ''
+                                                    let found = false
+                                                    respuesta.data.forEach(element => {
+                                                        if(!found){
+                                                            // OPERADOR 1
+                                                            if(element.operador1 == ">"){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == ">="){
+                                                                if(element.operador2 == "<"){
+                                                                    if(value>=element.valor1 && value<element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == "<="){
+                                                                    if(value>=element.valor1 && value<=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                       
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<"){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador1 == "<="){
+                                                                if(element.operador2 == ">"){
+                                                                    if(value<=element.valor1 && value>element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador2 == ">="){
+                                                                    if(value<=element.valor1 && value>=element.valor2){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            // OPERADOR 2
+                                                            if(element.operador2 == ">"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value > element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == ">="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value >= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value>=element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<"){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value < element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value<element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                            if(element.operador2 == "<="){
+                                                                if(element.operador1 == "<"){
+                                                                    if(value <= element.valor2 && value<element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                                if(element.operador1 == "<="){
+                                                                    if(value <= element.valor && value<=element.valor1){
+                                                                        found = true
+                                                                        riesgo_controlado_valor = element.descripcion
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+                                                    // UPDATE DATOS
+                                                    updateData(item,probabilidad,impacto,valor,riesgo_controlado_probabilidad,riesgo_controlado_impacto,riesgo_controlado_valor)
+                                                    $('#spinner_evaluacion').css('display','none')
+                                                    $('#apart_evaluacion').css('display','block')
+                                                })
+                                            })
+                                            break;
+                                    
+                                        default:
+                                            break;
+                                    }
+                                })
+                            })
+                            
                         })
                     })
                 }
             })
         }
     })
+
+    
     
 })
-function updateData(data,probabilidad,impacto,valor){
-    if(data.probabilidad != probabilidad || data.impacto != impacto || data.valor != valor){
+function updateData(data,probabilidad,impacto,valor,rcp,rci,rcv){
+    if(data.probabilidad != probabilidad
+        || data.impacto != impacto
+        || data.valor != valor
+        || data.riesgo_controlado_probabilidad != rcp
+        || data.riesgo_controlado_impacto != rci
+        || data.riesgo_controlado_valor != rcv
+    ){
         const postDataHistorial = {
             id_tipo_riesgo:data.id_tipo_riesgo,
             id_empresa:data.id_empresa,
@@ -2134,9 +2960,9 @@ function updateData(data,probabilidad,impacto,valor){
             impacto:impacto,
             valor:valor,
             id_control:data.id_control,
-            riesgo_controlado_probabilidad:data.riesgo_controlado_probabilidad,
-            riesgo_controlado_impacto:data.riesgo_controlado_impacto,
-            riesgo_controlado_valor:data.riesgo_controlado_valor,
+            riesgo_controlado_probabilidad:rcp,
+            riesgo_controlado_impacto:rci,
+            riesgo_controlado_valor:rcv,
             estado:data.estado
         }
         try {
@@ -2323,53 +3149,81 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
         // 2. Luego de eso restar la posicion segun lo obtenido en la aplicacion probabilidad
         // 3. Y establecer ese valor en el riesgo controlado probabilidad
         // Mismo proceso para impacto
-        let control_id = $('#modal_evaluacion_riesgo #control').val()
-        $.ajax({
-            url:BASE_URL+"/getRegistroControlById/"+control_id,
-            dataType:'JSON'
-        })
-        .done(function(respuesta){
-            console.log(respuesta)
-            let cobertura = respuesta.data.idCobertura
-            let evaluacion = respuesta.data.evaluacion.toLowerCase()
-            let firsLetter = evaluacion.charAt(0).toUpperCase()
-            let caracteristica = firsLetter+evaluacion.slice(1)
-            switch (cobertura) {
-                case 1:
-                    let ap1 = getAplicacionProbabilidad(caracteristica)
-                    if(escenario == 2){
-                        $impacto_actual = $('#modal_evaluacion_riesgo #impacto').val()
-                    }else{
-                        $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
+        let caracteristicas_controles = [
+            'FUERTE',
+            'MEDIO',
+            'BAJO'
+        ];
+        caracteristicas_controles.map(caracteristica_control => {
+            let controles = $('#modal_evaluacion_riesgo #control').val()
+            if(controles.length > 0){
+                controles.map(control_id => {
+                    if(control_id != ""){
+                        let found = false
+                        if(!found){
+                            $.ajax({
+                                url:BASE_URL+"/getRegistroControlById/"+control_id,
+                                dataType:'JSON'
+                            })
+                            .done(function(respuesta){
+                                let cobertura = respuesta.data.idCobertura
+                                let evaluacion = respuesta.data.evaluacion.toLowerCase()
+                                let firsLetter = evaluacion.charAt(0).toUpperCase()
+                                let caracteristica = firsLetter+evaluacion.slice(1)
+                                caracteristica_upper = caracteristica.toUpperCase()
+                                caracteristica_control = caracteristica_control.toUpperCase()
+                                if(caracteristica_upper == caracteristica_control){
+                                    found = true
+                                    cobertura = Number(cobertura)
+                                    $('#modal_evaluacion_riesgo #control_selected').val(control_id)
+                                    switch (cobertura) {
+                                        case 1:
+                                            let ap1 = getAplicacionProbabilidad(caracteristica)
+                                            if(escenario == 2){
+                                                $impacto_actual = $('#modal_evaluacion_riesgo #impacto').val()
+                                            }else{
+                                                $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
+                                            }
+                                            $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($impacto_actual)
+                                            Promise.all([ap1]).then(()=>{
+                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                            })
+                                            break;
+                                        case 2:
+                                            let ai2 = getAplicacionImpacto(caracteristica)
+                                            if(escenario == 2){
+                                                $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
+                                            }else{
+                                                $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
+                                            }
+                                            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($probabilidad_actual)
+                                            Promise.all([ai2]).then(()=>{
+                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #valorriesgo_controlado_impacto_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                            })
+                                            break;
+                                        case 3:
+                                            let ap3 = getAplicacionProbabilidad(caracteristica)
+                                            let ai3 = getAplicacionImpacto(caracteristica)
+                                            Promise.all([ap3,ai3]).then(()=>{
+                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                            })
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            })
+                        }
                     }
-                    $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($impacto_actual)
-                    Promise.all([ap1]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                    })
-                    break;
-                case 2:
-                    let ai2 = getAplicacionImpacto(caracteristica)
-                    if(escenario == 2){
-                        $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
-                    }else{
-                        $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
-                    }
-                    $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($probabilidad_actual)
-                    Promise.all([ai2]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #valorriesgo_controlado_impacto_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                    })
-                    break;
-                case 3:
-                    let ap3 = getAplicacionProbabilidad(caracteristica)
-                    let ai3 = getAplicacionImpacto(caracteristica)
-                    Promise.all([ap3,ai3]).then(()=>{
-                        getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                    })
-                    break;
-                default:
-                    break;
+                })
+            }else{
+                $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val("")
+                $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val("")
+                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val("")
+                $('#modal_evaluacion_riesgo #control_selected').val("")
             }
-        })
+        });
+
     })
 })
 function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad="",descripcionImpacto=""){
@@ -2619,3 +3473,6 @@ function getAplicacionImpacto(caracteristica){
         }
     })
 }
+$(document).ready(function() { 
+    $('.js-riesgos-basic-multiple').select2({ width: '100%' })
+});

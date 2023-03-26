@@ -22,7 +22,7 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="d-flex row col-12">
                             <div class="col-12 col-md-2">
-                                <button type="button" id="btn_reload_valores" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class="fas fa-rotate align-middle mr-2 ml-2"></i> Actualizar</button>
+                                <button type="button" id="btn_reload_valores" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class="fas fa-rotate align-middle mr-2 ml-2"></i> Aplicar Escenario</button>
                             </div>
                             <div class="col-12 col-md-2 ">
                                 <button type="button" id="btn_view_riesgos" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-info align-middle mr-2 ml-2"></i> Resumen</button>
@@ -258,7 +258,8 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Control: </span>
-                                        <select required name="" id="control" class="form-control form-control-sm">
+                                        <input type="hidden" name="control_selected" id="control_selected">
+                                        <select required name="control[]" multiple="multiple" id="control" class="js-riesgos-basic-multiple form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>

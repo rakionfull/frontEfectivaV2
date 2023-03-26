@@ -282,3 +282,6 @@ body{
 .mensaje{
     padding: 1em;
 }
+.select2-container{
+    width: 100%;
+}
