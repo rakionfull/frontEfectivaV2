@@ -3307,11 +3307,23 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
         // 2. Luego de eso restar la posicion segun lo obtenido en la aplicacion probabilidad
         // 3. Y establecer ese valor en el riesgo controlado probabilidad
         // Mismo proceso para impacto
+        
         let caracteristicas_controles = [
             'FUERTE',
             'MEDIO',
             'BAJO'
         ];
+        // $.ajax({
+        //     method: "GET",
+        //     url: $('#base_url').val()+"/main/getCalificacionSubMenu",
+        //     dataType: "JSON"
+        // }).done(function(response){
+        //     if(response.data.length > 0){
+        //         response.data.map(item => {
+        //             caracteristicas_controles.push(item.caracteristica.toUpperCase())
+        //         })
+        //     }
+        // })
         caracteristicas_controles.map(caracteristica_control => {
             let controles = $('#modal_evaluacion_riesgo #control').val()
             if(controles.length > 0){
