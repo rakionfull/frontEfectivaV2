@@ -454,7 +454,7 @@ $routes->set404Override();
      $routes->post('/updateInventarioClasificacionActivo/(:num)','InventarioClasificacionActivosController::update/$1');
      $routes->post('/deleteInventarioClasificacionActivo/(:num)','InventarioClasificacionActivosController::delete/$1');
      $routes->get('/exportExcelICA/(:num)','InventarioClasificacionActivosController::exportExcelICA/$1');
-     $routes->get('/exportExcelICAHistoricos','InventarioClasificacionActivosController::exportExcelICAHistoricos');
+     $routes->get('/exportExcelICAHistoricos/(:num)','InventarioClasificacionActivosController::exportExcelICAHistoricos/$1');
      $routes->post('/getValorByValoraciones','InventarioClasificacionActivosController::getValorByValoraciones');
      $routes->post('/updateStatus/(:num)','InventarioClasificacionActivosController::updateStatus/$1');
  
@@ -469,7 +469,7 @@ $routes->set404Override();
         $routes->post('/updateEvaluacionRiesgo/(:num)','EvaluacionRiesgoController::update/$1');
         $routes->post('/deleteEvaluacionRiesgo/(:num)','EvaluacionRiesgoController::delete/$1');
         $routes->get('/exportExcelEVA/(:num)','EvaluacionRiesgoController::exportExcelEVA/$1');
-        $routes->get('/exportExcelEVAHistorial','EvaluacionRiesgoController::exportExcelEVAHistorial');
+        $routes->get('/exportExcelEVAHistorial/(:num)','EvaluacionRiesgoController::exportExcelEVAHistorial/$1');
         $routes->post('/getValoracionByProbabilidadImpacto','ValoracionRiesgoController::getValoracionByProbabilidadImpacto');
         $routes->post('/getAplicacionImpactoByCaracteristica','AplicacionImpactoController::getAplicacionImpactoByCaracteristica');
         $routes->post('/getAplicacionProbabilidadByCaracteristica','AplicacionProbabilidadController::getAplicacionProbabilidadByCaracteristica');

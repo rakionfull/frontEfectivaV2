@@ -1427,7 +1427,7 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
         });
     }
 })
-
+//probabilidad e oimpacto
 function getValoracionByProbabilidadImpacto(){
     $.ajax({
         method: "POST",
@@ -2990,6 +2990,7 @@ function getNivelRiesgoMasivo(){
         dataType: "JSON"
     })
     .done(function(respuesta){
+        console.log(respuesta);
         let found = false
         respuesta.data.forEach(element => {
             if(!found){

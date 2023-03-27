@@ -98,7 +98,7 @@ function LoadTableUsers($est) {
                         if($('#delete').val() == 1){
                             $cadena = $cadena +   "<a href='"+ $('#base_url').val() + "/deleteUser/"+ data +"' class='mr-3 text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></a>";
                         }
-                        $cadena = $cadena +  "<a href='' id='estado_"+ data + "_"+ value["estado_us"] +"' onclick='changeEstadoUser(this, event)'  class='mr-3 text-info' data-toggle='tooltip' data-placement='top' title='' data-original-title='Cambio de Estado'><i class='fas fa-ban font-size-18'></i></a>";
+                        $cadena = $cadena +  "<a href='' id='estado_"+ data + "_"+ value["bloqueo_us"] +"' onclick='changeEstadoUser(this, event)'  class='mr-3 text-info' data-toggle='tooltip' data-placement='top' title='' data-original-title='Cambio de Estado'><i class='fas fa-ban font-size-18'></i></a>";
                     return  $cadena
                    
                   
@@ -180,10 +180,19 @@ function EjecutarChangeUser(id,estado){
 }
 function changeEstadoUser(elemento){
     event.preventDefault();
+    let usuario = elemento.id.split('_');
+    var dato = usuario[1];
+    var estado = usuario[2];
+    $msg = "";
+    if(estado ==  0){
+        $msg = 'Bloquear';
+    }else{
+        $msg = 'Desbloquear';
+    }
     //console.log(elemento.id);
     Swal.fire({
         title: 'Bloqueo',
-        text: "Desbloquear Usuario",
+        text: $msg+" Usuario",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: 'rgb(55 157 52)',
@@ -192,9 +201,7 @@ function changeEstadoUser(elemento){
       }).then((result) => {
         
                 if (result.isConfirmed) {
-                    let usuario = elemento.id.split('_');
-                    var dato = usuario[1];
-                    var estado = usuario[2];
+                   
 
                    if(estado == 0){
                     estado=1;

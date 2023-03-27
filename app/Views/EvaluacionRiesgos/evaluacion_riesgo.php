@@ -28,7 +28,7 @@
                                 <button type="button" id="btn_view_riesgos" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-info align-middle mr-2 ml-2"></i> Resumen</button>
                             </div>
                             <div class="col-12 col-md-4 ">
-                                <a href="<?= base_url('exportExcelEVAHistorial')?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
+                                <a href="<?= base_url('exportExcelEVAHistorial/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
                             </div>
                             <div class="col-12 col-md-2 ">
                                 <a href="<?= base_url('exportExcelEVA/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar</a>

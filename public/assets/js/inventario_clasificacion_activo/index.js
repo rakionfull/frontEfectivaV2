@@ -233,7 +233,7 @@ function loadTableInventarioClasificacionActivo(){
                     }else{
                        
                         return `<editICA data-id="${data.ica_id}" class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='mdi mdi-pencil font-size-18'></i></editICA>
-                        <deleteICA data-id="${data.ica_id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
+                        <deleteICA data-id="${data.ica_id}" class='text-danger btn btnedit-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='mdi mdi-trash-can font-size-18'></i></deleteICA>`
                     
                     }
                     
@@ -631,6 +631,7 @@ document.getElementById('add_ica').addEventListener('click',function(){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
+                console.log(respuesta);
                 if (!respuesta.error) 
                 {
                     document.getElementById("form_ica").reset();
@@ -939,16 +940,16 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
                     document.getElementById("update_ica").style.display = "block";
                     $('#title_ica').html('Editar Inventario y Clasificación de Activos');
                     if(is_user_negocio == 0){
-                        if(res.data[0].estado == 3){
-                            $('#modal_inventario_clasificacion_activo #estado option').remove()
-                            $('#modal_inventario_clasificacion_activo #estado').append(
-                                `
-                                    <option value="3">Observado</option>
-                                    <option value="2">Registrado</option>
-                                `
-                            )
-                            $("#modal_inventario_clasificacion_activo .input_observacion").show()
-                        }
+                        // if(res.data[0].estado == 3){
+                        //     // $('#modal_inventario_clasificacion_activo #estado option').remove()
+                        //     // $('#modal_inventario_clasificacion_activo #estado').append(
+                        //     //     `
+                        //     //         <option value="3">Observado</option>
+                        //     //         <option value="2">Registrado</option>
+                        //     //     `
+                        //     // )
+                        //     $("#modal_inventario_clasificacion_activo .input_observacion").show()
+                        // }
                         $("#modal_inventario_clasificacion_activo #id_ica").val(event.currentTarget.getAttribute('data-id'));
     
                         $("#modal_inventario_clasificacion_activo #empresa").val(res.data[0].idempresa);
