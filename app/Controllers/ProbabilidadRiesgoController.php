@@ -31,7 +31,8 @@ class ProbabilidadRiesgoController extends BaseController
       $get_endpoint = '/api/getProbabilidadRiesgo/' . $scene;
       $response = perform_http_request('GET', REST_API_URL . $get_endpoint, []);
       if ($response) {
-        updateScene($this->session->id);
+        //updateScene($this->session->id);
+        
         echo json_encode($response);
       }
     }
