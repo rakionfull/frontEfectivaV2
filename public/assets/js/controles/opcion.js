@@ -562,7 +562,7 @@ function ModificarOpcion(postData) {
             dataType: "JSON"
         })
         .done(function(respuesta) {
-         
+            console.log(respuesta);
             if (respuesta) 
             {
             

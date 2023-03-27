@@ -1194,6 +1194,7 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
+            console.log(respuesta);
             $('#modal_evaluacion_riesgo #impacto').val('')
             let found = false
             respuesta.data.forEach(element => {
@@ -1201,14 +1202,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     // OPERADOR 1
                     if(element.operador1 == ">"){
                         if(element.operador2 == "<"){
-                            if(value>element.valor1 && value<element.valor2){
+                            if(value> Number(element.valor1) && value< Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
-                            if(value>element.valor1 && value<=element.valor2){
+                            if(value> Number(element.valor1) && value<= Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1217,14 +1218,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador1 == ">="){
                         if(element.operador2 == "<"){
-                            if(value>=element.valor1 && value<element.valor2){
+                            if(value>= Number(element.valor1) && value< Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
-                            if(value>=element.valor1 && value<=element.valor2){
+                            if(value>= Number(element.valor1) && value<= Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1233,14 +1234,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador1 == "<"){
                         if(element.operador2 == ">"){
-                            if(value<element.valor1 && value>element.valor2){
+                            if(value< Number(element.valor1) && value> Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
-                            if(value<element.valor1 && value>=element.valor2){
+                            if(value< Number(element.valor1) && value>= Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1249,14 +1250,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador1 == "<="){
                         if(element.operador2 == ">"){
-                            if(value<=element.valor1 && value>element.valor2){
+                            if(value<= Number(element.valor1) && value> Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
-                            if(value<=element.valor1 && value>=element.valor2){
+                            if(value<= Number(element.valor1) && value>= Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1266,14 +1267,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     // OPERADOR 2
                     if(element.operador2 == ">"){
                         if(element.operador1 == "<"){
-                            if(value > element.valor2 && value<element.valor1){
+                            if(value >  Number(element.valor2) && value< Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value>element.valor && value<=element.valor1){
+                            if(value> Number(element.valor)&& value<= Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1282,14 +1283,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador2 == ">="){
                         if(element.operador1 == "<"){
-                            if(value >= element.valor2 && value<element.valor1){
+                            if(value >=  Number(element.valor2) && value< Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value>=element.valor && value<=element.valor1){
+                            if(value>= Number(element.valor) && value<= Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1298,14 +1299,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador2 == "<"){
                         if(element.operador1 == "<"){
-                            if(value < element.valor2 && value<element.valor1){
+                            if(value <  Number(element.valor2) && value< Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value<element.valor && value<=element.valor1){
+                            if(value< Number(element.valor) && value<= Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
@@ -1314,14 +1315,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     }
                     if(element.operador2 == "<="){
                         if(element.operador1 == "<"){
-                            if(value <= element.valor2 && value<element.valor1){
+                            if(value <=  Number(element.valor2) && value< Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value <= element.valor && value<=element.valor1){
+                            if(value <=  Number(element.valor) && value<= Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_impacto').val(element.id)
                                 $('#modal_evaluacion_riesgo #impacto').val(element.descripcion)
