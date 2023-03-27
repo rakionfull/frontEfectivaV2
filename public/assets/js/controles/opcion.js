@@ -155,7 +155,8 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         id=$id;
         document.getElementById("card-title-opcion").innerHTML = "";
         valor = valor.replace("%C3%B1", "ñ")
-        valor = valor.replace("%C3%B3", "\u00F3")
+        valor = valor.replace("%C3%B3", "\u00F3");
+        valor = valor.replace("%C3%AD","í");
         document.getElementById("card-title-opcion").innerHTML = unescape(valor);
         if(tipo == "menu" && id == 0){
          
@@ -488,9 +489,11 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
 document.getElementById("btnAgregar_Opcion").addEventListener("click",function(){
 
     $("#modal_Opcion").modal("show");
-    console.log(valor);
+   
     valor = valor.replace("%20de%20"," ")
-    valor = valor.replace("%20"," ")
+    valor = valor.replace("%20"," ");
+    valor = valor.replace("%C3%AD","í");
+  
     document.getElementById("title-Opcion").innerHTML = "Agregar " + valor;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "block";
@@ -814,6 +817,7 @@ document.getElementById("check_peso_opcion").addEventListener("change", function
 //editar 
 $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
     $("#modal_Opcion").modal("show");
+    valor = valor.replace("%C3%AD","í");
     document.getElementById("title-Opcion").innerHTML = "Modificar " + valor;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "none";
