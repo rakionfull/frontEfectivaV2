@@ -48,6 +48,7 @@ window.addEventListener("hashchange", async () => {
                
                 LoadTableOpcion("general",0,"menu",0);
             }else{
+
                 LoadTableOpcion(opcion[1],opcion[2],opcion[3],opcion[4]);
                 
             }

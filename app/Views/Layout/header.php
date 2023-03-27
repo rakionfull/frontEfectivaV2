@@ -58,4 +58,7 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 		<script src="https://kit.fontawesome.com/bbc732d875.js" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <?php 
+        header('Content-Type: text/html; charset=UTF-8');  
+      ?>
     </head>

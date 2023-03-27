@@ -154,9 +154,9 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         clasi = $clasi;
         id=$id;
         document.getElementById("card-title-opcion").innerHTML = "";
-      
-        document.getElementById("card-title-opcion").innerHTML = unescape(valor.replace("%C3%B1", "ñ"));
-        console.log(valor.replace("%C3%B1", "ñ"));
+        valor = valor.replace("%C3%B1", "ñ")
+        valor = valor.replace("%C3%B3", "\u00F3")
+        document.getElementById("card-title-opcion").innerHTML = unescape(valor);
         if(tipo == "menu" && id == 0){
          
             if ($.fn.DataTable.isDataTable('#table_Opcion')){
@@ -489,6 +489,8 @@ document.getElementById("btnAgregar_Opcion").addEventListener("click",function()
 
     $("#modal_Opcion").modal("show");
     console.log(valor);
+    valor = valor.replace("%20de%20"," ")
+    valor = valor.replace("%20"," ")
     document.getElementById("title-Opcion").innerHTML = "Agregar " + valor;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "block";
