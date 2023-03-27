@@ -1616,6 +1616,7 @@ var impacto = ''
 var riesgo_controlado_probabilidad = ''
 var riesgo_controlado_impacto = ''
 var riesgo_controlado_valor = ''
+var tipo_valor = ''
 $('#btn_reload_valores').click(function(){
     $.ajax({
         url:BASE_URL+"/listEvaluacionRiesgos/"+idempresa,
@@ -2253,6 +2254,7 @@ $('#btn_reload_valores').click(function(){
                     .done(function(respuesta){
                         if(respuesta.data.length > 0){
                             if(respuesta.data[0].tipo_valor == 'Formula'){
+                                tipo_valor = 'Formula'
                                 id_probabilidad = respuesta.data[0].id
                                 let formula = respuesta.data[0].formula
                                 let split_formula = formula.split(" ")
@@ -2291,6 +2293,8 @@ $('#btn_reload_valores').click(function(){
                                             break;
                                     }
                                 }
+                            }else{
+                                tipo_valor = 'Numero'
                             }
                         }
                     })
@@ -2308,6 +2312,8 @@ $('#btn_reload_valores').click(function(){
                     .done(function(respuesta){
                         if(respuesta.data.length > 0){
                             if(respuesta.data[0].tipo_valor == 'Formula'){
+                                tipo_valor = 'Formula'
+                                
                                 id_impacto = respuesta.data[0].id
                                 let formula = respuesta.data[0].formula
                                 let split_formula = formula.split(" ")
@@ -2346,6 +2352,9 @@ $('#btn_reload_valores').click(function(){
                                             break;
                                     }
                                 }
+                            }else{
+                                tipo_valor = 'Numero'
+
                             }
             
                         }
@@ -2356,20 +2365,167 @@ $('#btn_reload_valores').click(function(){
                     });
 
                     Promise.all([probabilidad1,impacto1,]).then(() => {
-                        let valoracion_ajax = $.ajax({
-                            method: "POST",
-                            url: BASE_URL+"/getValoracionByProbabilidadImpacto",
-                            data:{
-                                id_probabilidad:id_probabilidad,
-                                id_impacto:id_impacto
-                            },
-                            dataType: "JSON"
-                        })
-                        .done(function(respuesta){
-                            if(respuesta.data.length > 0){
-                                valor = respuesta.data[0].valor
-                            }
-                        })
+                        var valoracion_ajax = ''
+                        if(tipo_valor == 'Formula'){
+                            valoracion_ajax = $.ajax({
+                                method: "POST",
+                                url: BASE_URL+"/getValoracionByProbabilidadImpacto",
+                                data:{
+                                    id_probabilidad:id_probabilidad,
+                                    id_impacto:id_impacto
+                                },
+                                dataType: "JSON"
+                            })
+                            .done(function(respuesta){
+                                if(respuesta.data.length > 0){
+                                    valor = respuesta.data[0].valor
+                                }
+                            })
+                        }else{
+                            let value = Number(value_probabilidad)*Number(value_impacto)
+                            valoracion_ajax = $.ajax({
+                                method:"get",
+                                url:BASE_URL+"/main/getNivelRiesgo",
+                                dataType: "JSON"
+                            })
+                            .done(function(respuesta){
+                                console.log(respuesta);
+                                let found = false
+                                respuesta.data.forEach(element => {
+                                    if(!found){
+                                        // OPERADOR 1
+                                        if(element.operador1 == ">"){
+                                            if(element.operador2 == "<"){
+                                                if(value>element.valor1 && value<element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+                                                }
+                                            }
+                                            if(element.operador2 == "<="){
+                                                if(value>element.valor1 && value<=element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador1 == ">="){
+                                            if(element.operador2 == "<"){
+                                                if(value>=element.valor1 && value<element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador2 == "<="){
+                                                if(value>=element.valor1 && value<=element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador1 == "<"){
+                                            if(element.operador2 == ">"){
+                                                if(value<element.valor1 && value>element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador2 == ">="){
+                                                if(value<element.valor1 && value>=element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador1 == "<="){
+                                            if(element.operador2 == ">"){
+                                                if(value<=element.valor1 && value>element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador2 == ">="){
+                                                if(value<=element.valor1 && value>=element.valor2){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        // OPERADOR 2
+                                        if(element.operador2 == ">"){
+                                            if(element.operador1 == "<"){
+                                                if(value > element.valor2 && value<element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador1 == "<="){
+                                                if(value>element.valor && value<=element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador2 == ">="){
+                                            if(element.operador1 == "<"){
+                                                if(value >= element.valor2 && value<element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador1 == "<="){
+                                                if(value>=element.valor && value<=element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador2 == "<"){
+                                            if(element.operador1 == "<"){
+                                                if(value < element.valor2 && value<element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador1 == "<="){
+                                                if(value<element.valor && value<=element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                        if(element.operador2 == "<="){
+                                            if(element.operador1 == "<"){
+                                                if(value <= element.valor2 && value<element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                            if(element.operador1 == "<="){
+                                                if(value <= element.valor && value<=element.valor1){
+                                                    found = true
+                                                    valor = element.descripcion
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            })
+                        }
                         Promise.all([valoracion_ajax]).then(()=>{
                             $posiciones_probabilidad = []
                             $posiciones_impacto = []
