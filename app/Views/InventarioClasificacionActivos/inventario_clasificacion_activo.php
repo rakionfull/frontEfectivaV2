@@ -43,7 +43,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table_inventario_clasificacion_activo" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="5" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="table_inventario_clasificacion_activo" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead class="thead-light">
                                 <tr>
                                     <th rowspan="2">

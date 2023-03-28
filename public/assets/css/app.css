@@ -96,10 +96,14 @@ File: Main Css File
   padding: 5px;
   padding-left: 20px;
 }
-/* .menu .activado{
+.menu .activado{
   background: #165094;
-
-} */
+ 
+}
+.menu .activado a{
+  color:#fff;
+ 
+}
 .table_matriz{
   table-layout: fixed;
   width: 100%;
@@ -117,18 +121,19 @@ File: Main Css File
 }
 /* .menu .activado a{
   color: #fff;
-}
-.menu li:hover{
+}*/
+/* .menu li:hover{
   background: #165094;
   color: #fff;
-} */
+}  */
 .cajitas{
   display: flex;
 }
 
 
 .menu li a:hover{
-  /* color: #fff; */
+  background: #165094;
+  color: #fff;
 }
 .table-responsive table tbody tr td{
  font-size: 10pt;

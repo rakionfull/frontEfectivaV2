@@ -177,14 +177,14 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <select name="" id="cobertura" class="form-control">
-                                            <option value="">Cobertura</option>
+                                            <!-- <option value="">Cobertura</option>
                                             <option value="1">Cobertura Probabilidad</option>
                                             <option value="2">Cobertura Impacto</option>
-                                            <option value="3">Todos</option>
+                                            <option value="3">Todos</option> -->
                                             <?php 
-                                            // foreach ($cobertura->data as $key => $value) {
-                                            //     echo '<option value="'.$value->id.'">'.$value->cobertura.'</option>';
-                                            // }
+                                            foreach ($cobertura->data as $key => $value) {
+                                                echo '<option value="'.$value->id.'">'.$value->cobertura.'</option>';
+                                            }
                                             ?>
                                         </select>
                                     </div>

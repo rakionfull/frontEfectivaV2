@@ -184,7 +184,7 @@
                             </div>
                             <div class="row">
                                
-                                <!-- <div class="col-lg-12">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <select name="" id="cobertura" class="form-control">
                                             <option value="">Cobertura</option>
@@ -194,35 +194,36 @@
                                             }?>
                                         </select>
                                     </div>
-                                </div> -->
-                                <div class="col-lg-12">
+                                </div>
+                                <!-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <select name="" id="cobertura" class="form-control">
                                             <option value="">Cobertura</option>
                                             <?php 
-                                                if($registro->idCobertura == 1) echo("<option value='1' selected>Cobertura Probabilidad</option>");
-                                                else echo("  <option value='2' >Cobertura Impacto</option>");
-                                                echo("  <option value='3' >Todos</option>");
-                                                
-                                                if($registro->idCobertura == 2) echo("<option value='2' selected>Cobertura Impacto</option>");
-                                                else echo("  <option value='1' >Cobertura Probabilidad</option>");
-                                                echo("  <option value='3' >Todos</option>");
-                                                if($registro->idCobertura == 3) echo("<option value='3' selected>Todos</option>");
-                                                else echo("  <option value='1' >Cobertura Probabilidad</option>");
-                                                 echo("  <option value='2' >Cobertura Impacto</option>");
+                                                if($registro->idCobertura == 1) 
+                                                { 
+                                                    echo("<option value='1' selected>Cobertura Probabilidad</option>");
+                                                }else{
+                                                    echo("  <option value='2' >Cobertura Impacto</option>");
+                                                    echo("  <option value='3' >Todos</option>");
+                                                }
+                                                if($registro->idCobertura == 2) {
+                                                    echo("<option value='2' selected>Cobertura Impacto</option>");
+                                                }else {
+                                                    echo("  <option value='1' >Cobertura Probabilidad</option>");
+                                                echo("  <option value='3' >Todos</option>"); 
+                                                }
+                                                if($registro->idCobertura == 3){echo("<option value='3' selected>Todos</option>");
+                                                }else{ 
+                                                    echo("  <option value='1' >Cobertura Probabilidad</option>");
+                                                 echo("  <option value='2' >Cobertura Impacto</option>");}
 
                                             ?>
-                                            <!-- <option value="1">Cobertura Probabilidad</option>
-                                            <option value="2">Cobertura Impacto</option>
-                                            <option value="3">Todos</option> -->
-                                            <?php 
-                                            // foreach ($cobertura->data as $key => $value) {
-                                            //     echo '<option value="'.$value->id.'">'.$value->cobertura.'</option>';
-                                            // }
-                                            ?>
+                                          
+                                          
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         
                         </div>

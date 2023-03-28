@@ -74,7 +74,7 @@ $session = session();?>
                             <?php if($session->permisos[0]->view_det==1){ ?>
                                 <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="fas fa-list-alt"></i>
+                                    <i class="fa-solid fa-users-gear"></i>
                                         <span>Accesos</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
@@ -97,7 +97,7 @@ $session = session();?>
                             <?php if($session->permisos[1]->view_det==1){ ?>
                                 <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="fas fa-list-alt"></i>
+                                    <i class="fa-solid fa-gear"></i>
                                         <span>Parametrización</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
@@ -122,7 +122,7 @@ $session = session();?>
                             <?php if($session->permisos[2]->view_det==1){ ?>
                                 <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="fas fa-list-alt"></i>
+                                        <i class="fa-solid fa-clipboard-list"></i>
                                         <span>Evaluación de Riesgos de Seguridad en Procesos de Negocio</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
