@@ -77,6 +77,7 @@ window.addEventListener("hashchange", async () => {
         LoadTableEvaluacionControl(permisos['update_det'],permisos['delete_det']);
         
         // CargarDisenioOperatividad();
+        CargarDisenioEvaluacion();
         CargarEvaluacion();
         window.location.hash = '#';   
     break;

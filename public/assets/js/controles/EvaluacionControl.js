@@ -230,6 +230,53 @@ function cargarDatosEvaluacionControl($dato) {
 
 }
 
+//cargar Diseño
+function CargarDisenioEvaluacion() {
+    
+    
+    //cargando las calificaicon de disneio
+    $.ajax({
+        method: "GET",
+        url: $('#base_url').val()+"/main/getDisenioCalificacion",
+        dataType: "JSON"
+    })
+    .done(function(respuesta) {
+       
+
+        if (respuesta.data  != 0) 
+        {
+            let datos = respuesta;
+          
+
+            $("#cali_eva").empty();
+            $("#cali_eva").append('<option value="" selected>Calificación</option>');
+
+           
+
+            datos.data.forEach(dato => {
+                
+              
+                    $("#cali_eva").append('<option value='+dato["id"]+'>'+dato["caracteristica"]+'</option>');
+
+                
+                
+             
+            });
+        } 
+        else
+        {  }
+    
+    })
+    .fail(function(error) {
+        // alert("Se produjo el siguiente error: ".err);
+    })
+    .always(function() {
+    });
+
+    
+
+   
+}
 
 
 
@@ -309,7 +356,7 @@ document.getElementById("btnAgregar_EvaluacionControl").addEventListener("click"
     document.getElementById("form_EvaluacionControl").reset();
     document.getElementById("Agregar_EvaluacionControl").style.display = "block";
     document.getElementById("Modificar_EvaluacionControl").style.display = "none";
-  
+   
 });
 
 
@@ -331,9 +378,10 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                     // disenio : document.getElementById("disenio_eva").value,
                     // operatividad : document.getElementById("operatividad_eva").value,
                     valores:$arrayDatos,
-                    calificacion : document.getElementById("cali_eva").value,
+                    calificacion:$('select[name="cali_eva"] option:selected').text()
+                    //calificacion : document.getElementById("cali_eva").value,
                 };
-               
+             // console.log(postData);
                 try {
 
                     $.ajax({
@@ -407,8 +455,7 @@ $('#table_EvaluacionControl tbody').on( 'click', 'editEvaluacionControl', functi
     document.getElementById("form_EvaluacionControl").reset();
     document.getElementById("Agregar_EvaluacionControl").style.display = "none";
     document.getElementById("Modificar_EvaluacionControl").style.display = "block";
-
-
+   
     var table = $('#table_EvaluacionControl').DataTable();
     var regNum = table.rows( $(this).parents('tr') ).count().toString();
     var regDat = table.rows( $(this).parents('tr') ).data().toArray();
@@ -418,7 +465,8 @@ $('#table_EvaluacionControl tbody').on( 'click', 'editEvaluacionControl', functi
     }else{
     console.log(regDat[0]);
         document.getElementById("id_EvaluacionControl").value=regDat[0][0];
-        document.getElementById("cali_eva").value=regDat[0][2];
+       // document.getElementById("cali_eva").value=regDat[0][2];
+        $('select[name="cali_eva"] option:selected').text(regDat[0][2])
         cargarDatosEvaluacionControl(regDat[0][0]);
         
         // document.getElementById("operatividad_eva").value=regDat[0]["idOperatividad"];   

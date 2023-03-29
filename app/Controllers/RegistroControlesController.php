@@ -8,7 +8,7 @@ class RegistroControlesController extends BaseController
 {
       public function list_registro_controles(){
         if($this->session->logged_in){
-          $get_endpoint = '/api/getRegistroControles/';
+          $get_endpoint = '/api/getRegistroControles';
 
           $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
           if($response){

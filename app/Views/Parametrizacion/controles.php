@@ -1028,7 +1028,7 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <select class="form-control form-control-sm" id="cali_eva">
+                                                        <select class="form-control form-control-sm" name= "cali_eva" id="cali_eva">
                                                             <option value="">Calificación</option>
                                                             <option value="Bajo">Bajo</option>
                                                             <option value="Medio">Medio</option>
