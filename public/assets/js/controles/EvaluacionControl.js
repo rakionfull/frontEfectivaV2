@@ -138,7 +138,8 @@ function CargarEvaluacion() {
     })
     .done(function(respuesta) {
        
-       
+        console.log('sub')
+        console.log(respuesta);
         if (respuesta) 
         {
         SubMenu  = respuesta.data;

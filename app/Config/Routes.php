@@ -504,6 +504,7 @@ $routes->set404Override();
     $routes->get('activo/getUserNombreByActivo', 'Activo::getUserNombreByActivo');
     $routes->get('activo/getAlerta', 'Activo::getAlerta');
 
+    $routes->get('getCaracteristicaOpcion/(:num)','EvaluacionControlController::getCaracteristicaOpcion/$1');
 /*
 /*
  * --------------------------------------------------------------------
