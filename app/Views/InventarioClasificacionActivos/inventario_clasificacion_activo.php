@@ -160,13 +160,13 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Nombre de Activo: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="activo">
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="activo">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Descripcion de Activo: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="desc_activo">
+                                        <input maxlength="500" required type="text" class="form-control form-control-sm" id="desc_activo">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -264,7 +264,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Comentario: </span>
-                                        <input type="text" class="form-control form-control-sm" required id="comentario">
+                                        <input maxlength="500" type="text" class="form-control form-control-sm" required id="comentario">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -293,7 +293,7 @@
                                 <div class="col-12 input_observacion" style="display:none;">
                                     <div class="form-group">
                                         <span>Observación: </span>
-                                        <textarea id="observacion" class="form-control form-control-sm"></textarea>
+                                        <textarea maxlength="200" id="observacion" class="form-control form-control-sm"></textarea>
                                     </div>
                                 </div>
                             </div>

@@ -545,13 +545,13 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <span>Riesgo: </span>
-                                            <input type="text" class="form-control form-control-sm" id="input_tipo_riesgo">
+                                            <input maxlength="150" type="text" class="form-control form-control-sm" id="input_tipo_riesgo">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <span>Descripción: </span>
-                                            <textarea type="text" class="form-control form-control-sm" id="descripcion"></textarea>
+                                            <textarea maxlength="150" type="text" class="form-control form-control-sm" id="descripcion"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -598,7 +598,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Descripción: </span>
-                                        <input required id="descripcion" type="text" class="form-control form-control-sm">
+                                        <input maxlength="150" required id="descripcion" type="text" class="form-control form-control-sm">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -632,7 +632,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span>Comentario: </span>
-                                        <textarea required type="text" class="form-control form-control-sm" id="comentario"></textarea>
+                                        <textarea maxlength="150" required type="text" class="form-control form-control-sm" id="comentario"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 formula_1_probabilidad" style="display: none;">
@@ -657,7 +657,7 @@
                                                 <input type="number" id="value_formula_1" class="form-control form-control-sm"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
+                                                <input maxlength="150" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
                                             </div>
                                             
                                         </div>
@@ -694,7 +694,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Descripción: </span>
-                                        <input required id="descripcion" type="text" class="form-control form-control-sm">
+                                        <input maxlength="150" required id="descripcion" type="text" class="form-control form-control-sm">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -763,7 +763,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span>Comentario: </span>
-                                        <textarea required type="text" class="form-control form-control-sm" id="comentario"></textarea>
+                                        <textarea maxlength="150" required type="text" class="form-control form-control-sm" id="comentario"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -798,7 +798,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Descripción: </span>
-                                        <input required id="descripcion" type="text" class="form-control form-control-sm">
+                                        <input maxlength="150" required id="descripcion" type="text" class="form-control form-control-sm">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -857,7 +857,7 @@
                                                 <input type="number" id="value_formula_1" class="form-control form-control-sm"/>
                                             </div>
                                             <div class="col-md-3">
-                                                <input type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
+                                                <input maxlength="150" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
                                             </div>
                                         </div>
                                     </div>
@@ -893,7 +893,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Descripción: </span>
-                                        <input required id="descripcion" type="text" class="form-control form-control-sm">
+                                        <input maxlength="150" required id="descripcion" type="text" class="form-control form-control-sm">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -962,7 +962,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span>Comentario: </span>
-                                        <textarea required type="text" class="form-control form-control-sm" id="comentario"></textarea>
+                                        <textarea maxlength="150" required type="text" class="form-control form-control-sm" id="comentario"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -1049,13 +1049,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span>Descripción: </span>
-                                        <textarea name="descripcion" id="descripcion" class="form-control form-control-sm"></textarea>
+                                        <textarea maxlength="150" name="descripcion" id="descripcion" class="form-control form-control-sm"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <span>Comentario: </span>
-                                        <textarea name="comentario" id="comentario" class="form-control form-control-sm"></textarea>
+                                        <textarea maxlength="150" name="comentario" id="comentario" class="form-control form-control-sm"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -1091,7 +1091,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Tipo: </span>
-                                        <input type="text" class="form-control form-control-sm" id="tipo">
+                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="tipo">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -1145,7 +1145,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Amenaza: </span>
-                                        <input type="text" class="form-control form-control-sm" id="amenaza">
+                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="amenaza">
                                     </div>
                                 </div>
                             </div>
@@ -1181,7 +1181,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Categoria: </span>
-                                        <input type="text" class="form-control form-control-sm" id="categoria">
+                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="categoria">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -1234,7 +1234,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Vulnerabilidad: </span>
-                                        <input type="text" class="form-control form-control-sm" id="vulnerabilidad">
+                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="vulnerabilidad">
                                     </div>
                                 </div>
                             </div>
@@ -1287,7 +1287,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                        
-                                        <input type="text" placeholder="Valor" class="form-control form-control-sm" id="valor_valoracion">
+                                        <input maxlength="150" type="text" placeholder="Valor" class="form-control form-control-sm" id="valor_valoracion">
                                     </div>
                                 </div>
                             </div>

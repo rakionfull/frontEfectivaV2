@@ -220,7 +220,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo">
+                                        <input maxlength="500" required type="text" class="form-control form-control-sm" id="riesgo">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -233,26 +233,26 @@
                                     <div class="form-group">
                                         <span>Probabilidad: </span>
                                         <input type="hidden" id="id_probabilidad">
-                                        <input required type="text" class="form-control form-control-sm" id="probabilidad" disabled>
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="probabilidad" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Valor Impacto: </span>
                                         <input type="hidden" id="id_impacto">
-                                        <input required type="text" class="form-control form-control-sm" id="valor_impacto">
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="valor_impacto">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Impacto: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="impacto" disabled>
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="impacto" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Valor: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="valor" disabled>
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="valor" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
@@ -267,19 +267,19 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Probabilidad: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_probabilidad" disabled>
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_probabilidad" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Impacto: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_impacto" disabled> 
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_impacto" disabled> 
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo Controlado Valor: </span>
-                                        <input required type="text" class="form-control form-control-sm" id="riesgo_controlado_valor" disabled>
+                                        <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_valor" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
