@@ -11,7 +11,10 @@ window.addEventListener("hashchange", async () => {
                 element.classList.remove("activado");
             });
             document.getElementById("apartValoracionRiesgo").style.display = "block";
-            document.getElementById("apartMatriz").style.display = "block";
+            if(escenario == 2){
+                document.getElementById("apartMatriz").style.display = "block";
+            }
+           
 
             document.getElementById("ValoracionRiesgo").className = "activado";
             permisos = await getPermisos('Valoracion de riesgo');

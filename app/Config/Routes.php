@@ -420,7 +420,7 @@ $routes->set404Override();
 
 
 
-    //---------------------------- Registro de Plan de accion -------------------------------------
+    //---------------- de Plan de accion -------------------------------------
 
     $routes->get('PlanAccion/getAlerta_seguimiento', 'PlanAccion::getAlerta_seguimiento');
 

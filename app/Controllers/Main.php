@@ -1254,9 +1254,9 @@ class Main extends BaseController {
                     'user' =>$this->session->id
                 ];
                
-                $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
-                //var_dump($response);
-                if(($response->error == 1)){
+                $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
+                
+                if(($response->error )){
                   $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
                     '.($response->msg).'
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">

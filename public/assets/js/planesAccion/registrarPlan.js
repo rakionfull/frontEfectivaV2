@@ -26,8 +26,8 @@ function validarFechas(fecha_ini,fecha_fin) {
 }
 
 document.getElementById("btn_crear_plan").addEventListener("click",function(){
-  // console.log($('#fecha_inicio_plan').val());
-  // console.log($('#fecha_fin_plan').val());
+  // //console.log($('#fecha_inicio_plan').val());
+  // //console.log($('#fecha_fin_plan').val());
   $valida = validarFechas($('#fecha_inicio_plan').val(),$('#fecha_fin_plan').val());
   var data1 = $('.js-riesgos-basic-multiple').select2('data');
   var datos1 = "";
@@ -98,7 +98,7 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
                   
                   
               };
-            //   console.log(postData);
+            //   //console.log(postData);
               try {
 
                   $.ajax({
@@ -108,7 +108,7 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
                       dataType: "JSON"
                   })
                   .done(function(respuesta) {
-                    console.log(respuesta);
+                    //console.log(respuesta);
 
                       if (respuesta.error==1) 
                       {
@@ -163,7 +163,7 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
      
   //}
 //   else{
-//       //console.log("aqui5");
+//       ////console.log("aqui5");
 //       Swal.fire({
 //                icon: 'error',
 //                title: 'Error',

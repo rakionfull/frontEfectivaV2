@@ -7,7 +7,7 @@ function DatosControl() {
     //cargar la data para todos los tipo tabla
     $.ajax({
         method: "GET",
-        url: $('#base_url').val()+"/main/getRegistroControl/"+$('#modificar_control').val(),
+        url: $('#base_url').val()+"/main/getRegistrosControl/"+$('#modificar_control').val(),
         dataType: "JSON"
     })
     .done(function(respuesta) {
@@ -40,6 +40,7 @@ function cargarValues() {
         dataType: "JSON"
     })
     .done(function(respuesta) {
+        console.log(respuesta);
         $('#spinner-div').hide();
         
         $data =  respuesta.data;

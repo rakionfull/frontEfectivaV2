@@ -584,8 +584,9 @@
                                                             <th>ID</th>                                                         
                                                             <th>Característica</th>
                                                             <th>Calificacion</th>
-                                                            <th>valor</th>
+                                                            
                                                             <th>condicion</th>
+                                                            <th>valor</th>
                                                             <th>Peso</th>
                                                             <th>Descripción</th>
                                                             <th>tipo</th>

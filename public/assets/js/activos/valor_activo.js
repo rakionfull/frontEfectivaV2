@@ -1,4 +1,3 @@
-
 var alerta_valorActivo = document.getElementById("alert_valorActivo");
 
 function LoadTableValorActivo($update,$delete) {
@@ -13,12 +12,12 @@ function LoadTableValorActivo($update,$delete) {
         language: {
             "decimal": "",
             "emptyTable": "No hay información",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
             "infoFiltered": "(Filtrado de _MAX_ total entradas)",
             "infoPostFix": "",
             "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "lengthMenu": "Mostrar _MENU_ Registros",
             "loadingRecords": "Cargando...",
             "processing": "Procesando...",
             "search": "Buscar:",

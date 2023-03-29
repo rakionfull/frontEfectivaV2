@@ -498,28 +498,30 @@
         </div>
         <div class="row" >
         <div class="col-lg-12">
-            <div class="opcion" id="apartMatriz" style="display:none">
-                        <div class="card">
-                            <div class="card-body">
-                                    <div class="row">
-                                        <!-- <div id="chart" class="col-lg-12"></div> -->
-                                        <div class="col-lg-12">
-                                            <h4>Matriz de Riesgos</h4>
+           
+                <div class="opcion" id="apartMatriz" style="display:none">
+                            <div class="card">
+                                <div class="card-body">
+                                        <div class="row">
+                                            <!-- <div id="chart" class="col-lg-12"></div> -->
+                                            <div class="col-lg-12">
+                                                <h4>Matriz de Riesgos</h4>
+                                            </div>
+                                            <table style="border:1px solid #ccc" class="table_matriz" > 
+                                        
+                                            <tbody id="datos"></tbody>
+                                                <!-- <tr>
+                                                    <td colspan='7'>Matriz de Riesgos</td>
+                                                    
+                                                </tr>
+                                                <div id="datos">
+                                                </div> -->
+                                            </table>
                                         </div>
-                                        <table style="border:1px solid #ccc" class="table_matriz" > 
-                                    
-                                        <tbody id="datos"></tbody>
-                                            <!-- <tr>
-                                                <td colspan='7'>Matriz de Riesgos</td>
-                                                
-                                            </tr>
-                                            <div id="datos">
-                                            </div> -->
-                                        </table>
-                                    </div>
+                                </div>
                             </div>
-                        </div>
-            </div>
+                </div>
+            
                         
         </div>
     </div>

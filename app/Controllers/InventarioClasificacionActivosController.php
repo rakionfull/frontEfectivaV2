@@ -360,7 +360,7 @@ class InventarioClasificacionActivosController extends BaseController
             // Agregar un encabezado
             
             $spreadsheet->getActiveSheet()->mergeCells('B1:R2');
-            $spreadsheet->getActiveSheet()->setCellValue('B1', 'Reporte de inventario de clasificación de activo por usuario');
+            $spreadsheet->getActiveSheet()->setCellValue('B1', 'Reporte de inventario de clasificación de activo');
             
             // Agregar estilo al encabezado
             $spreadsheet->getActiveSheet()->getStyle('B1:R2')->applyFromArray([
