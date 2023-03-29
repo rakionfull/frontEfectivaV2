@@ -3456,94 +3456,108 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
         // 3. Y establecer ese valor en el riesgo controlado probabilidad
         // Mismo proceso para impacto
         
-        let caracteristicas_controles = [
-            'FUERTE',
-            'MEDIO',
-            'BAJO'
-        ];
-        // $.ajax({
-        //     method: "GET",
-        //     url: $('#base_url').val()+"/getCaracteristicaOpcion",
-        //     dataType: "JSON"
-        // }).done(function(response){
-        //     if(response.data.length > 0){
-        //         response.data.map(item => {
-        //             if(!caracteristicas_controles.includes(item.caracteristica.toUpperCase())){
-        //                 caracteristicas_controles.push(item.caracteristica.toUpperCase())
-        //             }
-        //         })
-        //     }
-        // })
-        // console.log(caracteristicas_controles)
-        caracteristicas_controles.map(caracteristica_control => {
-            let controles = $('#modal_evaluacion_riesgo #control').val()
-            if(controles.length > 0){
-                controles.map(control_id => {
-                    if(control_id != ""){
-                        let found = false
-                        if(!found){
-                            $.ajax({
-                                url:BASE_URL+"/getRegistroControlById/"+control_id,
-                                dataType:'JSON'
-                            })
-                            .done(function(respuesta){
-                                let cobertura = respuesta.data.idCobertura
-                                let evaluacion = respuesta.data.evaluacion.toLowerCase()
-                                let firsLetter = evaluacion.charAt(0).toUpperCase()
-                                let caracteristica = firsLetter+evaluacion.slice(1)
-                                caracteristica_upper = caracteristica.toUpperCase()
-                                caracteristica_control = caracteristica_control.toUpperCase()
-                                if(caracteristica_upper == caracteristica_control){
-                                    found = true
-                                    cobertura = Number(cobertura)
-                                    $('#modal_evaluacion_riesgo #control_selected').val(control_id)
-                                    switch (cobertura) {
-                                        case 1:
-                                            let ap1 = getAplicacionProbabilidad(caracteristica)
-                                            if(escenario == 2){
-                                                $impacto_actual = $('#modal_evaluacion_riesgo #impacto').val()
-                                            }else{
-                                                $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
-                                            }
-                                            $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($impacto_actual)
-                                            Promise.all([ap1]).then(()=>{
-                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                                            })
-                                            break;
-                                        case 2:
-                                            let ai2 = getAplicacionImpacto(caracteristica)
-                                            if(escenario == 2){
-                                                $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
-                                            }else{
-                                                $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
-                                            }
-                                            $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($probabilidad_actual)
-                                            Promise.all([ai2]).then(()=>{
-                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #valorriesgo_controlado_impacto_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                                            })
-                                            break;
-                                        case 3:
-                                            let ap3 = getAplicacionProbabilidad(caracteristica)
-                                            let ai3 = getAplicacionImpacto(caracteristica)
-                                            Promise.all([ap3,ai3]).then(()=>{
-                                                getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
-                                            })
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                }
-                            })
-                        }
-                    }
+        let caracteristicas_controles = [];
+        let posiciones_control = []
+        let aux;
+        let aux_caracteristica;
+        let ajaxgetCaracteristicas = $.ajax({
+            method: "GET",
+            url: $('#base_url').val()+"/getCaracteristicaOpcion/"+escenario,
+            dataType: "JSON"
+        }).done(function(response){
+            if(response.data.length > 0){
+                response.data.map(item => {
+                    let posicion = Number(item.posicion.split("%")[0])
+                    posiciones_control.push(posicion)
+                    caracteristicas_controles.push(item.caracteristica.toUpperCase())
                 })
-            }else{
-                $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val("")
-                $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val("")
-                $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val("")
-                $('#modal_evaluacion_riesgo #control_selected').val("")
             }
-        });
+        })
+        Promise.all([ajaxgetCaracteristicas]).then(()=>{
+            for (let i = 1; i < posiciones_control.length; i++) {
+                for (let j = 0; j < (posiciones_control.length - i); j++) {
+                    if(posiciones_control[j] <= posiciones_control[j+1]){
+                        aux = posiciones_control[j];
+                        posiciones_control[j] = posiciones_control[j+1]
+                        posiciones_control[j+1] = aux
+    
+                        aux_caracteristica = caracteristicas_controles[j];
+                        caracteristicas_controles[j] = caracteristicas_controles[j+1]
+                        caracteristicas_controles[j+1] = aux_caracteristica
+    
+                    }
+                }
+            }
+            caracteristicas_controles.map(caracteristica_control => {
+                let controles = $('#modal_evaluacion_riesgo #control').val()
+                if(controles.length > 0){
+                    controles.map(control_id => {
+                        if(control_id != ""){
+                            let found = false
+                            if(!found){
+                                $.ajax({
+                                    url:BASE_URL+"/getRegistroControlById/"+control_id,
+                                    dataType:'JSON'
+                                })
+                                .done(function(respuesta){
+                                    let cobertura = respuesta.data.idCobertura
+                                    let evaluacion = respuesta.data.evaluacion.toLowerCase()
+                                    let firsLetter = evaluacion.charAt(0).toUpperCase()
+                                    let caracteristica = firsLetter+evaluacion.slice(1)
+                                    caracteristica_upper = caracteristica.toUpperCase()
+                                    caracteristica_control = caracteristica_control.toUpperCase()
+                                    if(caracteristica_upper == caracteristica_control){
+                                        found = true
+                                        cobertura = Number(cobertura)
+                                        $('#modal_evaluacion_riesgo #control_selected').val(control_id)
+                                        switch (cobertura) {
+                                            case 1:
+                                                let ap1 = getAplicacionProbabilidad(caracteristica)
+                                                if(escenario == 2){
+                                                    $impacto_actual = $('#modal_evaluacion_riesgo #impacto').val()
+                                                }else{
+                                                    $impacto_actual = $('#modal_evaluacion_riesgo #valor_impacto').val()
+                                                }
+                                                $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val($impacto_actual)
+                                                Promise.all([ap1]).then(()=>{
+                                                    getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                                })
+                                                break;
+                                            case 2:
+                                                let ai2 = getAplicacionImpacto(caracteristica)
+                                                if(escenario == 2){
+                                                    $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
+                                                }else{
+                                                    $probabilidad_actual = $('#modal_evaluacion_riesgo #valor_probabilidad').val()
+                                                }
+                                                $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val($probabilidad_actual)
+                                                Promise.all([ai2]).then(()=>{
+                                                    getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #valorriesgo_controlado_impacto_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                                })
+                                                break;
+                                            case 3:
+                                                let ap3 = getAplicacionProbabilidad(caracteristica)
+                                                let ai3 = getAplicacionImpacto(caracteristica)
+                                                Promise.all([ap3,ai3]).then(()=>{
+                                                    getRiesgoControladoValor($('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val(),$('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val(),$('#modal_evaluacion_riesgo #probabilidad').val(),$('#modal_evaluacion_riesgo #impacto').val())
+                                                })
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                }else{
+                    $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val("")
+                    $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val("")
+                    $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val("")
+                    $('#modal_evaluacion_riesgo #control_selected').val("")
+                }
+            });
+        })
 
     })
 })

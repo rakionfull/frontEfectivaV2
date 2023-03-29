@@ -146,9 +146,9 @@ class EvaluacionControlController extends BaseController
       }
     }
   }
-  public function getCaracteristicaOpcion(){
+  public function getCaracteristicaOpcion($escenario){
     if($this->session->logged_in){
-      $get_endpoint = '/api/getCaracteristicaOpcion';
+      $get_endpoint = '/api/getCaracteristicaOpcion/'.$escenario;
 
       $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
       if($response){
