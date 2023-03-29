@@ -74,8 +74,7 @@ $('#unidad_custodio').on('change',function(){
     })
 })
 function cargarProceso($macro,$dato) {
-    console.log($macro);
-    console.log($dato);
+  
     const postData = {           
         idempresa: idempresa,
         idarea:idarea,

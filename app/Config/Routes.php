@@ -178,10 +178,10 @@ $routes->set404Override();
         $routes->post('activo/listaProcesoByMacro', 'Activo::listaProcesoByMacro');
 
         //proceso
-        $routes->get('activo/getProceso/(:num)', 'Activo::getProceso/$1');
+        $routes->get('/activo/getProceso/(:num)', 'Activo::getProceso/$1');
         $routes->post('/activo/addProceso', 'Activo::addProceso');
         $routes->post('/activo/updateProceso', 'Activo::updateProceso');
-        $routes->post('activo/getProcesoByActivo', 'Activo::getProcesoByActivo');
+        $routes->post('/activo/getProcesoByActivo', 'Activo::getProcesoByActivo');
         $routes->post('/activo/deleteProceso', 'Activo::deleteProceso');
         //valoracion de activo
         $routes->get('activo/getValActivo', 'Activo::getValActivo');
