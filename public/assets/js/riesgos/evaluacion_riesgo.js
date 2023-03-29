@@ -2580,7 +2580,9 @@ $('#btn_reload_valores').click(function(){
                                                 $probabilidad_actual = value_probabilidad
                                                 $new_probabilidad = $probabilidad_actual - ($probabilidad_actual*$value);
                                                 riesgo_controlado_probabilidad = $new_probabilidad
-                                                riesgo_controlado_impacto = item.riesgo_controlado_impacto
+                                                console.log('item.riesgo_controlado_impacto')
+                                                console.log(item.riesgo_controlado_impacto)
+                                                riesgo_controlado_impacto = value_impacto
                                                 let value = Number(value_probabilidad) * Number(value_impacto)
                                                 $.ajax({
                                                     method:"get",
@@ -2732,7 +2734,7 @@ $('#btn_reload_valores').click(function(){
                                                 $impacto_actual = value_impacto
                                                 $new_impacto = $impacto_actual - ($impacto_actual*$value)
                                                 riesgo_controlado_impacto = $new_impacto
-                                                riesgo_controlado_probabilidad = item.riesgo_controlado_probabilidad
+                                                riesgo_controlado_probabilidad = value_probabilidad
                                                 let value = Number(value_probabilidad) * Number(value_impacto)
                                                 $.ajax({
                                                     method:"get",
@@ -3315,15 +3317,18 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
         ];
         // $.ajax({
         //     method: "GET",
-        //     url: $('#base_url').val()+"/main/getCalificacionSubMenu",
+        //     url: $('#base_url').val()+"/getCaracteristicaOpcion",
         //     dataType: "JSON"
         // }).done(function(response){
         //     if(response.data.length > 0){
         //         response.data.map(item => {
-        //             caracteristicas_controles.push(item.caracteristica.toUpperCase())
+        //             if(!caracteristicas_controles.includes(item.caracteristica.toUpperCase())){
+        //                 caracteristicas_controles.push(item.caracteristica.toUpperCase())
+        //             }
         //         })
         //     }
         // })
+        // console.log(caracteristicas_controles)
         caracteristicas_controles.map(caracteristica_control => {
             let controles = $('#modal_evaluacion_riesgo #control').val()
             if(controles.length > 0){
