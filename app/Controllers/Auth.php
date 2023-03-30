@@ -163,7 +163,7 @@ class Auth extends BaseController {
                  <span aria-hidden="true">&times;</span>
              </button>
            </div>');
-            return redirect()->to(base_url('/login'));
+            return redirect()->to(base_url('/iniciosesion'));
           }
            
            

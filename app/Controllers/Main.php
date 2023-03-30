@@ -22,7 +22,7 @@ class Main extends BaseController {
           return view('main/inicio',$data);
         }
       }else{
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/iniciosesion'));
       }
     
       
@@ -39,7 +39,7 @@ class Main extends BaseController {
          echo json_encode($response);
        //s }
       }else{
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/iniciosesion'));
       }
     }
     public function cambio_clave(){
@@ -47,7 +47,7 @@ class Main extends BaseController {
        
         return view('auth/cambio_clave');
       }else{
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/iniciosesion'));
       }
      
 
@@ -58,7 +58,7 @@ class Main extends BaseController {
         $data['id_us'] = $id;
         return view('auth/reseteo_pass',$data);
       }else{
-        return redirect()->to(base_url('/login'));
+        return redirect()->to(base_url('/iniciosesion'));
       }
      
 
@@ -99,7 +99,7 @@ class Main extends BaseController {
            
            
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
       }
 
@@ -145,7 +145,7 @@ class Main extends BaseController {
            
            
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
       }
 
@@ -164,7 +164,7 @@ class Main extends BaseController {
               return view('accesos/listUsers');
           //}
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
         
      
@@ -203,7 +203,7 @@ class Main extends BaseController {
            
            
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
       }
     }
@@ -239,7 +239,7 @@ class Main extends BaseController {
              
               return view('accesos/configPass',$data);
             }else{
-              return redirect()->to(base_url('/login'));
+              return redirect()->to(base_url('/iniciosesion'));
             }
     }
       public function addConfigPass() {
@@ -371,7 +371,7 @@ class Main extends BaseController {
       
           return view('accesos/createUser',$data);
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
         
         
@@ -434,7 +434,7 @@ class Main extends BaseController {
               return redirect()->to(base_url('/listUsers'));
             }
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
        
       
@@ -592,7 +592,7 @@ class Main extends BaseController {
          
           //opteniendo el cpatcha
         
-          // return view('auth/login',$data);
+          // return view('auth/iniciosesion',$data);
       }
       public function perfiles(){
       
@@ -603,7 +603,7 @@ class Main extends BaseController {
               return view('accesos/perfiles');
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
         
      
@@ -638,7 +638,7 @@ class Main extends BaseController {
               return view('accesos/detPerfil',$data);
           }
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
         
      
@@ -743,10 +743,16 @@ class Main extends BaseController {
         
               $post_endpoint = '/api/deletePerfil';
            
-              $request_data = ['id' => $id ] ;
+              $request_data = [ 
+                "data" => $id,
+                "terminal" =>navegacion($this->request->getUserAgent()),
+                "ip" =>  $this->request->getIPAddress(),
+                "username" =>  $this->session->user,
+                "id" =>  $this->session->id,
+               ] ;
 
-              $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
-             
+              $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
+             var_dump($response);
               if(isset($response->msg)){
                 $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
                   Perfil Elimnado correctamente
@@ -969,7 +975,7 @@ class Main extends BaseController {
             ]);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1023,7 +1029,7 @@ class Main extends BaseController {
             return view('parametrizacion/controles',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1034,7 +1040,7 @@ class Main extends BaseController {
               return view('parametrizacion/planesAccion');
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1045,7 +1051,7 @@ class Main extends BaseController {
               return view('EvaluacionRiesgos/planAccion');
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1078,7 +1084,7 @@ class Main extends BaseController {
               return view('EvaluacionRiesgos/registrar',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1109,7 +1115,7 @@ class Main extends BaseController {
               return view('EvaluacionRiesgos/updatePlanAccion',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1141,7 +1147,7 @@ class Main extends BaseController {
               return view('EvaluacionRiesgos/verDetalle',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1155,7 +1161,7 @@ class Main extends BaseController {
               return view('RegistroControles/Registro_Controles',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1196,7 +1202,7 @@ class Main extends BaseController {
             return view('RegistroControles/Create_Controles',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
 
       }
@@ -1237,7 +1243,7 @@ class Main extends BaseController {
           return view('RegistroControles/Update_Controles',$data);
          
         }else{
-          return redirect()->to(base_url('/login'));
+          return redirect()->to(base_url('/iniciosesion'));
         }
       }
      

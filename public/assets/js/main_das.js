@@ -77,7 +77,7 @@ document.onmousemove = function(){
                                 //   );
                                 Swal.fire({
                                     title: "Advertencia!!",
-                                    text:  "Deslogeado por Inactividad",
+                                    text:  "Deslogueado por Inactividad",
                                     icon: 'warning',
                                     showCancelButton: false,
                                     confirmButtonText: "Ok",
@@ -85,7 +85,7 @@ document.onmousemove = function(){
                                 })
                                 .then(resultado => {
                                     if (resultado.value) {
-                                            window.location.href = BASE_URL+"/login"
+                                            window.location.href = BASE_URL+"/iniciosesion"
                                     } 
                                 });
                             }

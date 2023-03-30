@@ -53,8 +53,8 @@
                                                     <tr>
                                                         <th>Id</th>
                                                         <th>Evaluador</th>
-                                                        <th>Mombre del perfil</th>
-                                                        <th>Descripcion</th>
+                                                        <th>Nombre del perfil</th>
+                                                        <th>Descripción</th>
                                                         <th>Estado</th>
                                                         <th style="width: 120px;">Acciones</th>
                                                     </tr>

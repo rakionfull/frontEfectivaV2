@@ -51,7 +51,7 @@ function LoadTableCatActivo ($update,$delete) {
             "emptyTable": "No hay información",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ Registross",
             "infoEmpty": "Mostrando 0 to 0 of 0 Registross",
-            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoFiltered": "(Filtrado de _MAX_ registros)",
             "infoPostFix": "",
             "thousands": ",",
             "lengthMenu": "Mostrar _MENU_ Registross",
