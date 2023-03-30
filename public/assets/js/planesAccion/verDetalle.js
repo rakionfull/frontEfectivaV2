@@ -493,7 +493,7 @@ function validarFechasActividades(fecha_inicio, fecha_fin) {
      
     
 } 
-document.getElementById("btnRegistros_actividades").addEventListener("click",function(){
+document.getElementById("btnRegistro_actividades").addEventListener("click",function(){
                                 
     $("#modal_actividadesPlan").modal("show");    
     document.getElementById("title-actividadesPlan").innerHTML = "Agregar Actividad";

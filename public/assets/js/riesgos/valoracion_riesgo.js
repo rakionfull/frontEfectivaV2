@@ -175,12 +175,22 @@ function loadTableValoracionRiesgo($update,$delete) {
 
 //area empresa
 document.getElementById("btnAgregar_ValoracionRiesgo").addEventListener("click",function(){
-                                
-    $("#modal_ValoracionRiesgo").modal("show");    
-    document.getElementById("title-ValoracionRiesgo").innerHTML = "Agregar";
-    document.getElementById("form_ValoracionRiesgo").reset();
-    document.getElementById("Agregar_ValoracionRiesgo").style.display = "block";
-    document.getElementById("Modificar_ValoracionRiesgo").style.display = "none";
+    // console.log(escenario);            
+    if(escenario == 1){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Solo se puede registrar para escenario 2'
+          })
+    } 
+    if(escenario == 2){
+        $("#modal_ValoracionRiesgo").modal("show");    
+        document.getElementById("title-ValoracionRiesgo").innerHTML = "Agregar";
+        document.getElementById("form_ValoracionRiesgo").reset();
+        document.getElementById("Agregar_ValoracionRiesgo").style.display = "block";
+        document.getElementById("Modificar_ValoracionRiesgo").style.display = "none";
+    }   
+  
 });
 
 
@@ -258,26 +268,36 @@ document.getElementById("Agregar_ValoracionRiesgo").addEventListener("click",fun
 
  // editar Area
 $('#table_ValoracionRiesgo tbody').on( 'click', 'editValoracionRiesgo', function(){
-    $("#modal_ValoracionRiesgo").modal("show");
-    document.getElementById("title-ValoracionRiesgo").innerHTML = "Modificar";
-    document.getElementById("form_ValoracionRiesgo").reset();
-    document.getElementById("Agregar_ValoracionRiesgo").style.display = "none";
-    document.getElementById("Modificar_ValoracionRiesgo").style.display = "block";
-   
-    //recuperando los datos
-    var table = $('#table_ValoracionRiesgo').DataTable();
-    var regNum = table.rows( $(this).parents('tr') ).count().toString();
-    var regDat = table.rows( $(this).parents('tr') ).data().toArray();
-    if (regNum == '0') {
-        //console.log("error");
-    }else{
-        console.log(regDat[0]["idempresa"]);
-        document.getElementById("id_ValoracionRiesgo").value=regDat[0]["id"]; 
-        document.getElementById("id_probabilidad").value=regDat[0]["idProbabilidad"];
-        document.getElementById("id_impacto").value=regDat[0]["idImpacto"];
-        document.getElementById("valor_valoracion").value=regDat[0]["valor"];                
-      
+    if(escenario == 1){
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Solo se puede editar para escenario 2'
+          })
+    } 
+    if(escenario == 2){
+        $("#modal_ValoracionRiesgo").modal("show");
+        document.getElementById("title-ValoracionRiesgo").innerHTML = "Modificar";
+        document.getElementById("form_ValoracionRiesgo").reset();
+        document.getElementById("Agregar_ValoracionRiesgo").style.display = "none";
+        document.getElementById("Modificar_ValoracionRiesgo").style.display = "block";
+       
+        //recuperando los datos
+        var table = $('#table_ValoracionRiesgo').DataTable();
+        var regNum = table.rows( $(this).parents('tr') ).count().toString();
+        var regDat = table.rows( $(this).parents('tr') ).data().toArray();
+        if (regNum == '0') {
+            //console.log("error");
+        }else{
+            console.log(regDat[0]["idempresa"]);
+            document.getElementById("id_ValoracionRiesgo").value=regDat[0]["id"]; 
+            document.getElementById("id_probabilidad").value=regDat[0]["idProbabilidad"];
+            document.getElementById("id_impacto").value=regDat[0]["idImpacto"];
+            document.getElementById("valor_valoracion").value=regDat[0]["valor"];                
+          
+        }
     }
+   
 });
 
 //guardando la nueva info
@@ -369,7 +389,7 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'deleteValoracionRiesgo', functi
 
      
         .done(function(respuesta) {
-             console.log(respuesta);
+           
             if (!respuesta.error) 
             {
                 
