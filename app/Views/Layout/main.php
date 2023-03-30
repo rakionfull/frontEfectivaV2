@@ -44,9 +44,9 @@ $session = session();?>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- item-->
                                 <!-- <a class="dropdown-item" href=""><i class="ri-user-line align-middle mr-1"></i> Perfil</a> -->
-                                <a class="dropdown-item" href="<?=base_url('/cambio_clave') ?>"><i class="ri-lock-unlock-line align-middle mr-1"></i> Cambiar Contraseña</a>
+                                <a class="dropdown-item" href="<?=base_url('/cambio_clave') ?>"><i class="ri-lock-unlock-line align-middle mr-1"></i> Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" id="btn_Logout" href=""><i class="ri-shut-down-line align-middle mr-1 text-danger"></i> Logout</a>
+                                <a class="dropdown-item text-danger" id="btn_Logout" href=""><i class="ri-shut-down-line align-middle mr-1 text-danger"></i>Cerrar Sesión</a>
                             </div>
                         </div>
 

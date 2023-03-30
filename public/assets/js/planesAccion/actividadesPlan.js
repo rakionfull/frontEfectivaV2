@@ -42,7 +42,7 @@ function cargarTablaActividades($id) {
             "emptyTable": "No hay información",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
             "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
-            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoFiltered": "(Filtrado de _MAX_ registros)",
             "infoPostFix": "",
             "thousands": ",",
             "lengthMenu": "Mostrar _MENU_ Registros",
@@ -344,7 +344,7 @@ function cargarTablaActividades($id) {
 
 
 
-document.getElementById("btnRegistros_actividades").addEventListener("click",function(){
+document.getElementById("btnRegistro_actividades").addEventListener("click",function(){
                                 
     $("#modal_actividadesPlan").modal("show");    
     document.getElementById("title-actividadesPlan").innerHTML = "Agregar Actividad";
