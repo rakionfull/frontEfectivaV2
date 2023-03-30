@@ -82,6 +82,9 @@ File: Main Css File
 .menu{
   list-style: none;
 }
+.modal-title{
+  text-transform: uppercase !important;
+}
 .menu li{
   
   width: 100%;

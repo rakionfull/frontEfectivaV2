@@ -220,7 +220,7 @@
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
                                         <span>Riesgo: </span>
-                                        <input maxlength="500" required type="text" class="form-control form-control-sm" id="riesgo">
+                                        <textarea class="form-control form-control-sm" maxlength="500" required id="riesgo" cols="12" rows="10"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">

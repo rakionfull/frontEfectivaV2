@@ -91,7 +91,7 @@ function loadTableTipoAmenaza($update,$delete){
 
 document.getElementById("btn_add_tipo_amenaza").addEventListener("click",function(){              
     $("#modal_tipo_amenaza").modal("show");
-    document.getElementById("title_tipo_amenaza").innerHTML = "Agregar Tipo de Amenaza";
+    document.getElementById("title_tipo_amenaza").innerHTML = "Agregar tipo de amenaza";
     document.getElementById("form_tipo_amenaza").reset();
     document.getElementById("add_tipo_amenaza").style.display = "block";
     document.getElementById("update_tipo_amenaza").style.display = "none";
