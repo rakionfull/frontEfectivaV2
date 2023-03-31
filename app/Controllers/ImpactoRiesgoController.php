@@ -54,8 +54,8 @@ class ImpactoRiesgoController extends BaseController
                 $request_data['date_add'] = $currentDate;
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
                 $this->session->escenario = 1;
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                     updateScene($this->session->id);
                 } else {
                     echo json_encode(false);
@@ -81,8 +81,8 @@ class ImpactoRiesgoController extends BaseController
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
                 $this->session->escenario = 2;
                 
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                     updateScene($this->session->id);
                 } else {
                     echo json_encode(false);
@@ -108,8 +108,8 @@ class ImpactoRiesgoController extends BaseController
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
                 $this->session->escenario = 1;
             
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                     updateScene($this->session->id);
                 } else {
                     echo json_encode(false);
@@ -134,8 +134,8 @@ class ImpactoRiesgoController extends BaseController
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
                 $this->session->escenario = 2;
                 
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                     updateScene($this->session->id);
                 } else {
                     echo json_encode(false);

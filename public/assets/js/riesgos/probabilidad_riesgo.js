@@ -209,11 +209,19 @@ document.getElementById('add_probabilidad_riego_escenario_1').addEventListener('
                 })
 
             }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: respuesta.msg
-                }) 
+                if(respuesta.type == 'escenario'){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Alerta',
+                        text: respuesta.msg
+                    }) 
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    }) 
+                }
             }
         })
         .fail(function(error) {
