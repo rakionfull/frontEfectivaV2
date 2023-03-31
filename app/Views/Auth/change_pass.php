@@ -16,7 +16,7 @@
     
  
    
-    <title>Cambio de Clave</title>
+    <title>Cambio de clave</title>
   </head>
   <body>
     <div class="contenedor">
@@ -32,7 +32,7 @@
                     <img src="<?=base_url('public/images/avatar_login.png')?>" alt="">
                 </div>
                 <div class="contenedor_login_body_head_titulo">
-                    <span class="contenedor_login_titulo">Cambio de Clave</span>
+                  <span class="contenedor_login_titulo">Cambio de clave</span>
                 </div>
             </div>
            
@@ -59,7 +59,7 @@
                                
                             />
                          
-                            <label class="label" for="passw">Password</label>
+                            <label class="label" for="passw">Contraseña</label>
                                                                                        
                           </div>
                          
@@ -77,7 +77,7 @@
                                
                                 
                             />
-                            <label class="label" for="repassw">Confirmar Password</label>
+                            <label class="label" for="repassw">Confirmar contraseña</label>
                                
                             
                           </div>

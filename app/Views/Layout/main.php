@@ -111,7 +111,7 @@ $session = session();?>
                                         <li><a href="<?=base_url('controles') ?>">Controles</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[9]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('planesAccion') ?>">Planes de Acción</a></li>
+                                        <li><a href="<?=base_url('planesAccion') ?>">Planes de acción</a></li>
                                     <?php }?>
                                        
                                         
@@ -123,20 +123,20 @@ $session = session();?>
                                 <li>
                                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                                         <i class="fa-solid fa-clipboard-list"></i>
-                                        <span>Evaluación de Riesgos de Seguridad en Procesos de Negocio</span>
+                                        <span>Evaluación de riesgos de seguridad en procesos de negocio</span>
                                     </a>
                                     <ul class="sub-menu" aria-expanded="false">  
                                     <?php if($session->permisos[10]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y Clasificación de Activos</a></li>
+                                        <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y clasificación de activos</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[11]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('evaluacion-riesgos') ?>">Evaluación de Riesgos SI-C</a></li>
+                                        <li><a href="<?=base_url('evaluacion-riesgos') ?>">Evaluación de riesgos SI-C</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[12]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('registro-controles') ?>">Registro de Controles</a></li>
+                                        <li><a href="<?=base_url('registro-controles') ?>">Registro de controles</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[13]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('planAccion') ?>">Registro de Plan de acción</a></li>
+                                        <li><a href="<?=base_url('planAccion') ?>">Registro de plan de acción</a></li>
                                     <?php }?>
                                        
                                         

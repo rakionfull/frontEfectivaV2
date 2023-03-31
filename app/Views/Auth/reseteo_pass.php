@@ -9,7 +9,7 @@
                                     <div class="card-body ">
                                         <div class="row align-items-center">
                                             <div class="col-md-4">
-                                                <h4 class="card-title">Cambio de Clave</h4>
+                                                <h4 class="card-title">Cambio de clave</h4>
                                             </div>
                                             
                                     

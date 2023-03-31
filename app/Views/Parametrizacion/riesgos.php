@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header" style="background:#fff;border-bottom: 2px solid #f1f5f7">
                         <div class="col-md-12 text-center">
-                            Parametrizacón de Riesgos
+                            Parametrización de riesgos
                         </div>
                 </div>
                 <div class="card-body">
@@ -15,28 +15,28 @@
                                 <li id="tipo_riesgo" ><a href="#/TipoRiesgo" >Tipo de riesgo</a></li>
                             <?php }?>
                             <?php if($session->permisos[28]->view_det==1){ ?>
-                            <li id="probabilidad_riesgo"><a href="#/ProbabilidadRiesgo">Probabilidad del riesgo</a></li>
+                                <li id="probabilidad_riesgo"><a href="#/ProbabilidadRiesgo">Probabilidad del riesgo</a></li>
                             <?php }?>
                             <?php if($session->permisos[29]->view_det==1){ ?>
-                            <li id="impacto_riesgo"><a href="#/ImpactoRiesgo" >Impacto de riesgo</a></li>
+                                <li id="impacto_riesgo"><a href="#/ImpactoRiesgo" >Impacto de riesgo</a></li>
                             <?php }?>
                             <?php if($session->permisos[30]->view_det==1){ ?>
-                            <li id="nivel_riesgo"><a href="#/NivelRiesgo" >Nivel de riesgo</a></li>
+                                <li id="nivel_riesgo"><a href="#/NivelRiesgo" >Nivel de riesgo</a></li>
                             <?php }?>
                             <?php if($session->permisos[31]->view_det==1){ ?>
-                            <li id="ValoracionRiesgo"><a href="#/ValoracionRiesgo" >Valoración del riesgo</a></li>
+                                <li id="ValoracionRiesgo"><a href="#/ValoracionRiesgo" >Valoración del riesgo</a></li>
                             <?php }?>
                             <?php if($session->permisos[32]->view_det==1){ ?>
-                            <li id="tipo_amenaza"><a href="#/TipoAmenaza" >Tipo de amenaza</a></li>
+                                <li id="tipo_amenaza"><a href="#/TipoAmenaza" >Tipo de amenaza</a></li>
                             <?php }?>
                             <?php if($session->permisos[33]->view_det==1){ ?>
-                            <li id="descripcion_amenaza" ><a href="#/DescAmenaza" >Descripción de amenaza</a></li>
+                                <li id="descripcion_amenaza" ><a href="#/DescAmenaza" >Descripción de amenaza</a></li>
                             <?php }?>
                             <?php if($session->permisos[34]->view_det==1){ ?>
-                            <li id="categoria_vulnerabilidad" ><a href="#/CategoriaVulnerabilidad" >Categoría de vulnerabilidad</a></li>
+                                <li id="categoria_vulnerabilidad" ><a href="#/CategoriaVulnerabilidad" >Categoría de vulnerabilidad</a></li>
                             <?php }?>
                             <?php if($session->permisos[35]->view_det==1){ ?>
-                            <li id="descripcion_vulnerabilidad"><a href="#/DescVulnerabilidad">Descripción de vulnerabilidad</a></li>
+                                <li id="descripcion_vulnerabilidad"><a href="#/DescVulnerabilidad">Descripción de vulnerabilidad</a></li> 
                             <?php }?>
                         </ul>
                     </div>
@@ -49,7 +49,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Valoracion de Riesgo</h4>
+                                        <h4 class="card-title">Valoración de riesgo</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -95,7 +95,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Tipo de Riesgo</h4>
+                                <h4 class="card-title">Tipo de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_tipo_reisgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -135,7 +135,9 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Probabilidad de riesgo</h4>
+                                <h4 class="card-title">Probabilidad de riesgo</h4>
+
+
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_probabilidad_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -218,7 +220,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Impacto de riesgo</h4>
+                                <h4 class="card-title">Impacto de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_impacto_1" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -301,7 +303,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Nivel de riesgo</h4>
+                                 <h4 class="card-title">Nivel de riesgo</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_nivel_riesgo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -346,7 +348,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Tipos de Amenaza</h4>
+                                <h4 class="card-title">Tipos de amenaza</h4>   
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_tipo_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -385,7 +387,8 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Descripcion de Amenazas</h4>
+                                 <h4 class="card-title">Descripcion de amenazas</h4>     
+
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_desc_amenaza" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -423,7 +426,8 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Categorías de Vulnerabilidad</h4>
+                                <h4 class="card-title">Categorías de vulnerabilidad</h4>
+                            
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_categoria_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
@@ -462,7 +466,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h4 class="card-title">Lista de Descripciones de Vulnerabilidad</h4>
+                                <h4 class="card-title">Descripción de vulnerabilidad</h4>
                             </div>
                             <div class="col-md-4 offset-md-4">
                                 <button type="button" id="btn_add_desc_vulnerabilidad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>

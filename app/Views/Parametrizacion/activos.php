@@ -5,7 +5,7 @@
                     <div class="card">
                         <div class="card-header" style="background:#fff;border-bottom: 2px solid #f1f5f7">
                                 <div class="col-md-12 text-center">
-                                    Parametrizacón de Activos
+                                    Parametrización de activos
                                 </div>
                            
                         </div>
