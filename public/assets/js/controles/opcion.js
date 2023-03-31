@@ -1049,7 +1049,7 @@ $('#table_Opcion tbody').on( 'click', 'deleteCaractControl', function(){
 
      
         .done(function(respuesta) {
-       
+           
             if (respuesta.msg) 
             {
                 

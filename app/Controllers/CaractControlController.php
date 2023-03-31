@@ -96,7 +96,10 @@ class CaractControlController extends BaseController
     
             $post_endpoint = '/api/deleteCaractControl';
          
-            $request_data = [ $this->request->getPost(),  'user' =>$this->session->id];
+            $request_data = [
+               $this->request->getPost(),  
+              'user' =>$this->session->id
+            ];
 
             $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
             echo json_encode($response);

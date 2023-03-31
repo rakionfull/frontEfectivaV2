@@ -293,7 +293,7 @@ $('#table_caract_control tbody').on( 'click', 'deleteCaractControl', function(){
 
      
         .done(function(respuesta) {
-       
+            console.log(respuesta);
             if (respuesta.msg) 
             {
                 
