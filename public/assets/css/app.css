@@ -85,6 +85,17 @@ File: Main Css File
 .modal-title{
   text-transform: uppercase !important;
 }
+table thead tr th:first-child{
+  display: none;
+}
+table tbody tr td:first-child{
+  display: none;
+}
+.table .thead-light th{
+  background-color: #165094;
+  color: #fff;
+  border-color: #fff;
+}
 .menu li{
   
   width: 100%;
