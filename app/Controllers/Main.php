@@ -1048,7 +1048,7 @@ class Main extends BaseController {
         
         if($this->session->logged_in){
     
-              return view('EvaluacionRiesgos/planAccion');
+              return view('evaluacionriesgos/planAccion');
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1081,7 +1081,7 @@ class Main extends BaseController {
                 'id_unidad' =>  $idunidad,
               ];
               // var_dump($riesgos);
-              return view('EvaluacionRiesgos/registrar',$data);
+              return view('evaluacionriesgos/registrar',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1112,7 +1112,7 @@ class Main extends BaseController {
                 'id_unidad' =>  $idunidad,
               ];
               // var_dump($riesgos);
-              return view('EvaluacionRiesgos/updatePlanAccion',$data);
+              return view('evaluacionriesgos/updatePlanAccion',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1144,7 +1144,7 @@ class Main extends BaseController {
               'id_unidad' =>  $idunidad,
             ];
             
-              return view('EvaluacionRiesgos/verDetalle',$data);
+              return view('evaluacionriesgos/verDetalle',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1158,7 +1158,7 @@ class Main extends BaseController {
               $datos =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
               // var_dump($datos);
              $data['registros'] = $datos->data;
-              return view('RegistroControles/Registro_Controles',$data);
+              return view('registrocontroles/Registro_Controles',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1199,7 +1199,7 @@ class Main extends BaseController {
             'riesgo' => $riesgos->data,
           ];
           // var_dump($last_id->data);
-            return view('RegistroControles/Create_Controles',$data);
+            return view('registrocontroles/Create_Controles',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -1240,7 +1240,7 @@ class Main extends BaseController {
             'riesgo' => $riesgos->data,
             // 'detalle' => $detalle->data,
           ];
-          return view('RegistroControles/Update_Controles',$data);
+          return view('registrocontroles/Update_Controles',$data);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));

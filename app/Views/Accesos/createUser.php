@@ -1,4 +1,4 @@
-<?=$this->extend('Layout/main')?> 
+<?=$this->extend('layout/main')?> 
 <?=$this->section('content');
 $session = session();
 ?> 

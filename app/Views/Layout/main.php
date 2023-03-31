@@ -1,4 +1,4 @@
-<?=$this->include('Layout/header');
+<?=$this->include('layout/header');
 
 $session = session();?>
 
@@ -173,7 +173,7 @@ $session = session();?>
             </div> <!-- container-fluid -->
         </div>
         
-        <?=$this->include('Layout/footer')?>
+        <?=$this->include('layout/footer')?>
     </div>  
     </body>
 

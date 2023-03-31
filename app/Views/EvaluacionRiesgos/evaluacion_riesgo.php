@@ -1,4 +1,4 @@
-<?=$this->extend('Layout/main')?> 
+<?=$this->extend('layout/main')?> 
 <?=$this->section('content');$session = session();?>
 <div id="spinner_evaluacion" class="justify-content-center" style="display: none;">
     <div class="spinner-border" role="status">

@@ -407,7 +407,8 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
                             // location.href = $('#base_url').val()+"/controles";
-                            location.href = "#/EvaluacionControl";
+                            // location.href = "#/EvaluacionControl";
+                            window.location.href = $('#base_url').val()+"/controles"
                         //    CargarDisenioOperatividad();
                         }else{
                             Swal.fire({
@@ -493,10 +494,11 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                     // disenio : document.getElementById("disenio_eva").value,
                     // operatividad : document.getElementById("operatividad_eva").value,
                     valores:$arrayDatos,
-                    calificacion : document.getElementById("cali_eva").value,
+                    calificacion:$('select[name="cali_eva"] option:selected').text(),
+                    // calificacion : document.getElementById("cali_eva").value,
                     id : document.getElementById("id_EvaluacionControl").value,
                 };
-               
+               console.log(postData);
                 try {
                    
                     $.ajax({
@@ -519,7 +521,8 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
-                            location.href = "#/EvaluacionControl";
+                            // location.href = "#/EvaluacionControl";
+                            window.location.href = $('#base_url').val()+"/controles"
                             // CargarDisenioOperatividad();
                         } 
                         
@@ -592,7 +595,8 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
 
                 // $("#table_EvaluacionControl").DataTable().ajax.reload(null, true); 
                 //cargarOpciones();
-                location.href = "#/EvaluacionControl";
+                // location.href = "#/EvaluacionControl";
+                window.location.href = $('#base_url').val()+"/controles"
             }else{
                 alerta_EvaluacionControl.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
                 respuesta.error+
