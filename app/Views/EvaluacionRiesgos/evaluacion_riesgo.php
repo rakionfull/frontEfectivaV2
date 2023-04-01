@@ -12,7 +12,8 @@
                 <div class="card-body">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-12 col-md-4">
-                            <h4 class="card-title">Lista de Evaluacion de Riesgos</h4>
+                            <h4 class="card-title">Evaluación de riesgos</h4>
+
                         </div>
                        
                         
@@ -22,13 +23,15 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="d-flex row col-12">
                             <div class="col-12 col-md-2">
-                                <button type="button" id="btn_reload_valores" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class="fas fa-rotate align-middle mr-2 ml-2"></i> Aplicar Escenario</button>
+                                <button type="button" id="btn_reload_valores" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class="fas fa-rotate align-middle mr-2 ml-2"></i> Aplicar escenario</button>
+
                             </div>
                             <div class="col-12 col-md-2 ">
                                 <button type="button" id="btn_view_riesgos" class="d-flex align-items-center  float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-info align-middle mr-2 ml-2"></i> Resumen</button>
                             </div>
                             <div class="col-12 col-md-4 ">
-                                <a href="<?= base_url('exportExcelEVAHistorial/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
+                                <a href="<?= base_url('exportExcelEVAHistorial/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar históricos</a>
+
                             </div>
                             <div class="col-12 col-md-2 ">
                                 <a href="<?= base_url('exportExcelEVA/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar</a>
@@ -53,8 +56,10 @@
                                 <tr>
                                     <th rowspan="2">ID</th>
                                     <th rowspan="2">Riesgo</th>
-                                    <th colspan="3" class="text-center">Riesgo Absoluto</th>
-                                    <th colspan="3" class="text-center">Riesgo Controlado</th>
+                                    <th colspan="3" class="text-center">Riesgo absoluto</th>
+
+                                    <th colspan="3" class="text-center">Riesgo controlado</th>
+
                                     <th rowspan="2">Estado</th>
                                     <th rowspan="2" style="width: 120px;">Mantenimiento</th>
                                 </tr>
@@ -129,7 +134,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Riesgo: </span>
+                                        <span>Tipo de riesgo: </span>
                                         <select required name="" id="tipo_riesgo" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -145,7 +150,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Area: </span>
+                                        <span>Área: </span>
                                         <select required name="" id="area" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -187,7 +192,8 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Amenaza: </span>
+                                        <span>Tipo de amenaza: </span>
+
                                         <select required name="" id="tipo_amenaza" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -195,7 +201,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Descripcion de Amenaza</span>
+                                        <span>Descripción de amenaza</span>
                                         <select required name="" id="desc_amenaza" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -203,7 +209,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Vulnerabilidad: </span>
+                                        <span>Tipo de vulnerabilidad: </span>
                                         <select required name="" id="tipo_vulnerabilidad" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -211,7 +217,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Descripcion de Vulnerabilidad: </span>
+                                        <span>Descripción de vulnerabilidad: </span>
                                         <select required name="" id="desc_vulnerabilidad" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -225,7 +231,8 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Valor Probabilidad: </span>
+                                        <span>Valor probabilidad: </span>
+
                                         <input required type="number" class="form-control form-control-sm" id="valor_probabilidad">
                                     </div>
                                 </div>
@@ -238,7 +245,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Valor Impacto: </span>
+                                        <span>Valor impacto: </span>
                                         <input type="hidden" id="id_impacto">
                                         <input maxlength="150" required type="text" class="form-control form-control-sm" id="valor_impacto">
                                     </div>
@@ -266,19 +273,20 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Riesgo Controlado Probabilidad: </span>
+                                        <span>Riesgo controlado probabilidad: </span>
                                         <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_probabilidad" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Riesgo Controlado Impacto: </span>
+                                        <span>Riesgo controlado impacto: </span>
                                         <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_impacto" disabled> 
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Riesgo Controlado Valor: </span>
+                                        <span>Riesgo controlado valor: </span>
+
                                         <input maxlength="150" required type="text" class="form-control form-control-sm" id="riesgo_controlado_valor" disabled>
                                     </div>
                                 </div>

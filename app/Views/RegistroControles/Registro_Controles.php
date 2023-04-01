@@ -6,7 +6,7 @@
                         <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Lista de Controles</h4>
+                                        <h4 class="card-title">Registro de controles</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -38,7 +38,7 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>ID</th>                                                         
-                                                    <th>Nombre del Control</th>
+                                                    <th>Nombre del control</th>
                                                     <th>Responsable</th>
                                                     <!-- <th>Prioridad</th> -->
                                                     <th>Estado</th>

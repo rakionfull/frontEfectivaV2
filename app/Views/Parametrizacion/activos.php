@@ -32,26 +32,30 @@
                                        <?php }?>
                                        <?php if($session->permisos[20]->view_det==1){ ?>
                                             <li id="aspectoSeg" ><a href="#/AspectoSeg">Aspecto de Seguridad</a></li>
+
                                        <?php }?>
                                        <?php if($session->permisos[21]->view_det==1){ ?>
-                                            <li id="valor_activo" ><a href="#/Valor_activo" >Valor de Activo</a></li>
+                                            <li id="valor_activo" ><a href="#/Valor_activo" >Valor de activo</a></li>
+
                                        <?php }?>
                                        <?php if($session->permisos[22]->view_det==1){ ?>
-                                            <li id="valoracion_activo" ><a href="#/Valoracion_activo" >Valoración de Activo</a></li>
+                                         <li id="valoracion_activo" ><a href="#/Valoracion_activo" >Valoración de activo</a></li>
+
                                        <?php }?>
                                        <?php if($session->permisos[23]->view_det==1){ ?>
-                                            <li  id="tipo_activo"><a href="#/Tipo_activo">Tipo de Activo</a></li>
+                                        <li  id="tipo_activo"><a href="#/Tipo_activo">Tipo de activo</a></li>
+
                                        <?php }?>
                                        <?php if($session->permisos[24]->view_det==1){ ?>
-                                            <li  id="Categoria_activo"><a href="#/Categoria_activo" >Categoría de Activo</a></li>
+                                            <li  id="Categoria_activo"><a href="#/Categoria_activo" >Categoría de activo</a></li>
                                        <?php }?>
                                        <?php if($session->permisos[25]->view_det==1){ ?>
-                                            <li id="ubicacion_activo" ><a href="#/Ubicacion_activo" >Ubicación de Activo</a></li>
+                                            <li id="ubicacion_activo" ><a href="#/Ubicacion_activo" >Ubicación de activo</a></li>
                                        <?php }?>
                                     
                                        <?php if($session->permisos[26]->view_det==1){ ?>
-                                            <li id="clasificacion_informacion" ><a href="#/Clasificacion_informacion">Clasificación de Información</a></li>
-                                  
+                                        <li id="clasificacion_informacion" ><a href="#/Clasificacion_informacion">Clasificación de información</a></li>
+
                                        <?php }?>
                                    
                                    
@@ -344,7 +348,7 @@
                                 <div class="card-body ">
                                     <div class="row align-items-center">
                                         <div class="col-md-4">
-                                            <h4 class="card-title">Aspectos de Seguridad</h4>
+                                            <h4 class="card-title">Aspectos de seguridad</h4>
                                         </div>
                                     
                                         <div class="col-md-4 offset-md-4">
@@ -453,7 +457,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Valor de Activos</h4>
+                                    <h4 class="card-title">Valor de activos</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -578,8 +582,8 @@
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th>ID</th>      
-                                                            <th>Clasificacion</th>
-                                                            <th>Descripcion</th>                                                                                                                     
+                                                            <th>Clasificación</th>
+                                                            <th>Descripción</th>                                                                                                                     
                                                             <th>Estado</th>
                                                             <th style="width: 120px;">Mantenimiento</th>
                                                         </tr>
@@ -602,7 +606,8 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Valoracion de Activo</h4>
+                                        <h4 class="card-title">Valoración de activo</h4>
+
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -630,15 +635,15 @@
                                                             <th>ID</th>   
                                                             <th>idAspecto1</th>                                                      
                                                             <th>Aspecto</th>
-                                                            <th>Valoracion</th>
+                                                            <th>Valoración</th>
                                                             <th>idAspecto2</th>
                                                             <th>Aspecto</th>
                                                            
-                                                            <th>Valoracion</th>
+                                                            <th>Valoración</th>
                                                             <th>idAspecto3</th>
                                                             <th>Aspecto</th>
                                                            
-                                                            <th>Valoracion</th>
+                                                            <th>Valoración</th>
                                                             <th>Valor</th>
                                                             <th>idValor</th>
                                                            
@@ -663,7 +668,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Categoria de Activo</h4>
+                                    <h4 class="card-title">Categoría de activo</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -715,7 +720,8 @@
                                 <div class="card-body ">
                                     <div class="row align-items-center">
                                         <div class="col-md-4">
-                                            <h4 class="card-title">Ubicación de Activo</h4>
+                                            <h4 class="card-title">Ubicación de activo</h4>
+
                                         </div>
                                     
                                         <div class="col-md-4 offset-md-4">
@@ -744,12 +750,12 @@
                                                                 <th>Id</th>                                                         
                                                                 <th>Continente</th>
                                                                 <th>idcontinente</th>
-                                                                <th>Pais</th>
+                                                                <th>País</th>
                                                                 <th>idpais</th>
                                                                 <th>Ciudad</th>
                                                                 <th>idciudad</th>
-                                                                <th>Direccion</th>
-                                                                <th>Descripcion</th>
+                                                                <th>Dirección</th>
+                                                                <th>Descripción</th>
                                                                 <th>Estado</th>
                                                                 <th style="width: 120px;">Mantenimiento</th>
                                                             </tr>
@@ -850,7 +856,8 @@
                                                 
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre del Area: </span>
+                                                        <span>Nombre del área: </span>
+
                                                         <input type="text" class="form-control form-control-sm" id="nom_area"   onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -1115,7 +1122,7 @@
                                         
                                             <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre del Macroproceso: </span>
+                                                        <span>Nombre del macroproceso: </span>
                                                         <input type="text" class="form-control form-control-sm" id="nom_macroproceso"   onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -1205,7 +1212,8 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre del Proceso: </span>
+                                                     <span>Nombre del proceso: </span>
+
                                                         <input type="text" class="form-control form-control-sm" id="nom_pro"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -1631,7 +1639,9 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" placeholder="Descripcion del lugar" class="form-control form-control-sm" id="desc_ubi">
+                                                    <input type="text" placeholder="Descripción del lugar" class="form-control form-control-sm" id="desc_ubi">
+
+
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">

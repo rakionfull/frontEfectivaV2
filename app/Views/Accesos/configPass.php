@@ -6,9 +6,7 @@ $session = session();
 <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0">Configuracion de Contraseña</h4>
-
-                        
+                        <h4 class="mb-0">Configuración de Contraseña</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +27,7 @@ $session = session();
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Durabilidad en dias (*):</span>
+                                                        <span> Durabilidad en días (*):</span>
                                                         <input type="number" id="duracion" name="duracion" class="form-control" value="<?=$data->duracion ?>">
                                                         <?php if(isset($error->duracion)) echo'<div class="error">'.$error->duracion.'</div>';
                                                         ?>
@@ -37,7 +35,7 @@ $session = session();
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Tiempo de sesion (*):</span>
+                                                        <span> Tiempo de sesión (*):</span>
                                                         <input type="number" id="sesion" name="sesion" class="form-control" value="<?=$data->sesion ?>">
                                                         <?php if(isset($error->sesion)) echo'<div class="error">'.$error->sesion.'</div>';
                                                         ?>
@@ -45,7 +43,7 @@ $session = session();
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Tiempo de Inactividad (*):</span>
+                                                        <span> Tiempo de inactividad (*):</span>
                                                         <input type="number" id="inactividad" name="inactividad" class="form-control" value="<?=$data->inactividad ?>">
                                                         <?php if(isset($error->inactividad)) echo'<div class="error">'.$error->inactividad.'</div>';
                                                         ?>
@@ -53,7 +51,7 @@ $session = session();
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Intentos de Logeo (*):</span>
+                                                        <span> Intentos de logueo (*):</span>
                                                         <input type="number" id="intentos" name="intentos" class="form-control" value="<?=$data->intentos ?>">
                                                         <?php if(isset($error->intentos)) echo'<div class="error">'.$error->intentos.'</div>';
                                                         ?>
@@ -61,12 +59,12 @@ $session = session();
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Configuracion especial para la clave:</span>
+                                                        <span>Configuración especial para la clave:</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Tamaño Mínimo de la clave  (*):</span>
+                                                        <span> Tamaño mínimo de la clave  (*):</span>
                                                         <input type="number" id="tama_min" name="tama_min" class="form-control" value="<?=$data->tama_min ?>">
                                                         <?php if(isset($error->tama_min)) echo'<div class="error">'.$error->tama_min.'</div>';
                                                         ?>
@@ -74,7 +72,7 @@ $session = session();
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <span> Tamaño Máximo de la clave  (*):</span>
+                                                        <span> Tamaño máximo de la clave  (*):</span>
                                                         <input type="number" id="tama_max" name="tama_max" class="form-control" value="<?=$data->tama_max ?>">
                                                         <?php if(isset($error->tama_max)) echo'<div class="error">'.$error->tama_max.'</div>';
                                                         ?>

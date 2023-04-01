@@ -9,11 +9,13 @@
                 <div class="card-body">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md-4">
-                            <h4 class="card-title">Lista de Inventario Clasificación Activo</h4>
+                            <h4 class="card-title">Inventario clasificación activo</h4>
+
                         </div>
                         <div class="d-flex">
                             <div class="col-md-6">
-                                <a href="<?= base_url('exportExcelICAHistoricos/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar Históricos</a>
+                               <a href="<?= base_url('exportExcelICAHistoricos/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar históricos</a>
+
                             </div>
                             <div class="col-md-3">
                                 <a href="<?= base_url('exportExcelICA/'.$session->idempresa)?>"class="d-flex align-items-center float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-download align-middle mr-2 ml-2"></i> Exportar</a>
@@ -50,7 +52,7 @@
                                         <input type="checkbox" style="width: 2vw;" id="check_ica_all">
                                     </th>
                                     <th rowspan="2">ID</th>
-                                    <th colspan="12" class="text-center">Descripcion</th>
+                                    <th colspan="12" class="text-center">Descripción</th>
                                     <th colspan="3" class="text-center">Valoración</th>
                                     <th rowspan="2">Valor</th>
                                     <th rowspan="2">Estado</th>
@@ -59,15 +61,15 @@
                                 </tr>
                                 <tr>
                                     <th>Empresa</th>
-                                    <th>Area</th>
+                                    <th>Área</th>
                                     <th>Unidad</th>
                                     <th>Macroproceso</th>
                                     <th>Proceso</th>
-                                    <th>Nombre de Activo</th>
-                                    <th>Descripcion de Activo</th>
-                                    <th>Tipo de Activo</th>
-                                    <th>Categoría de Activo</th>
-                                    <th>Ubicacion</th>
+                                    <th>Nombre de activo</th>
+                                    <th>Descripción de activo</th>
+                                    <th>Tipo de activo</th>
+                                    <th>Categoría de activo</th>
+                                    <th>Ubicación</th>
                                     <th>Propietario</th>
                                     <th>Custodio</th>
                                     <th>C</th>
@@ -159,13 +161,13 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Nombre de Activo: </span>
+                                        <span>Nombre de activo: </span>
                                         <input maxlength="150" required type="text" class="form-control form-control-sm" id="activo">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Descripcion de Activo: </span>
+                                        <span>Descripción de activo: </span>
                                         <input maxlength="500" required type="text" class="form-control form-control-sm" id="desc_activo">
                                     </div>
                                 </div>
@@ -179,7 +181,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Categoria de activo: </span>
+                                        <span>Categoría de activo: </span>
                                         <select required name="" id="categoria_activo" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -213,7 +215,8 @@
                                     </div>
                                     <div class="row col-12" style="display: none;"  id="section_search_custodio">
                                         <div class="form-group col-6">
-                                            <span>Area: </span>
+                                            <span>Área: </span>
+
                                             <select required name="" id="area_custodio" class="form-control form-control-sm">
                                                 <option value="">Seleccione</option>
                                                 <?php for ($i=0; $i < count($areas); $i++) { 
@@ -231,7 +234,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Valoracion de Confidencialidad: </span>
+                                        <span>Valoración de confidencialidad: </span>
                                         <select required name="" id="val_c" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -239,7 +242,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Valoracion de Integridad: </span>
+                                        <span>Valoración de integridad: </span>
                                         <select required name="" id="val_i" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -247,7 +250,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Valoracion de Disponibilidad: </span>
+                                        <span>Valoración de disponibilidad: </span>
                                         <select required name="" id="val_d" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>

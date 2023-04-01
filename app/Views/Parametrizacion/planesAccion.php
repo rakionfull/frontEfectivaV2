@@ -20,7 +20,8 @@
                                     <li id="prioridad"><a href="#/Prioridad">Prioridad</a></li>
                                     <?php }?>
                                     <?php if($session->permisos[43]->view_det==1){ ?>
-                                    <li id="alertaSeguimiento"><a href="#/AlertaSeguimiento">Alerta de Seguimiento</a></li>
+                                        <li id="alertaSeguimiento"><a href="#/AlertaSeguimiento">Alerta de seguimiento</a></li>
+
                                     <?php }?>
                                 </ul>
                                 
@@ -139,7 +140,8 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Alerta de Seguimiento</h4>
+                                    <h4 class="card-title">Alerta de seguimiento</h4>
+
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -214,7 +216,8 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre del Estado: </span>
+                                                        <span>Nombre del estado: </span>
+
                                                         <input type="text" class="form-control form-control-sm" id="nom_est"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -262,7 +265,8 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre de la Prioridad: </span>
+                                                        <span>Nombre de la prioridad: </span>
+
                                                         <input type="text" class="form-control form-control-sm" id="nom_pri"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -312,7 +316,8 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre de la Alerta: </span>
+                                                        <span>Nombre de la alerta: </span>
+
                                                         <input type="text" class="form-control form-control-sm" id="nom_alert"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>

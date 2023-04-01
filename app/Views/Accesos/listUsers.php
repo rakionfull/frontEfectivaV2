@@ -73,7 +73,7 @@
                                                         <th>Fecha Registro</th>
                                                         <th>Bloqueado</th>
                                                         <th>Estado</th>
-                                                        <th>Sesion</th>
+                                                        <th>Sesión</th>
                                                         <th style="width: 120px;">Acciones</th>
                                                     </tr>
                                                 </thead>

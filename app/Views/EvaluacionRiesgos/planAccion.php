@@ -6,7 +6,8 @@
                 <div class="card-body">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md-4">                            
-                                <h4 class="card-title">Lista de Registros de Plan de Acción</h4>
+                                <h4 class="card-title">Registro de plan de acción</h4>
+
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -28,8 +29,8 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>ID</th>
-                                                            <th>Nombre del Plan de Acción</th>
-                                                            <th>Nombre del Plan de Acción</th>
+                                                            <th>Nombre del plan de acción</th>
+                                                            <th>Nombre del plan de acción</th>
                                                             <th>Actividades</th>
                                                             <th>Responsable</th>
                                                             <th>Estado</th>

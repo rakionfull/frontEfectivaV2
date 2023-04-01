@@ -15,7 +15,8 @@
                                         <!-- del 40 39 28 37 36 -->
                                             <li id="Cobertura" ><a href="#/Cobertura" >Cobertura</a></li>
                                     
-                                            <li id="Opcion" ><a href="#/Opcion_general" >Características de Control</a></li>
+                                            <li id="Opcion" ><a href="#/Opcion_general" >Características de control</a></li>
+
                                             <div id="caja_caracteristica" class="">
                                                 <!-- <li id="Disenio">
                                                     <div class="opciones">
@@ -62,10 +63,11 @@
                                             <li id="EvaluacionControl"><a href="#/EvaluacionControl">Evaluación de Control</a></li>
                                    
                                     
-                                            <li id="aplicProba"><a href="#/AplicacionProbabilidad">Aplicación de la Probabilidad</a></li>
-                                   
+                                            <li id="aplicProba"><a href="#/AplicacionProbabilidad">Aplicación de la probabilidad</a></li>
+
                                        
-                                            <li id="aplicImpac"><a href="#/AplicacionImpacto" >Aplicación del Impacto</a></li>
+                                            <li id="aplicImpac"><a href="#/AplicacionImpacto" >Aplicación del impacto</a></li>
+
   
                                   
                                 </ul>
@@ -583,9 +585,9 @@
                                                         <tr>
                                                             <th>ID</th>                                                         
                                                             <th>Característica</th>
-                                                            <th>Calificacion</th>
+                                                            <th>Calificación</th>
                                                             
-                                                            <th>condicion</th>
+                                                            <th>Condición</th>
                                                             <th>valor</th>
                                                             <th>Peso</th>
                                                             <th>Descripción</th>
@@ -610,7 +612,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Evaluacion de Control</h4>
+                                        <h4 class="card-title">Evaluación de control</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -632,11 +634,11 @@
                                                             <?php if($header){
                                                                   echo ("<th>id</th>"); 
                                                                   echo ("<th>ID</th>"); 
-                                                                  echo ("<th>calificacion</th>"); 
+                                                                  echo ("<th>calificación</th>"); 
                                                                     for ($i=3; $i < count($header) ; $i++) { 
                                                                     echo ("<th>".$header[$i]."</th>"); 
                                                                     }
-                                                                echo ("<th>calificacion</th>"); 
+                                                                    echo ("<th>calificación</th>"); 
                                                                 // foreach ($header as $key => $value) { 
                                                                 //     echo ("<th>".$value."</th>"); 
                                                                 
@@ -646,9 +648,9 @@
                                                                 echo ("<th>id</th>"); 
                                                                 echo ("<th>ID</th>"); 
                                                                 echo ("<th>calificacion</th>"); 
-                                                                echo ("<th>Calificacion de Disenio</th>"); 
-                                                                echo ("<th>Calificacion de Operatividad</th>");  
-                                                                echo ("<th>calificacion</th>"); 
+                                                                echo ("<th>Calificacion de disenio</th>"); 
+                                                                echo ("<th>Calificacion de operatividad</th>"); 
+                                                                echo ("<th>calificación</th>"); 
                                                             } ?>
                                                            
                                                             <th style="width: 120px;">Mantenimiento</th>
@@ -699,7 +701,8 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Aplicación de la Probabilidad</h4>
+                                    <h4 class="card-title">Aplicación de la probabilidad</h4>
+
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -720,9 +723,9 @@
                                                         <tr>
                                                             <th>ID</th>       
                                                             <th>idDisenio</th>                                                  
-                                                            <th>Calificacion Total del Control</th>
+                                                            <th>Calificación total del control</th>
                                                             <th>Posición</th>
-                                                            <th>Descripcion</th>
+                                                            <th>Descripción</th>
                                                            
                                                             <th style="width: 120px;">Mantenimiento</th>
                                                         </tr>
@@ -743,7 +746,8 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Aplicación del Impacto</h4>
+                                    <h4 class="card-title">Aplicación del impacto</h4>
+
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -764,9 +768,10 @@
                                                         <tr>
                                                             <th>ID</th>       
                                                             <th>idDisenio</th>                                                  
-                                                            <th>Calificacion Total del Control</th>
+                                                            <th>Calificación total del control</th>
+
                                                             <th>Posición</th>
-                                                            <th>Descripcion</th>
+                                                            <th>Descripción</th>
                                                            
                                                             <th style="width: 120px;">Mantenimiento</th>
                                                         </tr>
@@ -848,7 +853,8 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Caracteristica' class="form-control form-control-sm" id="nom_caract"  >
+                                                    <input type="text" placeholder='Característica' class="form-control form-control-sm" id="nom_caract"  >
+
                                                     </div>
                                                 </div>
                                       

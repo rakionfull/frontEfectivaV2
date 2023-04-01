@@ -171,9 +171,9 @@
                                                     <tr>
                                                         <th>ID</th>                                                         
                                                         <th>Descripción</th>
-                                                        <th>Tipo de Regla</th>
-                                                        <th>Formula</th>
-                                                        <th>Tipo de Valor</th>
+                                                        <th>Tipo de regla</th>
+                                                        <th>Fórmula</th>
+                                                        <th>Tipo de valor</th>
                                                         <th>Comentario</th>
                                                         <th>Estado</th>
                                                         <th style="width: 120px;">Mantenimiento</th>
@@ -193,8 +193,8 @@
                                                     <tr>
                                                         <th>ID</th>                                                         
                                                         <th>Descripción</th>
-                                                        <th>Tipo de Regla</th>
-                                                        <th>Tipo de Valor</th>
+                                                        <th>Tipo de regla</th>
+                                                        <th>Tipo de valor</th>
                                                         <th>Operador 1</th>
                                                         <th>Valor 1</th>
                                                         <th>Operador 2</th>
@@ -254,9 +254,9 @@
                                                     <tr>
                                                         <th>ID</th>                                                         
                                                         <th>Descripción</th>
-                                                        <th>Tipo de Regla</th>
-                                                        <th>Formula</th>
-                                                        <th>Tipo de Valor</th>
+                                                        <th>Tipo de regla</th>
+                                                        <th>Fórmula</th>
+                                                        <th>Tipo de valor</th>
                                                         <th>Comentario</th>
                                                         <th>Estado</th>
                                                         <th style="width: 120px;">Mantenimiento</th>
@@ -276,8 +276,8 @@
                                                     <tr>
                                                         <th>ID</th>                                                         
                                                         <th>Descripción</th>
-                                                        <th>Tipo de Regla</th>
-                                                        <th>Tipo de Valor</th>
+                                                        <th>Tipo de regla</th>
+                                                        <th>Tipo de valor</th>
                                                         <th>Operador 1</th>
                                                         <th>Valor 1</th>
                                                         <th>Operador 2</th>
@@ -387,7 +387,7 @@
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                 <h4 class="card-title">Descripcion de amenazas</h4>     
+                                <h4 class="card-title">Descripción de amenazas</h4>     
 
                             </div>
                             <div class="col-md-4 offset-md-4">
@@ -449,7 +449,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>                                                         
-                                        <th>Categoria</th>
+                                        <th>Categoría</th>
                                         <th>Estado</th>
                                         <th style="width: 120px;">Mantenimiento</th>
                                     </tr>
@@ -615,7 +615,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Valor: </span>
+                                        <span>Tipo de valor: </span>
                                         <select required name="" id="tipo_valor" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                             <option value="Numero">Número</option>
@@ -711,7 +711,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Valor: </span>
+                                        <span>Tipo de valor: </span>
                                         <select required name="" id="tipo_valor" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                             <option value="Numero">Número</option>
@@ -815,7 +815,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Valor: </span>
+                                        <span>Tipo de valor: </span>
                                         <select required name="" id="tipo_valor" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                             <option value="Numero">Número</option>
@@ -842,7 +842,7 @@
                                 <div class="col-12 formula_1_probabilidad" style="display: none;">
                                     <div class="form-group" id="group_condicionales_formula">
                                         <div class="d-flex justify-content-between">
-                                            <span>Formula: </span>
+                                            <span>Fórmula: </span>
                                             <div class="col-md-3 pr-0 pl-3">
                                                 <button type="button" class="form-control form-control-sm" id="btn_add_row_formula">+</button>
                                             </div>
@@ -910,7 +910,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Valor: </span>
+                                        <span>Tipo de valor: </span>
                                         <select required name="" id="tipo_valor" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                             <option value="Numero">Número</option>
@@ -1140,7 +1140,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Tipo de Amenaza: </span>
+                                        <span>Tipo de amenaza: </span>
                                         <select name="" id="id_tipo" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
@@ -1184,7 +1184,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Categoria: </span>
+                                        <span>Categoría: </span>
                                         <input maxlength="150" type="text" class="form-control form-control-sm" id="categoria">
                                     </div>
                                 </div>
@@ -1229,7 +1229,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Categoria de Vulnerabilidad: </span>
+                                        <span>Categoría de vulnerabilidad: </span>
                                         <select name="" id="id_categoria_vulnerabilidad" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>
