@@ -31,12 +31,12 @@ function LoadTableCobertura($update,$delete) {
                 "previous": "Anterior"
             }
         },
-        // scrollX: true,
-        // fixedColumns:   {
-        //     heightMatch: 'none'
-        // },
-        responsive: true,
-        autoWidth: false,
+        scrollX: true,
+        fixedColumns:   {
+            heightMatch: 'none'
+        },
+        responsive: false,
+        autoWidth: true,
         // processing: true,
         lengthMenu:[5,10,25,50],
         pageLength:10,
@@ -53,7 +53,7 @@ function LoadTableCobertura($update,$delete) {
         ],
         columnDefs: [
             {
-                // "targets": [2,4,6 ],
+                 "targets": [0],
                 "visible": false,
                 "searchable": false
             },

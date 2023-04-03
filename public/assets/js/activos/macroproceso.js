@@ -239,7 +239,7 @@ function LoadTableMacroproceso($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 6,7,8 ],
+                "targets": [0, 6,7,8 ],
                 "visible": false,
                 "searchable": false
             },

@@ -98,7 +98,7 @@ function cargarTablaActividades($id) {
         ],
         columnDefs: [
             {
-                "targets": [ 1,2,3,4,5,6 ],
+                "targets": [ 0,1,2,3,4,5,6 ],
                 "visible": false,
                 "searchable": false
             },

@@ -116,7 +116,7 @@ function LoadTableAplicacionImpacto($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [1 ],
+                "targets": [0,1 ],
                 "visible": false,
                 "searchable": false
             },

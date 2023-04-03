@@ -17,6 +17,23 @@ window.addEventListener("hashchange", async () => {
             document.querySelectorAll(".menu li").forEach(element => {
                 element.classList.remove("activado");
             });
+            document.querySelectorAll(".menu .submenu li").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .cajitas a").forEach(element => {
+                element.classList.remove("activado_item");
+                element.classList.add("items");
+            }); 
+            document.querySelectorAll(".subir").forEach(element2 => {
+                $opcion2 = element2.id.split('_');
+               
+                 document.getElementById("caja_"+$opcion2[1]).style.display="none";
+                 document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+                 document.getElementById("subir_"+$opcion2[1]).style.display="none";
+              });
             document.getElementById("apartCobertura").style.display = "block";
             document.getElementById("Cobertura").className = "activado";
 
@@ -42,13 +59,94 @@ window.addEventListener("hashchange", async () => {
             document.querySelectorAll(".menu li").forEach(element => {
                 element.classList.remove("activado");
             });
+      
             document.getElementById("apartOpcion").style.display = "block";
-            document.getElementById("Opcion").className = "activado";
+           
             if(opcion[1] == "general"){
-               
+                document.querySelectorAll(".menu .submenu li").forEach(element => {
+                    element.classList.remove("activado_sub");
+                   
+                   
+                });
+                document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                    element.classList.remove("activado_sub");
+                   
+                   
+                });
+                document.querySelectorAll(".menu .cajitas").forEach(element => {
+       
+                    document.getElementById(element.id).style.display="none";
+                });
+                document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                       
+                    $opcion = element.id.split('_');
+                   
+                    if($opcion[0] == "bajar"){
+                        element.classList.remove("activado_sub");
+                        //console.log($opcion[0]);
+                        element.classList.add("bajar");
+                    }
+                   
+                   
+                   
+                });
+                document.querySelectorAll(".bajar").forEach(element2 => {
+                    $opcion2 = element2.id.split('_');
+                    //console.log($opcion2[1]);
+                     document.getElementById("caja_"+$opcion2[1]).style.display="none";
+                     document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+                     document.getElementById("subir_"+$opcion2[1]).style.display="none";
+                  });
+
+                document.getElementById("Opcion").className = "activado";
                 LoadTableOpcion("general",0,"menu",0);
             }else{
-
+                document.querySelectorAll(".menu a").forEach(element => {
+                    element.classList.remove("activado");
+                });
+               
+                if(opcion[3] == "menu"){
+                    document.querySelectorAll(".bajar").forEach(element2 => {
+                        $opcion2 = element2.id.split('_');
+                        //console.log($opcion2[1]);
+                         document.getElementById("caja_"+$opcion2[1]).style.display="none";
+                         document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+                         document.getElementById("subir_"+$opcion2[1]).style.display="none";
+                      });
+    
+                    document.querySelectorAll(".menu .submenu li").forEach(element => {
+                        element.classList.remove("activado_sub");
+                      
+                       
+                    });
+                    document.querySelectorAll(".menu .cajitas").forEach(element => {
+       
+                        document.getElementById(element.id).style.display="none";
+                    });
+                    document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                       
+                        $opcion = element.id.split('_');
+                       
+                        if($opcion[0] == "bajar"){
+                            element.classList.remove("activado_sub");
+                            //console.log($opcion[0]);
+                            element.classList.add("bajar");
+                        }
+                       
+                       
+                       
+                    });
+                    document.getElementById(opcion[2]).className = "activado_sub";
+                    document.getElementById('bajar_'+opcion[2]).className = "activado_sub";
+                   
+                }else{
+                    document.querySelectorAll(".menu .cajitas a").forEach(element => {
+                        element.classList.remove("activado_item");
+                        element.classList.add("items");
+                    }); 
+                    document.getElementById(opcion[2]).className = "activado_item";
+                   
+                }
                 LoadTableOpcion(opcion[1],opcion[2],opcion[3],opcion[4]);
                 
             }
@@ -68,6 +166,23 @@ window.addEventListener("hashchange", async () => {
         document.querySelectorAll(".menu li").forEach(element => {
             element.classList.remove("activado");
         });
+        document.querySelectorAll(".menu .submenu li").forEach(element => {
+            element.classList.remove("activado_sub");
+        });
+        document.querySelectorAll(".menu .submenu li a").forEach(element => {
+            element.classList.remove("activado_sub");
+        });
+        document.querySelectorAll(".menu .cajitas a").forEach(element => {
+            element.classList.remove("activado_item");
+            element.classList.add("items");
+        }); 
+        document.querySelectorAll(".subir").forEach(element2 => {
+            $opcion2 = element2.id.split('_');
+            
+             document.getElementById("caja_"+$opcion2[1]).style.display="none";
+             document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+             document.getElementById("subir_"+$opcion2[1]).style.display="none";
+          });
         document.getElementById("apartEvaluacionControl").style.display = "block";
         document.getElementById("EvaluacionControl").className = "activado";
         permisos = await getPermisos('Evaluación de Control');
@@ -91,8 +206,25 @@ window.addEventListener("hashchange", async () => {
             }
         
             document.querySelectorAll(".menu li").forEach(element => {
-                element.classList.remove("activado");
+            element.classList.remove("activado");
             });
+            document.querySelectorAll(".menu .submenu li").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .cajitas a").forEach(element => {
+                element.classList.remove("activado_item");
+                element.classList.add("items");
+            }); 
+            document.querySelectorAll(".subir").forEach(element2 => {
+                $opcion2 = element2.id.split('_');
+              
+                 document.getElementById("caja_"+$opcion2[1]).style.display="none";
+                 document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+                 document.getElementById("subir_"+$opcion2[1]).style.display="none";
+              });
             document.getElementById("apartAplicacionProbabilidad").style.display = "block";
             document.getElementById("aplicProba").className = "activado";
             permisos = await getPermisos('Aplicación de Probabilidad');
@@ -116,8 +248,30 @@ window.addEventListener("hashchange", async () => {
             document.querySelectorAll(".menu li").forEach(element => {
                 element.classList.remove("activado");
             });
+            document.querySelectorAll(".menu li").forEach(element => {
+                element.classList.remove("activado");
+            });
+            document.querySelectorAll(".menu .submenu li").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                element.classList.remove("activado_sub");
+            });
+            document.querySelectorAll(".menu .cajitas a").forEach(element => {
+                element.classList.remove("activado_item");
+                element.classList.add("items");
+            }); 
+
+            document.querySelectorAll(".subir").forEach(element2 => {
+                $opcion2 = element2.id.split('_');
+               
+                 document.getElementById("caja_"+$opcion2[1]).style.display="none";
+                 document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+                 document.getElementById("subir_"+$opcion2[1]).style.display="none";
+              });
+
             document.getElementById("apartAplicacionImpacto").style.display = "block";
-            document.getElementById("aplicProba").className = "activado";
+            document.getElementById("aplicImpac").className = "activado";
             permisos = await getPermisos('Aplicacón de Impacto');
             if(permisos['create_det'] == 0){
                 document.getElementById('btnAgregar_AplicacionImpacto').style.display = 'none';
@@ -127,25 +281,66 @@ window.addEventListener("hashchange", async () => {
             window.location.hash = '#';   
     break;
     
-       }    
+    }    
 
 });
 function MostrarCaja(element) {
     event.preventDefault();
     $opcion = element.id.split('_');
-    // console.log("caja_"+$opcion[1]);
+    document.querySelectorAll(".menu li").forEach(element => {
+        element.classList.remove("activado");
+    });
+    document.querySelectorAll(".menu .submenu li").forEach(element => {
+        element.classList.remove("activado_sub");
+      
+       
+    });
+    document.querySelectorAll(".menu .submenu li a").forEach(element => {
+                       
+        $opcion3 = element.id.split('_');
+       
+        if($opcion3[0] == "bajar"){
+            element.classList.remove("activado_sub");
+            //console.log($opcion3[0]);
+            element.classList.add("bajar");
+        }
+       
+    });
+    document.querySelectorAll(".bajar").forEach(element2 => {
+      $opcion2 = element2.id.split('_');
+      //console.log($opcion2[1]);
+       document.getElementById("caja_"+$opcion2[1]).style.display="none";
+       document.getElementById("bajar_"+$opcion2[1]).style.display="block";
+       document.getElementById("subir_"+$opcion2[1]).style.display="none";
+    });
+    document.querySelectorAll(".menu .cajitas").forEach(element => {
+       
+        document.getElementById(element.id).style.display="none";
+    }); 
+    document.querySelectorAll(".menu .cajitas a").forEach(element => {
+        element.classList.remove("activado_item");
+        element.classList.add("items");
+    }); 
+   
     document.getElementById("caja_"+$opcion[1]).style.display="block";
     document.getElementById("bajar_"+$opcion[1]).style.display="none";
     document.getElementById("subir_"+$opcion[1]).style.display="block";
-    
+    document.getElementById($opcion[1]).className = "activado_sub";
     // $('#camp_'+$opcion[2]).addClass('activado'); 
 }
 function OcultarCaja(element) {
     event.preventDefault();
     $opcion = element.id.split('_');
+
+
     document.getElementById("caja_"+$opcion[1]).style.display="none";
     document.getElementById("bajar_"+$opcion[1]).style.display="block";
     document.getElementById("subir_"+$opcion[1]).style.display="none";
+    document.querySelectorAll(".menu .cajitas a").forEach(element => {
+        element.classList.remove("activado_item");
+        element.classList.add("items");
+    }); 
+
     // $('#camp_'+$opcion[2]).addClass('activado'); 
 }
 
@@ -213,10 +408,11 @@ async function cargarOpciones() {
         
         opciones_caracteristica.innerHTML+=
     '<li id="'+element.id+'">'+
+    
         '<div class="opciones">'+
-                '<a href="#/Opcion_'+element.caracteristica+'_'+element.id+'_'+element.tipo+'_'+element.clasificacion+'">'+element.caracteristica+' </a>'+
-                '<a href="" id="bajar_'+element.id+'" class="bajar"><i class=" fas fa-angle-down font-size-20"></i></a>'+
-                '<a href="" id="subir_'+element.id+'" class="subir" style="display:none"><i class=" fas fa-angle-up font-size-20"></i></a>'+
+                '<a href="#/Opcion_'+element.caracteristica+'_'+element.id+'_'+element.tipo+'_'+element.clasificacion+'" style="width:80%">'+element.caracteristica+' </a>'+
+                '<a href="" id="bajar_'+element.id+'" class="bajar" style="width:30%"><i class=" fas fa-angle-down font-size-20"></i></a>'+
+                '<a href="" id="subir_'+element.id+'" class="subir" style="display:none" style="width:30%"><i class=" fas fa-angle-up font-size-20"></i></a>'+
         '</div>'+
         '<div id="caja_'+element.id+'"  class="cajitas" style="display:none">'+
             
@@ -232,7 +428,7 @@ async function cargarOpciones() {
             resultado2.forEach(element2 => {
                
                 if(element.id == element2.idOpcion){
-                    document.getElementById("caja_"+element.id).innerHTML+='<a  id="'+element2.id+'"href="#/Opcion_'+element2.caracteristica+'_'+element2.id+'_'+element2.tipo+'_'+element2.clasificacion+'">'+element2.caracteristica+'</a>';
+                    document.getElementById("caja_"+element.id).innerHTML+='<a  id="'+element2.id+'" class="items" href="#/Opcion_'+element2.caracteristica+'_'+element2.id+'_'+element2.tipo+'_'+element2.clasificacion+'">'+element2.caracteristica+'</a>';
                 }
             });
       
@@ -249,7 +445,7 @@ async function cargarOpciones() {
     //             $valor = element3.caracteristica.slice(0,4);
     //             if(element3.caracteristica == "Calificacion de Operatividad"){
     //                 $valor = element3.caracteristica.slice(0,4)+"Opera";
-    //                 // console.log($valor);
+    //                 // //console.log($valor);
     //             }
     //             if(element.caracteristica == "Operatividad"){
                     
@@ -261,8 +457,8 @@ async function cargarOpciones() {
     //             $valor = element2.caracteristica.slice(0,4);
     //             if(element2.caracteristica == "Calificacion de Diseño"){
     //                 $valor = element2.caracteristica.slice(0,4)+"Dise";
-    //                 // console.log("estoy en diseñpo");
-    //                 // console.log($valor);
+    //                 // //console.log("estoy en diseñpo");
+    //                 // //console.log($valor);
     //             }
     //             if(element.caracteristica == "Diseño"){
     //                 document.getElementById("caja_"+element.caracteristica).innerHTML+='<a  id="'+$valor+'" href="#/'+$valor+'">'+element2.caracteristica+'</a>';

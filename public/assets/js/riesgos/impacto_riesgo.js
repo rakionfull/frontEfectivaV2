@@ -102,7 +102,7 @@ function loadTableImpacto1($update,$delete){
         ],
         columnDefs: [
             {
-                // "targets": [ 0 ],
+                 "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             },
@@ -567,7 +567,7 @@ function loadTableImpacto2($update,$delete){
         ],
         columnDefs: [
             {
-                // "targets": [ 0 ],
+                "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             },

@@ -30,7 +30,14 @@
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        
+        columnDefs: [
+            {
+                "targets": [ 0],
+                "visible": false,
+                "searchable": false
+            },
+            
+        ],
         'drawCallback': function () {
             $( 'table_registro_controles tbody tr td' ).css( 'padding', '1px 1px 1px 1px' );
         }

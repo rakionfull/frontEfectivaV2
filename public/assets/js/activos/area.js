@@ -126,7 +126,7 @@ function LoadTableAreaEmpresa($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 1,2 ],
+                "targets": [ 0,1,2 ],
                 "visible": false,
                 "searchable": false
             },

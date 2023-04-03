@@ -68,7 +68,8 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
     if($valor == "general"){
      valor = $valor;
        tipo = $tipo;
-       clasi = $clasi
+       clasi = $clasi;
+       id=0;
         document.getElementById("card-title-opcion").innerHTML = "";
         document.getElementById("card-title-opcion").innerHTML = "Característica de Control";
         if ($.fn.DataTable.isDataTable('#table_Opcion')){
@@ -138,7 +139,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
             ],
             columnDefs: [
                 {
-                    "targets": [2,3,4,5,7,10,11],
+                    "targets": [0,2,3,4,5,7,10,11],
                     "visible": false,
                     "searchable": false
                 },
@@ -308,7 +309,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
                 ],
                 columnDefs: [
                     {
-                        "targets": [2,3,4,5,7,10,11],
+                        "targets": [0,2,3,4,5,7,10,11],
                         "visible": false,
                         "searchable": false
                     },
@@ -389,7 +390,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
                     ],
                     columnDefs: [
                         {
-                            "targets": [2,3,4,7,10,11],
+                            "targets": [0,2,3,4,7,10,11],
                             "visible": false,
                             "searchable": false
                         },
@@ -470,7 +471,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
                     ],
                     columnDefs: [
                         {
-                            "targets": [2,5,6,7,8,10,11],
+                            "targets": [0,2,5,6,7,8,10,11],
                             "visible": false,
                             "searchable": false
                         },
@@ -508,7 +509,7 @@ document.getElementById("btnAgregar_Opcion").addEventListener("click",function()
 function AgregarOpcion(postData) {
     
     try {
-        console.log(postData);
+        //console.log(postData);
         $.ajax({
             method: "POST",
             url: $('#base_url').val()+"/main/addCaractControl",
@@ -516,7 +517,7 @@ function AgregarOpcion(postData) {
             dataType: "JSON"
         })
         .done(function(respuesta) {
-         
+            //console.log(respuesta);
             if (respuesta.error==1) 
             {
             
@@ -569,7 +570,7 @@ function ModificarOpcion(postData) {
             dataType: "JSON"
         })
         .done(function(respuesta) {
-            console.log(respuesta);
+            //console.log(respuesta);
             if (respuesta) 
             {
             
@@ -832,7 +833,7 @@ $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
     var regDat = table.rows( $(this).parents('tr') ).data().toArray();
     
     if (regNum == '0') {
-        //console.log("error");
+        ////console.log("error");
     }else{
         document.getElementById("id_Opcion").value=regDat[0]["id"];
         document.getElementById("nom_opcion").value=regDat[0]["caracteristica"];
@@ -877,6 +878,9 @@ document.getElementById("Modificar_Opcion").addEventListener("click",function(){
     $condi_opcion=document.getElementById("condi_opcion").value;
     $valor_opcion=document.getElementById("valor_opcion").value;
     $peso_opcion=document.getElementById("peso_opcion").value;
+    //console.log(tipo);
+    //console.log(valor);
+    //console.log(id);
     if(tipo == "menu" && id==0 && valor=="general"){
         if($nom_opcion !=""  && $desc_opcion != "" && $est_opcion != "" ){
       
@@ -1037,7 +1041,7 @@ $('#table_Opcion tbody').on( 'click', 'deleteCaractControl', function(){
         id_op:regDat[0]["id"],
  
     };
-    
+    //console.log(postData);
     try {
 
         $.ajax({
@@ -1049,8 +1053,8 @@ $('#table_Opcion tbody').on( 'click', 'deleteCaractControl', function(){
 
      
         .done(function(respuesta) {
-           
-            if (respuesta.msg) 
+           //console.log(respuesta);
+            if (!respuesta.error) 
             {
                 
                 alerta_Opcion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+

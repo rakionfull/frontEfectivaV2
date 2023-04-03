@@ -115,7 +115,7 @@ function LoadTableCatActivo ($update,$delete) {
         ],
         columnDefs: [
             {
-                 "targets": [ 3 ],
+                 "targets": [ 0,3 ],
                 "visible": false,
                 "searchable": false
             },

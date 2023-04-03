@@ -213,7 +213,7 @@ function LoadTableUbiActivo($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 2,4,6 ],
+                "targets": [ 0,2,4,6 ],
                 "visible": false,
                 "searchable": false
             },
