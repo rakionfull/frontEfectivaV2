@@ -185,7 +185,7 @@ function LoadTableUnidades($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 5,6 ],
+                "targets": [ 0,5,6 ],
                 "visible": false,
                 "searchable": false
             },

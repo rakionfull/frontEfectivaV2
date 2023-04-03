@@ -159,7 +159,7 @@ function loadTableValoracionRiesgo($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 1,3 ],
+                "targets": [ 0,1,3 ],
                 "visible": false,
                 "searchable": false
             },

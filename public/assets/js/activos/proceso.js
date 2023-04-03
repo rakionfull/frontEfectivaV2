@@ -294,7 +294,7 @@ function LoadTableProceso($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 7,8,9,10 ],
+                "targets": [ 0,7,8,9,10 ],
                 "visible": false,
                 "searchable": false
             },

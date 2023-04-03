@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-4 col-12">
             <div class="card">
-                <div class="card-header" style="background:#fff;border-bottom: 2px solid #f1f5f7">
+                <div class="card-header activos">
                         <div class="col-md-12 text-center">
                             Parametrización de riesgos
                         </div>

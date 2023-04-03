@@ -28,9 +28,12 @@ function LoadTableUsers($est) {
                 "previous": "Anterior"
             }
         },
-        
-        responsive: true,
-        autoWidth: false,
+         scrollY: true,
+        fixedColumns:   {
+            heightMatch: 'none'
+        },
+        responsive: false,
+        autoWidth: true,
         // processing: true,
         lengthMenu:[5,10,25,50],
         pageLength:10,

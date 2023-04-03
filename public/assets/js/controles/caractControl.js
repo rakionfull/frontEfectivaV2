@@ -61,7 +61,7 @@ function LoadTableCaractControl() {
         ],
         columnDefs: [
             {
-                // "targets": [2,4,6 ],
+                "targets": [0],
                 "visible": false,
                 "searchable": false
             },

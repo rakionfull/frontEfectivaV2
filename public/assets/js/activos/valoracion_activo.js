@@ -159,7 +159,7 @@ function LoadTableValActivo($update,$delete) {
         ],
         columnDefs: [
             {
-                "targets": [ 1,4,7,11 ],
+                "targets": [ 0,1,4,7,11 ],
                 "visible": false,
                 "searchable": false
             },

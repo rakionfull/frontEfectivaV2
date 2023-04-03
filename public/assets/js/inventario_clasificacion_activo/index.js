@@ -241,7 +241,7 @@ function loadTableInventarioClasificacionActivo(){
         ],
         columnDefs: [
             {
-                // "targets": [ 0 ],
+                "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             },

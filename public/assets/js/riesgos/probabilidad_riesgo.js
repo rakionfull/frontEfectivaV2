@@ -103,7 +103,7 @@ function loadTableProbabilidad1($update,$delete){
         ],
         columnDefs: [
             {
-                // "targets": [ 0 ],
+                 "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             },
@@ -570,7 +570,7 @@ function loadTableProbabilidad2($update,$delete){
         ],
         columnDefs: [
             {
-                // "targets": [ 0 ],
+                 "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             },
