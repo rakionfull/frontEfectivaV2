@@ -1263,9 +1263,9 @@ $('#modal_inventario_clasificacion_activo #val_d,#modal_inventario_clasificacion
             method: "POST",
             url: BASE_URL+"/getValorByValoraciones",
             data:{
-                'val_i':$('#modal_inventario_clasificacion_activo #val_i').val(),
-                'val_d':$('#modal_inventario_clasificacion_activo #val_d').val(),
-                'val_c':$('#modal_inventario_clasificacion_activo #val_c').val()
+                'val_i':Number($('#modal_inventario_clasificacion_activo #val_i').val()),
+                'val_d':Number($('#modal_inventario_clasificacion_activo #val_d').val()),
+                'val_c':Number($('#modal_inventario_clasificacion_activo #val_c').val())
             },
             dataType: "JSON"
         })

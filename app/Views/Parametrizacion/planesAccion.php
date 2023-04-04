@@ -218,7 +218,7 @@
                                                     <div class="form-group">
                                                         <span>Nombre del estado: </span>
 
-                                                        <input type="text" class="form-control form-control-sm" id="nom_est"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_est"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -226,7 +226,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Descripciòn: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="des_est"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="des_est"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                                 
@@ -267,7 +267,7 @@
                                                     <div class="form-group">
                                                         <span>Nombre de la prioridad: </span>
 
-                                                        <input type="text" class="form-control form-control-sm" id="nom_pri"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_pri"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -275,7 +275,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Descripciòn: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="des_pri">
+                                                        <textarea maxlength="150" type="text" class="form-control form-control-sm" id="des_pri" cols="5"></textarea>
                                                     </div>
                                                 </div>
 
@@ -318,14 +318,14 @@
                                                     <div class="form-group">
                                                         <span>Nombre de la alerta: </span>
 
-                                                        <input type="text" class="form-control form-control-sm" id="nom_alert"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_alert"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Valor: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="val_alert">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="val_alert">
                                                     </div>
                                                 </div>
 
@@ -333,7 +333,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Descripciòn: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="des_alert"  onKeyPress="return soloLetra(event);">
+                                                        <textarea maxlength="150" cols="5" type="text" class="form-control form-control-sm" id="des_alert"  onKeyPress="return soloLetra(event);"></textarea>
                                                     </div>
                                                 </div>
                                                 

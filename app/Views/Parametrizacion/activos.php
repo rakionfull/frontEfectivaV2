@@ -796,7 +796,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Nombre de la Empresa: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="nom_empresa"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="250" type="text" class="form-control form-control-sm" id="nom_empresa"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -858,7 +858,7 @@
                                                     <div class="form-group">
                                                         <span>Nombre del área: </span>
 
-                                                        <input type="text" class="form-control form-control-sm" id="nom_area"   onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="250" type="text" class="form-control form-control-sm" id="nom_area"   onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
 
@@ -917,7 +917,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         
-                                                        <input type="text" class="form-control form-control-sm" placeholder='Aspecto' id="nom_aspecto" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" placeholder='Aspecto' id="nom_aspecto" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -989,7 +989,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Unidad: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="nom_uni"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="50" type="text" class="form-control form-control-sm" id="nom_uni"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1041,7 +1041,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" class="form-control form-control-sm" id="nom_valor" placeholder="Valor" >
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_valor" placeholder="Valor" >
                                                     </div>
                                                 </div>
                                       
@@ -1123,7 +1123,7 @@
                                             <div class="col-lg-12">
                                                     <div class="form-group">
                                                         <span>Nombre del macroproceso: </span>
-                                                        <input type="text" class="form-control form-control-sm" id="nom_macroproceso"   onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_macroproceso"   onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1214,7 +1214,7 @@
                                                     <div class="form-group">
                                                      <span>Nombre del proceso: </span>
 
-                                                        <input type="text" class="form-control form-control-sm" id="nom_pro"  onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" id="nom_pro"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1264,7 +1264,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" placeholder="Tipo de activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" placeholder="Tipo de Activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1317,7 +1317,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                      
-                                                        <input type="text" placeholder="Clasificación" class="form-control form-control-sm" id="nom_clasificacion" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" placeholder="Clasificación" class="form-control form-control-sm" id="nom_clasificacion" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -1332,7 +1332,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <textarea class="form-control form-control-sm" id="descripcion_clasificacion"  cols="30" rows="5"></textarea>
+                                                            <textarea maxlength="500" class="form-control form-control-sm" id="descripcion_clasificacion"  cols="30" rows="5"></textarea>
                                                             
                                                         </div>
                                       
@@ -1400,7 +1400,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         
-                                                        <input type="text" class="form-control form-control-sm" placeholder='Posición/Puesto' id="nom_posicion" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" placeholder='Posición/Puesto' id="nom_posicion" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1460,7 +1460,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         
-                                                        <input type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val1">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val1">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -1476,7 +1476,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         
-                                                        <input type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val2">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val2">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -1492,7 +1492,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         
-                                                        <input type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val3">
+                                                        <input maxlength="150" type="text" class="form-control form-control-sm" placeholder='Valoración' id="nom_val3">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
@@ -1568,7 +1568,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" placeholder="Categoría" class="form-control form-control-sm" id="nom_categoria" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" placeholder="Categoría" class="form-control form-control-sm" id="nom_categoria" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       
@@ -1633,13 +1633,12 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" placeholder="Dirección" class="form-control form-control-sm" id="direccion_ubi">
+                                                        <input maxlength="150" type="text" placeholder="Dirección" class="form-control form-control-sm" id="direccion_ubi">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                      
-                                                    <input type="text" placeholder="Descripción del lugar" class="form-control form-control-sm" id="desc_ubi">
+                                                    <textarea maxlength="150" type="text" placeholder="Descripción del lugar" class="form-control form-control-sm" id="desc_ubi" cols="5"></textarea>
 
 
                                                     </div>

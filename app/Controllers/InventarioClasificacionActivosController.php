@@ -61,7 +61,7 @@ class InventarioClasificacionActivosController extends BaseController
 
     public function getValorByValoraciones(){
         if ($this->session->logged_in) {
-            $get_endpoint = '/api/getValorByValoraciones/';
+            $get_endpoint = '/api/getvaloracionesporvalor/';
             $request_data = $this->request->getPost();
             $response = perform_http_request('POST', REST_API_URL . $get_endpoint, $request_data);
             if ($response) {
