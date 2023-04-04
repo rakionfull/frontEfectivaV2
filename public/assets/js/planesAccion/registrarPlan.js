@@ -26,6 +26,7 @@ function validarFechas(fecha_ini,fecha_fin) {
 }
 
 document.getElementById("btn_crear_plan").addEventListener("click",function(){
+  event.preventDefault();
   // //console.log($('#fecha_inicio_plan').val());
   // //console.log($('#fecha_fin_plan').val());
   $valida = validarFechas($('#fecha_inicio_plan').val(),$('#fecha_fin_plan').val());
