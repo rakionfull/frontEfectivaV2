@@ -92,7 +92,7 @@ document.getElementById("btn_add_desc_vulnerabilidad").addEventListener("click",
         {
             let options = ''
             $("#modal_desc_vulnerabilidad").modal("show");
-            document.getElementById("title_desc_vulnerabilidad").innerHTML = "Agregar Descripcion de Vulnerabilidad";
+            document.getElementById("title_desc_vulnerabilidad").innerHTML = "Agregar descripción de vulnerabilidad";
             document.getElementById("form_desc_vulnerabilidad").reset();
             document.getElementById("add_desc_vulnerabilidad").style.display = "block";
             document.getElementById("update_desc_vulnerabilidad").style.display = "none";
@@ -189,7 +189,7 @@ $('#table_desc_vulnerabilidad tbody').on( 'click', 'editVulnerabilidad', functio
         if (respuesta) 
         {
             let options = ''
-            $('#modal_desc_vulnerabilidad #title_desc_vulnerabilidad').html('Modificar Descripción de vulnerabilidad')
+            $('#modal_desc_vulnerabilidad #title_desc_vulnerabilidad').html('Modificar descripción de vulnerabilidad')
             document.getElementById("form_desc_vulnerabilidad").reset();
             document.getElementById("add_desc_vulnerabilidad").style.display = "none";
             document.getElementById("update_desc_vulnerabilidad").style.display = "block";

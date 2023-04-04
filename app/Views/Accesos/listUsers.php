@@ -6,7 +6,7 @@
                         <div class="card-body ">
                             <div class="row align-items-center">
                                 <div class="col-md-4">
-                                    <h4 class="card-title">Lista de Usuarios</h4>
+                                    <h4 class="card-title">Lista de usuarios</h4>
                                 </div>
                               
                                
@@ -70,7 +70,7 @@
                                                         <th>Nombres</th>
                                                         <th>Apellidos</th>
                                                         <th>Usuario</th>
-                                                        <th>Fecha Registro</th>
+                                                        <th>Fecha registro</th>
                                                         <th>Bloqueado</th>
                                                         <th>Estado</th>
                                                         <th>Sesión</th>

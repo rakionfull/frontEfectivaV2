@@ -17,7 +17,7 @@ document.getElementById("btn_Logout").addEventListener("click",function(){
                        
                        if(respuesta.dato){
                         Swal.fire({
-                            title: "Exito!!",
+                            title: "Éxito!!",
                             text:  "Deslogueo normal por sistema",
                             icon: 'success',
                             showCancelButton: false,

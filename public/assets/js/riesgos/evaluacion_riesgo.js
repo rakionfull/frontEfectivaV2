@@ -456,7 +456,7 @@ $('#btn_add_evaluacion_riesgo').click(function(){
     })
     $('#btn_add_evaluacion_riesgo').attr('disabled',false)
     $("#modal_evaluacion_riesgo").modal("show");
-    $('#title_eva').html('Agregar Evaluacion de riesgo')
+    $('#title_eva').html('Agregar Evaluación de riesgo')
     document.getElementById("form_eva").reset();
     document.getElementById("add_eva").style.display = "block";
     document.getElementById("update_eva").style.display = "none";

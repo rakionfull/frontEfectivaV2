@@ -31,7 +31,7 @@
                                             <li id="posicion_puesto"><a href="#/Posicion" >Posición/Puesto</a></li>
                                        <?php }?>
                                        <?php if($session->permisos[20]->view_det==1){ ?>
-                                            <li id="aspectoSeg" ><a href="#/AspectoSeg">Aspecto de Seguridad</a></li>
+                                            <li id="aspectoSeg" ><a href="#/AspectoSeg">Aspecto de seguridad</a></li>
 
                                        <?php }?>
                                        <?php if($session->permisos[21]->view_det==1){ ?>
@@ -506,7 +506,7 @@
                             <div class="card-body ">
                                 <div class="row align-items-center">
                                     <div class="col-md-4">
-                                        <h4 class="card-title">Tipo de Activos</h4>
+                                        <h4 class="card-title">Tipo de activos</h4>
                                     </div>
                                 
                                     <div class="col-md-4 offset-md-4">
@@ -1264,7 +1264,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input type="text" placeholder="Tipo de Activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
+                                                        <input type="text" placeholder="Tipo de activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       

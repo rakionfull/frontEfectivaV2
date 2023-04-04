@@ -188,14 +188,24 @@
                                                           
                                                     </div>
 
-                                                    <div class="col-md-12 d-flex justify-content-center">
+                                                    <!-- <div class="col-md-12 d-flex justify-content-center">
                                                             <button type="button" id="btn_crear_plan" class="btn btn-primary">
                                                                 <i class="fas fa-plus-circle mr-2"></i>Crear plan
 
                                                             </button>
                                                            
-                                                    </div>
-                                                    
+                                                    </div> -->
+                                                  
+                                                        <div class="col-lg-12 form-group mb-0 d-flex justify-content-end">
+                                                               
+                                                                    <a href="  <?php echo base_url('planAccion');?>" class="btn btn-danger waves-effect waves-light mr-1">Cancelar</a>
+                                                                    <button id="btn_crear_plan" class="btn btn-primary waves-effect waves-light mr-1 ">
+                                                                                        Guardar
+                                                                    </button>
+                                                                                
+                                                               
+                                                        </div>
+                                                   
                                                 </div>
                                                     
 

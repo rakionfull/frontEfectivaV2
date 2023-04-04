@@ -235,7 +235,7 @@ document.getElementById("Agregar_AplicacionImpacto").addEventListener("click", f
 //editar  evlauacion de control
 $('#table_AplicacionImpacto tbody').on( 'click', 'editaplicacionimpacto', function(){
     $("#modal_AplicacionImpacto").modal("show");
-    document.getElementById("title-AplicacionImpacto").innerHTML = "Modificar Aplicacion de Impacto";
+    document.getElementById("title-AplicacionImpacto").innerHTML = "Modificar aplicación de impacto";
     document.getElementById("form_AplicacionImpacto").reset();
     document.getElementById("Agregar_AplicacionImpacto").style.display = "none";
     document.getElementById("Modificar_AplicacionImpacto").style.display = "block";

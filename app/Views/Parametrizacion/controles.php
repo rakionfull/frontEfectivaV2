@@ -18,49 +18,12 @@
                                             <li id="Opcion" ><a href="#/Opcion_general" >Características de control</a></li>
 
                                             <div id="caja_caracteristica" class="submenu">
-                                                <!-- <li id="Disenio">
-                                                    <div class="opciones">
-                                                            <a href="#/Disenio">Diseño  </a>
-                                                            <a href="" id="bajar_1" class="bajar"><i class=" fas fa-angle-down font-size-20"></i></a>
-                                                            <a href="" id="subir_1" class="subir" style="display:none"><i class=" fas fa-angle-up font-size-20"></i></a>
-                                                    </div>
-                                                    <div id="caja_1" class="cajitas" style="display:none">
-                                                        <a  id="Definicion" href="#/Definicion">Definición</a>
-                                                        <a  id="Objetivo" href="#/Objetivo">Objetivo</a>
-                                                        <a id="CalificacionDise" href="#/CalificacionDise">Calificacion de Diseño</a>
-                                                        
-                                                    </div>
-                                                </li> 
-                                                <li id="Operatividad">
-                                                        <div class="opciones">
-                                                            <a href="#/Operatividad">Operatividad  </a>
-                                                            <a href="" id="bajar_2" class="bajar"><i class=" fas fa-angle-down font-size-20"></i></a>
-                                                            <a href="" id="subir_2" class="subir" style="display:none"><i class=" fas fa-angle-up font-size-20"></i></a>
-                                                        </div>
-                                                        
-                                                        <div id="caja_2" class="cajitas" style="display:none">
-                                                            <a id="Prueba" href="#/Prueba">Prueba o revisión</a>
-                                                            <a id="Automatizacion" href="#/Automatizacion">Automatización</a>
-                                                            <a id="CalificacionOpera" href="#/CalificacionOpera">Calificacion de Operatividad</a>
-                                                            <a id="CaracteristicaOpera" href="#/CaracteristicaOpera">Caracteristicas de Operatividad</a>
-                                                        </div>
-                                                        
-                                                            
-                                                        
-
-                                                </li>  -->
+                                            
                                             </div>
-                                           
-                                            <!-- <li id="Definicion"></li> 
-
-                                            <li id="Objetivo"></li> 
-
-                                            <li id="CalificacionDise"></li>  -->
-                                      
                                            
                                                
                                            
-                                            <li id="EvaluacionControl"><a href="#/EvaluacionControl">Evaluación de Control</a></li>
+                                            <li id="EvaluacionControl"><a href="#/EvaluacionControl">Evaluación de control</a></li>
                                    
                                     
                                             <li id="aplicProba"><a href="#/AplicacionProbabilidad">Aplicación de la probabilidad</a></li>
@@ -120,445 +83,7 @@
                             
                         </div>
                     </div>
-                    <!-- <div  id="apartCaractControl"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Caracteristica de Control</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_CaractControl" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_caractControl">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_caract_control" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                            <th>Descripción</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartDisenio"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Diseño</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Disenio" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Disenio">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Disenio" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Diseño</th>
-                                                            <th>Descripción</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartDefinicion"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Definición</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Definicion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Definicion">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Definicion" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                           
-                                                            <th>Descripción</th>
-                                                            <th>Peso</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartObjetivo"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Objetivo</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Objetivo" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Objetivo">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Objetivo" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                            <th>Descripción</th>
-                                                            <th>Peso</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartCalificacionDise"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Calificación de Diseño</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_CalificacionDise" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CalificacionDise">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_CalificacionDise" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Calificación</th>
-                                                            <th>Descripción</th>
-                                                            <th>Condición</th>
-                                                            <th>Valor</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartOperatividad"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Operatividad</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Operatividad" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Operatividad">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Operatividad" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                            <th>Descripción</th>
-                                                            <th>Estado</th>
-                                                        
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartPrueba"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Prueba o revisión</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Prueba" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Prueba">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Prueba" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                           
-                                                            <th>Descripción</th>
-                                                            <th>Peso</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartAutomatizacion"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Automatización</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_Automatizacion" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Automatizacion">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_Automatizacion" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Característica</th>
-                                                           
-                                                            <th>Descripción</th>
-                                                            <th>Peso</th>
-                                                            <th>Estado</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartCalificacionOpera"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Calificación de Operatividad</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_CalificacionOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CalificacionOpera">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_CalificacionOpera" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Calificación</th>
-                                                            <th>Descripción</th>
-                                                            <th>Condición</th>
-                                                            <th>Valor</th>
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <div  id="apartCaracteristicaOpera"  class="opcion" style="display:none">
-                        <div class="card">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4">
-                                        <h4 class="card-title">Caracteristica de Operatividad</h4>
-                                    </div>
-                                
-                                    <div class="col-md-4 offset-md-4">
-                                
-                                        <button type="button" id="btnAgregar_CaracteristicaOpera" class="float-right btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                    </div>
-                                    <div class="col-md-12" style="margin-top:0.5rem" id="alerta_CaracteristicaOpera">
-                                        
-                                    </div>
-                                </div>
-                
-                            </div>
-                            <div class="card-body">
-                        
-                                <div class="table-responsive">
-                                                <table id="table_CaracteristicaOpera" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>                                                         
-                                                            <th>Caracteristica</th>
-                                                            <th>Descripción</th>
-                                                          
-                                                            <th style="width: 120px;">Mantenimiento</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    
-                                                        
-                                                    
-                                                    </tbody>
-                                                </table>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div> -->
+                 
                       <div  id="apartOpcion"  class="opcion" style="display:none">
                         <div class="card">
                             <div class="card-body ">
@@ -630,64 +155,54 @@
                                 <div class="table-responsive">
                                                 <table id="table_EvaluacionControl" class="table table-centered table-bordered datatable dt-responsive nowrap" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                     <thead class="thead-light">
-                                                        <tr>
-                                                            <?php if($header){
-                                                                  echo ("<th>id</th>"); 
-                                                                  echo ("<th>ID</th>"); 
-                                                                  echo ("<th>calificación</th>"); 
-                                                                    for ($i=3; $i < count($header) ; $i++) { 
-                                                                    echo ("<th>".$header[$i]."</th>"); 
-                                                                    }
-                                                                    echo ("<th>calificación</th>"); 
-                                                                // foreach ($header as $key => $value) { 
-                                                                //     echo ("<th>".$value."</th>"); 
-                                                                
-                                                                // }
-                                                                                                
-                                                            }else{
-                                                                echo ("<th>id</th>"); 
-                                                                echo ("<th>ID</th>"); 
-                                                                echo ("<th>calificacion</th>"); 
-                                                                echo ("<th>Calificacion de disenio</th>"); 
-                                                                echo ("<th>Calificacion de operatividad</th>"); 
-                                                                echo ("<th>calificación</th>"); 
-                                                            } ?>
+                                                        <tr id="cabeceras_control">
                                                            
-                                                            <th style="width: 120px;">Mantenimiento</th>
+                                                            <?php 
+                                                            //     if($header){
+                                                            //       echo ("<th>id</th>"); 
+                                                            //       echo ("<th>ID</th>"); 
+                                                            //       echo ("<th>calificación</th>"); 
+                                                            //         for ($i=3; $i < count($header) ; $i++) { 
+                                                            //         echo ("<th>".$header[$i]."</th>"); 
+                                                            //         }
+                                                            //         echo ("<th>calificación</th>"); 
+                                                              
+                                                                                                
+                                                            // }else{
+                                                            //     echo ("<th>id</th>"); 
+                                                            //     echo ("<th>ID</th>"); 
+                                                            //     echo ("<th>calificacion</th>"); 
+                                                            //     echo ("<th>Calificacion de disenio</th>"); 
+                                                            //     echo ("<th>Calificacion de operatividad</th>"); 
+                                                            //     echo ("<th>calificación</th>"); 
+                                                            // } ?>
+                                                           
+                                                            <!-- <th style="width: 120px;">Mantenimiento</th> -->
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                     <?php 
-                                                        if($datos){
+                                                        // if($datos){
 
                                                        
-                                                        foreach ($datos as $key => $value) { ?>
-                                                    <tr>
+                                                        // foreach ($datos as $key => $value) { ?>
+                                                    <!-- <tr> -->
                                                         <?php 
-                                                        //     foreach ($header as $key => $value2) {
+                                                      
+                                                        //      foreach ($header as $key => $value2) {
                                                             
                                                         //      echo ("<td>".$value->$value2."</td>");          
                                                         // } 
-                                                        // echo ("<td>".$value->id."</td>");   
-                                                        // echo ("<td>".$value->IEC."</td>");   
-                                                        // echo ("<td>".$value->calificacion."</td>");  
-                                                             foreach ($header as $key => $value2) {
-                                                            
-                                                             echo ("<td>".$value->$value2."</td>");          
-                                                        } 
-                                                        // for ($i=3; $i < count($header); $i++) { 
-                                                        //     var_dump($header[$i]."/".$i) ;
-                                                        //     echo ("<td>".$value->$header[$i]."</td>");   
-                                                        // }
-                                                        echo ("<td>".$value->calificacion."</td>");   
+                                                       
+                                                        // echo ("<td>".$value->calificacion."</td>");   
                                                         ?>  
 
-                                                        <td style="">
+                                                        <!-- <td style="">
                                                             <editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>
                                                             <deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>
-                                                        </td>
-                                                    </tr>
-                                                    <?php  }} ?>                                                    
+                                                        </td> -->
+                                                    <!-- </tr> -->
+                                                    <?php // }} ?>                                                    
                                                     
                                                     </tbody>
                                                 </table>
@@ -917,13 +432,13 @@
                                                 <div class="col-lg-6" id="apartcali_opcion">
                                                         <div class="form-check">
                                                             <input type="checkbox" class="form-check-input" id="cali_opcion">
-                                                            <label class="form-check-label" for="exampleCheck1">Calificacon</label>
+                                                            <label class="form-check-label" for="exampleCheck1">Calificación</label>
                                                         </div>
                                                 </div>
                                                 <div class="col-lg-6" id="apartcali2_opcion">
                                                         <div class="form-check">
                                                             <input type="checkbox" class="form-check-input" id="cali2_opcion">
-                                                            <label class="form-check-label" for="exampleCheck1">Es Calificacon</label>
+                                                            <label class="form-check-label" for="exampleCheck1">Es Calificación</label>
                                                         </div>
                                                 </div>
                                                 <div class="col-lg-6" id="apartSelec_opcion">
@@ -949,14 +464,14 @@
                                                        
                                                         <select name="" id="nom_tabla" class="form-control form-control-sm">
                                                         <option value="">Selecciona Tabla</option>
-                                                        <option value="1">Usuarios</option>
+                                                        <option value="1">Posición/Puesto</option>
                                                         
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" id="apartpeso_opcion">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Peso' class="form-control form-control-sm" id="peso_opcion">
+                                                        <input type="number" placeholder='Peso' class="form-control form-control-sm" id="peso_opcion">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6" id="apartvalor_opcion">
@@ -1113,7 +628,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Desccripcion' class="form-control form-control-sm" id="desc_proba">
+                                                        <input type="text" placeholder='Desccripción' class="form-control form-control-sm" id="desc_proba">
                                                     </div>
                                                 </div>
                                         </div>

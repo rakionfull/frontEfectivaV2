@@ -1009,29 +1009,39 @@ class Main extends BaseController {
       public function controles(){
         
         if($this->session->logged_in){
-            $get_endpoint = '/api/getEvaluacionControl';
-            $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+            //$get_endpoint = '/api/getEvaluacionControl';
+            //$response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
         
-            if($response){
-              $data = [
-                'header' =>$response->header,
-                'datos' =>$response->data,
-              ]; 
-            }else{
-              $data = [
-                'header' =>'',
-                'datos' =>'',
-              ];
-            }
+            // if($response){
+            //   $data = [
+            //     'header' =>$response->header,
+            //     'datos' =>$response->data,
+            //   ]; 
+            // }else{
+            //   $data = [
+            //     'header' =>'',
+            //     'datos' =>'',
+            //   ];
+            // }
 
            
           //var_dump($response);
-            return view('parametrizacion/controles',$data);
+            return view('parametrizacion/controles');
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
         }
 
+      }
+      //traer cabeceras y datos de evlauacion de control
+      public function getEvaluacionControl(){
+           $get_endpoint = '/api/getEvaluacionControl';
+            $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
+
+            if($response){
+              echo json_encode($response);
+            }
+        
       }
       public function planesAccion(){
         

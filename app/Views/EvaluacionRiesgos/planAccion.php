@@ -35,8 +35,8 @@
                                                             <th>Responsable</th>
                                                             <th>Estado</th>
                                                             <th>Prioridad</th>
-                                                            <th>Fecha Inicio</th>
-                                                            <th>Fecha Fin</th>
+                                                            <th>Fecha inicio</th>
+                                                            <th>Fecha fin</th>
                                                             <th>Detalles</th>                                                            
                                                             <th style="width: 120px;">Mantenimiento</th>
                                                         </tr>

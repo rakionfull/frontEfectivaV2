@@ -7,7 +7,7 @@ function validaciones() {
    
     if(valor == "general" ){
         
-        document.getElementById("nom_opcion").placeholder="Caracteristica";
+        document.getElementById("nom_opcion").placeholder="Característica";
         document.getElementById("apartcondi_opcion").style.display  = "none";
         document.getElementById("apartvalor_opcion").style.display  = "none";
         document.getElementById("apartest_opcion").style.display  = "block";
@@ -20,7 +20,7 @@ function validaciones() {
         document.getElementById("apartCheckPeso_opcion").style.display  = "none";
     }
     if(tipo == "menu" && id!=0 && valor != "general"){
-        document.getElementById("nom_opcion").placeholder="Caracteristica";
+        document.getElementById("nom_opcion").placeholder="Característica";
         document.getElementById("apartcondi_opcion").style.display  = "none";
         document.getElementById("apartvalor_opcion").style.display  = "none";
         document.getElementById("apartest_opcion").style.display  = "block";
@@ -33,7 +33,7 @@ function validaciones() {
          document.getElementById("apartCheckPeso_opcion").style.display  = "none";
     }
     if(tipo == "submenu" && id!=0 && valor != "general"){
-        document.getElementById("nom_opcion").placeholder="Caracteristica";
+        document.getElementById("nom_opcion").placeholder="Característica";
        
        
         document.getElementById("apartcali_opcion").style.display  = "none";
@@ -822,7 +822,11 @@ document.getElementById("check_peso_opcion").addEventListener("change", function
 //editar 
 $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
     $("#modal_Opcion").modal("show");
+
+    valor = valor.replace("%20de%20"," ")
+    valor = valor.replace("%20"," ");
     valor = valor.replace("%C3%AD","í");
+   
     document.getElementById("title-Opcion").innerHTML = "Modificar " + valor;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "none";

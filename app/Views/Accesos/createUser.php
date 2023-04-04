@@ -44,7 +44,7 @@ $session = session();
                                                     <div class="form-group">
                                                        
                                                        <select name="perfil_us" id="perfil_us" class="form-control">
-                                                                <option value="">Perfil de Usuario</option>
+                                                                <option value="">Perfil de usuario</option>
                                                                 <?php //var_dump($perfiles->data);
                                                                     foreach ($perfiles->data as $key => $value) {
                                                                         echo'<option value='.$value->id_perfil.'>'.$value->perfil.'</option>';

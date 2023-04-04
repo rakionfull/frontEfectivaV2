@@ -172,7 +172,7 @@ function CargarEvaluacion() {
 
 }
 function cargarDatosEvaluacionControl($dato) {
-    console.log($dato);
+    // console.log($dato);
     
     //traer los datosde calificacion
     //cargando las calificaicon de disneio
@@ -281,78 +281,137 @@ function CargarDisenioEvaluacion() {
 
 
 function LoadTableEvaluacionControl() {
-    if ($.fn.DataTable.isDataTable('#table_EvaluacionControl')){
-        
-        $('#table_EvaluacionControl').DataTable().rows().remove();
-        $('#table_EvaluacionControl').DataTable().destroy();
+    //traer datos de la bd cabeceras y agregarlos
+
+    $array_data = [];
+    try {
+
+        $.ajax({
+            method: "GET",
+            url: $('#base_url').val()+"/main/getEvaluacionControl",
+            dataType: "JSON"
+        })
+        .done(function(respuesta) {
+            
+             header = respuesta.header;
+            //  console.log(header);
+          
+            var cabeceras = document.getElementById("cabeceras_control");
+            cabeceras.innerHTML = "";
+            header.forEach(element => {
+              
+                cabeceras.innerHTML += "<th>"+element+"</th>";
+               $array_aux= {
+                    
+                     data: element 
+                    }
+                $array_data.push($array_aux);
+            });
+         
+            cabeceras.innerHTML += "<th>Mantenimiento</th>";
+            $array_aux= {
+                    
+                defaultContent: 
+                "<editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>"+
+                "<deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>"
+       
+               }
+            $array_data.push($array_aux);
+            // cabeceras.innerHTML += "<th>"+header[0].id+"</th>"+
+            //                         "<th>"+header[1].IEC+"</th>";
+            
+           
+            if ($.fn.DataTable.isDataTable('#table_EvaluacionControl')){
+            
+                $('#table_EvaluacionControl').DataTable().rows().remove();
+                $('#table_EvaluacionControl').DataTable().destroy();
+            
+            }
     
+            $('#table_EvaluacionControl').DataTable({
+                
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
+                    "infoFiltered": "(Filtrado de _MAX_ registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                },
+                scrollX: true,
+                fixedHeader: true,
+                fixedColumns:  true,
+                responsive: false,
+                autoWidth: false,
+                // processing: true,
+                lengthMenu:[5,10,25,50],
+                pageLength:10,
+                clickToSelect:false,
+                // ajax: $('#base_url').val()+"/main/getEvaluacionControl",
+                data:
+                
+                    respuesta.data
+                
+              
+                        ,
+                 columns: $array_data
+              
+                         ,
+                columnDefs: [
+                    {
+                        "targets": [0,1,2],
+                        "visible": false,
+                        "searchable": false,
+                        // "width": "20%",
+                      
+                    },
+                    
+                ],
+                'drawCallback': function () {
+                    $( 'table_EvaluacionControl tbody tr td' ).css( 'padding', '1px 1px 1px 1px' );
+                }
+                
+            })
+       
+        })
+        .fail(function(error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al traer los datos, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            })
+        })
+        .always(function() {
+        });
+    }
+    catch(err) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al traer los datos, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+        })
     }
 
-    $('#table_EvaluacionControl').DataTable({
-        
-        language: {
-            "decimal": "",
-            "emptyTable": "No hay información",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ Registros",
-            "infoEmpty": "Mostrando 0 to 0 of 0 Registros",
-            "infoFiltered": "(Filtrado de _MAX_ registros)",
-            "infoPostFix": "",
-            "thousands": ",",
-            "lengthMenu": "Mostrar _MENU_ Registros",
-            "loadingRecords": "Cargando...",
-            "processing": "Procesando...",
-            "search": "Buscar:",
-            "zeroRecords": "Sin resultados encontrados",
-            "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
-            }
-        },
-        scrollX: false,
-        fixedColumns:   {
-            heightMatch: 'none'
-        },
-        responsive: false,
-        autoWidth: true,
-        // processing: true,
-        lengthMenu:[5,10,25,50],
-        pageLength:10,
-        clickToSelect:false,
-        // ajax: $('#base_url').val()+"/main/getEvaluacionControl",
-//         aoColumns: [
-//             { "data": "id" },
-//             // { "data": "idDisenio" },
-//             // { "data": "disenio" },
-//             // { "data": "idOperatividad" },
-//             // { "data": "operatividad" },
-//             { "data": "calificacion" },
-//             { "defaultContent": "<editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>"+
-//             "<deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>"
 
-// },
-//         ],
-        columnDefs: [
-            {
-                "targets": [0,1,2],
-                "visible": false,
-                "searchable": false
-            },
-            
-        ],
-        'drawCallback': function () {
-            $( 'table_EvaluacionControl tbody tr td' ).css( 'padding', '1px 1px 1px 1px' );
-        }
-        
-    })
-   
+       
 }
 
 document.getElementById("btnAgregar_EvaluacionControl").addEventListener("click",function(){
 
     $("#modal_EvaluacionControl").modal("show");
-    document.getElementById("title-EvaluacionControl").innerHTML = "Agregar Evaluacion de Control";
+    document.getElementById("title-EvaluacionControl").innerHTML = "Agregar evaluación de control";
     document.getElementById("form_EvaluacionControl").reset();
     document.getElementById("Agregar_EvaluacionControl").style.display = "block";
     document.getElementById("Modificar_EvaluacionControl").style.display = "none";
@@ -408,7 +467,8 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
                             // location.href = $('#base_url').val()+"/controles";
                             // location.href = "#/EvaluacionControl";
-                            window.location.href = $('#base_url').val()+"/controles"
+                            LoadTableEvaluacionControl();
+                           // window.location.href = $('#base_url').val()+"/controles"
                         //    CargarDisenioOperatividad();
                         }else{
                             Swal.fire({
@@ -452,7 +512,7 @@ document.getElementById("Agregar_EvaluacionControl").addEventListener("click", f
 //editar  evlauacion de control
 $('#table_EvaluacionControl tbody').on( 'click', 'editEvaluacionControl', function(){
     $("#modal_EvaluacionControl").modal("show");
-    document.getElementById("title-EvaluacionControl").innerHTML = "Modificar Evaluacion de Control";
+    document.getElementById("title-EvaluacionControl").innerHTML = "Modificar evaluación de control";
     document.getElementById("form_EvaluacionControl").reset();
     document.getElementById("Agregar_EvaluacionControl").style.display = "none";
     document.getElementById("Modificar_EvaluacionControl").style.display = "block";
@@ -465,10 +525,10 @@ $('#table_EvaluacionControl tbody').on( 'click', 'editEvaluacionControl', functi
         //console.log("error");
     }else{
     console.log(regDat[0]);
-        document.getElementById("id_EvaluacionControl").value=regDat[0][0];
+        document.getElementById("id_EvaluacionControl").value=regDat[0]['id'];
        // document.getElementById("cali_eva").value=regDat[0][2];
-        $('select[name="cali_eva"] option:selected').text(regDat[0][2])
-        cargarDatosEvaluacionControl(regDat[0][0]);
+        $('select[name="cali_eva"] option:selected').text(regDat[0]['califica'])
+        cargarDatosEvaluacionControl(regDat[0]['id']);
         
         // document.getElementById("operatividad_eva").value=regDat[0]["idOperatividad"];   
         // document.getElementById("cali_eva").value=regDat[0]["calificacion"];   
@@ -522,7 +582,8 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
                             // location.href = "#/EvaluacionControl";
-                            window.location.href = $('#base_url').val()+"/controles"
+                            LoadTableEvaluacionControl();
+                           // window.location.href = $('#base_url').val()+"/controles"
                             // CargarDisenioOperatividad();
                         } 
                         
@@ -566,9 +627,10 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
     var table = $('#table_EvaluacionControl').DataTable();
     var regNum = table.rows( $(this).parents('tr') ).count().toString();
     var regDat = table.rows( $(this).parents('tr') ).data().toArray();
+    console.log(regDat);
     const postData = { 
         // id:regDat[0]["id"],
-        id:regDat[0][0]
+        id:regDat[0]['id']
     };
     
     try {
@@ -582,7 +644,7 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
 
      
         .done(function(respuesta) {
-            console.log(respuesta);
+            
             if (respuesta.msg) 
             {
                 
@@ -596,7 +658,8 @@ $('#table_EvaluacionControl tbody').on( 'click', 'deleteEvaluacionControl', func
                 // $("#table_EvaluacionControl").DataTable().ajax.reload(null, true); 
                 //cargarOpciones();
                 // location.href = "#/EvaluacionControl";
-                window.location.href = $('#base_url').val()+"/controles"
+                LoadTableEvaluacionControl();
+                //window.location.href = $('#base_url').val()+"/controles"
             }else{
                 alerta_EvaluacionControl.innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+
                 respuesta.error+

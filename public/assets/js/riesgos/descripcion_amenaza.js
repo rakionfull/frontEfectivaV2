@@ -92,7 +92,7 @@ document.getElementById("btn_add_desc_amenaza").addEventListener("click",functio
         {
             let options = ''
             $("#modal_desc_amenaza").modal("show");
-            document.getElementById("title_desc_amenaza").innerHTML = "Agregar Descripcion de Amenaza";
+            document.getElementById("title_desc_amenaza").innerHTML = "Agregar descripción de amenaza";
             document.getElementById("form_desc_amenaza").reset();
             document.getElementById("add_desc_amenaza").style.display = "block";
             document.getElementById("update_desc_amenaza").style.display = "none";
@@ -189,7 +189,7 @@ $('#table_desc_amenaza tbody').on( 'click', 'editDesc', function(event){
         if (respuesta) 
         {
             let options = ''
-            $('#modal_desc_amenaza #title_desc_amenaza').html('Modificar Descripción de Amenaza')
+            $('#modal_desc_amenaza #title_desc_amenaza').html('Modificar descripción de amenaza')
             document.getElementById("form_desc_amenaza").reset();
             document.getElementById("add_desc_amenaza").style.display = "none";
             document.getElementById("update_desc_amenaza").style.display = "block";

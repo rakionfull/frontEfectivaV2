@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-body ">
                                 <div class="row align-items-center">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <h4 class="card-title">REGISTRO DE INVENTARIO DE CONTROLES</h4>
                                     </div>
                                     <div class="col-md-12" style="margin-top:0.5rem" id="alerta_Controles">

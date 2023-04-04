@@ -295,7 +295,7 @@ $('#table_estado tbody').on( 'click', 'deleteEstado', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
+       
             if (!respuesta.error) 
             {
                 

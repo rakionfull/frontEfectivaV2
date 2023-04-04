@@ -130,7 +130,7 @@ async function validacionTipoActivo(dato){
 document.getElementById("btnAgregar_Tipo_activo").addEventListener("click",function(){
                                 
     $("#modal_tipo_activo").modal("show");
-    document.getElementById("title-tipo_activo").innerHTML = "Agregar Tipo de Activo";
+    document.getElementById("title-tipo_activo").innerHTML = "Agregar tipo de activo";
     document.getElementById("form_tipo_activo").reset();
     document.getElementById("Agregar_tipo_activo").style.display = "block";
     document.getElementById("Modificar_tipo_activo").style.display = "none";

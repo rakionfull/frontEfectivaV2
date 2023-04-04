@@ -19,7 +19,7 @@
                                                       
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Riesgo Asociado: </span>
+                                                              <span>Riesgo asociado: </span>
                                                                 <select class="js-riesgos-basic-multiple" name="IDR[]" id="IDR" multiple="multiple">
                                                                     <?php foreach ($riesgo as $key => $value) { 
                                                                         echo("<option value='".$value->id."'>".$value->riesgo."</option>");
@@ -30,7 +30,7 @@
 
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Control Asociado: </span>
+                                                              <span>Control asociado: </span>
                                                               <select class="js-controles-basic-multiple" name="IDC[]" id="IDC" multiple="multiple">
                                                                     <?php foreach ($control as $key => $value) { 
                                                                         echo("<option value='".$value->id."'>".$value->nom_control."</option>");
@@ -50,7 +50,7 @@
                                                 </div>
                                                 <div class="row">
                                                             <div class="col-lg-12">
-                                                                <h4 class="card-title">   Detalles del Plan</h4>
+                                                                <h4 class="card-title">   Detalles del plan</h4>
                                                             </div> 
                                                 </div>
                                                 <div class="row mt-2 mb-2">
@@ -66,7 +66,7 @@
                                                         <div class="col-lg-12">
                                                             
                                                           
-                                                            <input type="text" placeholder="Nombre del plan de accion" class="form-control form-control-sm" id="nombre_plan"  onKeyPress="return soloLetra(event);">
+                                                            <input type="text" placeholder="Nombre del plan de acción" class="form-control form-control-sm" id="nombre_plan"  onKeyPress="return soloLetra(event);">
                                                         </div>
                                                    
                                                    
@@ -76,21 +76,21 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                           <div class="form-group">
-                                                              <span>Descripción del Plan: </span>
+                                                              <span>Descripción del plan: </span>
                                                               <input type="text" class="form-control form-control-sm" id="descripcion_plan"  onKeyPress="return soloLetra(event);">
                                                           </div>
                                                     </div>
                                                     
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Fecha Inicio: </span>
+                                                              <span>Fecha inicio: </span>
                                                               <input type="date" class="form-control form-control-sm" id="fecha_inicio_plan" >
                                                           </div>
                                                     </div>
 
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Fecha Fin: </span>
+                                                              <span>Fecha fin: </span>
                                                               <input type="date" class="form-control form-control-sm" id="fecha_fin_plan" >
                                                           </div>
                                                     </div>
@@ -108,7 +108,7 @@
 
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Area: </span>
+                                                              <span>Área: </span>
                                                               <select name="" id="id_area_pos" class="form-control form-control-sm">
                                                         
                                                             </select>
@@ -130,7 +130,7 @@
 
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Posicion: </span>
+                                                              <span>Posición: </span>
                                                               <select name="" id="id_puesto" class="form-control form-control-sm">
                                                               <option value="">Seleccione</option>                                                              
                                                               </select>
@@ -177,7 +177,7 @@
 
                                                     <div class="col-lg-3">
                                                           <div class="form-group">
-                                                              <span>Alerta Seguimiento: </span>
+                                                              <span>Alerta seguimiento: </span>
                                                               <select name="" id="id_alerta_pos" class="form-control form-control-sm">
                                                               <option value="">Seleccione</option>
                                                               </select>
@@ -189,7 +189,7 @@
 
                                                     <div class="col-md-12 d-flex justify-content-center">
                                                             <button type="button" id="btn_crear_plan" class="btn btn-primary">
-                                                                <i class="fas fa-plus-circle mr-2"></i>Modificar Plan
+                                                                <i class="fas fa-plus-circle mr-2"></i>Modificar plan
                                                             </button>
                                                            
                                                     </div>
