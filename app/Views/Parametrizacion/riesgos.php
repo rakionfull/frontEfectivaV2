@@ -642,7 +642,7 @@
                                 <div class="col-12 formula_1_probabilidad" style="display: none;">
                                     <div class="form-group" id="group_condicionales_formula">
                                         <div class="d-flex justify-content-between">
-                                            <span>Formula: </span>
+                                            <span>Fórmula: </span>
                                             <div class="col-md-3 pr-0 pl-3">
                                                 <button type="button" class="form-control form-control-sm" id="btn_add_row_formula">+</button>
                                             </div>
