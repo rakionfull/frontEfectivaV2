@@ -280,12 +280,14 @@
                                                     echo '
                                                         <option value="1">Borrador</option>
                                                         <option value="2">Registrado</option>
+                                                        <option value="7">Inactivo</option>
                                                     ';
                                                 }else{
                                                     echo '
                                                         <option value="3">Observado</option>
                                                         <option value="4">Aprobado</option>
                                                         <option value="5">Por Actualizar</option>
+                                                        <option value="7">Inactivo</option>
                                                     ';
                                                 }
                                             ?>

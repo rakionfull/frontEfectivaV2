@@ -210,6 +210,7 @@ function loadTableInventarioClasificacionActivo(){
                 if (data == '3') return  'Observado';
                 if (data == '4') return  'Aprobado';
                 if (data == '5') return  'Por actualizar';
+                if (data == '7') return  'Inactivo';
               
             }
         },
@@ -1000,6 +1001,7 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
                                 `
                                     <option value="3">Observado</option>
                                     <option value="2">Registrado</option>
+                                    <option value="7">Inactivo</option>
                                 `
                             )
                             $("#modal_inventario_clasificacion_activo .input_observacion").show()
