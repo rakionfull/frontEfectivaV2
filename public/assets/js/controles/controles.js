@@ -3,6 +3,8 @@ window.addEventListener("hashchange", async () => {
 
     let dato = window.location.hash;
     opcion = dato.split('_');
+    $('.alert').remove()
+
     switch(opcion[0])
     {
         case "#/Cobertura":
