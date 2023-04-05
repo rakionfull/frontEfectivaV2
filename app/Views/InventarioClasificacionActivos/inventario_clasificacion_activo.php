@@ -56,6 +56,7 @@
                                     <th colspan="3" class="text-center">Valoración</th>
                                     <th rowspan="2">Valor</th>
                                     <th rowspan="2">Estado</th>
+                                    <th rowspan="2">Estado 2</th>
                                     <th rowspan="2">Comentario</th>
                                     <th rowspan="2" style="width: 120px;">Mantenimiento</th>
                                 </tr>
@@ -292,6 +293,15 @@
                                                 }
                                             ?>
                                             
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <span>Estado 2</span>
+                                        <select required name="estado_2" id="estado_2" class="form-control form-control-sm">
+                                            <option value="1">Activo</option>
+                                            <option value="2">Inactivo</option>
                                         </select>
                                     </div>
                                 </div>
