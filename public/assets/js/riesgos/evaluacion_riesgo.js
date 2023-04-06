@@ -3748,7 +3748,9 @@ function getAplicacionProbabilidad(caracteristica){
       console.log(respuesta);
         if(escenario == 2){
             $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
+            // busco la posicion actual de la probabilidad
             index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)
+            console.log(index)
             // 1: 1 posicion hacia abajo
             // 2: 2 posicion hacia abajo
             // 3: 3 posicion hacia abajo
@@ -3826,4 +3828,5 @@ document.getElementById("macroproceso").addEventListener("change",function(){
 
 
 });
+
 
