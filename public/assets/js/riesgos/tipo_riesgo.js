@@ -117,7 +117,7 @@ document.getElementById("add_tipo_riego").addEventListener('click',function(){
             })
             .done(function(respuesta) {
                 console.log(respuesta);
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     document.getElementById("form_tipo_riesgo").reset();
                     $('#modal_tipo_riesgo').modal('hide');
@@ -129,7 +129,13 @@ document.getElementById("add_tipo_riego").addEventListener('click',function(){
                     '</div>';
                     $("#table_tipo_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {
@@ -268,7 +274,7 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     document.getElementById("form_tipo_riesgo").reset();
                     $('#modal_tipo_riesgo').modal('hide');
@@ -280,7 +286,13 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
                     '</div>';
                     $("#table_tipo_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo guardar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    })
+                }
                 
             })
             .fail(function(error) {

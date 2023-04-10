@@ -40,6 +40,7 @@ function loadTableDescAmenaza($update,$delete){
         ajax: BASE_URL+"/main/getDescAmenaza",
         aoColumns: [
             { "data": "id" },
+            { "data": "tipo_amenaza" },
             { "data": "amenaza" },
             {
                 data:null,

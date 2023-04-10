@@ -133,7 +133,7 @@ document.getElementById("add_tipo_amenaza").addEventListener('click',function(){
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: respuesta.msg.tipo
+                        text: respuesta.msg
                     }) 
                 }
                 

@@ -42,8 +42,8 @@ class NivelRiesgoController extends BaseController
                 $request_data['date_add'] = $currentDate;
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
                 // var_dump($response);die();
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                 } else {
                     echo json_encode(false);
                 }
@@ -64,8 +64,8 @@ class NivelRiesgoController extends BaseController
                 $request_data['id_user_updated'] = $this->session->id;
                 $request_data['date_modify'] = $currentDate;
                 $response = (perform_http_request('POST', REST_API_URL . $post_endpoint, $request_data));
-                if ($response->msg) {
-                    echo json_encode($response->msg);
+                if ($response) {
+                    echo json_encode($response);
                 } else {
                     echo json_encode(false);
                 }
