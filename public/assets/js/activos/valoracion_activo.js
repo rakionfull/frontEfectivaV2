@@ -21,13 +21,13 @@ function cargarDatosValActivo(){
                     $("#id_aspecto3").empty();
                     $("#id_aspecto3").append('<option value=>Aspecto</option>');
                     datos.forEach(dato => {
-                        if(dato['aspecto'] == "Confidencialidad"){
+                        if(dato['id'] == "1"){
                             $("#id_aspecto1").append('<option value='+dato["id"]+' selected>'+dato["aspecto"]+'</option>');
                         }
-                        if(dato['aspecto'] == "Integridad"){
+                        if(dato['id'] == "2"){
                             $("#id_aspecto2").append('<option value='+dato["id"]+' selected>'+dato["aspecto"]+'</option>');
                         }
-                        if(dato['aspecto'] == "Disponibilidad"){
+                        if(dato['id'] == "3"){
                             $("#id_aspecto3").append('<option value='+dato["id"]+' selected>'+dato["aspecto"]+'</option>');
                         }
                        

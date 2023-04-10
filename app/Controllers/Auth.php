@@ -61,6 +61,7 @@ class Auth extends BaseController {
                   'id' => $response->id,
                   'token' => $response->access_token->jwt,
                   'escenario' => $response->escenario,
+                  'tiempo' => $response->tiempo,
                   'perfil' => $response->perfil,
                   'permisos' => $response->permisos,
                   'is_user_negocio' => $response->is_user_negocio,

@@ -117,7 +117,7 @@ document.getElementById("add_tipo_riego").addEventListener('click',function(){
             })
             .done(function(respuesta) {
                 console.log(respuesta);
-                if (respuesta) 
+                if (respuesta.msg) 
                 {
                     document.getElementById("form_tipo_riesgo").reset();
                     $('#modal_tipo_riesgo').modal('hide');
@@ -129,7 +129,13 @@ document.getElementById("add_tipo_riego").addEventListener('click',function(){
                     '</div>';
                     $("#table_tipo_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } 
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Tipo de riesgo ya registrado'
+                    })
+                }
                 
             })
             .fail(function(error) {

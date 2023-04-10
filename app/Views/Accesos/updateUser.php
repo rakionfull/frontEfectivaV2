@@ -107,24 +107,8 @@ $session = session();?>
                                                        
                                                     </div>
                                             </div>
+                                           
                                             <div class="col-lg-6 mb-2">
-                                                    <div class="form-group">
-                                                       
-                                                       <select name="id_puesto" id="id_puesto" class="form-control">
-                                                            <?php 
-                                                                echo "<option value=''>Posición/Puesto</option>";
-                                                                if($posicion){
-                                                                    foreach ($posicion as $key => $value) {
-                                                                        if($value->id_pos == $user->idposicion ) echo "<option value='".$value->id_pos."' selected>".$value->posicion_puesto."</option>";
-                                                                        else echo "<option value='".$value->id_pos."'>".$value->posicion_puesto."</option>";
-                                                                    }
-                                                                }
-                                                                ?>
-                                                       </select>
-                                                       
-                                                    </div>
-                                            </div>
-                                            <div class="col-lg-4 mb-2">
                                                     <div class="form-group">
                                                        
                                                        <select name="id_area" id="id_area" class="form-control">
@@ -157,6 +141,23 @@ $session = session();?>
                                                                 }
                                                                 ?>
                                                                
+                                                       </select>
+                                                       
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                       
+                                                       <select name="id_puesto" id="id_puesto" class="form-control">
+                                                            <?php 
+                                                                echo "<option value=''>Posición/Puesto</option>";
+                                                                if($posicion){
+                                                                    foreach ($posicion as $key => $value) {
+                                                                        if($value->id_pos == $user->idposicion ) echo "<option value='".$value->id_pos."' selected>".$value->posicion_puesto."</option>";
+                                                                        else echo "<option value='".$value->id_pos."'>".$value->posicion_puesto."</option>";
+                                                                    }
+                                                                }
+                                                                ?>
                                                        </select>
                                                        
                                                     </div>

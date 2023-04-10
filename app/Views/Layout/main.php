@@ -71,82 +71,89 @@ $session = session();?>
                                     <span>Inicio</span>
                                 </a>
                             </li>
-                            <?php if($session->permisos[0]->view_det==1){ ?>
-                                <li>
-                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="fa-solid fa-users-gear"></i>
-                                        <span>Accesos</span>
-                                    </a>
-                                    <ul class="sub-menu" aria-expanded="false">  
-                                    <?php if($session->permisos[3]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('listUsers') ?>">Usuarios</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[4]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('configPass') ?>">Conf. Password</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[5]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('perfiles') ?>">Perfiles</a></li>
-                                    <?php }?>
-                                       
-                                       
+                            <?php if($session->permisos){ ?>
+                                <?php if($session->permisos[0]->view_det==1){ ?>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="fa-solid fa-users-gear"></i>
+                                            <span>Accesos</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">  
+                                        <?php if($session->permisos[3]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('listUsers') ?>">Usuarios</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[4]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('configPass') ?>">Conf. Contraseña</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[5]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('perfiles') ?>">Perfiles</a></li>
+                                        <?php }?>
                                         
-                                    </ul>
-                                
-                                </li>
-                            <?php }?>
-                            <?php if($session->permisos[1]->view_det==1){ ?>
-                                <li>
-                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="fa-solid fa-gear"></i>
-                                        <span>Parametrización</span>
-                                    </a>
-                                    <ul class="sub-menu" aria-expanded="false">  
-                                    <?php if($session->permisos[6]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('activos') ?>">Activos</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[7]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('riesgos') ?>">Riesgos SI-C</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[8]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('controles') ?>">Controles</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[9]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('planesAccion') ?>">Planes de acción</a></li>
-                                    <?php }?>
-                                       
                                         
-                                    </ul>
+                                            
+                                        </ul>
                                     
-                                </li>
-                            <?php }?>
-                            <?php if($session->permisos[2]->view_det==1){ ?>
-                                <li>
-                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                        <i class="fa-solid fa-clipboard-list"></i>
-                                        <span>Evaluación de riesgos de seguridad en procesos de negocio</span>
-                                    </a>
-                                    <ul class="sub-menu" aria-expanded="false">  
-                                    <?php if($session->permisos[10]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y clasificación de activos</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[11]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('evaluacion-riesgos') ?>">Evaluación de riesgos SI-C</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[12]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('registro-controles') ?>">Registro de controles</a></li>
-                                    <?php }?>
-                                    <?php if($session->permisos[13]->view_det==1){ ?>
-                                        <li><a href="<?=base_url('planAccion') ?>">Registro de plan de acción</a></li>
-                                    <?php }?>
-                                       
+                                    </li>
+                                <?php }?>
+                                <?php if($session->permisos[1]->view_det==1){ ?>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="fa-solid fa-gear"></i>
+                                            <span>Parametrización</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">  
+                                        <?php if($session->permisos[6]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('activos') ?>">Activos</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[7]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('riesgos') ?>">Riesgos SI-C</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[8]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('controles') ?>">Controles</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[9]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('planesAccion') ?>">Planes de acción</a></li>
+                                        <?php }?>
                                         
-                                    </ul>
-                                    
+                                            
+                                        </ul>
+                                        
+                                    </li>
+                                <?php }?>
+                                <?php if($session->permisos[2]->view_det==1){ ?>
+                                    <li>
+                                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                            <i class="fa-solid fa-clipboard-list"></i>
+                                            <span>Evaluación de riesgos de seguridad en procesos de negocio</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="false">  
+                                        <?php if($session->permisos[10]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('inventario-clasificacion-activos') ?>">Inventario y clasificación de activos</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[11]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('evaluacion-riesgos') ?>">Evaluación de riesgos SI-C</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[12]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('registro-controles') ?>">Registro de controles</a></li>
+                                        <?php }?>
+                                        <?php if($session->permisos[13]->view_det==1){ ?>
+                                            <li><a href="<?=base_url('planAccion') ?>">Registro de plan de acción</a></li>
+                                        <?php }?>
+                                        
+                                            
+                                        </ul>
+                                        
+                                    </li>
+                                <?php }?>
+                            <?php }else{ ?>
+                                <li>
+                                    <a href="<?=base_url('inicio') ?>" class="waves-effect">
+                                        <i class=" fas fa-home"></i>
+                                        <span>Usuario Sin permisos</span>
+                                    </a>
                                 </li>
-                            <?php }?>
-                          
+                            <?php } ?>
                             
-                
                             <li>
 
                            
@@ -165,7 +172,7 @@ $session = session();?>
         </div>
         <input type="hidden" name="" id="base_url" value=<?=base_url()?>>
         <input type="hidden" id="perfil" value="<?=$session->perfil?>">
-        
+        <input type="hidden" id="tiempo" value="<?=$session->tiempo?>">
         <div class="page-content">
             <div class="container-fluid">
           

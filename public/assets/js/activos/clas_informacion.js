@@ -118,7 +118,7 @@ function LoadTableClasificacion_informacion($update,$delete) {
             {
                  "targets": [ 0 ],
                 "visible": false,
-                "searchable": false
+                "searchable": true
             },
             
         ],

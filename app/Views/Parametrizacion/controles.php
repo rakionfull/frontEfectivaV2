@@ -628,7 +628,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Desccripción' class="form-control form-control-sm" id="desc_proba">
+                                                        <input type="text" placeholder='Descripción' class="form-control form-control-sm" id="desc_proba">
                                                     </div>
                                                 </div>
                                         </div>
@@ -702,7 +702,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Desccripcion' class="form-control form-control-sm" id="desc_impac">
+                                                        <input type="text" placeholder='Descripcion' class="form-control form-control-sm" id="desc_impac">
                                                     </div>
                                                 </div>
                                         </div>

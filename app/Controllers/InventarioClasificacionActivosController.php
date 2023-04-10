@@ -339,9 +339,9 @@ class InventarioClasificacionActivosController extends BaseController
             
 
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            $drawing->setPath('.\public\images\valtx.png');
-            $drawing->setWidthAndHeight(100, 100);
-            $drawing->setCoordinates('A1');
+            // $drawing->setPath('.\public\images\valtx.png');
+            // $drawing->setWidthAndHeight(100, 100);
+            // $drawing->setCoordinates('A1');
             
             
             // Agregar una imagen
@@ -465,9 +465,9 @@ class InventarioClasificacionActivosController extends BaseController
             // Agregar una imagen
 
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            $drawing->setPath(base_url().'\public\images\valtx.png');
-            $drawing->setWidthAndHeight(100, 100);
-            $drawing->setCoordinates('A1');
+            // $drawing->setPath(base_url().'\public\images\valtx.png');
+            // $drawing->setWidthAndHeight(100, 100);
+            // $drawing->setCoordinates('A1');
 
 
             // Agregar una imagen

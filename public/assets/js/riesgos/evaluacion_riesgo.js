@@ -1132,6 +1132,7 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
+            console.log(respuesta);
             $('#modal_evaluacion_riesgo #probabilidad').val('')
             let found = false
             respuesta.data.forEach(element => {
@@ -1139,14 +1140,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     // OPERADOR 1
                     if(element.operador1 == ">"){
                         if(element.operador2 == "<"){
-                            if(value>element.valor1 && value<element.valor2){
+                            if(value>Number(element.valor1) && value<Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
-                            if(value>element.valor1 && value<=element.valor2){
+                            if(value>Number(element.valor1) && value<=Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1155,14 +1156,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     }
                     if(element.operador1 == ">="){
                         if(element.operador2 == "<"){
-                            if(value>=element.valor1 && value<element.valor2){
+                            if(value>=Number(element.valor1) && value<Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == "<="){
-                            if(value>=element.valor1 && value<=element.valor2){
+                            if(value>=Number(element.valor1) && value<=Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1171,14 +1172,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     }
                     if(element.operador1 == "<"){
                         if(element.operador2 == ">"){
-                            if(value<element.valor1 && value>element.valor2){
+                            if(value<Number(element.valor1) && value>Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
-                            if(value<element.valor1 && value>=element.valor2){
+                            if(value<Number(element.valor1) && value>=Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1187,14 +1188,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     }
                     if(element.operador1 == "<="){
                         if(element.operador2 == ">"){
-                            if(value<=element.valor1 && value>element.valor2){
+                            if(value<=Number(element.valor1) && value>Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador2 == ">="){
-                            if(value<=element.valor1 && value>=element.valor2){
+                            if(value<=Number(element.valor1) && value>=Number(element.valor2)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1204,14 +1205,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     // OPERADOR 2
                     if(element.operador2 == ">"){
                         if(element.operador1 == "<"){
-                            if(value > element.valor2 && value<element.valor1){
+                            if(value > Number(element.valor2) && value<Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value>element.valor && value<=element.valor1){
+                            if(value>Number(element.valor2) && value<=Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1220,14 +1221,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     }
                     if(element.operador2 == ">="){
                         if(element.operador1 == "<"){
-                            if(value >= element.valor2 && value<element.valor1){
+                            if(value >=Number( element.valor2) && value<Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value>=element.valor && value<=element.valor1){
+                            if(value>=Number(element.valor2) && value<=Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1243,7 +1244,7 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value<element.valor && value<=element.valor1){
+                            if(value<Number(element.valor2) && value<=Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1252,14 +1253,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     }
                     if(element.operador2 == "<="){
                         if(element.operador1 == "<"){
-                            if(value <= element.valor2 && value<element.valor1){
+                            if(value <=Number( element.valor2) && value<Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
                             }
                         }
                         if(element.operador1 == "<="){
-                            if(value <= element.valor && value<=element.valor1){
+                            if(value <= Number(element.valor2) && value<=Number(element.valor1)){
                                 found = true
                                 $('#modal_evaluacion_riesgo #id_probabilidad').val(element.id)
                                 $('#modal_evaluacion_riesgo #probabilidad').val(element.descripcion)
@@ -1282,6 +1283,7 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
             dataType: "JSON"
         })
         .done(function(respuesta){
+            console.log(respuesta);
             if(respuesta.data.length > 0){
                 if(respuesta.data[0].tipo_valor == 'Formula'){
                     $('#modal_evaluacion_riesgo #id_probabilidad').val(respuesta.data[0].id)
@@ -1340,6 +1342,7 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
+            console.log('hola');
             console.log(respuesta);
             $('#modal_evaluacion_riesgo #impacto').val('')
             let found = false
@@ -3465,6 +3468,7 @@ $('#modal_evaluacion_riesgo #control').on('change',function(){
             url: $('#base_url').val()+"/getCaracteristicaOpcion/"+escenario,
             dataType: "JSON"
         }).done(function(response){
+            console.log(response);
             if(response.data.length > 0){
                 response.data.map(item => {
                     let posicion = Number(item.posicion.split("%")[0])

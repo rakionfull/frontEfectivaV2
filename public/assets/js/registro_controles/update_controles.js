@@ -3,15 +3,17 @@ var arrayData = [];
 
 function DatosControl() {
   
-  
+    console.log("hola");
+    console.log($('#modificar_control').val());
     //cargar la data para todos los tipo tabla
     $.ajax({
         method: "GET",
-        url: $('#base_url').val()+"/main/getRegistrosControl/"+$('#modificar_control').val(),
+        url: $('#base_url').val()+"/main/getRegistroControl/"+$('#modificar_control').val(),
         dataType: "JSON"
     })
     .done(function(respuesta) {
-       
+        console.log("hola2");
+       console.log(respuesta);
         $data =  respuesta.data;
         // $opcion = element.id.split('_');
         $array_aux=$data.IDR.split("-");
@@ -24,6 +26,7 @@ function DatosControl() {
             }
            
         });
+        console.log($array_nuevo);
         $('.js-riesgos-basic-multiple').val($array_nuevo).change();
     })
 }
@@ -97,6 +100,7 @@ function cargarDatos(element) {
         dataType: "JSON"
     })
     .done(function(respuesta) {
+        
         $("#"+element.id).empty();
         $("#"+element.id).append('<option value="" selected>'+element.name+'</option>');
 

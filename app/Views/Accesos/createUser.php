@@ -37,8 +37,9 @@ $session = session();
                                                             
                                                                 <!-- <button id="show_password" class="btn btn-primary" type="button" title="Mostrar Clave"> <span class="fa fa-eye-slash icon"></span> </button> -->
                                                             </div>
+                                                            <?php if(isset($error->passw)) echo'<div class="error">'.$error->passw.'</div>' ?>
                                                         </div>
-                                                        <?php if(isset($error->passw)) echo'<div class="error">'.$error->passw.'</div>' ?>
+                                                       
                                                 </div>
                                                 <div class="col-lg-6 mb-2">
                                                     <div class="form-group">
@@ -117,16 +118,8 @@ $session = session();
                                                        
                                                     </div>
                                             </div>
+                                           
                                             <div class="col-lg-6 mb-2">
-                                                    <div class="form-group">
-                                                       
-                                                       <select name="id_puesto" id="id_puesto" class="form-control">
-                                                           <option value="">Posición/Puesto</option>
-                                                       </select>
-                                                       
-                                                    </div>
-                                            </div>
-                                            <div class="col-lg-4 mb-2">
                                                     <div class="form-group">
                                                        
                                                        <select name="id_area" id="id_area" class="form-control">
@@ -141,6 +134,15 @@ $session = session();
                                                        <select name="id_unidad" id="id_unidad" class="form-control">
                                                                <option value="">Unidad</option>
                                                                
+                                                       </select>
+                                                       
+                                                    </div>
+                                            </div>
+                                            <div class="col-lg-4 mb-2">
+                                                    <div class="form-group">
+                                                       
+                                                       <select name="id_puesto" id="id_puesto" class="form-control">
+                                                           <option value="">Posición/Puesto</option>
                                                        </select>
                                                        
                                                     </div>

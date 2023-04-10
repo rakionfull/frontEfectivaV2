@@ -95,7 +95,7 @@ function cargarOpcionesCalificacion($id) {
         dataType: "JSON"
     })
     .done(function(respuesta) {
-       
+        // $('#'+$id).append("");
         Opciones = respuesta.data;
         if (respuesta) 
         {
@@ -138,11 +138,12 @@ function CargarEvaluacion() {
     })
     .done(function(respuesta) {
        
-        console.log('sub')
-        console.log(respuesta);
+        // console.log('sub')
+        // console.log(respuesta);
         if (respuesta) 
         {
         SubMenu  = respuesta.data;
+        contenedor.innerHTML = "";
         SubMenu.forEach(element1 => {
             contenedor.innerHTML += '<div class="col-lg-6"><div class="form-group">'+
             '<select name="" id="calificacion_'+element1.id+'" class="form-control form-control-sm califica">'+

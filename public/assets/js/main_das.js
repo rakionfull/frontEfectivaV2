@@ -1,7 +1,7 @@
 /* Validar solo Números */
 var BASE_URL = document.getElementById("base_url").value;
 var perfil = $('#perfil').val();
-
+var tiempo = $('#tiempo').val() * 60000;
 function soloNumero(e)
 {
     var key = window.Event ? e.which : e.keyCode;
@@ -48,7 +48,7 @@ document.onmousemove = function(){
                     }
                 }
             });
-        }, 900000);//15 min para no demorar tanto  900000
+        }, tiempo);//15 min para no demorar tanto  900000
     }
 
     function salir() {

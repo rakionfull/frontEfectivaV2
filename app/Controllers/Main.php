@@ -18,6 +18,8 @@ class Main extends BaseController {
         $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
         
         if($response){
+          // $this->session->sess_expiration = '60';
+          
           $data["mensaje"] = $response->msg;
           return view('main/inicio',$data);
         }
@@ -297,7 +299,7 @@ class Main extends BaseController {
               }else{
                 if($response->msg ){
                   $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Parametros Guaradados correctamente
+                    Parámetros Guardados correctamente
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -565,7 +567,7 @@ class Main extends BaseController {
             "id" =>  $this->session->id,
           ];
           $response = perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data);
-         var_dump($response);
+         //var_dump($response);
           if(!$response->error ){
                  $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
             Usuario eliminado correctamente
@@ -625,7 +627,7 @@ class Main extends BaseController {
           $modulos =perform_http_request('GET', REST_API_URL . $get_endpoint,$request_data);
           $opcion =perform_http_request('GET', REST_API_URL . $get_Opcion,$request_data);
           $item =perform_http_request('GET', REST_API_URL . $get_Item,$request_data);
-
+          
           if($modulos){
            
               $data["modulos"]=$modulos->data;
@@ -753,7 +755,7 @@ class Main extends BaseController {
 
               $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
              var_dump($response);
-              if(isset($response->msg)){
+              if(!$response->error){
                 $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
                   Perfil Elimnado correctamente
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -763,7 +765,7 @@ class Main extends BaseController {
                   return redirect()->to(base_url('/perfiles'));
                 }else{
                     $this->session->setFlashdata('error','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    '.$response->error.'
+                    '.$response->msg.'
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -924,40 +926,91 @@ class Main extends BaseController {
     
     
         $spreadsheet = new Spreadsheet();
+
+        $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+            // $drawing->setPath('.\public\images\valtx.png');
+            // $drawing->setWidthAndHeight(100, 100);
+            // $drawing->setCoordinates('A1');
+            
+            
+            // Agregar una imagen
+            /*
+            $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing();
+            $drawing->setName('Logo');
+            $drawing->setDescription('Logo');
+            $drawing->setImageResource(file_get_contents('public/images/valtx.png'));
+            $drawing->setMimeType(\PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing::MIMETYPE_PNG);
+            $drawing->setCoordinates('A1');
+            $drawing->setWorksheet($sheet);
+            */
+            //
+            
+            
+            // Agregar un encabezado
+            
+            $spreadsheet->getActiveSheet()->mergeCells('B1:R2');
+            $spreadsheet->getActiveSheet()->setCellValue('B1', 'Reporte de usuarios');
+            
+            // Agregar estilo al encabezado
+            $spreadsheet->getActiveSheet()->getStyle('B1:R2')->applyFromArray([
+                'font' => [
+                    'bold' => true,
+                    'size' => 18,
+                  
+            ],
+                
+            ]);
+            
+            // Agregar estilo a las columnas A, B y C
+            $spreadsheet->getActiveSheet()->getStyle('A6:T6')->applyFromArray([
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => [
+                        'rgb' => '1B7ADE',
+                    ],
+                ],
+                'font' => [
+                    'color' => [
+                        'rgb' => 'FFFFFF',
+                    ],
+                ],
+            ]);
+
  
-        $sheet = $spreadsheet->getActiveSheet();
-        $sheet->setCellValue('A1', 'Id');
-        $sheet->setCellValue('B1', 'Nombres');
-        $sheet->setCellValue('C1', 'Apellidos');
-        $sheet->setCellValue('D1', 'Usuario');
-        $sheet->setCellValue('E1', 'Perfil');
-        $sheet->setCellValue('F1', 'Estado');
-        $sheet->setCellValue('G1', 'Fecha_creación');
-         
-        $rows = 2;
- 
-        foreach ($response->datos as $val){
-            $sheet->setCellValue('A' . $rows, $val->id_us);
-            $sheet->setCellValue('B' . $rows, $val->nombres_us);
-            $sheet->setCellValue('C' . $rows, $val->apepat_us.' '. $val->apemat_us);
-            $sheet->setCellValue('D' . $rows, $val->usuario_us);
-            $sheet->setCellValue('E' . $rows, $val->perfil);
-            $sheet->setCellValue('F' . $rows, $val->estado_us);
-            $sheet->setCellValue('G' . $rows, $val->creacion_us);
-            $rows++;
-        } 
-        $writer = new Xlsx($spreadsheet);
-        $fecha_creacion= date("Y-m-d");     
-        $ruta="reporte_Usuarios_".$fecha_creacion.".xlsx";
-        $writer->save('./public/assets/reportes/'.$ruta);
-       
-        # Le pasamos la ruta de guardado
-      
-        header("Content-Type: application/vnd.ms-excel");
-        // redirect(base_url()."/listUser/".$ruta); 
-        echo json_encode($ruta);
-        // echo ($fileName);
-      }
+            $sheet = $spreadsheet->getActiveSheet();
+            $sheet->setCellValue('A6', 'Id');
+            $sheet->setCellValue('B6', 'Nombres');
+            $sheet->setCellValue('C6', 'Apellidos');
+            $sheet->setCellValue('D6', 'Usuario');
+            $sheet->setCellValue('E6', 'Perfil');
+            $sheet->setCellValue('F6', 'Estado');
+            $sheet->setCellValue('G6', 'Fecha_creación');
+             
+            $rows = 7;
+     
+            foreach ($response->datos as $val){
+                $sheet->setCellValue('A' . $rows, $val->id_us);
+                $sheet->setCellValue('B' . $rows, $val->nombres_us);
+                $sheet->setCellValue('C' . $rows, $val->apepat_us.' '. $val->apemat_us);
+                $sheet->setCellValue('D' . $rows, $val->usuario_us);
+                $sheet->setCellValue('E' . $rows, $val->perfil);
+                $sheet->setCellValue('F' . $rows, $val->estado_us);
+                $sheet->setCellValue('G' . $rows, $val->creacion_us);
+                $rows++;
+            } 
+            $writer = new Xlsx($spreadsheet);
+            $fecha_creacion= date("Y-m-d");     
+            $ruta="reporte_Usuarios_".$fecha_creacion.".xlsx";
+            $writer->save('./public/assets/reportes/'.$ruta);
+           
+            # Le pasamos la ruta de guardado
+          
+            header("Content-Type: application/vnd.ms-excel");
+            // redirect(base_url()."/listUser/".$ruta); 
+            echo json_encode($ruta);
+            // echo ($fileName);
+          }
+    
 
 
 

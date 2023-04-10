@@ -85,6 +85,9 @@ File: Main Css File
 .modal-title{
   text-transform: uppercase !important;
 }
+.form-control:disabled{
+  background-color: #edebeb;
+}
 /* table thead tr th:first-child{
   display: none;
 }

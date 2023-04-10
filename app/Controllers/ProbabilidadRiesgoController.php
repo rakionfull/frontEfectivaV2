@@ -18,7 +18,7 @@ class ProbabilidadRiesgoController extends BaseController
   public function getByDescription(){
     if ($this->session->logged_in) {
       $request_data = $this->request->getPost();
-      $get_endpoint = '/api/getProbabilidadByDescription/';
+      $get_endpoint = '/api/getProbabilidadByDescription';
       $response = perform_http_request('POST', REST_API_URL . $get_endpoint, $request_data);
       if ($response) {
         echo json_encode($response);

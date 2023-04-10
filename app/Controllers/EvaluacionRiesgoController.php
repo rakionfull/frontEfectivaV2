@@ -281,9 +281,9 @@ class EvaluacionRiesgoController extends BaseController
 
 
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            $drawing->setPath('public\images\valtx.png');
-            $drawing->setWidthAndHeight(100, 100);
-            $drawing->setCoordinates('A1');
+            // $drawing->setPath('public\images\valtx.png');
+            // $drawing->setWidthAndHeight(100, 100);
+            // $drawing->setCoordinates('A1');
 
 
             // Agregar una imagen
@@ -378,9 +378,9 @@ class EvaluacionRiesgoController extends BaseController
 
 
             $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            $drawing->setPath('public\images\valtx.png');
-            $drawing->setWidthAndHeight(100, 100);
-            $drawing->setCoordinates('A1');
+            // $drawing->setPath('public\images\valtx.png');
+            // $drawing->setWidthAndHeight(100, 100);
+            // $drawing->setCoordinates('A1');
 
 
 

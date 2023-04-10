@@ -86,7 +86,7 @@ function LoadTableUsers($est) {
                    
                     "mRender": function(data, type, value) {
                         if (data == '1') return  "<span class='badge badge-primary font-size-12'>Conectado</span>";
-                        else return "<span class='badge badge-danger font-size-12'>Descconectado</span>";
+                        else return "<span class='badge badge-danger font-size-12'>Desconectado</span>";
                           
 
                     }

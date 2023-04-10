@@ -19,7 +19,7 @@ function cargarEmpresaArea(valor) {
            
 
             datos.data.forEach(dato => {
-                
+            
               if(valor == dato['id']){
                 $("#select_empresa").append('<option value='+dato["id"]+' selected>'+dato["empresa"]+'</option>');
 
@@ -128,7 +128,7 @@ function LoadTableAreaEmpresa($update,$delete) {
             {
                 "targets": [ 0,1,2 ],
                 "visible": false,
-                "searchable": false
+                "searchable": true
             },
             
         ],
@@ -364,7 +364,7 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
-            console.log(respuesta);
+          
             if (!respuesta.error) 
             {
                 alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+

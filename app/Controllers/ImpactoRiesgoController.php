@@ -9,7 +9,7 @@ class ImpactoRiesgoController extends BaseController
     public function getByDescription(){
         if ($this->session->logged_in) {
           $request_data = $this->request->getPost();
-          $get_endpoint = '/api/getImpactoByDescription/';
+          $get_endpoint = '/api/getImpactoByDescription';
           $response = perform_http_request('POST', REST_API_URL . $get_endpoint, $request_data);
           if ($response) {
             echo json_encode($response);

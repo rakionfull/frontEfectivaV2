@@ -25,7 +25,7 @@
                                             <select name="select_estado" id="select_estado" class="form-control">
                                                     <option value="all">Todos</option>
                                                     <option value="1">Activos</option>
-                                                    <option value="0">Inactivos</option>
+                                                    <option value="2">Inactivos</option>
                                             </select>
                                         </div>
                                        

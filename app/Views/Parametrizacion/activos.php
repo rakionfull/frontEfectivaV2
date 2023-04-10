@@ -1332,7 +1332,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <textarea maxlength="500" class="form-control form-control-sm" id="descripcion_clasificacion"  cols="30" rows="5"></textarea>
+                                                            <textarea  placeholder="Descripción" maxlength="500" class="form-control form-control-sm" id="descripcion_clasificacion"  cols="30" rows="5"></textarea>
                                                             
                                                         </div>
                                       

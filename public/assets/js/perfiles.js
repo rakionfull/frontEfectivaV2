@@ -158,9 +158,11 @@ document.getElementById("Agregar_Perfil").addEventListener("click",async functio
     $desc_perfil=document.getElementById("desc_perfil").value;
     $est_perfil=document.getElementById("est_perfil").value;
     $evaluador = 1;
-    if($('#opcion_us').val().checked){
+    if(document.getElementById('opcion_us').checked){
+        
         $evaluador = 0;
     }
+    //console.log($('#opcion_us').val());
     if($nom_perfil !="" && $desc_perfil !="" && $est_perfil != ""){
         if (!(await validacionPerfil($nom_perfil))){
             
@@ -170,7 +172,7 @@ document.getElementById("Agregar_Perfil").addEventListener("click",async functio
                     est_perfil:$est_perfil,
                     evaluador : $evaluador 
                 };
-               
+               console.log(postData);
                 try {
 
                     $.ajax({
