@@ -119,7 +119,7 @@ function cargarProceso($unidad,$macro,$dato) {
 
 loadTableEvaluacionRiesgos()
 function loadTableEvaluacionRiesgos(){
-    console.log(update,eliminar);
+    // console.log(update,eliminar);
     if ($.fn.DataTable.isDataTable('#table_evaluacion_riesgo')){
         $('#table_evaluacion_riesgo').DataTable().rows().remove();
         $('#table_evaluacion_riesgo').DataTable().destroy();
@@ -157,7 +157,7 @@ function loadTableEvaluacionRiesgos(){
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: BASE_URL+"/listEvaluacionRiesgos/"+idempresa,
+        ajax: $('#base_url').val()+"/listEvaluacionRiesgosExtra",
         aoColumns: [
             { "data": "id" },
             { "data": "riesgo" },
