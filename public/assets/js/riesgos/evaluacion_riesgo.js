@@ -535,7 +535,6 @@ $('#add_eva').click(function(){
         $valor_probabilidad != "" &&
         $valor_impacto != "" &&
         $valor != "" &&
-        $controles != "" &&
         $estado != ""
     ){
         const postData = {
@@ -882,7 +881,8 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
                 dataType:'JSON'
             })
             .done(function(res){
-             
+                console.log('reeeeee')
+                console.log(res)
                 if(res.data.length > 0){
                     $('#table_evaluacion_riesgo tbody editEVA').attr('disabled',false)
                     document.getElementById("form_eva").reset();
@@ -936,6 +936,7 @@ $("#table_evaluacion_riesgo").on('click','editEVA',function(event){
                     $("#modal_evaluacion_riesgo #impacto").val(res.data[0].impacto);
                     $("#modal_evaluacion_riesgo #valor").val(res.data[0].valor);
                     $("#modal_evaluacion_riesgo #control").val(res.data[0].id_control);
+                    $("#modal_evaluacion_riesgo #control_selected").val(res.data[0].id_control);
                     $("#modal_evaluacion_riesgo #riesgo_controlado_probabilidad").val(res.data[0].riesgo_controlado_probabilidad);
                     $("#modal_evaluacion_riesgo #riesgo_controlado_impacto").val(res.data[0].riesgo_controlado_impacto);
                     $("#modal_evaluacion_riesgo #riesgo_controlado_valor").val(res.data[0].riesgo_controlado_valor);
@@ -974,7 +975,8 @@ $('#update_eva').click(function(){
     $valor_impacto = $('#modal_evaluacion_riesgo #valor_impacto').val()
     $impacto = $('#modal_evaluacion_riesgo #impacto').val()
     $valor = $('#modal_evaluacion_riesgo #valor').val()
-    $control = $('#modal_evaluacion_riesgo #control').val()
+    $controles = $('#modal_evaluacion_riesgo #control').val()
+    $control = $('#modal_evaluacion_riesgo #control_selected').val()
     $riesgo_controlado_probabilidad = $('#modal_evaluacion_riesgo #riesgo_controlado_probabilidad').val()
     $riesgo_controlado_impacto = $('#modal_evaluacion_riesgo #riesgo_controlado_impacto').val()
     $riesgo_controlado_valor = $('#modal_evaluacion_riesgo #riesgo_controlado_valor').val()
@@ -995,13 +997,8 @@ $('#update_eva').click(function(){
         $desc_vulnerabilidad != "" &&
         $riesgo != "" &&
         $valor_probabilidad != "" &&
-        
         $valor_impacto != "" &&
-       
         $valor != "" &&
-        $control != "" &&
-      
-        $riesgo_controlado_valor != "" &&
         $estado != ""
     ){
         const postData = {
@@ -1026,7 +1023,8 @@ $('#update_eva').click(function(){
             riesgo_controlado_probabilidad:$riesgo_controlado_probabilidad,
             riesgo_controlado_impacto:$riesgo_controlado_impacto,
             riesgo_controlado_valor:$riesgo_controlado_valor,
-            estado:$estado
+            estado:$estado,
+            controles:$controles
         }
         try {
             $.ajax({
@@ -3754,7 +3752,9 @@ function getAplicacionProbabilidad(caracteristica){
       console.log(respuesta);
         if(escenario == 2){
             $probabilidad_actual = $('#modal_evaluacion_riesgo #probabilidad').val()
+            // busco la posicion actual de la probabilidad
             index = $posiciones_probabilidad.findIndex(element => element == $probabilidad_actual)
+            console.log(index)
             // 1: 1 posicion hacia abajo
             // 2: 2 posicion hacia abajo
             // 3: 3 posicion hacia abajo
@@ -3832,4 +3832,5 @@ document.getElementById("macroproceso").addEventListener("change",function(){
 
 
 });
+
 

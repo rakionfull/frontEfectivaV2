@@ -410,6 +410,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>                                                         
+                                        <th>Tipo de Amenaza</th>
                                         <th>Amenaza</th>
                                         <th style="width: 120px;">Mantenimiento</th>
                                     </tr>

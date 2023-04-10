@@ -202,17 +202,21 @@ function loadTableInventarioClasificacionActivo(){
             { "data": "val_i" },
             { "data": "val_d" },
             { "data": "valor" },
-            {  "data": "ica_estado",
-                        
-            "mRender": function(data, type, value) {
-                if (data == '1') return  'Borrador';
-                if (data == '2') return  'Registrado';
-                if (data == '3') return  'Observado';
-                if (data == '4') return  'Aprobado';
-                if (data == '5') return  'Por actualizar';
-              
-            }
-        },
+            { "data": "ica_estado",     
+                "mRender": function(data, type, value) {
+                    if (data == '1') return  'Borrador';
+                    if (data == '2') return  'Registrado';
+                    if (data == '3') return  'Observado';
+                    if (data == '4') return  'Aprobado';
+                    if (data == '5') return  'Por actualizar';
+                }
+            },
+            {  "data": "ica_estado_2",     
+                "mRender": function(data, type, value) {
+                    if (data == '1') return  'Activo';
+                    if (data == '2') return  'Inactivo';
+                }
+            },
             { "data": "ica_comentario" },
             {
                 data:null,
@@ -581,6 +585,7 @@ document.getElementById('add_ica').addEventListener('click',function(){
     $valor = $('#modal_inventario_clasificacion_activo #valor').val()
     $comentario = $('#modal_inventario_clasificacion_activo #comentario').val()
     $estado = $('#modal_inventario_clasificacion_activo #estado').val()
+    $estado2 = $('#modal_inventario_clasificacion_activo #estado_2').val()
 
     if(
         $empresa != "" &&
@@ -600,7 +605,8 @@ document.getElementById('add_ica').addEventListener('click',function(){
         $val_d != "" &&
         $valor != "" &&
         $comentario != "" &&
-        $estado != ""
+        $estado != "" &&
+        $estado2 != ""
     ){
         const postData = {
             idempresa:$empresa,
@@ -620,6 +626,7 @@ document.getElementById('add_ica').addEventListener('click',function(){
             val_d:$val_d,
             idvalor:$valor,
             estado:$estado,
+            estado_2:$estado2,
             comentario:$comentario
         }
         try {
@@ -1000,6 +1007,7 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
                                 `
                                     <option value="3">Observado</option>
                                     <option value="2">Registrado</option>
+                                    <option value="7">Inactivo</option>
                                 `
                             )
                             $("#modal_inventario_clasificacion_activo .input_observacion").show()
@@ -1065,6 +1073,7 @@ document.getElementById('update_ica').addEventListener('click',function(){
     $valor = $('#modal_inventario_clasificacion_activo #valor').val()
     $comentario = $('#modal_inventario_clasificacion_activo #comentario').val()
     $estado = $('#modal_inventario_clasificacion_activo #estado').val()
+    $estado2 = $('#modal_inventario_clasificacion_activo #estado_2').val()
     $observacion = $('#modal_inventario_clasificacion_activo #observacion').val()
     const id = $('#modal_inventario_clasificacion_activo #id_ica').val()
     if(
@@ -1085,6 +1094,7 @@ document.getElementById('update_ica').addEventListener('click',function(){
         $val_d != "" &&
         $valor != "" &&
         $comentario != "" &&
+        $estado2 != "" &&
         ($estado != "" || $estado != "0")
     ){
         const postData = {
@@ -1105,6 +1115,7 @@ document.getElementById('update_ica').addEventListener('click',function(){
             val_d:$val_d,
             idvalor:$valor,
             estado:$estado,
+            estado_2:$estado2,
             comentario:$comentario,
             observacion:$observacion
         }

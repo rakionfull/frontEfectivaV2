@@ -147,7 +147,7 @@ document.getElementById("add_nivel_riesgo").addEventListener('click',function(){
                     dataType: "JSON"
                 })
                 .done(function(respuesta) {
-                    if (respuesta) 
+                    if (!respuesta.error) 
                     {
                         document.getElementById("form_nivel_riesgo").reset();
                         $('#modal_nivel_riesgo').modal('hide');
@@ -159,7 +159,13 @@ document.getElementById("add_nivel_riesgo").addEventListener('click',function(){
                         '</div>';
                         $("#table_nivel_riesgo").DataTable().ajax.reload(null, false); 
                        
-                    } 
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: respuesta.msg
+                        })
+                    }
                     
                 })
                 .fail(function(error) {

@@ -264,12 +264,12 @@ $('#table_impacto_1 tbody').on('click','editImpacto1',function(){
                 $('#modal_impacto_riesgo_escenario_1 #group_condicionales_formula').append(`
                     <div class="row group_formula mt-2 group_formula_${count}">
                         <div class="col-md-3">
-                            <select value="${split_formula[index]}" id="operador_formula_1" class="form-control form-control-sm">
-                                <option value="=">=</option>
-                                <option value=">">></option>
-                                <option value=">=">>=</option>
-                                <option value="<"><</option>
-                                <option value="<="><=</option>
+                            <select id="operador_formula_1" class="form-control form-control-sm">
+                                <option value="=" ${split_formula[index] == "=" ? 'selected' : ''}>=</option>
+                                <option value=">" ${split_formula[index] == ">" ? 'selected' : ''}>></option>
+                                <option value=">=" ${split_formula[index] == ">=" ? 'selected' : ''}>>=</option>
+                                <option value="<" ${split_formula[index] == "<" ? 'selected' : ''}><</option>
+                                <option value="<=" ${split_formula[index] == "<=" ? 'selected' : ''}><=</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -385,11 +385,19 @@ $('#update_impacto_riego_escenario_1').click(function(){
                 })
 
             }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: respuesta.msg
-                }) 
+                if(respuesta.type == 'escenario'){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Alerta',
+                        text: respuesta.msg
+                    }) 
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    }) 
+                }
             }
         })
         .fail(function(error) {

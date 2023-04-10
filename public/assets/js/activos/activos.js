@@ -3,7 +3,7 @@ var permisos = [];
 window.addEventListener("hashchange",async () => {
 
     let opcion = window.location.hash;
-
+    $('.alert').remove()
     switch(opcion)
     {
         case "#/Empresa":

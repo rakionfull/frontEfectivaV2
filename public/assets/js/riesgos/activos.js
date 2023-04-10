@@ -1,6 +1,7 @@
 var BASE_URL = document.getElementById("base_url").value;
 window.addEventListener("hashchange", async () => {
     let opcion = window.location.hash;
+    $('.alert').remove()
     switch(opcion)
     {
         case "#/ValoracionRiesgo":

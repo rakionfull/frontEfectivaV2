@@ -261,15 +261,16 @@ $('#table_probabilidad_1 tbody').on('click','editProbabilidad1',function(){
         if(split_formula.length > 0){
             $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula .group_formula').remove()
             for (let index = 0; index < split_formula.length; index=index+3) {
+                console.log(split_formula[index] )
                 $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula').append(`
                     <div class="row group_formula mt-2 group_formula_${count}">
                         <div class="col-md-3">
-                            <select value="${split_formula[index]}" id="operador_formula_1" class="form-control form-control-sm">
-                                <option value="=">=</option>
-                                <option value=">">></option>
-                                <option value=">=">>=</option>
-                                <option value="<"><</option>
-                                <option value="<="><=</option>
+                            <select id="operador_formula_1" class="form-control form-control-sm">
+                                <option value="=" ${split_formula[index] == "=" ? 'selected' : ''}>=</option>
+                                <option value=">" ${split_formula[index] == ">" ? 'selected' : ''}>></option>
+                                <option value=">=" ${split_formula[index] == ">=" ? 'selected' : ''}>>=</option>
+                                <option value="<" ${split_formula[index] == "<" ? 'selected' : ''}><</option>
+                                <option value="<=" ${split_formula[index] == "<=" ? 'selected' : ''}><=</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -386,11 +387,19 @@ $('#update_probabilidad_riego_escenario_1').click(function(){
                 })
 
             }else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: respuesta.msg
-                }) 
+                if(respuesta.type == 'escenario'){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Alerta',
+                        text: respuesta.msg
+                    }) 
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    }) 
+                }
             }
         })
         .fail(function(error) {
