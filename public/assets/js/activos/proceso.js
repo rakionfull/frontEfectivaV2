@@ -474,7 +474,7 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_proceso").reset();
                             $('#modal_proceso').modal('hide');
@@ -486,7 +486,13 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                             '</div>';
                             $("#table_proceso").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                            })
+                        }
                         
                     })
                     .fail(function(error) {

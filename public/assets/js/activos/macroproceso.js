@@ -406,7 +406,7 @@ document.getElementById("Modificar_Macroproceso").addEventListener("click", func
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_macroproceso").reset();
                             $('#modal_macroproceso').modal('hide');
@@ -418,7 +418,13 @@ document.getElementById("Modificar_Macroproceso").addEventListener("click", func
                             '</div>';
                             $("#table_macroproceso").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                            })
+                        }
                         
                     })
                     .fail(function(error) {

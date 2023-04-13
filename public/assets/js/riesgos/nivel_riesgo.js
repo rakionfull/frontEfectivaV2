@@ -322,7 +322,7 @@ document.getElementById("update_nivel_riesgo").addEventListener("click", functio
                     dataType: "JSON"
                 })
                 .done(function(respuesta) {
-                    if (respuesta) 
+                    if (!respuesta.error) 
                     {
                         document.getElementById("form_nivel_riesgo").reset();
                         $('#modal_nivel_riesgo').modal('hide');
@@ -334,14 +334,20 @@ document.getElementById("update_nivel_riesgo").addEventListener("click", functio
                         '</div>';
                         $("#table_nivel_riesgo").DataTable().ajax.reload(null, false); 
                        
-                    } 
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: respuesta.msg
+                        })
+                    }
                     
                 })
                 .fail(function(error) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo guardar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 })
                 .always(function() {

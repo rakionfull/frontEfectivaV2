@@ -296,7 +296,7 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             $("#modal_area_empresa").modal("hide");
                             document.getElementById("form_area_empresa").reset();
@@ -309,7 +309,13 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                             '</div>';
                             $("#table_area_empresa").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                            })
+                        }
                         
                     })
                     .fail(function(error) {

@@ -196,6 +196,9 @@ $('#table_desc_amenaza tbody').on( 'click', 'editDesc', function(event){
             document.getElementById("update_desc_amenaza").style.display = "block";
             respuesta.data.forEach(item => {
                 options += `<option value="${item.id}">${item.tipo}</option>`
+                if(item.tipo = regDat[0]['tipo_amenaza']){
+                    selected = item.id
+                }
             });
             $('#modal_desc_amenaza #id_tipo').append(options)
 
@@ -204,7 +207,7 @@ $('#table_desc_amenaza tbody').on( 'click', 'editDesc', function(event){
 
             }else{
                 document.getElementById("id_desc_amenaza").value=event.currentTarget.getAttribute('data-id');
-                $('#modal_desc_amenaza #id_tipo').val(regDat[0]["idtipo_amenaza"])
+                $('#modal_desc_amenaza #id_tipo').val(selected)
                 $('#modal_desc_amenaza #amenaza').val(regDat[0]["amenaza"])
                 $("#modal_desc_amenaza").modal("show");
                 $("#modal_desc_amenaza").modal("show");
@@ -297,7 +300,7 @@ document.getElementById("update_desc_amenaza").addEventListener("click", functio
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     document.getElementById("form_desc_amenaza").reset();
                     $('#modal_desc_amenaza').modal('hide');
@@ -309,7 +312,13 @@ document.getElementById("update_desc_amenaza").addEventListener("click", functio
                     '</div>';
                     $("#table_desc_amenaza").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

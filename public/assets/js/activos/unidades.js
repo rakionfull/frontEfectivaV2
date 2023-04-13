@@ -358,7 +358,7 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
                     })
                     .done(function(respuesta) {
                      
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_unidades").reset();
                             $('#modal_unidades').modal('hide');
@@ -370,7 +370,13 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
                             '</div>';
                             $("#table_unidades").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        }  else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                            })
+                        }
                         
                     })
                     .fail(function(error) {
