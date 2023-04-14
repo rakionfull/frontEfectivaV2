@@ -269,7 +269,7 @@ document.getElementById("update_categoria_vulnerabilidad").addEventListener("cli
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: respuesta.msg.categoria
+                        text: respuesta.msg
                     }) 
                 }
                 

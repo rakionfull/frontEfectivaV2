@@ -275,7 +275,7 @@ document.getElementById("update_tipo_amenaza").addEventListener("click", functio
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: respuesta.msg.tipo
+                        text: respuesta.msg
                     }) 
                 }
                 

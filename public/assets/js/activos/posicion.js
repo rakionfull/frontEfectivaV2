@@ -461,7 +461,7 @@ document.getElementById("Modificar_Posicion").addEventListener("click",async fun
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_posicion").reset();
                             $('#modal_posicion').modal('hide');
@@ -473,7 +473,13 @@ document.getElementById("Modificar_Posicion").addEventListener("click",async fun
                             '</div>';
                             $("#table_posicion").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                            })
+                        }
                         
                     })
                     .fail(function(error) {

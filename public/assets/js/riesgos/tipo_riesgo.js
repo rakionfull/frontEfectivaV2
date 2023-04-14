@@ -290,7 +290,7 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo guardar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        text: respuesta.msg
                     })
                 }
                 

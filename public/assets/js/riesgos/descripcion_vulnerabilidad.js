@@ -40,6 +40,7 @@ function loadTableDescVulnerabilidad($update,$delete){
         ajax: BASE_URL+"/main/getDescVulnerabilidad",
         aoColumns: [
             { "data": "id" },
+            { "data": "categoria"},
             { "data": "vulnerabilidad" },
             {
                 data:null,
@@ -195,6 +196,9 @@ $('#table_desc_vulnerabilidad tbody').on( 'click', 'editVulnerabilidad', functio
             document.getElementById("update_desc_vulnerabilidad").style.display = "block";
             respuesta.data.forEach(item => {
                 options += `<option value="${item.id}">${item.categoria}</option>`
+                if(item.categoria == regDat[0]['categoria']){
+                    selected = item.id
+                }
             });
             $('#modal_desc_vulnerabilidad #id_categoria_vulnerabilidad').append(options)
 
@@ -203,7 +207,7 @@ $('#table_desc_vulnerabilidad tbody').on( 'click', 'editVulnerabilidad', functio
             }else{
                 $("#modal_desc_vulnerabilidad").modal("show");
                 document.getElementById("id_desc_vulnerabilidad").value=event.currentTarget.getAttribute('data-id');
-                $('#modal_desc_vulnerabilidad #id_categoria_vulnerabilidad').val(regDat[0]['idcategoria'])
+                $('#modal_desc_vulnerabilidad #id_categoria_vulnerabilidad').val(selected)
                 $('#modal_desc_vulnerabilidad #vulnerabilidad').val(regDat[0]['vulnerabilidad'])
                 $("#modal_desc_vulnerabilidad").modal("show");
             }
@@ -294,7 +298,7 @@ document.getElementById("update_desc_vulnerabilidad").addEventListener("click", 
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     document.getElementById("form_desc_vulnerabilidad").reset();
                     $('#modal_desc_vulnerabilidad').modal('hide');
@@ -306,7 +310,13 @@ document.getElementById("update_desc_vulnerabilidad").addEventListener("click", 
                     '</div>';
                     $("#table_desc_vulnerabilidad").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {

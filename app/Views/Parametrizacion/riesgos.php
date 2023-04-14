@@ -489,6 +489,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
+                                        <th>Categoría</th>
                                         <th>Vulnerabilidad</th>
                                         <th style="width: 120px;">Mantenimiento</th>
                                     </tr>
