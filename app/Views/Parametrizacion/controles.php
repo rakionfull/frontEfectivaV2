@@ -476,7 +476,7 @@
                                                 </div>
                                                 <div class="col-lg-6" id="apartvalor_opcion">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder='Valor' class="form-control form-control-sm" id="valor_opcion">
+                                                        <input type="number" placeholder='Valor' class="form-control form-control-sm" id="valor_opcion">
                                                     </div>
                                                 </div>
                                                 

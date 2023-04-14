@@ -47,6 +47,14 @@ abstract class BaseController extends Controller
       
             $this->session = \Config\Services::session();
             $this->validation = \Config\Services::validation();
+            $config         = new \Config\Encryption();
+            $config->key    = 'aBigsecret_ofAtleast32Characters';
+            $config->driver = 'OpenSSL';
+            $config->cipher = 'AES-256-CTR';
+            $config ->digest = 'SHA256';
+
+            $this->encrypter = \Config\Services::encrypter($config);
+          
         // Preload any models, libraries, etc, here.
       
        

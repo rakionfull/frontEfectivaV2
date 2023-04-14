@@ -422,25 +422,25 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'deleteValoracionRiesgo', functi
     }
 });
 
-function generateData(count, yrange) {
-    console.log(count);
-    console.log(yrange);
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = (i + 1).toString();
-      var y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+// function generateData(count, yrange) {
+//     console.log(count);
+//     console.log(yrange);
+//     var i = 0;
+//     var series = [];
+//     while (i < count) {
+//       var x = (i + 1).toString();
+//       var y =
+//       Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
     
-      series.push({
-        x: x,
-        y: y
-      });
-      i++;
-    }
-    console.log(series);
-    return series;
-}
+//       series.push({
+//         x: x,
+//         y: y
+//       });
+//       i++;
+//     }
+//     console.log(series);
+//     return series;
+// }
 
 
 async function cargarMatrisRiesgo() {
@@ -508,7 +508,7 @@ async function cargarMatrisRiesgo() {
            
             if($cont==0){
                 $cadena_inicio = $cadena_inicio +  "<tr>"+
-                "<td rowspan='5' style='width:85px'><p style='transform: rotate(270deg)''>Probabilidad</p> </td>"+
+                "<td rowspan='"+resultado.length+"' style='width:85px'><p style='transform: rotate(270deg)''>Probabilidad</p> </td>"+
                 "<td >"+element.descripcion+"<br> " +element.valor1+" - "+element.valor2+ "</td>";
                 for (let index = 0; index < resultado2.length; index++) {
                   
@@ -522,14 +522,10 @@ async function cargarMatrisRiesgo() {
                                    
                                     $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +" <br>"+dato.valor+"</td>"; 
                                     
+                                }else{
+                                    $cadena_inicio = $cadena_inicio + "<td></td>"
                                 }
-                                // else{
-                                //     if($aux == 0){
-                                //         $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +"</td>"; 
-                                //     }
-                        
-                                //     $aux++;
-                                // }
+                                
                                
                             });
                           
@@ -554,37 +550,12 @@ async function cargarMatrisRiesgo() {
                                  
                                     $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +" <br>"+dato.valor+"</td>"; 
                                     // $aux++;
+                                }else{
+                                    $cadena_inicio = $cadena_inicio + "<td></td>"
                                 }
-                                // else{
-                                //     if($aux == 0){
-                                //         $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +"</td>"; 
-                                //     }
-                        
-                                //     $aux++;
-                                // }
-                                // console.log( dato.valorImpacto);
-                                // console.log( dato.valorProbabilidad);
-                                // if(dato.valorProbabilidad  == ""
-                                // || dato.valorImpacto ==  ""){
-                                //     console.log( dato.valorImpacto);
-                                //     console.log( dato.valorProbabilidad);
-                                //     $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +"</td>"; 
-                                //     // $aux++;
-                                // }
-                                // else{
-                                   
-                                //     if($aux == 0){
-                                //         console.log("ahora aqui");
-                                //     // //     console.log("ahora aqui");
-                                //     //    $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +"</td>"; 
-                                //     //  
-                                //      }
-                                //      $aux++;
-                                   
-                                // }
                                
                             });
-                            // $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +"</td>"; 
+                           
                         }
                     
                    }
@@ -598,7 +569,7 @@ async function cargarMatrisRiesgo() {
         $cont2 = 0;
         $cadena  = "";
       $inicio= "<tr> <td rowspan='2' colspan='2'></td>";
-      $fin = "</tr><tr><td colspan='5'>Impacto</td></tr>"
+      $fin = "</tr><tr><td colspan='"+resultado2.length+"'>Impacto</td></tr>"
         resultado2.forEach(element => {
             if($cont2 == 0){
                 
@@ -614,17 +585,7 @@ async function cargarMatrisRiesgo() {
               
             }
           
-            // datos_matriz.innerHTML += "<tr>"+
-                  
-            //     "<td rowspan='2' colspan='2'></td>"+
-            
-                
-            //     "<td >Insignificante</td>"+
-            //     "<td >Menor</td>"+
-            //     "<td >Moderado</td>
-            //     <td >Alcalde</td>
-            //     <td >Catastrófico</td>
-            // </tr>
+           
             $cont2 ++;
         });
         datos_matriz.innerHTML += $cadena;

@@ -17,7 +17,11 @@ function EjecutarChangeView(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-           
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Guardado correctamente, opción ver'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -60,7 +64,11 @@ function EjecutarChangeCreate(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-            //   console.log(data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Guardado correctamente, opción crear'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -100,7 +108,11 @@ function EjecutarChangeUpdate(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Guardado correctamente, opción modificar'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -143,7 +155,11 @@ function EjecutarChangeDelete(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Guardado correctamente, opción eliminar'
+                })
             })
             .fail(function(error) {
                 Swal.fire({

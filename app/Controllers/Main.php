@@ -16,10 +16,11 @@ class Main extends BaseController {
        
         $get_endpoint = '/api/dashboard';
         $response =perform_http_request('GET', REST_API_URL . $get_endpoint,[]);
-        
+       
         if($response){
           // $this->session->sess_expiration = '60';
-          
+      
+         // $ecrupt=$this->encrypter->encrypt(5);
           $data["mensaje"] = $response->msg;
           return view('main/inicio',$data);
         }
@@ -601,8 +602,14 @@ class Main extends BaseController {
         //opteniendo los datos
         if($this->session->logged_in && $this->session->permisos[5]->view_det==1){
        
-     
-              return view('accesos/perfiles');
+    
+              return view('accesos/perfiles',[
+                'ver' => $this->session->permisos[5]->view_det,
+                'modificar' => $this->session->permisos[5]->update_det,
+                'eliminar' => $this->session->permisos[5]->delete_det,
+                'crear' => $this->session->permisos[5]->create_det,
+               
+              ]);
          
         }else{
           return redirect()->to(base_url('/iniciosesion'));
@@ -922,30 +929,11 @@ class Main extends BaseController {
         
         $post_endpoint = '/api/dataUser';
         $response = (perform_http_request('GET', REST_API_URL . $post_endpoint,[]));
-        $data = $response->campos;
-    
-    
+      
         $spreadsheet = new Spreadsheet();
 
         $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-            // $drawing->setPath('.\public\images\valtx.png');
-            // $drawing->setWidthAndHeight(100, 100);
-            // $drawing->setCoordinates('A1');
-            
-            
-            // Agregar una imagen
-            /*
-            $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing();
-            $drawing->setName('Logo');
-            $drawing->setDescription('Logo');
-            $drawing->setImageResource(file_get_contents('public/images/valtx.png'));
-            $drawing->setMimeType(\PhpOffice\PhpSpreadsheet\Worksheet\MemoryDrawing::MIMETYPE_PNG);
-            $drawing->setCoordinates('A1');
-            $drawing->setWorksheet($sheet);
-            */
-            //
-            
-            
+          
             // Agregar un encabezado
             
             $spreadsheet->getActiveSheet()->mergeCells('B1:R2');
@@ -978,24 +966,29 @@ class Main extends BaseController {
 
  
             $sheet = $spreadsheet->getActiveSheet();
-            $sheet->setCellValue('A6', 'Id');
+
+            $sheet->setCellValue('A6', 'Doc. Ident.');
             $sheet->setCellValue('B6', 'Nombres');
             $sheet->setCellValue('C6', 'Apellidos');
             $sheet->setCellValue('D6', 'Usuario');
             $sheet->setCellValue('E6', 'Perfil');
             $sheet->setCellValue('F6', 'Estado');
-            $sheet->setCellValue('G6', 'Fecha_creación');
-             
+            $sheet->setCellValue('G6', 'Bloqueo');
+            $sheet->setCellValue('H6', 'Fecha de alta');
+            $sheet->setCellValue('I6', 'Ultimo Acceso');
             $rows = 7;
      
             foreach ($response->datos as $val){
-                $sheet->setCellValue('A' . $rows, $val->id_us);
+                
+                $sheet->setCellValue('A' . $rows, $val->docident_us);
                 $sheet->setCellValue('B' . $rows, $val->nombres_us);
                 $sheet->setCellValue('C' . $rows, $val->apepat_us.' '. $val->apemat_us);
                 $sheet->setCellValue('D' . $rows, $val->usuario_us);
                 $sheet->setCellValue('E' . $rows, $val->perfil);
-                $sheet->setCellValue('F' . $rows, $val->estado_us);
-                $sheet->setCellValue('G' . $rows, $val->creacion_us);
+                $sheet->setCellValue('F' . $rows, $val->estado);
+                $sheet->setCellValue('G' . $rows, $val->bloqueo);
+                $sheet->setCellValue('H' . $rows, $val->creacion_us);
+                $sheet->setCellValue('I' . $rows, $val->ultimo_acceso);
                 $rows++;
             } 
             $writer = new Xlsx($spreadsheet);

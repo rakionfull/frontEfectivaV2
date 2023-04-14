@@ -1,5 +1,5 @@
 <?=$this->extend('layout/main')?> 
-<?=$this->section('content')?> 
+<?=$this->section('content'); $session = session();?> 
         <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -12,10 +12,13 @@
                                 
                             </div>
                             <div class="row mt-2 d-flex justify-content-between">
-                                <div class="col-md-6">
-                                   
-                                    <button type="button" id="btnAgregar_perfil" class=" btn btn-primary waves-effect waves-light"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
-                                </div>
+                                
+                                    <div class="col-md-6">
+                                
+                                        <button type="button" id="btnAgregar_perfil" class=" btn btn-primary waves-effect waves-light" style="display:none"><i class=" fas fa-plus-circle align-middle mr-2 ml-2"></i> Agregar</button>
+                                    
+                                    </div>
+                               
                                 <div class="col-md-4">
                                     <div class="row g-3 d-flex justify-content-end">
                                         <div class="col-auto">
@@ -133,5 +136,14 @@
         </div>
         
         <script src="<?=base_url('public/assets/js/main_das.js'); ?>"></script>
+        <script>
+                var ver = <?php echo json_encode($ver); ?>;
+                var crear = <?php echo json_encode($crear); ?>;
+                var modificar = <?php echo json_encode($modificar); ?>;
+                var eliminar = <?php echo json_encode($eliminar); ?>;
+                console.log(ver);
+                console.log(modificar);
+                console.log(crear);console.log(eliminar);
+        </script>
         <script src="<?=base_url('public/assets/js/perfiles.js'); ?>"></script>
 <?=$this->endSection()?> 
