@@ -296,26 +296,28 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                     })
                     .done(function(respuesta) {
                        
-                        if (!respuesta.error) 
+                        if (respuesta.error==1) 
                         {
-                            $("#modal_area_empresa").modal("hide");
-                            document.getElementById("form_area_empresa").reset();
+                        
                             
+                            $("#modal_area_empresa").modal("hide");    
+                            document.getElementById("form_area_empresa").reset();
+                           
                             alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado'+
+                            respuesta.msg+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_area_empresa").DataTable().ajax.reload(null, false); 
                            
-                        } else {
+                        }else{
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
                                 text: respuesta.msg
-                            })
-                        }
+                              })
+                        } 
                         
                     })
                     .fail(function(error) {

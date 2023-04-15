@@ -65,7 +65,10 @@ function LoadTableEmpresa($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteEmpresa class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEmpresa>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
                 return $cadena;
                 
 
@@ -124,7 +127,7 @@ document.getElementById("Agregar_Empresa").addEventListener("click",function(){
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                        console.log(respuesta);
+                       // console.log(respuesta);
                         if (respuesta.error==1) 
                         {
                             document.getElementById("form_empresa").reset();
@@ -223,25 +226,25 @@ document.getElementById("Modificar_Empresa").addEventListener("click", function(
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
-                        if (!respuesta.error) 
+                     
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_empresa").reset();
                             $('#modal_empresa').modal('hide');
-                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Empresa Modificada'+
+                            alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_empresa").DataTable().ajax.reload(null, false); 
                            
-                        } else {
+                        } else{
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
                                 text: respuesta.msg
-                            })
+                              })
                         }
                         
                     })

@@ -120,6 +120,7 @@ function cargarProceso($unidad,$macro,$dato) {
 loadTableEvaluacionRiesgos()
 function loadTableEvaluacionRiesgos(){
     // console.log(update,eliminar);
+    console.log(escenario);
     if ($.fn.DataTable.isDataTable('#table_evaluacion_riesgo')){
         $('#table_evaluacion_riesgo').DataTable().rows().remove();
         $('#table_evaluacion_riesgo').DataTable().destroy();
@@ -157,7 +158,7 @@ function loadTableEvaluacionRiesgos(){
         lengthMenu:[5,10,25,50],
         pageLength:10,
         clickToSelect:false,
-        ajax: $('#base_url').val()+"/listEvaluacionRiesgosExtra",
+        ajax: $('#base_url').val()+"/listEvaluacionRiesgosExtra/"+idempresa,
         aoColumns: [
             { "data": "id" },
             { "data": "riesgo" },
@@ -3768,6 +3769,7 @@ function getRiesgoControladoValor(valorProb=0,valorImp=0,descripcionProbabilidad
     }
 }
 function getAplicacionProbabilidad(caracteristica){
+    console.log(escenario);
     return $.ajax({
         method:'POST',
         url:BASE_URL+"/getAplicacionProbabilidadByCaracteristica",

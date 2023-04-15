@@ -109,7 +109,7 @@ document.getElementById("btn_crear_plan").addEventListener("click",function(){
                       dataType: "JSON"
                   })
                   .done(function(respuesta) {
-                    //console.log(respuesta);
+                    console.log(respuesta);
 
                       if (respuesta.error==1) 
                       {

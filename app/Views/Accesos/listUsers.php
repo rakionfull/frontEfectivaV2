@@ -1,5 +1,8 @@
 <?=$this->extend('layout/main')?> 
-<?=$this->section('content');  $session = session();?> 
+<?=$this->section('content');  
+$session = session();
+
+;?> 
 <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -56,11 +59,12 @@
                                     {
                                     echo $session->getFlashdata('error');;
                                     }
+                                  
                                 ?>
                         </div>
                         <div class="card-body">
                       
-                    
+                                
                             
                             <div class="table-responsive">
                                             <table id="table_users" class="table table-centered table-bordered datatable dt-responsive nowrap  table-striped  m-0" data-page-length="10" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

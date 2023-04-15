@@ -37,9 +37,9 @@ async function validacionPerfil(dato){
 };
 
 function LoadPerfiles($est){
-
+  
     if ($.fn.DataTable.isDataTable('#table_perfiles')){
-        
+        alerta.innerHTML = "";
         $('#table_perfiles').DataTable().rows().remove();
         $('#table_perfiles').DataTable().destroy();
     
@@ -100,10 +100,23 @@ function LoadPerfiles($est){
             {  "data": "id_perfil",
                     "bSortable": false,
                     "mRender": function(data, type, value) {
-                    return  "<editPerfil class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editPerfil>"+
-                        "<a href='"+ $('#base_url').val() + "/main/deletePerfil/"+ data +"' class='btn btn-opcionTabla text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></a>"+   
-                        "<a href='"+ $('#base_url').val() + "/main/detPerfil/"+ data +"' class='btn btn-opcionTabla text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Detalle'><i class='fas fa-user-edit font-size-18'></i></a>"
-            
+                       $cadena =  "";
+                        if(modificar == 1){
+                            $cadena = $cadena + "<editPerfil class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editPerfil>";
+                        }
+                        if(eliminar == 1){
+                            $cadena = $cadena + "<a href='"+ $('#base_url').val() + "/main/deletePerfil/"+ data +"' class='btn btn-opcionTabla text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></a>";
+                        }
+                        if(crear == 1){
+                            $cadena = $cadena + "<a href='"+ $('#base_url').val() + "/main/detPerfil/"+ data +"' class='btn btn-opcionTabla text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Detalle'><i class='fas fa-user-edit font-size-18'></i></a>";
+                        }
+                        if(crear == 0 && modificar==0 && eliminar ==0){
+                             return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene Permisos'></i>";
+                       
+                        }
+                       
+                        return $cadena;
+                 
                           
 
                     }
@@ -368,7 +381,7 @@ function EjecutarChangeView(id1,estado){
            
             estado:estado,
         };
-     
+        console.log(postData);
         try {
             
             $.ajax({
@@ -378,7 +391,12 @@ function EjecutarChangeView(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-            console.log(data);
+                console.log(data);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Dato Guardado, opción ver'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -421,7 +439,11 @@ function EjecutarChangeCreate(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Dato Guardado, opción crear'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -463,7 +485,11 @@ function EjecutarChangeUpdate(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Dato Guardado, opción modificar'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -506,7 +532,11 @@ function EjecutarChangeDelete(id1,estado){
                 dataType: "JSON"
             })
             .done(function(data) {
-              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Dato Guardado, opción eliminar'
+                })
             })
             .fail(function(error) {
                 Swal.fire({
@@ -583,6 +613,12 @@ function changeDelete(elemento){
 
 window.addEventListener("load", () => {
     LoadPerfiles('all');
+    if(crear == 1){
+        document.getElementById('btnAgregar_perfil').style.display='block';
+    }else{
+        document.getElementById('btnAgregar_perfil').style.display='none';
+    }
+   
 });
 
 document.getElementById("select_estado").addEventListener("change",function(){

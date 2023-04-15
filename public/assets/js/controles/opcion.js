@@ -35,13 +35,8 @@ function validaciones() {
     if(tipo == "submenu" && id!=0 && valor != "general"){
         document.getElementById("nom_opcion").placeholder="Característica";
        
+
        
-        document.getElementById("apartcali_opcion").style.display  = "none";
-      
-        
-        document.getElementById("apartCheckTabla_opcion").style.display  = "block";
-       
-        document.getElementById("aparNomTabla_opcion").style.display  = "none";
         if(clasi == 1){
             document.getElementById("apartcondi_opcion").style.display  = "block";
             document.getElementById("apartvalor_opcion").style.display  = "block";
@@ -50,7 +45,12 @@ function validaciones() {
             document.getElementById("apartest_opcion").style.display  = "none";
             document.getElementById("apartSelec_opcion").style.display  = "none";
             document.getElementById("apartCheckPeso_opcion").style.display  = "none";
+            document.getElementById("apartCheckTabla_opcion").style.display  = "none";
+            document.getElementById("apartcali_opcion").style.display  = "none";
+            document.getElementById("aparNomTabla_opcion").style.display  = "none";
         }else{
+            document.getElementById("apartCheckTabla_opcion").style.display  = "block";
+       
             document.getElementById("apartCheckPeso_opcion").style.display  = "block";
             document.getElementById("apartcondi_opcion").style.display  = "none";
             document.getElementById("apartvalor_opcion").style.display  = "none";
@@ -58,6 +58,8 @@ function validaciones() {
             document.getElementById("apartcali2_opcion").style.display  = "none";
             document.getElementById("apartest_opcion").style.display  = "block";
             document.getElementById("apartSelec_opcion").style.display  = "none";
+            document.getElementById("apartcali_opcion").style.display  = "none";
+            document.getElementById("aparNomTabla_opcion").style.display  = "none";
         }
     }
     
@@ -159,6 +161,7 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         valor = valor.replace("%C3%B1", "ñ")
         valor = valor.replace("%C3%B3", "\u00F3");
         valor = valor.replace("%C3%AD","í");
+        
         document.getElementById("card-title-opcion").innerHTML = unescape(valor);
         if(tipo == "menu" && id == 0){
          
@@ -495,11 +498,11 @@ document.getElementById("btnAgregar_Opcion").addEventListener("click",function()
 
     $("#modal_Opcion").modal("show");
    
-    valor = valor.replace("%20de%20"," ")
-    valor = valor.replace("%20"," ");
-    valor = valor.replace("%C3%AD","í");
-  
-    document.getElementById("title-Opcion").innerHTML = "Agregar " + valor;
+        valor = valor.replace("%C3%B1", "ñ")
+        valor = valor.replace("%C3%B3", "\u00F3");
+        valor = valor.replace("%C3%AD","í");
+       
+    document.getElementById("title-Opcion").innerHTML = "Agregar " + unescape(valor) ;
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "block";
     document.getElementById("Modificar_Opcion").style.display = "none";
@@ -823,11 +826,11 @@ document.getElementById("check_peso_opcion").addEventListener("change", function
 $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
     $("#modal_Opcion").modal("show");
 
-    valor = valor.replace("%20de%20"," ")
-    valor = valor.replace("%20"," ");
+    valor = valor.replace("%C3%B1", "ñ")
+    valor = valor.replace("%C3%B3", "\u00F3");
     valor = valor.replace("%C3%AD","í");
-   
-    document.getElementById("title-Opcion").innerHTML = "Modificar " + valor;
+    
+    document.getElementById("title-Opcion").innerHTML = "Modificar " +  unescape(valor);
     document.getElementById("form_Opcion").reset();
     document.getElementById("Agregar_Opcion").style.display = "none";
     document.getElementById("Modificar_Opcion").style.display = "block";
@@ -847,7 +850,7 @@ $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
         document.getElementById("condi_opcion").value = regDat[0]["condicion"];   
         document.getElementById("valor_opcion").value = regDat[0]["valor"];   
         document.getElementById("peso_opcion").value = regDat[0]["peso"];  
-        if(regDat[0]["clasificacion"] == 1){
+        if(regDat[0]["clasificacion"] == 1 ){
             $("#cali2_opcion").prop("checked", true);
            
         }
@@ -866,7 +869,7 @@ $('#table_Opcion tbody').on( 'click', 'editCaractControl', function(){
             document.getElementById("apartpeso_opcion").style.display  = "none";
             document.getElementById("apartvalor_opcion").style.display  = "block";
             document.getElementById("apartest_opcion").style.display  = "none";
-            document.getElementById("apartcali_opcion").style.display  = "block";
+            document.getElementById("apartcali_opcion").style.display  = "none";
         }
         if(regDat[0]["peso"] != ""){
             $("#check_peso_opcion").prop("checked", true);

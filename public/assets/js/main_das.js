@@ -16,7 +16,7 @@ function soloLetra(e)
     
     var character = String.fromCharCode(key);
 
-    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ_\s]+$/;
     if (!regex.test(character)) {
         e.preventDefault();
     }
