@@ -102,7 +102,11 @@ function LoadTableUsers($est) {
                             $cadena = $cadena +   "<a href='"+ $('#base_url').val() + "/deleteUser/"+ data +"' class='mr-3 text-danger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></a>";
                         }
                         $cadena = $cadena +  "<a href='' id='estado_"+ data + "_"+ value["bloqueo_us"] +"' onclick='changeEstadoUser(this, event)'  class='mr-3 text-info' data-toggle='tooltip' data-placement='top' title='' data-original-title='Cambio de Estado'><i class='fas fa-ban font-size-18'></i></a>";
-                    return  $cadena
+                   
+                        if ($('#edit').val() == '0' && $('#delete').val()==0){
+                            return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                        }
+                        return $cadena;     
                    
                   
 

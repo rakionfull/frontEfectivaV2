@@ -63,7 +63,10 @@ function LoadTableValorActivo($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteValorActivo class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteValorActivo>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                }
                 return $cadena;
                 
 
@@ -267,19 +270,25 @@ document.getElementById("Modificar_valorActivo").addEventListener("click", funct
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_valorActivo").reset();
                             $('#modal_valorActivo').modal('hide');
-                            alerta_valorActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Valor Activo Modificado'+
+                            alerta_valorActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_valorActivo").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -299,18 +308,17 @@ document.getElementById("Modificar_valorActivo").addEventListener("click", funct
                         text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
-           
+        
        
     }else{
-      
+       
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
                  text: 'Faltan Datos'
                })
   }
-   
+
 });
 
 //eliminar Valor Activo

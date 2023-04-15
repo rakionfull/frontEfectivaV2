@@ -13,13 +13,13 @@
                             <div class="row align-items-center">
                                 <ul class="menu">
                                   
-                                    <?php   if($session->permisos[41]->view_det==1){ ?>
+                                    <?php   if($session->permisos[42]->view_det==1){ ?>
                                         <li id="estado" ><a href="#/Estado" >Estado</a></li>
                                     <?php }?>
-                                    <?php if($session->permisos[42]->view_det==1){ ?>
+                                    <?php if($session->permisos[43]->view_det==1){ ?>
                                     <li id="prioridad"><a href="#/Prioridad">Prioridad</a></li>
                                     <?php }?>
-                                    <?php if($session->permisos[43]->view_det==1){ ?>
+                                    <?php if($session->permisos[44]->view_det==1){ ?>
                                         <li id="alertaSeguimiento"><a href="#/AlertaSeguimiento">Alerta de seguimiento</a></li>
 
                                     <?php }?>

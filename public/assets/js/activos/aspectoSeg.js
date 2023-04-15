@@ -62,8 +62,11 @@ function LoadTableAspectoSeg($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteAspectoSeg class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteAspectoSeg>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
-                return $cadena;
+                }
+                if ($update == '0' && $delete==0){
+                  return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                 }
+              return $cadena;
                 
 
                 }
@@ -137,80 +140,72 @@ document.getElementById("btnAgregar_AspectoSeg").addEventListener("click",functi
 
 
 // // boton de agregar Aspectos de Seguridad
-document.getElementById("Agregar_AspectoSeg").addEventListener("click",async function(){
-    $nom_asp=document.getElementById("nom_aspecto").value;
-
-    $est_asp=document.getElementById("est_aspecto").value;
+document.getElementById("Agregar_AspectoSeg").addEventListener("click", async () => {
+    const nom_asp = document.getElementById("nom_aspecto").value;
+    const est_asp = document.getElementById("est_aspecto").value;
   
-    if($nom_asp !=""  && $est_asp != ""){
-        if (!(await validacionApectoSeg($nom_asp))){
-                const postData = { 
-                    aspecto:$nom_asp,
-                    estado:$est_asp,
-                    
-                };
-               
-                try {
-
-                    $.ajax({
-                        method: "POST",
-                        url: $('#base_url').val()+"/activo/addAspectoSeg",
-                        data: postData,
-                        dataType: "JSON"
-                    })
-                    .done(function(respuesta) {
-                     
-                        if (respuesta) 
-                        {
-                            document.getElementById("form_aspectoSeg").reset();
-                            $('#modal_aspectoSeg').modal('hide');
-                            alerta_aspectoSeg.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Aspecto Registrado'+
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                                '</button>'+
-                            '</div>';
-                            $("#table_aspectoSeg").DataTable().ajax.reload(null, false); 
-                           
-                        } 
-                        
-                    })
-                    .fail(function(error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                        })
-                    })
-                    .always(function() {
-                    });
-                }
-                catch(err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                    })
-                }
-            }else{
-                Swal.fire({
-                         icon: 'error',
-                         title: 'Error',
-                         text: 'El aspecto de seguridad ya se encuentra registrado'
-                       })
-          }
-           
-       
-    }else{
-       
+    if (nom_asp !== "" && est_asp !== "") {
+      if (!(await validacionApectoSeg(nom_asp))) {
+        const postData = { 
+          aspecto: nom_asp,
+          estado: est_asp
+        };
+  
+        try {
+          $.ajax({
+            method: "POST",
+            url: `${$('#base_url').val()}/activo/addAspectoSeg`,
+            data: postData,
+            dataType: "JSON"
+          })
+          .done(respuesta => {
+            if (respuesta) {
+              document.getElementById("form_aspectoSeg").reset();
+              $('#modal_aspectoSeg').modal('hide');
+              alerta_aspectoSeg.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Aspecto Registrado
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>`;
+              $("#table_aspectoSeg").DataTable().ajax.reload(null, false); 
+            } 
+          })
+          .fail(error => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+            });
+          })
+          .always(() => {});
+        }
+        catch (err) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+          });
+        }
+      } else {
         Swal.fire({
-                 icon: 'error',
-                 title: 'Error',
-                 text: 'Faltan Datos'
-               })
-  }
+          icon: 'error',
+          title: 'Error',
+          text: 'El aspecto de seguridad ya se encuentra registrado'
+        });
+      }  
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Faltan Datos'
+      });
+    }
+  });
+  
 
-});
+
+
 
 //editar Aspecto de Seguridad
 $('#table_aspectoSeg tbody').on( 'click', 'editAspectoSeg', function(){
@@ -235,75 +230,90 @@ $('#table_aspectoSeg tbody').on( 'click', 'editAspectoSeg', function(){
 });
 
 //guardando la nueva info
-document.getElementById("Modificar_AspectoSeg").addEventListener("click", function(){
-    
-    $nom_asp=document.getElementById("nom_aspecto").value;
 
-    $est_asp=document.getElementById("est_aspecto").value;
-    
-    if($nom_asp !="" && $est_asp != ""){
-       
-                const postData = { 
-                    id:document.getElementById("id_aspecto").value,
-                    aspecto:$nom_asp,
-                    estado:$est_asp,
-                };
-              
-                try {
 
-                    $.ajax({
-                        method: "POST",
-                        url: $('#base_url').val()+"/activo/updateAspectoSeg",
-                        data: postData,
-                        dataType: "JSON"
-                    })
-                    .done(function(respuesta) {
-                       
-                        if (respuesta) 
-                        {
-                            document.getElementById("form_aspectoSeg").reset();
-                            $('#modal_aspectoSeg').modal('hide');
-                            alerta_aspectoSeg.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Aspecto de Seguridad Modificado'+
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                                '</button>'+
-                            '</div>';
-                            $("#table_aspectoSeg").DataTable().ajax.reload(null, false); 
-                           
-                        } 
-                        
-                    })
-                    .fail(function(error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                        })
-                    })
-                    .always(function() {
-                    });
-                }
-                catch(err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                    })
-                }
-            
-           
-       
-    }else{
+    document.getElementById("Modificar_AspectoSeg").addEventListener("click", async function () {
+  
+      $nom_asp = document.getElementById("nom_aspecto").value;
+  
+      $est_asp = document.getElementById("est_aspecto").value;
+  
+      if ($nom_asp != "" && $est_asp != "") {
+  
+        const postData = {
+          id: document.getElementById("id_aspecto").value,
+          aspecto: $nom_asp,
+          estado: $est_asp,
+        };
+  
+        try {
+  
+          const respuesta = await $.ajax({
+            method: "POST",
+            url: $('#base_url').val() + "/activo/validacionApectoSeg",
+            data: postData,
+            dataType: "JSON"
+          });
+  
+          if (respuesta.existe) {
+            Swal.fire({
+              icon: 'warning',
+              title: 'Atención',
+              text: 'Ya existe un aspecto de seguridad con ese nombre.',
+            });
+          } else {
+  
+            try {
+  
+              const respuesta = await $.ajax({
+                method: "POST",
+                url: $('#base_url').val() + "/activo/updateAspectoSeg",
+                data: postData,
+                dataType: "JSON"
+              });
+  
+              if (respuesta) {
+                document.getElementById("form_aspectoSeg").reset();
+                $('#modal_aspectoSeg').modal('hide');
+                alerta_aspectoSeg.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                  'Aspecto de Seguridad Modificado' +
+                  '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+                  '<span aria-hidden="true">&times;</span>' +
+                  '</button>' +
+                  '</div>';
+                $("#table_aspectoSeg").DataTable().ajax.reload(null, false);
+  
+              }
+  
+            } catch (error) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+              })
+            }
+  
+          }
+  
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ya existe un aspecto de seguridad con ese nombre.'
+          })
+        }
+  
+      } else {
         console.log("aqui3");
         Swal.fire({
-                 icon: 'error',
-                 title: 'Error',
-                 text: 'Faltan Datos'
-               })
-  }
-   
-});
+          icon: 'error',
+          title: 'Error',
+          text: 'Faltan Datos'
+        })
+      }
+  
+    });
+  
 
 //eliminar aspecto de segudidad
 $('#table_aspectoSeg tbody').on( 'click', 'deleteAspectoSeg', function(){

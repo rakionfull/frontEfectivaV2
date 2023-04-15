@@ -146,7 +146,10 @@ function LoadTableValActivo($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deletevalActivo class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deletevalActivo>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                }
                 return $cadena;
                 
 
@@ -394,19 +397,25 @@ document.getElementById("Modificar_valActivo").addEventListener("click", functio
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_valActivo").reset();
                             $('#modal_valActivo').modal('hide');
-                            alert_valActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
+                            alert_valActivo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_valActivo").DataTable().ajax.reload(null, false); 
                            
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -426,18 +435,24 @@ document.getElementById("Modificar_valActivo").addEventListener("click", functio
                         text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
+        //     }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'La Valoracion de activo ya se encuentra registrado'
+        //                })
+        //   }
            
        
     }else{
-        console.log("aqui11");
+        
         Swal.fire({
                  icon: 'error',
                  title: 'Error',
                  text: 'Faltan Datos'
                })
   }
-   
+
 });
 
 //eliminar valoracion de activo

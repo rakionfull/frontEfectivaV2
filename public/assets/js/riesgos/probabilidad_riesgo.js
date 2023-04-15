@@ -88,7 +88,10 @@ function loadTableProbabilidad1($update,$delete){
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteProbabilidad1 data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteProbabilidad1>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }
@@ -564,7 +567,10 @@ function loadTableProbabilidad2($update,$delete){
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteProbabilidad2 data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteProbabilidad2>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }

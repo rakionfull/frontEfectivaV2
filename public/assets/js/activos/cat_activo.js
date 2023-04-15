@@ -102,7 +102,10 @@ function LoadTableCatActivo ($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteCat_activo class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCat_activo>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                   }
                 return $cadena;
                 
 
@@ -326,20 +329,25 @@ document.getElementById("Modificar_cat_activo").addEventListener("click", functi
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (respuesta.error==1) 
                         {
-                            document.getElementById("form_tipo_activo").reset();
+                            document.getElementById("form_cat_activo").reset();
                             $('#modal_cat_activo').modal('hide');
-                            alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
+                            alerta_cat_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_cat_activo").DataTable().ajax.reload(null, false); 
                            
-                        } 
-                        
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                     })
                     .fail(function(error) {
                         Swal.fire({
@@ -358,7 +366,13 @@ document.getElementById("Modificar_cat_activo").addEventListener("click", functi
                         text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
+        // }else{
+        //         Swal.fire({
+        //                  icon: 'error',
+        //                  title: 'Error',
+        //                  text: 'La categoría de activo ya se encuentra registrado'
+        //                })
+        // }
            
        
     }else{
@@ -368,8 +382,10 @@ document.getElementById("Modificar_cat_activo").addEventListener("click", functi
                  title: 'Error',
                  text: 'Faltan Datos'
                })
-     }
+  }
    
+
+
 });
 //eliminar cat_activo
 $('#table_cat_activo tbody').on( 'click', 'deleteCat_activo', function(){

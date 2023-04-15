@@ -32,10 +32,10 @@
                             <?php if($session->permisos[33]->view_det==1){ ?>
                                 <li id="descripcion_amenaza" ><a href="#/DescAmenaza" >Descripción de amenaza</a></li>
                             <?php }?>
-                            <?php if($session->permisos[34]->view_det==1){ ?>
+                            <?php if($session->permisos[35]->view_det==1){ ?>
                                 <li id="categoria_vulnerabilidad" ><a href="#/CategoriaVulnerabilidad" >Categoría de vulnerabilidad</a></li>
                             <?php }?>
-                            <?php if($session->permisos[35]->view_det==1){ ?>
+                            <?php if($session->permisos[36]->view_det==1){ ?>
                                 <li id="descripcion_vulnerabilidad"><a href="#/DescVulnerabilidad">Descripción de vulnerabilidad</a></li> 
                             <?php }?>
                         </ul>

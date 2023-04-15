@@ -141,9 +141,7 @@
                 var crear = <?php echo json_encode($crear); ?>;
                 var modificar = <?php echo json_encode($modificar); ?>;
                 var eliminar = <?php echo json_encode($eliminar); ?>;
-                console.log(ver);
-                console.log(modificar);
-                console.log(crear);console.log(eliminar);
+               
         </script>
         <script src="<?=base_url('public/assets/js/perfiles.js'); ?>"></script>
 <?=$this->endSection()?> 

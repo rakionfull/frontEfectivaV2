@@ -27,6 +27,7 @@ window.addEventListener("hashchange", async () => {
             if(permisos['create_det'] == 0){
                 document.getElementById('btnAgregar_estado').style.display = 'none';
             }
+            console.log(permisos['update_det']);
             LoadTableEstado(permisos['update_det'],permisos['delete_det']);
             
             
@@ -77,7 +78,7 @@ window.addEventListener("hashchange", async () => {
             });
             document.getElementById("apartAlertaSeguimiento").style.display = "block";
             document.getElementById("alertaSeguimiento").className = "activado";
-            permisos = await getPermisos('Alerta de seguimiento');
+            permisos = await getPermisos('Alerta de Seguimiento');
             if(permisos['create_det'] == 0){
                 document.getElementById('btnAgregar_alerSeguimiento').style.display = 'none';
             }

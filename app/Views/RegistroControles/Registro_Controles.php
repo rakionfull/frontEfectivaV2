@@ -69,7 +69,7 @@
                                                                
                                                            
                                                              <?php if($session->permisos[12]->delete_det==0 && $session->permisos[12]->update_det==0){ 
-                                                                 echo("<i class='fas fa-exclamation-circle text-danger font-size-18'></i>");
+                                                                 echo("<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>");
                                                             } ?> 
                                                         </td>
                                                     </tr>

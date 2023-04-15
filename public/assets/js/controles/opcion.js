@@ -64,7 +64,7 @@ function validaciones() {
     }
     
 }
-function LoadTableOpcion($valor,$id,$tipo,$clasi) {
+function LoadTableOpcion($valor,$id,$tipo,$clasi,$update,$delete) {
    
    
     if($valor == "general"){
@@ -132,10 +132,30 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
     
                     }
                 },
-                { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
-                "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+                {  "data": "id",
+                        
+                "mRender": function(data, type, value) {
+                    $cadena = "";
+                    if ($update == '1'){
+                        $cadena =   $cadena +  "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>";
+                   
+                    } 
+                    if ($delete == '1') {
+                        $cadena =     $cadena +  "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>";
+                  
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
+                    return $cadena;
+                    
     
-            },
+                    }
+                },
+            //     { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
+            //     "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+    
+            // },
             { "data": "check_tabla" },
             { "data": "nom_tabla" },
             ],
@@ -223,10 +243,30 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         
                         }
                     },
-                    { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
-                    "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+                    {  "data": "id",
+                        
+                    "mRender": function(data, type, value) {
+                        $cadena = "";
+                        if ($update == '1'){
+                            $cadena =   $cadena +  "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>";
+                       
+                        } 
+                        if ($delete == '1') {
+                            $cadena =     $cadena +  "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>";
+                      
+                        }
+                        if ($update == '0' && $delete==0){
+                            return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                        }
+                        return $cadena;
+                        
         
-                },
+                        }
+                    },
+                //     { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
+                //     "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+        
+                // },
                 { "data": "check_tabla" },
                 { "data": "nom_tabla" },
                 ],
@@ -303,10 +343,30 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
         
                         }
                     },
-                    { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
-                    "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+                    {  "data": "id",
+                        
+                    "mRender": function(data, type, value) {
+                        $cadena = "";
+                        if ($update == '1'){
+                            $cadena =   $cadena +  "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>";
+                       
+                        } 
+                        if ($delete == '1') {
+                            $cadena =     $cadena +  "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>";
+                      
+                        }
+                        if ($update == '0' && $delete==0){
+                            return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                        }
+                        return $cadena;
+                        
         
-                },
+                        }
+                    },
+                //     { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
+                //     "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+        
+                // },
                 { "data": "check_tabla" },
                 { "data": "nom_tabla" },
                 ],
@@ -384,10 +444,30 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
             
                             }
                         },
-                        { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
-                        "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+                        {  "data": "id",
+                        
+                        "mRender": function(data, type, value) {
+                            $cadena = "";
+                            if ($update == '1'){
+                                $cadena =   $cadena +  "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>";
+                           
+                            } 
+                            if ($delete == '1') {
+                                $cadena =     $cadena +  "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>";
+                          
+                            }
+                            if ($update == '0' && $delete==0){
+                                return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                            }
+                            return $cadena;
+                            
             
-                    },
+                            }
+                        },
+                    //     { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
+                    //     "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+            
+                    // },
                     { "data": "check_tabla" },
                     { "data": "nom_tabla" },
                     ],
@@ -465,10 +545,30 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi) {
             
                             }
                         },
-                        { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
-                        "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+                        {  "data": "id",
+                        
+                        "mRender": function(data, type, value) {
+                            $cadena = "";
+                            if ($update == '1'){
+                                $cadena =   $cadena +  "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>";
+                           
+                            } 
+                            if ($delete == '1') {
+                                $cadena =     $cadena +  "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>";
+                          
+                            }
+                            if ($update == '0' && $delete==0){
+                                return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                            }
+                            return $cadena;
+                            
             
-                    },
+                            }
+                        },
+                    //     { "defaultContent": "<editCaractControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCaractControl>"+
+                    //     "<deleteCaractControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCaractControl>"
+            
+                    // },
                     { "data": "check_tabla" },
                     { "data": "nom_tabla" },
                     ],
@@ -574,7 +674,7 @@ function ModificarOpcion(postData) {
         })
         .done(function(respuesta) {
             //console.log(respuesta);
-            if (respuesta) 
+            if (respuesta.error==1) 
             {
             
                 
@@ -582,7 +682,7 @@ function ModificarOpcion(postData) {
                 document.getElementById("form_Opcion").reset();
                
                 alerta_Opcion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                'Modificado'+
+                respuesta.msg+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

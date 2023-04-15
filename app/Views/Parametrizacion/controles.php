@@ -13,24 +13,30 @@
                             <div class="row align-items-center">
                                 <ul class="menu">
                                         <!-- del 40 39 28 37 36 -->
+                                            <?php if($session->permisos[37]->view_det==1){ ?>
                                             <li id="Cobertura" ><a href="#/Cobertura" >Cobertura</a></li>
-                                    
+                                            <?php }?>
+                                            <?php if($session->permisos[41]->view_det==1){ ?>
                                             <li id="Opcion" ><a href="#/Opcion_general" >Características de control</a></li>
-
+                                           
                                             <div id="caja_caracteristica" class="submenu">
                                             
                                             </div>
-                                           
+                                            <?php }else{ ?>
+                                            <div id="caja_caracteristica" class="submenu" style='display:none'>
+                                            
+                                            </div>
+                                            <?php }?>
                                                
-                                           
+                                            <?php if($session->permisos[38]->view_det==1){ ?>
                                             <li id="EvaluacionControl"><a href="#/EvaluacionControl">Evaluación de control</a></li>
-                                   
-                                    
+                                            <?php }?>
+                                            <?php if($session->permisos[39]->view_det==1){ ?>
                                             <li id="aplicProba"><a href="#/AplicacionProbabilidad">Aplicación de la probabilidad</a></li>
-
-                                       
+                                            <?php }?>
+                                            <?php if($session->permisos[40]->view_det==1){ ?>
                                             <li id="aplicImpac"><a href="#/AplicacionImpacto" >Aplicación del impacto</a></li>
-
+                                            <?php }?>
   
                                   
                                 </ul>

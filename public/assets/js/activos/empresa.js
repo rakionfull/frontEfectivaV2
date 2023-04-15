@@ -67,7 +67,7 @@ function LoadTableEmpresa($update,$delete) {
               
                 }
                 if ($update == '0' && $delete==0){
-                    return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
                 }
                 return $cadena;
                 

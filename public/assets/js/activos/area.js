@@ -115,7 +115,10 @@ function LoadTableAreaEmpresa($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteAreaEmpresa class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteAreaEmpresa>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                }
                 return $cadena;
                 }
             },
@@ -295,7 +298,6 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
                         if (respuesta.error==1) 
                         {
                         
@@ -324,7 +326,7 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: 'No se pudo Editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                         })
                     })
                     .always(function() {
@@ -334,7 +336,7 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo Editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
             
@@ -349,6 +351,8 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                })
   }
    
+
+
 });
 
 //eliminar Empresa

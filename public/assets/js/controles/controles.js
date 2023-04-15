@@ -57,7 +57,11 @@ window.addEventListener("hashchange", async () => {
                 document.getElementsByClassName("opcion")[i].style.display = "none";
 
             }
-        
+            permisos = await getPermisos('Características de control');
+            if(permisos['create_det'] == 0){
+                document.getElementById('btnAgregar_Opcion').style.display = 'none';
+            }
+          
             document.querySelectorAll(".menu li").forEach(element => {
                 element.classList.remove("activado");
             });
@@ -101,7 +105,8 @@ window.addEventListener("hashchange", async () => {
                   });
 
                 document.getElementById("Opcion").className = "activado";
-                LoadTableOpcion("general",0,"menu",0);
+                
+                LoadTableOpcion("general",0,"menu",0,permisos['update_det'],permisos['delete_det']);
             }else{
                 document.querySelectorAll(".menu a").forEach(element => {
                     element.classList.remove("activado");
@@ -149,7 +154,7 @@ window.addEventListener("hashchange", async () => {
                     document.getElementById(opcion[2]).className = "activado_item";
                    
                 }
-                LoadTableOpcion(opcion[1],opcion[2],opcion[3],opcion[4]);
+                LoadTableOpcion(opcion[1],opcion[2],opcion[3],opcion[4],permisos['update_det'],permisos['delete_det']);
                 
             }
             

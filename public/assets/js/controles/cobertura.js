@@ -46,10 +46,30 @@ function LoadTableCobertura($update,$delete) {
             { "data": "id" },
             { "data": "cobertura" },
             { "data": "descripcion" },
-            { "defaultContent": "<editCobertura class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCobertura>"+
-            "<deleteCobertura class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCobertura>"
+            {  "data": "id",
+                        
+            "mRender": function(data, type, value) {
+                $cadena = "";
+                if ($update == '1'){
+                    $cadena =   $cadena +  "<editCobertura class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCobertura>";
+               
+                } 
+                if ($delete == '1') {
+                    $cadena =     $cadena +  "<deleteCobertura class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCobertura>";
+              
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                }
+                return $cadena;
+                
 
-},
+                }
+            },
+            // { "defaultContent": "<editCobertura class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editCobertura>"+
+            // "<deleteCobertura class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCobertura>"
+
+            //},
         ],
         columnDefs: [
             {
@@ -208,20 +228,28 @@ document.getElementById("Modificar_Cobertura").addEventListener("click",async fu
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.msg) 
+                        if (respuesta.error==1) 
                         {
+                        
+                            
+                            $("#modal_cobertura").modal("hide");    
                             document.getElementById("form_cobertura").reset();
-                            $('#modal_cobertura').modal('hide');
+                           
                             alerta_cobertura.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
+                            respuesta.msg+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_cobertura").DataTable().ajax.reload(null, false); 
                            
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
                         } 
-                        
                     })
                     .fail(function(error) {
                         Swal.fire({
@@ -240,19 +268,18 @@ document.getElementById("Modificar_Cobertura").addEventListener("click",async fu
                         text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
-        }else{
+        
            
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Faltan Datos'
-              })
-               
-          }
        
-    
-   
+    }else{
+        
+        Swal.fire({
+                 icon: 'error',
+                 title: 'Error',
+                 text: 'Debe completar todos los campos'
+               })
+  }
+
 });
 
 //eliminar cobertura

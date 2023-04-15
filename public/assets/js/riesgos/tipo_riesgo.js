@@ -62,7 +62,10 @@ function loadTableTipoRiesgo($update,$delete){
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteEmpresa data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEmpresa>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }
@@ -279,14 +282,14 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
                     document.getElementById("form_tipo_riesgo").reset();
                     $('#modal_tipo_riesgo').modal('hide');
                     alerta_tipo_riesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                    'Se ha modificado exitosamente'+
+                    'Se ha guardado exitosamente'+
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                         '<span aria-hidden="true">&times;</span>'+
                         '</button>'+
                     '</div>';
                     $("#table_tipo_riesgo").DataTable().ajax.reload(null, false); 
                    
-                } else {
+                } else{
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
@@ -299,7 +302,7 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'No se pudo guardar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                    text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                 })
             })
             .always(function() {
@@ -309,7 +312,7 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'No se pudo guardar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
             })
         }
 
@@ -320,6 +323,5 @@ document.getElementById("update_tipo_riesgo").addEventListener("click", function
             text: 'Faltan Datos'
         })
     }
-   
-});
+})
 

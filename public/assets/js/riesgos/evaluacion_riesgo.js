@@ -188,10 +188,13 @@ function loadTableEvaluacionRiesgos(){
                             } 
                             if (eliminar == '1') {
                                 $cadena =     $cadena +  `<deleteEVA data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEVA>`
-                            }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                            }
+                            if ($update == '0' && $delete==0){
+                                return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                            }
                             return $cadena;
                     }else{
-                        return  "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                        return  "<i class='fas fa-exclamation-circle text-danger font-size-18' title='no tiene permisos'></i>";
                     }
                         
                 }

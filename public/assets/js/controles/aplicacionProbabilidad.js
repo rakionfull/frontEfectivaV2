@@ -105,7 +105,10 @@ function LoadTableAplicacionProbabilidad($update,$delete) {
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteAplicacionProbabilidad data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteAplicacionProbabilidad>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }
@@ -303,52 +306,58 @@ document.getElementById("Modificar_AplicacionProbabilidad").addEventListener("cl
                     })
                     .done(function(respuesta) {
                       console.log(respuesta);
-                        if (respuesta.msg) 
-                        {
-                            $("#modal_AplicacionProbabilidad").modal("hide");    
-                            document.getElementById("form_AplicacionProbabilidad").reset();
-                           
-                            alerta_AplicacionProbabilidad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
-                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                                '</button>'+
-                            '</div>';
-                            $("#table_AplicacionProbabilidad").DataTable().ajax.reload(null, false); 
-                            CargarDisenioProbabilidad();
-                        } 
-                        
-                    })
-                    .fail(function(error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                        })
-                    })
-                    .always(function() {
-                    });
-                }
-                catch(err) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
-                    })
-                }
-            
-        }else{
-           
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Faltan Datos'
-              })
-               
-          }
-       
-    
-   
+                      if (respuesta.error==1) 
+                      {
+                      
+                          
+                          $("#modal_AplicacionProbabilidad").modal("hide");    
+                          document.getElementById("form_AplicacionProbabilidad").reset();
+                         
+                          alerta_AplicacionProbabilidad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
+                          respuesta.msg+
+                          '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+                              '<span aria-hidden="true">&times;</span>'+
+                              '</button>'+
+                          '</div>';
+                          $("#table_AplicacionProbabilidad").DataTable().ajax.reload(null, false); 
+                          CargarDisenioProbabilidad();
+                      }else{
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Error',
+                              text: respuesta.msg
+                            })
+                      } 
+                  })
+                  .fail(function(error) {
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Error',
+                          text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                      })
+                  })
+                  .always(function() {
+                  });
+              }
+              catch(err) {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Error',
+                      text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                  })
+              }
+      
+         
+     
+  }else{
+      
+      Swal.fire({
+               icon: 'error',
+               title: 'Error',
+               text: 'Debe completar todos los campos'
+             })
+}
+
 });
 
 //eliminar  evlauacion de control

@@ -62,7 +62,10 @@ function loadTableCategoriasVulnerabilidad($update,$delete){
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteCategoria data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteCategoria>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }

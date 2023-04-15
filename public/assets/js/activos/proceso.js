@@ -281,7 +281,10 @@ function LoadTableProceso($update,$delete) {
                 if ($delete == '1') {
                     $cadena =     $cadena +  "<deleteProceso class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteProceso>";
               
-                }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                }
+                if ($update == '0' && $delete==0){
+                    return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                }
                 return $cadena;
                 
 
@@ -474,25 +477,25 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                     })
                     .done(function(respuesta) {
                        
-                        if (!respuesta.error) 
+                        if (respuesta.error==1) 
                         {
                             document.getElementById("form_proceso").reset();
                             $('#modal_proceso').modal('hide');
                             alerta_proceso.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Proceso Modificado'+
+                            respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_proceso").DataTable().ajax.reload(null, false); 
                            
-                        } else {
+                        }else{
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
                                 text: respuesta.msg
-                            })
-                        }
+                              })
+                        }  
                         
                     })
                     .fail(function(error) {
@@ -523,7 +526,8 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                  text: 'Faltan Datos'
                })
   }
-   
+
+
 });
 //eliminar Macroproceso
 $('#table_proceso tbody').on( 'click', 'deleteProceso', function(){

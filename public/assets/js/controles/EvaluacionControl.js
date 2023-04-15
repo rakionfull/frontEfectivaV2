@@ -311,10 +311,29 @@ function LoadTableEvaluacionControl() {
          
             cabeceras.innerHTML += "<th>Mantenimiento</th>";
             $array_aux= {
+                "data": "id",
+                        
+                "mRender": function(data, type, value) {
+                    $cadena = "";
+                    if ($update == '1'){
+                        $cadena =   $cadena +  "<editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>";
+                   
+                    } 
+                    if ($delete == '1') {
+                        $cadena =     $cadena +  "<deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>";
+                  
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
+                    return $cadena;
                     
-                defaultContent: 
-                "<editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>"+
-                "<deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>"
+    
+                    }
+                
+                // defaultContent: 
+                // "<editEvaluacionControl class='text-primary btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Editar' data-original-title='Editar'><i class='fas fa-edit font-size-18'></i></editEvaluacionControl>"+
+                // "<deleteEvaluacionControl class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteEvaluacionControl>"
        
                }
             $array_data.push($array_aux);
@@ -570,30 +589,38 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                     })
                     .done(function(respuesta) {
                       
-                        if (respuesta.msg) 
+                        if (respuesta.error==1) 
                         {
+                        
+                            
                             $("#modal_EvaluacionControl").modal("hide");    
                             document.getElementById("form_EvaluacionControl").reset();
                            
                             alerta_EvaluacionControl.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
+                            respuesta.msg+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             // $("#table_EvaluacionControl").DataTable().ajax.reload(null, false); 
+                            // location.href = $('#base_url').val()+"/controles";
                             // location.href = "#/EvaluacionControl";
                             LoadTableEvaluacionControl();
                            // window.location.href = $('#base_url').val()+"/controles"
-                            // CargarDisenioOperatividad();
+                        //    CargarDisenioOperatividad();
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
                         } 
-                        
                     })
                     .fail(function(error) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                            text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                         })
                     })
                     .always(function() {
@@ -603,22 +630,21 @@ document.getElementById("Modificar_EvaluacionControl").addEventListener("click",
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
+                        text: 'No se pudo agregar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
-        // }else{
+        
            
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Error',
-        //         text: 'Faltan Datos'
-        //       })
-               
-        //   }
        
-    
-   
+//     }else{
+        
+//         Swal.fire({
+//                  icon: 'error',
+//                  title: 'Error',
+//                  text: 'Debe completar todos los campos'
+//                })
+//   }
+
 });
 
 //eliminar  evlauacion de control

@@ -104,7 +104,10 @@ function LoadTableAplicacionImpacto($update,$delete) {
                     } 
                     if ($delete == '1') {
                         $cadena =     $cadena +  `<deleteAplicacionImpacto data-id="${data.id}" class='text-danger btn btn-opcionTabla' data-toggle='tooltip' data-placement='top' title='Eliminar' data-original-title='Eliminar'><i class='far fa-trash-alt font-size-18'></i></deleteAplicacionImpacto>`
-                    }else return "<i class='fas fa-exclamation-circle text-danger font-size-18'></i>";
+                    }
+                    if ($update == '0' && $delete==0){
+                        return "<i class='fas fa-exclamation-circle text-danger font-size-18' title='No tiene permisos'></i>";
+                    }
                     return $cadena;
                         
                 }
@@ -299,21 +302,28 @@ document.getElementById("Modificar_AplicacionImpacto").addEventListener("click",
                     })
                     .done(function(respuesta) {
                       
-                        if (respuesta.msg) 
+                        if (respuesta.error==1) 
                         {
+                        
+                            
                             $("#modal_AplicacionImpacto").modal("hide");    
                             document.getElementById("form_AplicacionImpacto").reset();
                            
                             alerta_AplicacionImpacto.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado Correctamente'+
+                            respuesta.msg+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_AplicacionImpacto").DataTable().ajax.reload(null, false); 
                             CargarDisenioProbabilidad();
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
                         } 
-                        
                     })
                     .fail(function(error) {
                         Swal.fire({
@@ -332,19 +342,18 @@ document.getElementById("Modificar_AplicacionImpacto").addEventListener("click",
                         text: 'No se pudo editar, intente de nuevo. Si el problema persiste, contacte con el administrador del sistema.'
                     })
                 }
-            
-        }else{
+        
            
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Faltan Datos'
-              })
-               
-          }
        
-    
-   
+    }else{
+        
+        Swal.fire({
+                 icon: 'error',
+                 title: 'Error',
+                 text: 'Debe completar todos los campos'
+               })
+  }
+
 });
 
 //eliminar  evlauacion de control
