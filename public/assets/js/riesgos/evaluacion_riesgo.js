@@ -1290,7 +1290,14 @@ $('#modal_evaluacion_riesgo #valor_probabilidad').on('input',function(){
                     for (let index = 0; index < split_formula.length; index=index+3) {
                         let operador = split_formula[index]
                         let valor = Number(split_formula[index+1])
-                        let resultado = split_formula[index+2]
+                        let resultado = ''
+                        split_formula[index+2].split("_").forEach((item,index) => {
+                            if(index > 0){
+                                resultado = resultado+" "+item
+                            }else{
+                                resultado = resultado+item
+                            }
+                        })
                         switch (operador) {
                             case '=':
                                 if(value == valor){
@@ -1526,7 +1533,14 @@ $('#modal_evaluacion_riesgo #valor_impacto').on('input',function(){
                     for (let index = 0; index < split_formula.length; index=index+3) {
                         let operador = split_formula[index]
                         let valor = Number(split_formula[index+1])
-                        let resultado = split_formula[index+2]
+                        let resultado = ''
+                        split_formula[index+2].split("_").forEach((item,index) => {
+                            if(index > 0){
+                                resultado = resultado+" "+item
+                            }else{
+                                resultado = resultado+item
+                            }
+                        })
                         switch (operador) {
                             case '=':
                                 if(value == valor){
@@ -2409,7 +2423,15 @@ $('#btn_reload_valores').click(function(){
                                 for (let index = 0; index < split_formula.length; index=index+3) {
                                     let operador = split_formula[index]
                                     let valor = Number(split_formula[index+1])
-                                    let resultado = split_formula[index+2]
+                                    let resultado = ''
+
+                                    split_formula[index+2].split("_").forEach((item,index) => {
+                                        if(index > 0){
+                                            resultado = resultado+" "+item
+                                        }else{
+                                            resultado = resultado+item
+                                        }
+                                    })
                                     switch (operador) {
                                         case '=':
                                             if(value_probabilidad == valor){
@@ -2468,7 +2490,14 @@ $('#btn_reload_valores').click(function(){
                                 for (let index = 0; index < split_formula.length; index=index+3) {
                                     let operador = split_formula[index]
                                     let valor = Number(split_formula[index+1])
-                                    let resultado = split_formula[index+2]
+                                    let resultado = ''
+                                    split_formula[index+2].split("_").forEach((item,index) => {
+                                        if(index > 0){
+                                            resultado = resultado+" "+item
+                                        }else{
+                                            resultado = resultado+item
+                                        }
+                                    })
                                     switch (operador) {
                                         case '=':
                                             if(value_impacto == valor){

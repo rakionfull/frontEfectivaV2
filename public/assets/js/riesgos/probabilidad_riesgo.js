@@ -65,7 +65,19 @@ function loadTableProbabilidad1($update,$delete){
             { "data": "id" },
             { "data": "descripcion" },
             { "data": "tipo_regla" },
-            { "data": "formula" },
+            { "data": null,
+                "mRender":function(data){
+                    let new_formula = ''
+                    data.formula.split("_").forEach((item,index) => {
+                        if(index > 0){
+                            new_formula = new_formula+" "+item
+                        }else{
+                            new_formula = new_formula+item
+                        }
+                    })
+                    return new_formula
+                }
+            },
             { "data": "tipo_valor" },
             { "data": "comentario" },
             {
@@ -135,16 +147,26 @@ document.getElementById('add_probabilidad_riego_escenario_1').addEventListener('
     let formula = ''
     if($items_formula.length > 0){
         $items_formula.map((index,element) => {
-            let operador = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #operador_formula_1`).val()
-            let valor = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #value_formula_1`).val()
-            let resultado = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #resultado_formula_1`).val()
+            number = element.getAttribute('data-number')
+            let operador = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #operador_formula_1`).val()
+            let valor = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #value_formula_1`).val()
+            let resultado = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #resultado_formula_1`).val()
+            let new_resultado = ''
+            resultado.split(" ").forEach((item,index) => {
+                if(index > 0){
+                    new_resultado = new_resultado + "_" + item
+                }else {
+                    new_resultado = new_resultado + item
+                }
+            })
             if(index == 0){            
-                formula = formula + (operador+' '+valor+' '+resultado)
+                formula = formula + (operador+' '+valor+' '+new_resultado)
             }else{
-                formula = formula + ' '+ (operador+' '+valor+' '+resultado)
+                formula = formula + ' '+ (operador+' '+valor+' '+new_resultado)
             }
         });
     }
+    console.log(formula)
     let activesProb = 0
     let activesImpacto = 0
     if(
@@ -242,6 +264,7 @@ document.getElementById('add_probabilidad_riego_escenario_1').addEventListener('
 
 $('#table_probabilidad_1 tbody').on('click','editProbabilidad1',function(){
     $('#modal_probabilidad_riesgo_escenario_1 .formula_1_probabilidad').css('display','none')
+    $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula .group_formula').remove()
 
     $('#modal_probabilidad_riesgo_escenario_1').modal('show')
     document.getElementById("title_prob_riesgo_esc_1").innerHTML = "Modificar Probabilidad de Riesgo Escenario 1";
@@ -253,7 +276,6 @@ $('#table_probabilidad_1 tbody').on('click','editProbabilidad1',function(){
     var regNum = table.rows( $(this).parents('tr') ).count().toString();
     var regDat = table.rows( $(this).parents('tr') ).data().toArray();
     let formula = regDat[0]['formula']
-    console.log(regDat[0]["tipo_valor"])
     if(regDat[0]["tipo_valor"] == "Formula"){
         $('#modal_probabilidad_riesgo_escenario_1 .formula_1_probabilidad').css('display','block')
         let split_formula = formula.split(" ")
@@ -261,9 +283,17 @@ $('#table_probabilidad_1 tbody').on('click','editProbabilidad1',function(){
         if(split_formula.length > 0){
             $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula .group_formula').remove()
             for (let index = 0; index < split_formula.length; index=index+3) {
-                console.log(split_formula[index] )
+                console.log(split_formula)
+                let new_formula = ''
+                split_formula[index+2].split("_").forEach((item,index) => {
+                    if(index > 0){
+                        new_formula = new_formula+" "+item
+                    }else{
+                        new_formula = new_formula+item
+                    }
+                })
                 $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula').append(`
-                    <div class="row group_formula mt-2 group_formula_${count}">
+                    <div class="row group_formula mt-2 group_formula_${count}" data-number="${count}">
                         <div class="col-md-3">
                             <select id="operador_formula_1" class="form-control form-control-sm">
                                 <option value="=" ${split_formula[index] == "=" ? 'selected' : ''}>=</option>
@@ -277,7 +307,7 @@ $('#table_probabilidad_1 tbody').on('click','editProbabilidad1',function(){
                             <input value="${split_formula[index+1]}" type="number" id="value_formula_1" class="form-control form-control-sm"/>
                         </div>
                         <div class="col-md-3">
-                            <input value="${split_formula[index+2]}" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
+                            <input value="${new_formula}" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
                         </div>
                         <div class="col-md-3">
                             <button onclick="delete_row_formula_prob(this)" index=${count} type="button" class="form-control form-control-sm" id="btn_delete_row_formula">X</button>
@@ -308,15 +338,26 @@ $('#update_probabilidad_riego_escenario_1').click(function(){
     $comentario = $('#modal_probabilidad_riesgo_escenario_1 #comentario').val()
     $items_formula = $('#modal_probabilidad_riesgo_escenario_1 .group_formula ')
     let formula = ''
+    console.log($items_formula)
     if($items_formula.length > 0){
         $items_formula.map((index,element) => {
-            let operador = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #operador_formula_1`).val()
-            let valor = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #value_formula_1`).val()
-            let resultado = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${index+1} #resultado_formula_1`).val()
+            console.log(index,element)
+            number = element.getAttribute('data-number')
+            let operador = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #operador_formula_1`).val()
+            let valor = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #value_formula_1`).val()
+            let resultado = $(`#modal_probabilidad_riesgo_escenario_1  .group_formula_${number} #resultado_formula_1`).val()
+            let new_resultado = ''
+            resultado.split(" ").forEach((item,index) => {
+                if(index > 0){
+                    new_resultado = new_resultado + "_" + item
+                }else {
+                    new_resultado = new_resultado + item
+                }
+            })
             if(index == 0){            
-                formula = formula + (operador+' '+valor+' '+resultado)
+                formula = formula + (operador+' '+valor+' '+new_resultado)
             }else{
-                formula = formula + ' '+ (operador+' '+valor+' '+resultado)
+                formula = formula + ' '+ (operador+' '+valor+' '+new_resultado)
             }
         });
     }
@@ -1008,12 +1049,13 @@ function activeScene2(){
 
 $('#modal_probabilidad_riesgo_escenario_2 #operador_1').change(function(){
     let option =$('#modal_probabilidad_riesgo_escenario_2 #operador_1').val()
+    let option2 =$('#modal_probabilidad_riesgo_escenario_2 #operador_2').val()
     if(option == ">" || option == ">="){
         $('#modal_probabilidad_riesgo_escenario_2 #operador_2 option').remove()
         $('#modal_probabilidad_riesgo_escenario_2 #operador_2').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option2 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option2 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -1021,8 +1063,8 @@ $('#modal_probabilidad_riesgo_escenario_2 #operador_1').change(function(){
             $('#modal_probabilidad_riesgo_escenario_2 #operador_2 option').remove()
             $('#modal_probabilidad_riesgo_escenario_2 #operador_2').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option2 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option2 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }
@@ -1030,12 +1072,13 @@ $('#modal_probabilidad_riesgo_escenario_2 #operador_1').change(function(){
 })
 $('#modal_probabilidad_riesgo_escenario_2 #operador_2').change(function(){
     let option =$('#modal_probabilidad_riesgo_escenario_2 #operador_2').val()
+    let option1 =$('#modal_probabilidad_riesgo_escenario_2 #operador_1').val()
     if(option == ">" || option == ">="){
         $('#modal_probabilidad_riesgo_escenario_2 #operador_1 option').remove()
         $('#modal_probabilidad_riesgo_escenario_2 #operador_1').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option1 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option1 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -1043,8 +1086,8 @@ $('#modal_probabilidad_riesgo_escenario_2 #operador_2').change(function(){
             $('#modal_probabilidad_riesgo_escenario_2 #operador_1 option').remove()
             $('#modal_probabilidad_riesgo_escenario_2 #operador_1').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option1 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option1 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }
@@ -1083,7 +1126,7 @@ $('#modal_probabilidad_riesgo_escenario_1  #btn_add_row_formula').click(function
 
     let number_item = $('#modal_probabilidad_riesgo_escenario_1 .group_formula').length + 1
     $('#modal_probabilidad_riesgo_escenario_1 #group_condicionales_formula').append(`
-        <div class="row group_formula mt-2 group_formula_${number_item}">
+        <div class="row group_formula mt-2 group_formula_${number_item}" data-number="${number_item}">
             <div class="col-md-3">
                 <select id="operador_formula_1" class="form-control form-control-sm">
                     <option value="=">=</option>

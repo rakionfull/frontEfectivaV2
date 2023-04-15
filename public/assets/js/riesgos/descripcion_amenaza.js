@@ -133,7 +133,7 @@ document.getElementById("add_desc_amenaza").addEventListener('click',function(){
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                if (respuesta) 
+                if (!respuesta.error) 
                 {
                     document.getElementById("form_desc_amenaza").reset();
                     $('#modal_desc_amenaza').modal('hide');
@@ -145,7 +145,13 @@ document.getElementById("add_desc_amenaza").addEventListener('click',function(){
                     '</div>';
                     $("#table_desc_amenaza").DataTable().ajax.reload(null, false); 
                    
-                } 
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: respuesta.msg
+                    })
+                }
                 
             })
             .fail(function(error) {
