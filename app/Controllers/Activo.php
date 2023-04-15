@@ -989,6 +989,7 @@ class Activo extends BaseController {
             ];
 
               $response = (perform_http_request('DELETE', REST_API_URL . $post_endpoint,$request_data));
+              var_dump($response);die();
               echo json_encode($response);
               
           

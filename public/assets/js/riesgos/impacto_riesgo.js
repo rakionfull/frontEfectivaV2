@@ -64,7 +64,19 @@ function loadTableImpacto1($update,$delete){
             { "data": "id" },
             { "data": "descripcion" },
             { "data": "tipo_regla" },
-            { "data": "formula" },
+            { "data": null,
+                "mRender":function(data){
+                    let new_formula = ''
+                    data.formula.split("_").forEach((item,index) => {
+                        if(index > 0){
+                            new_formula = new_formula+" "+item
+                        }else{
+                            new_formula = new_formula+item
+                        }
+                    })
+                    return new_formula
+                }
+            },
             { "data": "tipo_valor" },
             { "data": "comentario" },
             {
@@ -138,13 +150,22 @@ document.getElementById('add_impacto_riego_escenario_1').addEventListener('click
     let formula = ''
     if($items_formula.length > 0){
         $items_formula.map((index,element) => {
-            let operador = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #operador_formula_1`).val()
-            let valor = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #value_formula_1`).val()
-            let resultado = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #resultado_formula_1`).val()
+            number = element.getAttribute('data-number')
+            let operador = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #operador_formula_1`).val()
+            let valor = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #value_formula_1`).val()
+            let resultado = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #resultado_formula_1`).val()
+            let new_resultado = ''
+            resultado.split(" ").forEach((item,index) => {
+                if(index > 0){
+                    new_resultado = new_resultado + "_" + item
+                }else {
+                    new_resultado = new_resultado + item
+                }
+            })
             if(index == 0){            
-                formula = formula + (operador+' '+valor+' '+resultado)
+                formula = formula + (operador+' '+valor+' '+new_resultado)
             }else{
-                formula = formula + ' '+ (operador+' '+valor+' '+resultado)
+                formula = formula + ' '+ (operador+' '+valor+' '+new_resultado)
             }
         });
     }
@@ -260,12 +281,21 @@ $('#table_impacto_1 tbody').on('click','editImpacto1',function(){
     if(regDat[0]["tipo_valor"] == "Formula"){
         $('#modal_impacto_riesgo_escenario_1 .formula_1_probabilidad').css('display','block')
         let split_formula = formula.split(" ")
+        
         let count = 1
         if(split_formula.length > 0){
             $('#modal_impacto_riesgo_escenario_1 #group_condicionales_formula .group_formula').remove()
             for (let index = 0; index < split_formula.length; index=index+3) {
+                let new_formula = ''
+                split_formula[index+2].split("_").forEach((item,index) => {
+                    if(index > 0){
+                        new_formula = new_formula+" "+item
+                    }else{
+                        new_formula = new_formula+item
+                    }
+                })
                 $('#modal_impacto_riesgo_escenario_1 #group_condicionales_formula').append(`
-                    <div class="row group_formula mt-2 group_formula_${count}">
+                    <div class="row group_formula mt-2 group_formula_${count}" data-number="${count}">
                         <div class="col-md-3">
                             <select id="operador_formula_1" class="form-control form-control-sm">
                                 <option value="=" ${split_formula[index] == "=" ? 'selected' : ''}>=</option>
@@ -279,10 +309,10 @@ $('#table_impacto_1 tbody').on('click','editImpacto1',function(){
                             <input value="${split_formula[index+1]}" type="number" id="value_formula_1" class="form-control form-control-sm"/>
                         </div>
                         <div class="col-md-3">
-                            <input value="${split_formula[index+2]}" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
+                            <input value="${new_formula}" type="text" id="resultado_formula_1" class="form-control form-control-sm"/>
                         </div>
                         <div class="col-md-3">
-                            <button onclick="delete_row_formula_prob(this)" index=${count} type="button" class="form-control form-control-sm" id="btn_delete_row_formula">X</button>
+                            <button onclick="delete_row_formula_imp(this)" index=${count} type="button" class="form-control form-control-sm" id="btn_delete_row_formula">X</button>
                         </div>
                     </div>
                 `)
@@ -313,13 +343,22 @@ $('#update_impacto_riego_escenario_1').click(function(){
     let formula = ''
     if($items_formula.length > 0){
         $items_formula.map((index,element) => {
-            let operador = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #operador_formula_1`).val()
-            let valor = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #value_formula_1`).val()
-            let resultado = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${index+1} #resultado_formula_1`).val()
+            number = element.getAttribute('data-number')
+            let operador = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #operador_formula_1`).val()
+            let valor = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #value_formula_1`).val()
+            let resultado = $(`#modal_impacto_riesgo_escenario_1 .group_formula_${number} #resultado_formula_1`).val()
+            let new_resultado = ''
+            resultado.split(" ").forEach((item,index) => {
+                if(index > 0){
+                    new_resultado = new_resultado + "_" + item
+                }else {
+                    new_resultado = new_resultado + item
+                }
+            })
             if(index == 0){            
-                formula = formula + (operador+' '+valor+' '+resultado)
+                formula = formula + (operador+' '+valor+' '+new_resultado)
             }else{
-                formula = formula + ' '+ (operador+' '+valor+' '+resultado)
+                formula = formula + ' '+ (operador+' '+valor+' '+new_resultado)
             }
         });
     }
@@ -1010,12 +1049,14 @@ function activeScene2Impacto(){
 
 $('#modal_impacto_riesgo_escenario_2 #operador_1').change(function(){
     let option =$('#modal_impacto_riesgo_escenario_2 #operador_1').val()
+    let option2 =$('#modal_impacto_riesgo_escenario_2 #operador_2').val()
+
     if(option == ">" || option == ">="){
         $('#modal_impacto_riesgo_escenario_2 #operador_2 option').remove()
         $('#modal_impacto_riesgo_escenario_2 #operador_2').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option2 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option2 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -1023,8 +1064,8 @@ $('#modal_impacto_riesgo_escenario_2 #operador_1').change(function(){
             $('#modal_impacto_riesgo_escenario_2 #operador_2 option').remove()
             $('#modal_impacto_riesgo_escenario_2 #operador_2').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option2 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option2 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }
@@ -1032,12 +1073,14 @@ $('#modal_impacto_riesgo_escenario_2 #operador_1').change(function(){
 })
 $('#modal_impacto_riesgo_escenario_2 #operador_2').change(function(){
     let option =$('#modal_impacto_riesgo_escenario_2 #operador_2').val()
+    let option1 =$('#modal_impacto_riesgo_escenario_2 #operador_1').val()
+
     if(option == ">" || option == ">="){
         $('#modal_impacto_riesgo_escenario_2 #operador_1 option').remove()
         $('#modal_impacto_riesgo_escenario_2 #operador_1').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option1 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option1 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -1045,8 +1088,8 @@ $('#modal_impacto_riesgo_escenario_2 #operador_2').change(function(){
             $('#modal_impacto_riesgo_escenario_2 #operador_1 option').remove()
             $('#modal_impacto_riesgo_escenario_2 #operador_1').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option1 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option1 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }
@@ -1085,7 +1128,7 @@ $('#modal_impacto_riesgo_escenario_1 #btn_add_row_formula').click(function(){
     console.log('aqui impacto')
     let number_item = $('#modal_impacto_riesgo_escenario_1 .group_formula').length + 1
     $('#modal_impacto_riesgo_escenario_1 #group_condicionales_formula').append(`
-        <div class="row group_formula mt-2 group_formula_${number_item}">
+        <div class="row group_formula mt-2 group_formula_${number_item}" data-number="${number_item}">
             <div class="col-md-3">
                 <select id="operador_formula_1" class="form-control form-control-sm">
                     <option value="=">=</option>
