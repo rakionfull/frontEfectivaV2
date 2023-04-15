@@ -3,6 +3,7 @@ var alerta_macroproceso = document.getElementById("alert_macroproceso");
 function inicializaMacroproceso() {
     $("#select_areaMacro").empty();
     $("#select_areaMacro").append('<option value="" selected>Seleccione</option>');
+   
     $("#select_unidadesMacro").empty();
     $("#select_unidadesMacro").append('<option value="" selected>Seleccione</option>');
 }
@@ -56,8 +57,7 @@ function  cargarDatosMacroEmpresa($dato){
         //cargando las areas
         const postData = { 
             idempresa:$empresa,
-           
-            
+               
         }
        
             $.ajax({
@@ -310,7 +310,7 @@ document.getElementById("Agregar_Macroproceso").addEventListener("click",functio
                                 '</button>'+
                             '</div>';
                             $("#table_macroproceso").DataTable().ajax.reload(null, false); 
-                            inicializaMacroproceso();
+                            // inicializaMacroproceso();
                         } else{
                             Swal.fire({
                                 icon: 'error',
@@ -409,7 +409,7 @@ document.getElementById("Modificar_Macroproceso").addEventListener("click", func
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                         
                             document.getElementById("form_macroproceso").reset();
@@ -421,7 +421,7 @@ document.getElementById("Modificar_Macroproceso").addEventListener("click", func
                                 '</button>'+
                             '</div>';
                             $("#table_macroproceso").DataTable().ajax.reload(null, false); 
-                            inicializaMacroproceso();
+                            // inicializaMacroproceso();
                         } else{
                             Swal.fire({
                                 icon: 'error',

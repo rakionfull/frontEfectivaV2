@@ -397,8 +397,8 @@ document.getElementById("Modificar_ubi_activo").addEventListener("click", functi
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
-                        if (respuesta.error==1) 
+                     
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_ubi_activo").reset();
                             $('#modal_ubi_activo').modal('hide');

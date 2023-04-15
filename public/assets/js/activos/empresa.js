@@ -226,8 +226,8 @@ document.getElementById("Modificar_Empresa").addEventListener("click", function(
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
-                        if (respuesta.error==1) 
+                       // console.log(respuesta);
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_empresa").reset();
                             $('#modal_empresa').modal('hide');

@@ -283,7 +283,7 @@ document.getElementById("Modificar_tipo_activo").addEventListener("click", funct
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_tipo_activo").reset();
                             $('#modal_tipo_activo').modal('hide');

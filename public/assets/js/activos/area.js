@@ -298,7 +298,8 @@ document.getElementById("Modificar_area_empresa").addEventListener("click", func
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                        if (respuesta.error==1) 
+                        console.log(respuesta);
+                        if (!respuesta.error) 
                         {
                         
                             

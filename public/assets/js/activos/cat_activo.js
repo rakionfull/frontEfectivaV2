@@ -329,7 +329,7 @@ document.getElementById("Modificar_cat_activo").addEventListener("click", functi
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_cat_activo").reset();
                             $('#modal_cat_activo').modal('hide');

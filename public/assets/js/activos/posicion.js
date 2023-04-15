@@ -462,8 +462,8 @@ document.getElementById("Modificar_Posicion").addEventListener("click",async fun
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
-                        if (respuesta.error==1) 
+                       console.log(respuesta);
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_posicion").reset();
                             $('#modal_posicion').modal('hide');

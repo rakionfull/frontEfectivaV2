@@ -277,7 +277,7 @@ document.getElementById("Agregar_valActivo").addEventListener("click",async func
                         //     $("#table_valActivo").DataTable().ajax.reload(null, false); 
                            
                         // } 
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_valActivo").reset();
                             $('#modal_valActivo').modal('hide');

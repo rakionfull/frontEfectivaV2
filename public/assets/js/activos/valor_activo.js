@@ -270,7 +270,7 @@ document.getElementById("Modificar_valorActivo").addEventListener("click", funct
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_valorActivo").reset();
                             $('#modal_valorActivo').modal('hide');

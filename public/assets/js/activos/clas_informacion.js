@@ -168,7 +168,7 @@ document.getElementById("Agregar_clas_informacion").addEventListener("click",asy
                     })
                     .done(function(respuesta) {
                      
-                        console.log(respuesta);
+                       
                         if (respuesta.error==1) 
                         {
                             document.getElementById("form_clas_informacion").reset();
@@ -278,7 +278,7 @@ document.getElementById("Modificar_clas_informacion").addEventListener("click", 
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_clas_informacion").reset();
                             $('#modal_clas_informacion').modal('hide');

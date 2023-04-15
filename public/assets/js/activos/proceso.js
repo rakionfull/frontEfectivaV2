@@ -476,8 +476,8 @@ document.getElementById("Modificar_Proceso").addEventListener("click", function(
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       
-                        if (respuesta.error==1) 
+                       console.log(respuesta);
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_proceso").reset();
                             $('#modal_proceso').modal('hide');
