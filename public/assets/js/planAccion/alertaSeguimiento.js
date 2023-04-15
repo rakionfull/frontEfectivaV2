@@ -230,18 +230,24 @@ document.getElementById("Modificar_alerSeguimiento").addEventListener("click", f
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta) 
+                        if (!respuesta.error) 
                         {
                             document.getElementById("form_alerSeguimiento").reset();
                             $('#modal_alerSeguimiento').modal('hide');
                             alerta_alerSeguimiento.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Se ha modificado exitosamente'+
+                            respuesta.msg+
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_alerSeguimiento").DataTable().ajax.reload(null, false); 
                            
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
                         } 
                         
                     })

@@ -281,7 +281,7 @@ function CargarDisenioEvaluacion() {
 
 
 
-function LoadTableEvaluacionControl() {
+function LoadTableEvaluacionControl($update,$delete) {
     //traer datos de la bd cabeceras y agregarlos
 
     $array_data = [];

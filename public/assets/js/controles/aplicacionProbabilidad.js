@@ -305,8 +305,8 @@ document.getElementById("Modificar_AplicacionProbabilidad").addEventListener("cl
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                      console.log(respuesta);
-                      if (respuesta.error==1) 
+                      
+                      if (!respuesta.error) 
                       {
                       
                           

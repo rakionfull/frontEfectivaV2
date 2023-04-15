@@ -462,7 +462,7 @@ document.getElementById("Modificar_Posicion").addEventListener("click",async fun
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                       console.log(respuesta);
+                      
                         if (!respuesta.error) 
                         {
                             document.getElementById("form_posicion").reset();

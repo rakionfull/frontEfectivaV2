@@ -179,9 +179,15 @@ function LoadTableOpcion($valor,$id,$tipo,$clasi,$update,$delete) {
         id=$id;
         document.getElementById("card-title-opcion").innerHTML = "";
         valor = valor.replace("%C3%B1", "ñ")
-        valor = valor.replace("%C3%B3", "\u00F3");
+        valor = valor.replace("%C3%B3", "\u00F3"); //ó
+        valor = valor.replace("%C3%B3", "\u00E9"); //é
+        valor = valor.replace("%C3%B3", "\u00C1"); //á
+        valor = valor.replace("%C3%B3", "\u00DA"); //ú
+        valor = valor.replace("%C3%B3", "\u00CD"); //í
         valor = valor.replace("%C3%AD","í");
-        
+        valor = valor.replace("%C3%AD","ó");
+        valor= valor.replace("%C3%91",'Ñ');
+       
         document.getElementById("card-title-opcion").innerHTML = unescape(valor);
         if(tipo == "menu" && id == 0){
          
@@ -673,8 +679,8 @@ function ModificarOpcion(postData) {
             dataType: "JSON"
         })
         .done(function(respuesta) {
-            //console.log(respuesta);
-            if (respuesta.error==1) 
+          
+            if (!respuesta.error) 
             {
             
                 

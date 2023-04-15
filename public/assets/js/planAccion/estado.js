@@ -229,7 +229,7 @@ document.getElementById("Modificar_estado").addEventListener("click", function()
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                          {
                              document.getElementById("form_estado").reset();
                              $('#modal_estado').modal('hide');

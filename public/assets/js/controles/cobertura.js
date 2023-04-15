@@ -228,7 +228,7 @@ document.getElementById("Modificar_Cobertura").addEventListener("click",async fu
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                         
                             

@@ -302,7 +302,7 @@ document.getElementById("Modificar_AplicacionImpacto").addEventListener("click",
                     })
                     .done(function(respuesta) {
                       
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                         {
                         
                             

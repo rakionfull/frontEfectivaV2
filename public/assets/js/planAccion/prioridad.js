@@ -223,7 +223,7 @@ document.getElementById("Modificar_prioridad").addEventListener("click", functio
                     })
                     .done(function(respuesta) {
                        
-                        if (respuesta.error==1) 
+                        if (!respuesta.error) 
                          {
                              document.getElementById("form_prioridad").reset();
                              $('#modal_prioridad').modal('hide');
