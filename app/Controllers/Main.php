@@ -239,7 +239,7 @@ class Main extends BaseController {
                 'error'   =>  $error
                 
               ];
-             
+            
               return view('accesos/configPass',$data);
             }else{
               return redirect()->to(base_url('/iniciosesion'));
@@ -289,33 +289,33 @@ class Main extends BaseController {
                               
               
              $response = (perform_http_request('POST', REST_API_URL . $post_endpoint,$request_data));
-            
-              if(isset($response->error)){
-                $datos=[
-                  'data' => $request_data,
-                  'error' => $response->datos,
-                ];
-  
-                return view('accesos/configPass',$datos);
-              }else{
-                if($response->msg ){
-                  $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Parámetros Guardados correctamente
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>');
-                    return redirect()->to(base_url('/configPass'));
-                  }else{
-                      $this->session->setFlashdata('error','<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                      Error al registrar
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>');
-                      return redirect()->to(base_url('/inicio'));
-                  }
-              }
+            var_dump($response);
+              // if(isset($response->error)){
+              //   $datos=[
+              //     'data' => $request_data,
+              //     'error' => $response->datos,
+              //   ];
+              //   var_dump($datos);
+              //   return view('accesos/configPass',$datos);
+              // }else{
+              //   if($response->msg ){
+              //     $this->session->setFlashdata('error','<div class="alert alert-success alert-dismissible fade show" role="alert">
+              //       Parámetros Guardados correctamente
+              //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              //             <span aria-hidden="true">&times;</span>
+              //         </button>
+              //       </div>');
+              //       return redirect()->to(base_url('/configPass'));
+              //     }else{
+              //         $this->session->setFlashdata('error','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              //         Error al registrar
+              //           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              //               <span aria-hidden="true">&times;</span>
+              //           </button>
+              //         </div>');
+              //         return redirect()->to(base_url('/inicio'));
+              //     }
+              // }
              
               
           

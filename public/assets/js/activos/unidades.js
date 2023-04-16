@@ -360,7 +360,7 @@ document.getElementById("Modificar_Unidades").addEventListener("click", function
                         dataType: "JSON"
                     })
                     .done(function(respuesta) {
-                     
+                    
                         if (!respuesta.error) 
                         {
                             document.getElementById("form_unidades").reset();
@@ -435,12 +435,12 @@ $('#table_unidades tbody').on( 'click', 'deleteUnidad', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (!respuesta.error) 
+            console.log(respuesta);
+            if (!respuesta) 
             {
                 
                 alerta_unidades.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

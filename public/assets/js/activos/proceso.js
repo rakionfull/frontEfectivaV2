@@ -268,7 +268,7 @@ function LoadTableProceso($update,$delete) {
             },
             { "data": "idempresa" },
             { "data": "idarea" },
-            { "data": "idunidad" },
+            { "data": "idunidades" },
             { "data": "idmacroproceso" },
             {  "data": "id",
                         
@@ -433,8 +433,8 @@ $('#table_proceso tbody').on( 'click', 'editProceso', function(){
         document.getElementById("id_proceso").value=regDat[0]["id"];
         document.getElementById("select_empresaPro").value=regDat[0]["idempresa"];
         cargarDatosProArea(regDat[0]["idempresa"],regDat[0]["idarea"]);
-        cargarDatosProUnidad(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidad"]);
-        cargarDatosProMacro(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidad"],regDat[0]["idmacroproceso"]);
+        cargarDatosProUnidad(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidades"]);
+        cargarDatosProMacro(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidades"],regDat[0]["idmacroproceso"]);
       
         document.getElementById("select_MacroprocesosPro").value=regDat[0]["idmacroproceso"];
         document.getElementById("nom_pro").value=regDat[0]["proceso"];
@@ -552,11 +552,11 @@ $('#table_proceso tbody').on( 'click', 'deleteProceso', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (!respuesta.error) 
+       
+            if (!respuesta)     
             {
                 alerta_proceso.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

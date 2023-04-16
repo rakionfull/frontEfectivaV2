@@ -74,8 +74,8 @@ function cargarTablaActividades($id) {
             { "data": "id" },
             { "data": "idempresa" },      
             { "data": "idarea" },    
-            { "data": "idunidad" },  
-            { "data": "idposicion" },  
+            { "data": "idunidades" },  
+            { "data": "idposicion_puesto" },  
             { "data": "idusuario" },  
             { "data": "idalerta" },  
             { "data": "progreso" },                       
@@ -545,8 +545,8 @@ $('#table_actividadesPlan tbody').on( 'click', 'editActividad', function(){
         document.getElementById("id").value=regDat[0]["id"];
         document.getElementById("id_comboEmpresa").value=regDat[0]["idempresa"];
         document.getElementById("id_comboArea").value=regDat[0]["idarea"];
-        document.getElementById("id_comboUnidades").value=regDat[0]["idunidad"];
-        document.getElementById("id_comboPosicion").value=regDat[0]["idposicion"];
+        document.getElementById("id_comboUnidades").value=regDat[0]["idunidades"];
+        document.getElementById("id_comboPosicion").value=regDat[0]["idposicion_puesto"];
         document.getElementById("id_comboUsers").value=regDat[0]["idusuario"];
         document.getElementById("descripcion_actividad").value=regDat[0]["descripcion"];
         document.getElementById("fecha_inicio").value=fecha(regDat[0]["fecha_inicio"]);

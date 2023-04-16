@@ -301,12 +301,12 @@ $('#table_empresa tbody').on( 'click', 'deleteEmpresa', function(){
 
      
         .done(function(respuesta) {
-          
-            if (!respuesta.error) 
+            
+            if (!respuesta) 
             {
                 
                 alerta_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+               'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

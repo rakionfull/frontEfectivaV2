@@ -56,8 +56,8 @@ var plan = $('#id_plan').val();
           // cargarDatosPosArea(response.idempresa,response.idarea);
 
           // cargarDatosPosArea(response.idempresa,response.idarea);
-          cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
-          cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
+          cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidades);
+          cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidades,response.idposicion_puesto);
           // cargarDatosPosNombre(response.idempresa,response.idusuario);
           cargarDatosPosEstado(response.idempresa,response.idestado);
           cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
@@ -185,7 +185,7 @@ var plan = $('#id_plan').val();
                           })
                           .done(function(respuesta) {
                           
-                            //console.log(respuesta);
+                            console.log(respuesta);
                               if (respuesta.error==1) 
                               {
                                 

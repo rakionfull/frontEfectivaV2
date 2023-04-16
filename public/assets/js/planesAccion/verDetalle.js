@@ -288,8 +288,8 @@ function cargarTablaAtividades($id) {
             { "data": "id" },
             { "data": "idempresa" },      
             { "data": "idarea" },    
-            { "data": "idunidad" },  
-            { "data": "idposicion" },  
+            { "data": "idunidades" },  
+            { "data": "idposicion_puesto" },  
             { "data": "idusuario" },
             { "data": "idalerta" },   
             { "data": "progreso" },                                         
@@ -402,13 +402,13 @@ function cargarDatos($id) {
 
             // cargarDatosPosArea(response.idempresa,response.idarea);
             // cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
-            cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidad,response.idposicion);
+            cargarDatosPosPosicion(response.idempresa,response.idarea,response.idunidades,response.idposicion_puesto);
             // cargarDatosPosNombre(response.idempresa,response.idusuario);
             cargarDatosPosEstado(response.idempresa,response.idestado);
             cargarDatosPosPrioridad(response.idempresa,response.idprioridad);
             cargarDatosPosNombre(response.idempresa,response.idusuario);
             // //////console.log('unidad'.response.idunidad)
-             cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidad);
+             cargarDatosPosUnidad(response.idempresa,response.idarea,response.idunidades);
             cargarDatosPosAlerta(response.idempresa,response.idalerta);
             // cargarDatosPosNombre(response.idempresa,response.idusuario);
             
@@ -663,8 +663,8 @@ $('#table_actividadesPlan tbody').on( 'click', 'editActividad', function(){
         document.getElementById("id").value=regDat[0]["id"];
         document.getElementById("id_comboEmpresa").value=regDat[0]["idempresa"];
         document.getElementById("id_comboArea").value=regDat[0]["idarea"];
-        document.getElementById("id_comboUnidades").value=regDat[0]["idunidad"];
-        document.getElementById("id_comboPosicion").value=regDat[0]["idposicion"];
+        document.getElementById("id_comboUnidades").value=regDat[0]["idunidades"];
+        document.getElementById("id_comboPosicion").value=regDat[0]["idposicion_puesto"];
         document.getElementById("id_comboUsers").value=regDat[0]["idusuario"];
         document.getElementById("descripcion_actividad").value=regDat[0]["descripcion"];
         document.getElementById("fecha_inicio").value=fecha(regDat[0]["fecha_inicio"]);

@@ -377,11 +377,11 @@ $('#table_area_empresa tbody').on( 'click', 'deleteAreaEmpresa', function(){
             dataType: "JSON"
         })
         .done(function(respuesta) {
-          
-            if (!respuesta.error) 
+           
+            if (!respuesta) 
             {
                 alerta_area_empresa.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+              'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

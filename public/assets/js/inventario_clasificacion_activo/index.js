@@ -964,7 +964,7 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
     
                         $("#modal_inventario_clasificacion_activo #area").val(res.data[0].idarea);
                         $("#modal_inventario_clasificacion_activo #area").prop('disabled', true);
-                        $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidad);
+                        $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidades);
                         $("#modal_inventario_clasificacion_activo #unidad").prop('disabled', true);
                         $("#modal_inventario_clasificacion_activo #macroproceso").val(res.data[0].idmacroproceso);
                         $("#modal_inventario_clasificacion_activo #macroproceso").prop('disabled', true);
@@ -1020,7 +1020,7 @@ $('#table_inventario_clasificacion_activo').on('click','editICA',function(event)
     
                         $("#modal_inventario_clasificacion_activo #area").val(res.data[0].idarea);
                         $("#modal_inventario_clasificacion_activo #area").prop('disabled', true);
-                        $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidad);
+                        $("#modal_inventario_clasificacion_activo #unidad").val(res.data[0].idunidades);
                         $("#modal_inventario_clasificacion_activo #unidad").prop('disabled', true);
                         $("#modal_inventario_clasificacion_activo #macroproceso").val(res.data[0].idmacroproceso);
                         // $("#modal_inventario_clasificacion_activo #proceso").val(res.data[0].idproceso);

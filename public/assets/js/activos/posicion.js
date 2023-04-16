@@ -205,7 +205,7 @@ function LoadTablePosicion($update,$delete) {
             { "data": "empresa" },
             { "data": "idarea" },
             { "data": "area" },
-            { "data": "idunidad" },
+            { "data": "idunidades" },
             { "data": "unidad" },
             {  "data": "estado",
                         
@@ -426,7 +426,7 @@ $('#table_posicion tbody').on( 'click', 'editPosicion', function(){
         document.getElementById("id_empresa_pos").value=regDat[0]["idempresa"];
         // document.getElementById("id_area_pos").value=regDat[0]["idarea"];
         cargarDatosPosArea(regDat[0]["idempresa"],regDat[0]["idarea"]);
-        cargarDatosPosUnidad(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidad"]);
+        cargarDatosPosUnidad(regDat[0]["idempresa"],regDat[0]["idarea"],regDat[0]["idunidades"]);
      
      
     }
@@ -537,12 +537,12 @@ $('#table_posicion tbody').on( 'click', 'deletePosicion', function(){
 
      
         .done(function(respuesta) {
-       
-            if (!respuesta.error) 
+          
+            if (!respuesta) 
             {
                 
                 alerta_posicion.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

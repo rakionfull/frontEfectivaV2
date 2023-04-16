@@ -214,7 +214,7 @@ function LoadTableMacroproceso($update,$delete) {
             },
             { "data": "idempresa" },
             { "data": "idarea" },
-            { "data": "idunidad" },
+            { "data": "idunidades" },
             {  "data": "id",
                         
             "mRender": function(data, type, value) {
@@ -371,7 +371,7 @@ $('#table_macroproceso tbody').on( 'click', 'editMacroproceso', function(){
         document.getElementById("id_macroproceso").value=regDat[0]["id"];
         document.getElementById("select_empresaMacro").value=regDat[0]["idempresa"];
         cargarDatosMacroArea(regDat[0]["idempresa"], regDat[0]["idarea"]);
-        cargarDatosMacroUnidad( regDat[0]["idempresa"],regDat[0]["idarea"], regDat[0]["idunidad"]);
+        cargarDatosMacroUnidad( regDat[0]["idempresa"],regDat[0]["idarea"], regDat[0]["idunidades"]);
     
         // document.getElementById("select_areaMacro").value=regDat[0]["idarea"];
         // document.getElementById("select_unidadesMacro").value=regDat[0]["idunidad"];
@@ -486,11 +486,11 @@ $('#table_macroproceso tbody').on( 'click', 'deleteMacroproceso', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (!respuesta.error) 
+           
+            if (!respuesta) 
             {
                 alerta_macroproceso.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+
