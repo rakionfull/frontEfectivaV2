@@ -388,12 +388,14 @@ $('#modal_nivel_riesgo #comentario').on('input',function(){
 
 $('#modal_nivel_riesgo #operador_1').change(function(){
     let option =$('#modal_nivel_riesgo #operador_1').val()
+    let option2 =$('#modal_nivel_riesgo #operador_2').val()
+
     if(option == ">" || option == ">="){
         $('#modal_nivel_riesgo #operador_2 option').remove()
         $('#modal_nivel_riesgo #operador_2').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option2 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option2 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -401,8 +403,8 @@ $('#modal_nivel_riesgo #operador_1').change(function(){
             $('#modal_nivel_riesgo #operador_2 option').remove()
             $('#modal_nivel_riesgo #operador_2').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option2 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option2 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }
@@ -411,12 +413,14 @@ $('#modal_nivel_riesgo #operador_1').change(function(){
 
 $('#modal_nivel_riesgo #operador_2').change(function(){
     let option =$('#modal_nivel_riesgo #operador_2').val()
+    let option1 =$('#modal_nivel_riesgo #operador_1').val()
+
     if(option == ">" || option == ">="){
         $('#modal_nivel_riesgo #operador_1 option').remove()
         $('#modal_nivel_riesgo #operador_1').append(
             `
-                <option value="<"><</option>
-                <option value="<="><=</option>
+                <option value="<" ${option1 == "<" ? 'selected' :''}><</option>
+                <option value="<=" ${option1 == "<=" ? 'selected' :''}><=</option>
             `
         )
     }else{
@@ -424,8 +428,8 @@ $('#modal_nivel_riesgo #operador_2').change(function(){
             $('#modal_nivel_riesgo #operador_1 option').remove()
             $('#modal_nivel_riesgo #operador_1').append(
                 `
-                    <option value=">">></option>
-                    <option value=">=">>=</option>
+                    <option value=">" ${option1 == ">" ? 'selected' :''}>></option>
+                    <option value=">=" ${option1 == ">=" ? 'selected' :''}>>=</option>
                 `
             )
         }

@@ -271,6 +271,7 @@ $('#table_impacto_1 tbody').on('click','editImpacto1',function(){
     document.getElementById("add_impacto_riego_escenario_1").style.display = "none";
     document.getElementById("update_impacto_riego_escenario_1").style.display = "block";
     $('#modal_impacto_riesgo_escenario_1 .formula_1_probabilidad').css('display','none')
+    $('#modal_impacto_riesgo_escenario_1 #group_condicionales_formula .group_formula').remove()
 
     //recuperando los datos
     var table = $('#table_impacto_1').DataTable();
@@ -341,6 +342,7 @@ $('#update_impacto_riego_escenario_1').click(function(){
     $comentario = $('#modal_impacto_riesgo_escenario_1 #comentario').val()
     $items_formula = $('#modal_impacto_riesgo_escenario_1 .group_formula ')
     let formula = ''
+    console.log()
     if($items_formula.length > 0){
         $items_formula.map((index,element) => {
             number = element.getAttribute('data-number')
