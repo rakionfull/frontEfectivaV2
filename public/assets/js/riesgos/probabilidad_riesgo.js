@@ -954,6 +954,7 @@ $('#table_probabilidad_2 tbody').on( 'click', 'deleteProbabilidad2', function(ev
                 dataType: "JSON"
             })
             .done(function(respuesta) {
+                console.log(respuesta);
                 if (!respuesta.error) 
                 {
                     alerta_probabilidad_riesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+

@@ -294,65 +294,6 @@ $('#btn_add_evaluacion_riesgo').click(function(){
         }
     })
     
-    // let unidades = $.ajax({
-    //     method: "GET",
-    //     url:BASE_URL+"/activo/getUnidades/"+idempresa,
-    //     data:postData,
-    //     dataType:'JSON'
-    // })
-    // .done(function(resarea){
-    //     $('#modal_evaluacion_riesgo #unidad option').remove()
-    //     $('#modal_evaluacion_riesgo #unidad').append(
-    //         `<option value=''>Seleccionar</option>`
-    //     )
-    //     if(resarea.data.length > 0){
-    //         resarea.data.forEach(element => {
-    //             $('#modal_evaluacion_riesgo #unidad').append(
-    //                 `<option value='${element.id}'>${element.unidad}</option>`
-    //             )
-    //         });
-    //     }
-    // })
-   
-    // let macroproceso = $.ajax({
-    //     method: "GET",
-    //     url:BASE_URL+"/activo/getMacroproceso/"+idempresa,
-       
-    //     dataType:'JSON'
-    // })
-    // .done(function(resarea){
-    //     $('#modal_evaluacion_riesgo #macroproceso option').remove()
-    //     $('#modal_evaluacion_riesgo #macroproceso').append(
-    //         `<option value=''>Seleccionar</option>`
-    //     )
-    //     if(resarea.data.length > 0){
-    //         resarea.data.forEach(element => {
-    //             $('#modal_evaluacion_riesgo #macroproceso').append(
-    //                 `<option value='${element.id}'>${element.macroproceso}</option>`
-    //             )
-    //         });
-    //     }
-    // })
-  
-    // let proceso = $.ajax({
-    //     method: "GET",
-    //     url:BASE_URL+"/activo/getProceso/"+idempresa,
-      
-    //     dataType:'JSON'
-    // })
-    // .done(function(resarea){
-    //     $('#modal_evaluacion_riesgo #proceso option').remove()
-    //     $('#modal_evaluacion_riesgo #proceso').append(
-    //         `<option value=''>Seleccionar</option>`
-    //     )
-    //     if(resarea.data.length > 0){
-    //         resarea.data.forEach(element => {
-    //             $('#modal_evaluacion_riesgo #proceso').append(
-    //                 `<option value='${element.id}'>${element.proceso}</option>`
-    //             )
-    //         });
-    //     }
-    // })
 
     let tipos_amenaza = $.ajax({
         url:BASE_URL+"/main/getTiposAmenaza",

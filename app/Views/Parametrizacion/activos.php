@@ -795,7 +795,7 @@
                                         <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <span>Nombre de la Empresa: </span>
+                                                        <span>Nombre de la empresa: </span>
                                                         <input maxlength="250" type="text" class="form-control form-control-sm" id="nom_empresa"  onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
@@ -1264,7 +1264,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                       
-                                                        <input maxlength="150" type="text" placeholder="Tipo de Activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
+                                                        <input maxlength="150" type="text" placeholder="Tipo de activo" class="form-control form-control-sm" id="nom_tipo" onKeyPress="return soloLetra(event);">
                                                     </div>
                                                 </div>
                                       

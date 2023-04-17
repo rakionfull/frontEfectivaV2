@@ -132,9 +132,9 @@ function loadTableValoracionRiesgo($update,$delete) {
         ajax: $('#base_url').val()+"/main/getValoracionRiesgo",
         aoColumns: [
             { "data": "id" },
-            { "data": "idProbabilidad" },
+            { "data": "idprobabilidad_riesgo" },
             { "data": "probabilidad" },
-            { "data": "idImpacto" },
+            { "data": "idimpacto_riesgo" },
             { "data": "impacto" },
             { "data": "valor" },
             {
@@ -294,8 +294,8 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'editValoracionRiesgo', function
         }else{
             console.log(regDat[0]["idempresa"]);
             document.getElementById("id_ValoracionRiesgo").value=regDat[0]["id"]; 
-            document.getElementById("id_probabilidad").value=regDat[0]["idProbabilidad"];
-            document.getElementById("id_impacto").value=regDat[0]["idImpacto"];
+            document.getElementById("id_probabilidad").value=regDat[0]["idprobabilidad_riesgo"];
+            document.getElementById("id_impacto").value=regDat[0]["idimpacto_riesgo"];
             document.getElementById("valor_valoracion").value=regDat[0]["valor"];                
           
         }
@@ -330,20 +330,27 @@ document.getElementById("Modificar_ValoracionRiesgo").addEventListener("click", 
                     })
                     .done(function(respuesta) {
                        console.log(respuesta);
-                        if (respuesta) 
+                        
+
+                        if (!respuesta.error) 
                         {
-                            $("#modal_ValoracionRiesgo").modal("hide");
                             document.getElementById("form_ValoracionRiesgo").reset();
-                            
-                            alerta_ValoracionRiesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                            'Modificado'+
+                            $('#modal_ValoracionRiesgo').modal('hide');
+                            alerta_ValoracionRiesgo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'
+                            +  respuesta.msg +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                                 '<span aria-hidden="true">&times;</span>'+
                                 '</button>'+
                             '</div>';
                             $("#table_ValoracionRiesgo").DataTable().ajax.reload(null, false); 
                             cargarMatrisRiesgo();
-                        } 
+                        } else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: respuesta.msg
+                              })
+                        }
                         
                     })
                     .fail(function(error) {
@@ -404,7 +411,7 @@ $('#table_ValoracionRiesgo tbody').on( 'click', 'deleteValoracionRiesgo', functi
                 '</div>';
 
                 $("#table_ValoracionRiesgo").DataTable().ajax.reload(null, true); 
-               
+               cargarMatrisRiesgo();
             }else{
                 Swal.fire({
                     icon: 'error',
@@ -525,9 +532,10 @@ async function cargarMatrisRiesgo() {
                                    
                                     $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +" <br>"+dato.valor+"</td>"; 
                                     
-                                }else{
-                                    $cadena_inicio = $cadena_inicio + "<td></td>"
                                 }
+                                // else{
+                                //     $cadena_inicio = $cadena_inicio + "<td></td>"
+                                // }
                                 
                                
                             });
@@ -553,9 +561,10 @@ async function cargarMatrisRiesgo() {
                                  
                                     $cadena_inicio = $cadena_inicio+ "<td >"+element.valor2 * resultado2[index]['valor2'] +" <br>"+dato.valor+"</td>"; 
                                     // $aux++;
-                                }else{
-                                    $cadena_inicio = $cadena_inicio + "<td></td>"
                                 }
+                                // else{
+                                //     $cadena_inicio = $cadena_inicio + "<td></td>"
+                                // }
                                
                             });
                            
@@ -581,7 +590,8 @@ async function cargarMatrisRiesgo() {
                 if($cont2 == resultado2.length-1){
                     
                     $cadena = $cadena +"<td >"+element.descripcion+"<br>"+element.valor1+" - "+element.valor2+"</td>"+$fin;
-                }else{
+                }
+                else{
                     
                     $cadena = $cadena +"<td >"+element.descripcion+"<br>"+element.valor1+" - "+element.valor2+"</td>";
                 }

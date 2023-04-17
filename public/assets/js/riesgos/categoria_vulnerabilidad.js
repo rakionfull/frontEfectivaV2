@@ -200,11 +200,11 @@ $('#table_categoria_vulnerabilidad tbody').on( 'click', 'deleteCategoria', funct
                 dataType: "JSON"
             })
             .done(function(respuesta) {
-                console.log(respuesta);
-                if (!respuesta.error) 
+                // console.log(respuesta);
+                if (!respuesta) 
                 {
                     alerta_categoria_vulnerabilidad.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                    'Se ha eliminado satisfactoriamente'+
+                    'Eliminado correctamente'+
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                         '<span aria-hidden="true">&times;</span>'+
                         '</button>'+

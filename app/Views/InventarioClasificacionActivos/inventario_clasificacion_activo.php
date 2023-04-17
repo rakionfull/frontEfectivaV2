@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md-4">
-                            <h4 class="card-title">Inventario clasificación activo</h4>
+                            <h4 class="card-title">Inventario y clasificación de activo</h4>
 
                         </div>
                         <div class="d-flex">
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <span>Area: </span>
+                                        <span>Área: </span>
                                         <select required name="" id="area" class="form-control form-control-sm">
                                             <option value="">Seleccione</option>
                                         </select>

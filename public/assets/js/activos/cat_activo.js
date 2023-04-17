@@ -81,7 +81,7 @@ function LoadTableCatActivo ($update,$delete) {
             { "data": "id" },
             { "data": "categoria" },
             { "data": "tipo" },
-            { "data": "idtipo" },
+            { "data": "idtipo_activo" },
             { "data": "estado",
                         
             "mRender": function(data, type, value) {
@@ -297,7 +297,7 @@ $('#table_cat_activo tbody').on( 'click', 'editCat_activo', function(){
       
         document.getElementById("id_cat_activo").value=regDat[0]["id"];
         document.getElementById("nom_categoria").value=regDat[0]["categoria"];
-        document.getElementById("idvalor_catActivo").value=regDat[0]["idtipo"];
+        document.getElementById("idvalor_catActivo").value=regDat[0]["idtipo_activo"];
         document.getElementById("est_catActivo").value=regDat[0]["estado"];
         
      

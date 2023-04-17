@@ -367,12 +367,12 @@ $('#table_tipo_activo tbody').on( 'click', 'deleteTipo_activo', function(){
 
      
         .done(function(respuesta) {
-        //  console.log(respuesta);
-            if (!respuesta.error) 
+            
+            if (!respuesta) 
             {
                 
                 alerta_tipo_activo.innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">'+
-                respuesta.msg+
+                'Eliminado Correctamente'+
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
                     '<span aria-hidden="true">&times;</span>'+
                     '</button>'+

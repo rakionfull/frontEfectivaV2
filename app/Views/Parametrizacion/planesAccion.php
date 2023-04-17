@@ -67,7 +67,7 @@
                                                             <th>Estado</th>
                                                             <th>Estado</th>
                                                             <th>Estado</th>
-                                                            <th>descripción</th>
+                                                            <th>Descripción</th>
                                                             <th style="width: 120px;">Mantenimiento</th>
                                                         </tr>
                                                     </thead>
